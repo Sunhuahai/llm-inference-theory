@@ -1,0 +1,84 @@
+# 初始清单：unknown 必须由部署环境/用户提供，不能根据官方示例补猜。
+schema_version: 1
+env_id: unregistered
+updated_at: '2026-11-16'
+timezone: Asia/Shanghai
+model:
+  target_id: Qwen/Qwen3.8-Flash-Next-FP8
+  target_id_status: official_match_pending_local_confirmation
+  actual_id: unknown
+  revision: unknown
+  config_sha256: unknown
+  tokenizer_revision: unknown
+  chat_template_sha256: unknown
+  fixed_precision:
+    weight_format: unknown  # 目标假设为官方FP8；不得默认为本机已确认
+    activation_dtype: unknown
+    compute_dtype: unknown
+    kv_cache_dtype: unknown
+    indexer_cache_dtype: unknown
+    ssm_state_dtype: unknown
+    ple_embedding_dtype: unknown
+hardware:
+  gpu_model: NVIDIA H800
+  gpu_sku: unknown
+  gpu_count: unknown
+  vram_per_gpu_gib: unknown
+  node_count: unknown
+  interconnect: unknown
+  topology_artifact: unknown
+  cpu_model: unknown
+  numa_layout: unknown
+  host_ram_gib: unknown
+  power_limit_w: unknown
+  clocks_policy: unknown
+runtime:
+  engine: unknown
+  engine_version: unknown
+  git_sha: unknown
+  container_digest: unknown
+  nvidia_driver: unknown
+  cuda: unknown
+  pytorch: unknown
+  triton: unknown
+  nccl: unknown
+  resolved_backends: unknown
+  sanitized_launch_command: unknown
+parallelism:
+  tp: unknown
+  ep: unknown
+  dp: unknown
+  pp: unknown
+  actual_process_groups: unknown
+  total_gpu_budget: unknown  # EP是否复用TP/DP进程组取决于引擎，勿简单相乘
+memory:
+  ple_cpu_offload: unknown
+  kv_state_pool_layout: unknown
+  max_model_len: unknown
+  prefix_cache: unknown
+  graph_memory_gib: unknown
+workload:
+  modality: unknown  # 首轮建议纯文本筛选，但业务范围尚未确认
+  dataset_id: unknown
+  dataset_sha256: unknown
+  prompt_tokens_distribution: unknown
+  output_tokens_distribution: unknown
+  thinking_mode: unknown
+  sampling: unknown
+  stop_eos_policy: unknown
+  load_mode: unknown
+  concurrency_or_rps: unknown
+measurement:
+  client_tool_version: unknown
+  client_location: unknown
+  metric_contract: docs/benchmark-protocol.md
+  timeout_s: unknown
+  retries: unknown
+  slo_ttft_ms: unknown
+  slo_tpot_ms_per_token: unknown
+  quality_gate: unknown
+baseline:
+  run_id: unknown
+  result_artifact: unknown
+  implementation_repository: unknown
+  implementation_commit: unknown
