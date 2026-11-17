@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Build approachable native draw.io pages and matching SVG previews.
+"""Build three dense, professionally titled native draw.io pages and SVGs.
 
-Edits to the two original dense reference pages are preserved by ID.
-The new pages are generated from the same geometric primitives as the SVGs.
+Both formats use the same geometric primitives. The source is deterministic.
 """
 
 from __future__ import annotations
@@ -15,7 +14,7 @@ from pathlib import Path
 DIR = Path(__file__).resolve().parent
 FILE = DIR / "inference-optimization-map.drawio"
 PREVIEWS = DIR / "previews"
-W, H = 1600, 900
+W, H = 1920, 1080
 INK = "#14243B"
 MUTED = "#60718A"
 BG = "#F6F8FC"
@@ -59,14 +58,14 @@ class Page:
         self.index = 0
         self.rect(0, 0, W, H, BG, stroke=BG, radius=0)
         self.rect(0, 0, W, 9, BLUE, stroke=BLUE, radius=0)
-        self.text(56, 28, 1130, 32, section.upper(), 16, BLUE, bold=True)
-        self.text(56, 62, 1460, 62, title, 37, INK, bold=True)
-        self.text(56, 135, 1480, 36, subtitle, 18, MUTED)
-        self.line(56, 188, 1544, 188, BORDER, 2)
-        self.text(56, 854, 1350, 28,
+        self.text(64, 26, 1400, 31, section.upper(), 17, BLUE, bold=True)
+        self.text(64, 65, 1740, 58, title, 39, INK, bold=True)
+        self.text(64, 136, 1750, 36, subtitle, 19, MUTED)
+        self.line(64, 188, 1856, 188, BORDER, 2)
+        self.text(64, 1035, 1660, 30,
                   "QWEN · H800    固定 checkpoint / 固定精度 / 固定 GPU 预算    ·    研究模型 ≠ H800 实测",
                   13, MUTED)
-        self.text(1460, 849, 83, 32, f"{number:02d}", 21, BLUE, bold=True, align="right")
+        self.text(1790, 1032, 65, 33, f"{number:02d}", 22, BLUE, bold=True, align="right")
 
     def _id(self):
         self.index += 1
@@ -163,306 +162,245 @@ class Page:
         )
         path.write_text(content, encoding="utf-8")
 
+def page_performance():
+    p = Page("performance-decomposition", "01｜性能分解与瓶颈识别", 1,
+             "PERFORMANCE MODEL / LATENCY & CAPACITY",
+             "推理性能分解与瓶颈识别",
+             "TTFT、TPOT 与饱和吞吐使用不同的成本口径；从请求生命周期与资源利用两条路径同时定位瓶颈。")
 
-def page01():
-    p = Page("human-roadmap", "01｜阅读路线", 1, "先看这页",
-             "先看懂系统，再预测优化效果", "每页只回答一个问题；把未知参数留给真实 H800 profile。")
-    labels = [
-        ("01", "理解请求", "一次输入怎样变成 token", BLUE, BLUE_TINT),
-        ("02", "读懂指标", "TTFT / TPOT / 吞吐", TEAL, TEAL_TINT),
-        ("03", "定位瓶颈", "关键路径与资源上限", VIOLET, VIOLET_TINT),
-        ("04", "选择优化", "12 张 trick 有条件地选", ORANGE, ORANGE_TINT),
-        ("05", "先预测", "范围、上限与新瓶颈", GREEN, GREEN_TINT),
-    ]
-    for i, (n, title, body, accent, tint) in enumerate(labels):
-        x = 57 + i * 306
-        p.rect(x, 248, 252, 166, WHITE, stroke=BORDER)
-        p.chip(x + 17, 264, 58, n, tint, accent)
-        p.text(x + 17, 309, 220, 41, title, 24, INK, bold=True)
-        p.text(x + 17, 354, 220, 39, body, 16, MUTED)
-        if i < 4:
-            p.arrow(x + 261, 329, x + 296, 329, accent, 3)
-    p.rect(58, 460, 714, 249, BLUE_TINT, stroke=BLUE_TINT)
-    p.text(87, 480, 670, 45, "给第一次看图的人", 26, BLUE, bold=True)
-    p.text(88, 537, 650, 141,
-           "先看 02–04 页：请求旅程、指标与瓶颈。\n再看 05–07 页：Prefill / Decode / 多卡。\n最后看 08–09 页：预测器与校准闭环。",
-           21, INK)
-    p.rect(818, 460, 724, 249, TEAL_TINT, stroke=TEAL_TINT)
-    p.text(850, 480, 660, 45, "给实施 Agent 的最短路径", 26, TEAL, bold=True)
-    p.text(849, 537, 670, 141,
-           "固定 checkpoint、精度、GPU 预算与 workload。\n采集同一组请求的关键路径 + 饱和容量。\n每次只改一个变量，先预测再 A/B。",
-           21, INK)
-    p.rect(58, 742, 1484, 78, WHITE, stroke=BORDER)
-    p.text(83, 757, 1420, 48,
-           "核心原则：预测“可消除的暴露成本”，而不是直接搬用上游 benchmark 的加速倍数。",
-           22, INK, bold=True, align="center")
-    return p
-
-
-def page02():
-    p = Page("human-lifecycle", "02｜请求生命周期", 2, "请求旅程",
-             "一个 token 从哪里来？", "TTFT 关注首 token 之前，TPOT 关注后续 token 的节拍。")
+    p.text(64, 206, 1500, 37, "请求生命周期与关键时间区间", 24, INK, bold=True)
     steps = [
-        ("请求到达", "tokenize / 接入", MUTED, "#EDF1F6"),
-        ("等待调度", "队列 / batch", ORANGE, ORANGE_TINT),
-        ("Prefill", "处理输入 token", BLUE, BLUE_TINT),
-        ("首个 Decode", "产生首 token", TEAL, TEAL_TINT),
-        ("后续 Decode", "循环逐 token", VIOLET, VIOLET_TINT),
+        ("接入 / 调度", "Tokenize、排队、batch 决策", MUTED, "#E9EDF3"),
+        ("Prefill", "输入 token 并行处理；状态生成", BLUE, BLUE_TINT),
+        ("首 token Decode", "首次 target step；首个有效输出", TEAL, TEAL_TINT),
+        ("迭代 Decode", "后续 token、MoE/QSA/GDN/MTP", VIOLET, VIOLET_TINT),
+        ("输出与完成", "Streaming、实际生成长度", ORANGE, ORANGE_TINT),
     ]
-    for i, (title, body, color, tint) in enumerate(steps):
-        x = 58 + 309 * i
-        p.rect(x, 265, 257, 154, tint, stroke=tint)
-        p.text(x + 17, 280, 222, 53, title, 25, INK, bold=True, align="center")
-        p.text(x + 18, 337, 220, 48, body, 18, color, align="center")
+    for i, (name, detail, color, tint) in enumerate(steps):
+        x = 64 + i * 370
+        p.rect(x, 254, 312, 118, tint, stroke=tint)
+        p.text(x + 14, 267, 284, 47, name, 24, INK, bold=True, align="center")
+        p.text(x + 11, 318, 289, 39, detail, 17, color, align="center")
         if i < 4:
-            p.arrow(x + 264, 341, x + 298, 341, color)
-    p.arrow(75, 477, 1107, 477, BLUE, 5)
-    p.text(330, 489, 720, 44, "TTFT = 到达请求 → 收到首个有效生成 token", 22, BLUE, bold=True, align="center")
-    p.arrow(1153, 477, 1518, 477, VIOLET, 5)
-    p.text(1137, 492, 379, 45, "TPOT：后续 token 的平均间隔", 18, VIOLET, bold=True, align="center")
-    p.card(58, 588, 466, 185, "TTFT", "排队 + 预处理 + Prefill\n+ 首个 Decode + 传输", accent=BLUE, tint=BLUE_TINT, size=21)
-    p.card(565, 588, 467, 185, "TPOT", "后续 N 个 token 的总时间\n除以 N；多 token chunk 要摊开", accent=VIOLET, tint=VIOLET_TINT, size=20)
-    p.card(1072, 588, 469, 185, "输出吞吐", "在给定并发/到达率下\n单位时间实际交付的 token 数", accent=TEAL, tint=TEAL_TINT, size=20)
-    return p
+            p.arrow(x + 321, 313, x + 361, 313, color)
+    p.arrow(88, 400, 1334, 400, BLUE, 4)
+    p.text(290, 405, 890, 29, "TTFT：请求发送 → 首个有效生成 token 到达", 19, BLUE, bold=True, align="center")
+    p.arrow(1390, 400, 1840, 400, VIOLET, 4)
+    p.text(1389, 405, 455, 29, "TPOT：后续 token 平均间隔", 19, VIOLET, bold=True, align="center")
 
+    p.rect(64, 452, 864, 296, WHITE, stroke=BORDER)
+    p.text(89, 465, 816, 43, "低负载：关键路径分解", 27, BLUE, bold=True)
+    p.text(92, 516, 813, 45,
+           "TTFT = Tqueue + Tfront + Tprefill + Tfirst + Tnet", 21, INK, bold=True)
+    p.text(92, 564, 802, 43,
+           "TPOT = (tlast − tfirst) / (O − 1)  （O > 1）", 21, INK, bold=True)
+    p.line(90, 622, 900, 622, BORDER)
+    p.text(92, 632, 800, 96,
+           "关键路径 block： t = s + c + m − η·min(c,m)\n"
+           "s：串行；c：计算；m：通信；η：重叠比例。\n"
+           "η=1 时并行段为 max(c,m)，不可重复计费。",
+           19, MUTED)
 
-def page03():
-    p = Page("human-metrics", "03｜指标与公平比较", 3, "指标定义",
-             "三个数字，不是一个“加速比”", "同一优化可能减少 TTFT、增加 TPOT，或只提高饱和容量。")
-    items = [
-        (62, BLUE, BLUE_TINT, "TTFT", "用户等首字", "首 token 到达 − 请求发送", "重点：长输入、队列、prefix"),
-        (566, VIOLET, VIOLET_TINT, "TPOT", "用户看生成", "生成段时长 / 后续 token 数", "重点：串行 decode step"),
-        (1070, TEAL, TEAL_TINT, "TPS", "系统总容量", "固定 workload 下的输出 tok/s", "重点：饱和压测、每卡效率"),
-    ]
-    for x, accent, tint, tag, title, formula, caveat in items:
-        p.rect(x, 240, 464, 303, WHITE, stroke=BORDER)
-        p.chip(x + 22, 261, 108, tag, tint, accent)
-        p.text(x + 26, 310, 415, 47, title, 27, INK, bold=True)
-        p.text(x + 26, 368, 414, 68, formula, 19, accent, bold=True)
-        p.line(x + 22, 459, x + 442, 459)
-        p.text(x + 26, 472, 413, 54, caveat, 18, MUTED)
-    p.rect(60, 590, 1484, 190, "#EDF2F9", stroke="#EDF2F9")
-    p.text(92, 611, 1418, 42, "公平 A/B 必须锁定", 26, INK, bold=True)
-    for i, (title, body) in enumerate([
-        ("模型与精度", "checkpoint / dtype"),
-        ("GPU 预算", "卡数 / 拓扑 / 功耗"),
-        ("请求分布", "输入/真实输出长度"),
-        ("负载条件", "RPS / 并发 / 缓存"),
+    p.rect(970, 452, 885, 296, WHITE, stroke=BORDER)
+    p.text(996, 465, 820, 42, "高负载：资源容量与瓶颈迁移", 27, TEAL, bold=True)
+    p.text(997, 510, 825, 44, "GPU Compute / HBM / Interconnect / CPU", 19, MUTED)
+    for i, (label, fraction, color) in enumerate([
+        ("GPU Compute", .91, BLUE), ("HBM", .70, TEAL),
+        ("Interconnect", .47, ORANGE), ("CPU", .60, VIOLET),
     ]):
-        x = 91 + i * 360
-        p.rect(x, 670, 324, 86, WHITE, stroke=BORDER, radius=12)
-        p.text(x + 14, 681, 295, 27, title, 19, INK, bold=True)
-        p.text(x + 14, 713, 295, 25, body, 15, MUTED)
-    return p
+        y = 556 + 35 * i
+        p.text(998, y, 193, 31, label, 18, INK, bold=True)
+        p.rect(1215, y + 7, 500, 17, "#EDF2F7", stroke="#EDF2F7", radius=9)
+        p.rect(1215, y + 7, 500 * fraction, 17, color, stroke=color, radius=9)
+        p.text(1724, y, 93, 31, f"{round(fraction * 100)}%", 18, color, bold=True, align="right")
+    p.text(996, 706, 800, 28,
+           "忙碌比例仅为合成示意；瓶颈依实际饱和 profile 判定。", 17, MUTED)
 
-
-def page04():
-    p = Page("human-bottlenecks", "04｜诊断瓶颈", 4, "理论到 profile",
-             "延迟看关键路径；吞吐看最忙的资源", "把两套账分开，是建立收益预测模型的第一步。")
-    p.rect(58, 225, 712, 447, WHITE, stroke=BORDER)
-    p.text(86, 247, 650, 44, "A  ·  单请求关键路径", 27, BLUE, bold=True)
-    p.text(88, 299, 650, 48, "串行：Host  →  计算 / 通信重叠  →  输出", 18, MUTED)
-    p.rect(94, 372, 130, 81, BLUE_TINT, stroke=BLUE_TINT)
-    p.text(105, 387, 106, 45, "Host\n串行", 18, BLUE, bold=True, align="center")
-    p.arrow(233, 413, 284, 413, BLUE)
-    p.rect(300, 353, 254, 61, TEAL_TINT, stroke=TEAL_TINT)
-    p.text(309, 365, 232, 37, "GPU 计算 C", 20, TEAL, bold=True, align="center")
-    p.rect(300, 430, 191, 61, ORANGE_TINT, stroke=ORANGE_TINT)
-    p.text(310, 443, 172, 36, "通信 M", 20, ORANGE, bold=True, align="center")
-    p.arrow(567, 414, 643, 414, BLUE)
-    p.rect(651, 372, 94, 81, VIOLET_TINT, stroke=VIOLET_TINT)
-    p.text(655, 390, 85, 42, "输出", 18, VIOLET, bold=True, align="center")
-    p.text(90, 540, 638, 74, "重叠块：C + M − η·min(C,M)\nη = 1 时取 max(C,M)，不是 C + M", 20, INK, bold=True)
-    p.rect(807, 225, 734, 447, WHITE, stroke=BORDER)
-    p.text(839, 247, 662, 44, "B  ·  饱和容量的资源压力", 27, TEAL, bold=True)
-    p.text(842, 300, 636, 35, "以下数值仅用于示意，非 H800 测量", 16, MUTED)
-    for i, (name, u, color) in enumerate([
-        ("GPU 计算", .91, BLUE), ("HBM", .70, TEAL),
-        ("互联通信", .47, ORANGE), ("CPU", .60, VIOLET),
-    ]):
-        y = 356 + 64 * i
-        p.text(841, y, 151, 34, name, 18, INK, bold=True)
-        p.rect(1015, y + 7, 414, 18, "#EEF2F8", stroke="#EEF2F8", radius=9)
-        p.rect(1015, y + 7, round(414 * u), 18, color, stroke=color, radius=9)
-        p.text(1441, y, 69, 34, f"{round(u*100)}%", 17, color, bold=True, align="right")
-    p.rect(58, 709, 1483, 107, "#FFF6E9", stroke="#FFE3B7")
-    p.text(88, 724, 1410, 80,
-           "局部 kernel 2×  ≠  整体 2×。\n先问：原本它占关键路径多少？是否已有重叠？新瓶颈会不会转移？",
-           22, INK, bold=True)
-    return p
-
-
-def page05():
-    p = Page("human-prefill", "05｜Prefill 优化", 5, "先拿首 token",
-             "缩短 Prefill：四种常见抓手", "先从真实 profile 选择；长输入、短输入、多轮复用的优先级不一样。")
     cards = [
-        (62, 234, "T001 · Chunked prefill", "把长输入切成可调度的块。\n看 TTFT、混合 batch 的 TPOT；\n可能增加调度轮次。", BLUE, BLUE_TINT),
-        (820, 234, "T005 · GR/PLE 序列并行", "把部分序列依赖跨卡展开。\n长输入更可能受益；\n先核对实际框架是否支持。", VIOLET, VIOLET_TINT),
-        (62, 485, "T008 · Prefix 状态复用", "复用已验证的前缀状态。\n命中率、状态兼容性与内存\n决定净收益；不能只看 cache hit。", TEAL, TEAL_TINT),
-        (820, 485, "T011 · Host / Tokenizer", "减少 CPU 排队、分词和提交空隙。\n短请求与高并发可能敏感；\n须用 CPU/GPU timeline 证明。", ORANGE, ORANGE_TINT),
+        (64, BLUE, "TTFT / 首 token 延迟",
+         "低负载均值用于结构预测；线上还受队列影响。\n"
+         "按 p50/p95/p99 报告，并分开冷热缓存和长短输入。"),
+        (674, VIOLET, "TPOT / 生成节拍",
+         "后续有效 token 的平均步长；MTP 必须按\n"
+         "每次验证实际交付 token 数摊销，不能用 chunk 间隔。"),
+        (1284, TEAL, "吞吐 / Goodput",
+         "输出 tok/s 与输入+输出总 tok/s 分开；\n"
+         "容量与实际到达负载不同，SLO 下再看 goodput。"),
     ]
-    for x, y, title, body, color, tint in cards:
-        p.card(x, y, 720, 216, title, body, accent=color, tint=tint, size=21)
-    p.rect(62, 736, 1479, 86, "#E8F0FF", stroke="#D5E4FF")
-    p.text(92, 749, 1399, 58,
-           "预测时分别填写：输入长度分布、暴露的 Prefill 成本、额外调度开销、prefix 命中与状态搬运成本。",
-           20, BLUE, bold=True, align="center")
+    for x, accent, title, body in cards:
+        p.rect(x, 778, 572, 211, WHITE, stroke=BORDER)
+        p.rect(x, 778, 9, 211, accent, stroke=accent, radius=0)
+        p.text(x + 24, 793, 528, 45, title, 23, INK, bold=True)
+        p.text(x + 25, 846, 520, 119, body, 18, MUTED)
+    p.text(70, 997, 1780, 28,
+           "比较约束：固定模型 revision、精度、H800 总数、实际输出长度分布、采样设置、并发 / RPS、缓存状态与拓扑。",
+           17, ROSE, bold=True, align="center")
     return p
 
 
-def page06():
-    p = Page("human-decode", "06｜Decode 优化", 6, "逐 token 生成",
-             "Decode：小节拍被重复成大开销", "先量每次 token step 的暴露成本；MTP 要额外算“一轮交付几个 token”。")
-    cards = [
-        ("T002 · CUDA Graph", "削减 Host launch 间隙\n同时检查覆盖形状与预热", BLUE, BLUE_TINT),
-        ("T003 · QSA prepare", "融合准备算子和访存\n先查当前 build 是否已覆盖", TEAL, TEAL_TINT),
-        ("T004 · QSA 投影", "投影融合与小 GEMM 调度\n关心 SM90 实际 shape", VIOLET, VIOLET_TINT),
-        ("T006 · PLE 预取", "异步搬运与 NUMA 放置\n只节省暴露的等待窗口", ORANGE, ORANGE_TINT),
-        ("T009 · 原生 MTP", "接受长度 / 验证 / draft 成本\n低 TPOT 不等于高吞吐容量", GREEN, GREEN_TINT),
-        ("T010 · MoE 通信", "减少 All-to-All 与专家倾斜\n看通信计算能否重叠", ROSE, ROSE_TINT),
+def page_strategies():
+    p = Page("optimization-matrix", "02｜优化策略与架构映射", 2,
+             "OPTIMIZATION MATRIX / T001–T012",
+             "优化策略与架构映射",
+             "以现有 12 张 trick 卡为索引：机制、直接影响指标、适用条件与代价；所有收益仍待固定 H800 环境的 A/B 证实。")
+    xs = [64, 379, 1021, 1281, 1856]
+    p.rect(64, 210, 1792, 46, "#DCE5F1", stroke="#DCE5F1", radius=9)
+    for x, w, label in zip([78, 390, 1031, 1292], [281, 613, 228, 544],
+                            ["ID / 优化项", "关键机制与作用路径", "主指标", "前提 / 潜在代价"]):
+        p.text(x, 214, w, 38, label, 20, INK, bold=True)
+    for x in xs[1:-1]:
+        p.line(x, 211, x, 1008, BORDER, 1)
+
+    def group(y, label, color, tint):
+        p.rect(64, y, 1792, 27, tint, stroke=tint, radius=0)
+        p.text(79, y + 1, 1745, 24, label, 17, color, bold=True)
+
+    def row(y, label, mechanism, metric, requirement, color, even):
+        p.rect(64, y, 1792, 53, "#FFFFFF" if even else "#F1F5FA", stroke="#E2E9F1", radius=0, width=0.8)
+        p.rect(64, y, 7, 53, color, stroke=color, radius=0)
+        p.text(80, y + 5, 293, 43, label, 18, INK, bold=True)
+        p.text(393, y + 5, 612, 43, mechanism, 18, MUTED)
+        p.text(1034, y + 5, 235, 43, metric, 18, color, bold=True)
+        p.text(1293, y + 5, 550, 43, requirement, 17, MUTED)
+
+    group(263, "A  ·  Prefill / 首 token 路径", BLUE, BLUE_TINT)
+    data_a = [
+        ("T001 · 分块 Prefill", "分块 token budget + 连续批处理，控制长输入阻塞", "TTFT · TPOT 尾部", "需混合负载 trace；切块增加轮次"),
+        ("T005 · GR/PLE 序列并行", "长序列分片与依赖展开，换取更短 Prefill", "长输入 TTFT", "依赖框架 / 跨卡通信支持"),
+        ("T008 · Prefix 状态缓存", "复用兼容的 QSA / GDN / SSM 等前缀状态", "多轮 TTFT · TPS", "状态正确性、命中率、显存容量"),
+        ("T011 · Host / Tokenizer", "减少 CPU、分词和 launch 的暴露等待", "短输入 TTFT · 尾延迟", "需 CPU/GPU 时间线证明瓶颈"),
     ]
-    for i, (title, body, color, tint) in enumerate(cards):
-        col, row = i % 3, i // 3
-        x, y = 60 + col * 503, 238 + row * 243
-        p.card(x, y, 475, 214, title, body, accent=color, tint=tint, size=19)
-    p.rect(60, 740, 1480, 83, "#FFF4E8", stroke="#F6DBB3")
-    p.text(88, 749, 1422, 62,
-           "MTP 用单位最终 token 时间 = (验证轮次成本 + draft 开销) / 期望交付 token 数；必须测接受分布。",
-           20, ORANGE, bold=True, align="center")
-    return p
+    for i, item in enumerate(data_a):
+        row(290 + i * 54, *item, BLUE, i % 2 == 0)
 
-
-def page07():
-    p = Page("human-scale", "07｜多卡与服务", 7, "系统层优化",
-             "更多实例，不等于随意增加 GPU", "比较 T007 / T012 时，始终保持整套服务的 H800 总数量相同。")
-    p.rect(57, 240, 876, 457, WHITE, stroke=BORDER)
-    p.text(84, 262, 800, 42, "相同 GPU 预算下的两种部署形态", 25, BLUE, bold=True)
-    p.chip(92, 330, 142, "单实例混跑", BLUE_TINT, BLUE)
-    p.rect(91, 393, 272, 130, BLUE_TINT, stroke=BLUE_TINT)
-    p.text(111, 408, 236, 96, "同一实例\nPrefill + Decode", 22, BLUE, bold=True, align="center")
-    p.arrow(374, 458, 466, 458, INK)
-    p.chip(485, 330, 154, "P/D 分离", TEAL_TINT, TEAL)
-    p.rect(485, 391, 182, 128, TEAL_TINT, stroke=TEAL_TINT)
-    p.text(504, 410, 143, 92, "P 节点\n长输入", 22, TEAL, bold=True, align="center")
-    p.arrow(674, 455, 725, 455, TEAL)
-    p.rect(737, 391, 163, 128, VIOLET_TINT, stroke=VIOLET_TINT)
-    p.text(751, 410, 135, 92, "D 节点\n逐 token", 22, VIOLET, bold=True, align="center")
-    p.text(95, 564, 796, 99,
-           "P/D 分离还要核算状态传输、负载比例与跨节点链路。\n未确认引擎支持前，不把它当已经可用的功能。",
-           20, MUTED)
-    p.rect(971, 240, 571, 457, WHITE, stroke=BORDER)
-    p.text(999, 262, 507, 43, "并行布局 T007", 25, VIOLET, bold=True)
-    for i, (title, desc, color, tint) in enumerate([
-        ("TP", "张量并行：算子与 collective", BLUE, BLUE_TINT),
-        ("EP", "专家并行：路由与 all-to-all", TEAL, TEAL_TINT),
-        ("DP", "数据并行：副本与请求分发", ORANGE, ORANGE_TINT),
-    ]):
-        y = 327 + 110 * i
-        p.rect(1003, y, 506, 84, tint, stroke=tint)
-        p.text(1020, y + 12, 64, 56, title, 23, color, bold=True, align="center")
-        p.text(1107, y + 14, 375, 54, desc, 18, INK)
-    p.rect(57, 733, 1486, 87, "#EDF2F9", stroke=BORDER)
-    p.text(84, 749, 1434, 55,
-           "服务吞吐的公允比较：总 tok/s、每卡 tok/s、TTFT/TPOT 尾延迟、跨卡通信与实际 GPU 账。",
-           20, INK, bold=True, align="center")
-    return p
-
-
-def page08():
-    p = Page("human-model", "08｜可计算的预测器", 8, "最终目标",
-             "把优化直觉，变成可检验的数字", "理论下界 + 关键路径校准 + 资源瓶颈容量；不是用一个倍数解释所有指标。")
-    for x, title, body, accent, tint in [
-        (67, "输入 A · 基线", "TTFT / TPOT 均值\n饱和输出 tok/s", BLUE, BLUE_TINT),
-        (583, "输入 B · Profile", "互斥阶段与重叠\n计算 / HBM / 通信 / CPU", TEAL, TEAL_TINT),
-        (1098, "输入 C · Trick", "局部提速 / 新开销\n资源需求变化因子", VIOLET, VIOLET_TINT),
-    ]:
-        p.card(x, 230, 441, 171, title, body, accent=accent, tint=tint, size=19)
-    p.arrow(311, 415, 311, 469, BLUE)
-    p.arrow(807, 415, 807, 469, TEAL)
-    p.arrow(1310, 415, 1310, 469, VIOLET)
-    p.rect(68, 484, 697, 172, BLUE_TINT, stroke=BLUE_TINT)
-    p.text(92, 494, 648, 45, "模型 ① · 低负载关键路径", 25, BLUE, bold=True)
-    p.text(91, 548, 641, 82,
-           "固定部分 + Σ 阶段校准成本\n串行 + 计算 + 通信 − 重叠 + 新开销",
-           21, INK)
-    p.rect(809, 484, 728, 172, TEAL_TINT, stroke=TEAL_TINT)
-    p.text(836, 494, 667, 45, "模型 ② · 饱和资源需求", 25, TEAL, bold=True)
-    p.text(835, 548, 652, 82,
-           "原容量 × 原最大资源压力 / 新最大压力\n瓶颈可能转移，且 TPS ≠ 1/TPOT",
-           21, INK)
-    p.arrow(404, 667, 404, 705, BLUE)
-    p.arrow(1172, 667, 1172, 705, TEAL)
-    p.rect(72, 719, 1459, 94, WHITE, stroke=BORDER)
-    p.text(88, 731, 1428, 62,
-           "输出：预测 TTFT / TPOT / 饱和 TPS + 上限 + 新瓶颈 + 假设清单\n运行入口：theory/predictor/predict.py",
-           21, INK, bold=True, align="center")
-    return p
-
-
-def page09():
-    p = Page("human-validation", "09｜从预测到校准", 9, "模型闭环",
-             "每晚反馈，都会让下一次预测更可信", "先从可复核的 A/B 建立校准，再谈统计学习；没有数据就保留区间。")
-    steps = [
-        ("01", "先预测", "保守 / 中心 / 乐观\n记录局部成本与适用条件", BLUE, BLUE_TINT),
-        ("02", "再实验", "同版本、同 GPU、同 trace\n留出测试负载", TEAL, TEAL_TINT),
-        ("03", "看误差", "(预测 − 实测) / 实测\n逐指标分析原因", ORANGE, ORANGE_TINT),
-        ("04", "更新模型", "修正重叠、额外成本\n和饱和资源因子", VIOLET, VIOLET_TINT),
+    group(514, "B  ·  Decode / 单 token 步长", VIOLET, VIOLET_TINT)
+    data_b = [
+        ("T002 · CUDA Graph", "消除部分 Host 提交与调度空隙", "TPOT · 短请求", "确认 graph capture / shape 覆盖"),
+        ("T003 · QSA Prepare 融合", "合并 QSA 前处理、访存与启动次数", "TPOT", "先核对 upstream build 已包含部分"),
+        ("T004 · QSA 投影融合", "SM90 小 GEMM 与投影算子调度优化", "TPOT · 输出 TPS", "看真实 kernel shape / 数值一致性"),
+        ("T006 · PLE 异步预取", "利用 overlap 隐藏 embedding 搬运延迟", "TTFT · TPOT", "CPU / PCIe / NUMA 有暴露等待"),
+        ("T009 · 原生 MTP", "降低每最终 token 的验证轮次成本", "TPOT · 输出 TPS", "接受分布、验证成本、质量门槛"),
+        ("T010 · MoE 通信", "All-to-All 合并、专家负载平衡与重叠", "TPOT · 输出 TPS", "通信占比、路由和拓扑证据"),
     ]
-    for i, (n, title, body, color, tint) in enumerate(steps):
-        x = 60 + i * 378
-        p.rect(x, 247, 337, 222, WHITE, stroke=BORDER)
-        p.chip(x + 22, 263, 55, n, tint, color)
-        p.text(x + 25, 311, 290, 43, title, 25, INK, bold=True)
-        p.text(x + 25, 364, 290, 85, body, 18, MUTED)
+    for i, item in enumerate(data_b):
+        row(541 + i * 54, *item, VIOLET, i % 2 == 0)
+
+    group(873, "C  ·  多卡并行 / 端到端服务", TEAL, TEAL_TINT)
+    row(900, "T007 · TP / EP / DP", "同预算重排计算、专家路由与服务副本",
+        "TTFT · TPOT · TPS", "总 H800 数固定；collective 与每卡吞吐", TEAL, True)
+    row(954, "T012 · Prefill / Decode 分离", "降低混合干扰，分配 P/D 资源与状态通道",
+        "尾延迟 · Goodput", "状态传输、规模、SLO、框架支持", TEAL, False)
+    p.text(74, 1009, 1773, 23,
+           "优先顺序由 profile 决定：局部算子加速不等于端到端收益；已经由基线覆盖的优化不得重复归功。",
+           16, ROSE, bold=True, align="center")
+    return p
+
+
+def page_prediction():
+    p = Page("benefit-predictor", "03｜收益预测与实验校准", 3,
+             "PREDICTION / PROFILE CALIBRATION / VALIDATION",
+             "优化收益预测模型与实验校准",
+             "Amdahl / Roofline / 重叠关键路径 / MTP / 饱和资源容量分账计算，并以真实 H800 A/B 迭代校准。")
+
+    inputs = [
+        (64, BLUE, BLUE_TINT, "输入 A · 实测基线",
+         "同 trace 的 TTFT、TPOT 均值；Prefill、首步时间；\n"
+         "相同 workload 下的饱和输出 tok/s。"),
+        (673, TEAL, TEAL_TINT, "输入 B · Profile",
+         "互斥 block 的串行 / 计算 / 通信时间与 overlap；\n"
+         "各资源 busy / bytes / cost，形状相关的下界。"),
+        (1282, VIOLET, VIOLET_TINT, "输入 C · 候选方案",
+         "k_s、k_c、k_m、η′、新增开销；\n"
+         "资源需求因子 f_r；MTP 的 p、d 与验证成本。"),
+    ]
+    for x, accent, tint, title, body in inputs:
+        p.rect(x, 220, 575, 123, WHITE, stroke=BORDER)
+        p.rect(x, 220, 8, 123, accent, stroke=accent, radius=0)
+        p.text(x + 22, 232, 531, 36, title, 22, INK, bold=True)
+        p.text(x + 23, 272, 527, 55, body, 17, MUTED)
+
+    p.rect(64, 369, 1102, 466, WHITE, stroke=BORDER)
+    p.text(89, 377, 1049, 41, "关键路径与理论下界", 26, BLUE, bold=True)
+    formulas = [
+        (87, 428, BLUE_TINT, BLUE, "01  ·  Amdahl + Overlap",
+         "t′_b = s/k_s + c′ + m′ − η′ min(c′,m′) + h\n"
+         "T′stage ≈ Tstage,0 × (Σt′struct / Σt_0) + Σh"),
+        (637, 428, TEAL_TINT, TEAL, "02  ·  Roofline 下界",
+         "c′ ≥ max(c/k_c, ℓ_compute)\n"
+         "ℓ_compute ≥ max(F/P_eff, Bytes/BW_eff)"),
+        (87, 626, VIOLET_TINT, VIOLET, "03  ·  MTP 净 token 成本",
+         "E[K] = Σ(i=0..d) p^i\n"
+         "TPOT_MTP ≈ (k_verify · T_decode + h_draft) / E[K]"),
+        (637, 626, ORANGE_TINT, ORANGE, "04  ·  饱和容量约束",
+         "R′cap = R0 · max(u_r) / max(u_r f_r)\n"
+         "R_served ≤ min(λ × E[O], R′cap)"),
+    ]
+    for x, y, tint, accent, title, formula in formulas:
+        p.rect(x, y, 516, 178, tint, stroke=tint)
+        p.text(x + 20, y + 10, 474, 38, title, 21, accent, bold=True)
+        p.text(x + 20, y + 55, 478, 101, formula, 18, INK)
+
+    p.rect(1199, 369, 656, 466, WHITE, stroke=BORDER)
+    p.text(1221, 379, 609, 42, "合成情景：三项指标可能相反", 25, VIOLET, bold=True)
+    p.chip(1221, 428, 215, "SYNTHETIC · 非实测", ROSE_TINT, ROSE)
+    p.rect(1222, 482, 610, 47, "#E9EEF5", stroke="#E9EEF5", radius=0)
+    for x, w, txt in [(1233,164,"情景"),(1400,113,"TTFT ms"),
+                      (1518,120,"TPOT ms"),(1650,169,"输出 tok/s")]:
+        p.text(x, 488, w, 34, txt, 18, INK, bold=True)
+    rows = [
+        ("Baseline", "150.00", "22.00", "1800.00", BLUE),
+        ("QSA 融合", "148.33", "20.25", "1894.74", TEAL),
+        ("MTP 假设", "150.00*", "15.87", "1578.95", ORANGE),
+    ]
+    for i, (name, ttft, tpot, tps, accent) in enumerate(rows):
+        y = 531 + i * 54
+        p.rect(1222, y, 610, 53, WHITE if i % 2 == 0 else "#F4F7FA", stroke=BORDER, radius=0)
+        for x, w, txt in [(1233,164,name),(1400,113,ttft),
+                          (1518,120,tpot),(1650,169,tps)]:
+            p.text(x, y + 4, w, 43, txt, 18, accent if x == 1233 else INK,
+                   bold=(x == 1233))
+    p.text(1225, 710, 595, 108,
+           "MTP 可改善单请求 TPOT，却因新增资源需求而\n"
+           "降低饱和容量。*首 token 影响尚未建模。\n"
+           "无真实 profile 时仅输出情景，不宣称 H800 加速。",
+           18, MUTED)
+
+    p.rect(64, 859, 1791, 152, "#EDF2F9", stroke=BORDER)
+    p.text(85, 869, 1760, 30, "模型校准与验证闭环", 23, INK, bold=True)
+    flow = [
+        ("固定基线", "模型 / 精度 / GPU / trace"),
+        ("三档预测", "保守 / 中心 / 乐观"),
+        ("单变量 A/B", "均值 + 分位数 + 质量"),
+        ("误差更新", "(预测−实测)/实测；留出集"),
+    ]
+    for i, (title, detail) in enumerate(flow):
+        x = 88 + i * 443
+        p.rect(x, 908, 383, 81, WHITE, stroke=BORDER, radius=12)
+        p.text(x + 12, 915, 354, 28, title, 20, INK, bold=True, align="center")
+        p.text(x + 11, 948, 361, 31, detail, 16, MUTED, align="center")
         if i < 3:
-            p.arrow(x + 343, 359, x + 370, 359, color)
-    p.rect(61, 527, 1477, 223, "#EDF2F9", stroke=BORDER)
-    p.text(94, 544, 1410, 43, "合成算例：为什么不能只报一个指标？", 26, INK, bold=True)
-    for x, tag, value, color, tint in [
-        (97, "QSA 保守情景", "TPOT 22 → 20.25 ms", BLUE, BLUE_TINT),
-        (568, "MTP 假设情景", "TPOT 22 → 15.87 ms", VIOLET, VIOLET_TINT),
-        (1041, "但 MTP 容量", "1800 → 1579 tok/s", ROSE, ROSE_TINT),
-    ]:
-        p.rect(x, 618, 426, 105, WHITE, stroke=BORDER)
-        p.text(x + 16, 628, 394, 36, tag, 19, color, bold=True)
-        p.text(x + 16, 666, 390, 42, value, 21, INK, bold=True)
-    p.rect(60, 773, 1477, 53, "#FFF1DB", stroke="#FFE1B0")
-    p.text(83, 779, 1430, 39,
-           "上面都是合成数字，不是 H800 成绩。真实性 = 可追溯版本 + 原始结果 + 误差记录。",
-           18, ORANGE, bold=True, align="center")
+            p.arrow(x + 389, 947, x + 431, 947, BLUE)
+    p.text(72, 1011, 1776, 21,
+           "可运行实现：theory/predictor/predict.py    ·    未输入真实基线前不预测 p95/p99、排队 TTFT 或 P/D 调度收益。",
+           16, ROSE, bold=True, align="center")
     return p
 
 
 def main():
-    if not FILE.exists():
-        raise SystemExit(f"Missing editable legacy file: {FILE}")
-    old = ET.parse(FILE).getroot()
-    legacy_ids = ("qwen-h800-overview", "qwen-h800-prediction")
-    legacy = []
-    for ident in legacy_ids:
-        found = old.find(f"./diagram[@id='{ident}']")
-        if found is None:
-            raise SystemExit(f"Cannot preserve legacy page {ident}; refusing overwrite")
-        legacy.append(found)
-    pages = [page01(), page02(), page03(), page04(), page05(),
-             page06(), page07(), page08(), page09()]
+    pages = [page_performance(), page_strategies(), page_prediction()]
     mxfile = ET.Element("mxfile", {
         "host": "app.diagrams.net", "modified": "2026-11-17T00:00:00.000Z",
         "agent": "native-xml", "version": "24.7.17",
-        "type": "device", "pages": str(len(pages) + len(legacy)),
+        "type": "device", "pages": "3",
     })
     for page in pages:
         mxfile.append(page.diagram)
-    for i, diagram in enumerate(legacy, start=10):
-        diagram.attrib["name"] = f"{i:02d}｜技术附录（原 {'优化总览' if i == 10 else '收益预测'}）"
-        mxfile.append(diagram)
     PREVIEWS.mkdir(parents=True, exist_ok=True)
-    for page in pages:
-        page.svg_file(PREVIEWS / f"{page.number:02d}-{page.slug.removeprefix('human-')}.svg")
+    for page, name in zip(pages, ("01-performance", "02-strategies", "03-prediction")):
+        page.svg_file(PREVIEWS / (name + ".svg"))
     ET.indent(mxfile, space="  ")
     ET.ElementTree(mxfile).write(FILE, encoding="utf-8", xml_declaration=True)
-    print(f"Generated {len(pages)} approachable pages + {len(legacy)} preserved appendices")
-    print(f"Editable draw.io: {FILE}")
+    print("Generated 3 native draw.io pages + 3 matching SVG previews")
 
 
 if __name__ == "__main__":

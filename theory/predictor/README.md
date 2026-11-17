@@ -9,7 +9,7 @@
 3. 固定负载形状下，饱和输出 tokens/s 容量能增加多少？
 4. 新瓶颈在哪里？哪些预测缺乏证据？
 
-配套的 11 页讲解见 [逐页 draw.io 图解](../diagrams/README.md)；完整理论推导见 [原理论文档](../optimization-benefit-prediction.md)。
+配套的三页技术综述见 [可编辑 draw.io 图解](../diagrams/README.md)；完整理论推导见 [原理论文档](../optimization-benefit-prediction.md)。
 
 ## 30 秒运行
 
