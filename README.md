@@ -14,6 +14,7 @@
 | 直接交给其他 Agent 执行 | [本周任务书](weeks/2026-W47/agent-tasks.md) |
 | 了解模型与支持边界 | [模型核对](docs/model-and-support.md) |
 | 统一性能测量方法 | [Benchmark 协议](docs/benchmark-protocol.md) |
+| 在实施前预测优化收益与上限 | [理论预测方法](theory/optimization-benefit-prediction.md) |
 | 填写机器与基线 | [环境清单](environment.yaml) |
 | 每晚反馈 | [简短反馈模板](templates/feedback.md) |
 | 了解每天、每周怎样更新 | [反馈闭环](docs/feedback-loop.md) |
