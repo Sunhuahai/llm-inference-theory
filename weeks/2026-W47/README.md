@@ -2,13 +2,15 @@
 
 日期：**2026-11-16—2026-11-22**（Asia/Shanghai）。调研完成日期：2026-11-16。
 
-**当前没有 H800 实测数据。** 已建立 12 张候选卡片、测量协议与实施任务。部署卡数、框架和基线仍待提供。
+**当前没有 H800 实测数据。** 已建立 13 张候选卡片、测量协议与实施任务。部署卡数、框架、业务 trace 和基线仍待提供。
 
 ## 本周最值得先做的事
 
 1. **P0 环境与基线**：确认模型、H800/拓扑、实际 dtype、版本，查已有融合路径；产出可比较的 baseline。
 2. **P1 调度与 Graph**：依据 baseline 分别做 T001 或 T002 单变量试验；优先短/长请求混合时的尾延迟。
 3. **P2 模型专属瓶颈**：若 QSA/GR/PLE 耗时明显，优先 T003–T006；业务重复前缀多则优先 T008。先有证据再选择，不一次性改全套。
+
+**新增研究入口（2026-11-17）**：[前缀缓存命中、有限状态容量与上下文压缩的收益上界](../../theory/cache-context-ceilings.md)，附可运行合成回放与质量 gate；T008/T013 的真实收益均待实测。仅在真实长前缀重复或业务冗余充分时提升它们的优先级。
 
 直接交付入口：[实施任务书](agent-tasks.md)。完整研究判断：[research.md](research.md)。
 
@@ -28,6 +30,7 @@
 | T010 | [MoE 通信](tricks/T010-moe-communication.md) | conditional | 专家不均衡或 collectives 占比高 |
 | T011 | [Host runtime](tricks/T011-host-runtime.md) | researched | CPU/分词/主机调度瓶颈 |
 | T012 | [Prefill/decode 分离](tricks/T012-prefill-decode-disaggregation.md) | conditional | 多机规模、真实流量、混合状态传输支持 |
+| T013 | [上下文压缩](tricks/T013-context-compression.md) | conditional | 业务确有冗余、压缩成本与严格配对质量门槛 |
 
 ## 记录入口
 

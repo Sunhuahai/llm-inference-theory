@@ -56,7 +56,7 @@
         <mxCell id="performance-decomposition-15" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=24;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="Prefill">
           <mxGeometry x="448" y="267" width="284" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="performance-decomposition-16" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="输入 token 并行处理；状态生成">
+        <mxCell id="performance-decomposition-16" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="Prefix 命中 / 上下文压缩 / 状态生成">
           <mxGeometry x="445" y="318" width="289" height="39" as="geometry" />
         </mxCell>
         <mxCell id="performance-decomposition-17" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
@@ -212,7 +212,7 @@
         <mxCell id="performance-decomposition-61" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=23;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="TTFT / 首 token 延迟">
           <mxGeometry x="88" y="793" width="528" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="performance-decomposition-62" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="低负载均值用于结构预测；线上还受队列影响。&#10;按 p50/p95/p99 报告，并分开冷热缓存和长短输入。">
+        <mxCell id="performance-decomposition-62" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="低负载均值用于结构预测；线上还受队列影响。&#10;按 p50/p95/p99 报告；冷/热缓存、压缩与&#10;前缀命中成本单独分组，质量不能退化。">
           <mxGeometry x="89" y="846" width="520" height="119" as="geometry" />
         </mxCell>
         <mxCell id="performance-decomposition-63" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
@@ -239,7 +239,7 @@
         <mxCell id="performance-decomposition-70" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="输出 tok/s 与输入+输出总 tok/s 分开；&#10;容量与实际到达负载不同，SLO 下再看 goodput。">
           <mxGeometry x="1309" y="846" width="520" height="119" as="geometry" />
         </mxCell>
-        <mxCell id="performance-decomposition-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="比较约束：固定模型 revision、精度、H800 总数、实际输出长度分布、采样设置、并发 / RPS、缓存状态与拓扑。">
+        <mxCell id="performance-decomposition-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="比较约束：固定模型 revision、精度、H800 总数、业务任务与采样；分层记录实际输出、输入压缩、冷热缓存、并发 / RPS。">
           <mxGeometry x="70" y="997" width="1780" height="28" as="geometry" />
         </mxCell>
       </root>
@@ -256,13 +256,13 @@
         <mxCell id="optimization-matrix-2" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
           <mxGeometry x="0" y="0" width="1920" height="9" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-3" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="OPTIMIZATION MATRIX / T001–T012">
+        <mxCell id="optimization-matrix-3" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="OPTIMIZATION MATRIX / T001–T013">
           <mxGeometry x="64" y="26" width="1400" height="31" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-4" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=39;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="优化策略与架构映射">
           <mxGeometry x="64" y="65" width="1740" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-5" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=19;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="以现有 12 张 trick 卡为索引：机制、直接影响指标、适用条件与代价；所有收益仍待固定 H800 环境的 A/B 证实。">
+        <mxCell id="optimization-matrix-5" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=19;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="按 13 个研究候选对齐机制、影响指标、版本前提与代价；Prefix 命中与上下文压缩必须联合评估质量及缓存策略。">
           <mxGeometry x="64" y="136" width="1750" height="36" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-6" parent="1" edge="1" style="endArrow=none;html=0;strokeColor=#DCE5F0;strokeWidth=2;">
@@ -317,234 +317,252 @@
           <mxGeometry x="79" y="264" width="1745" height="24" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-19" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="290" width="1792" height="53" as="geometry" />
+          <mxGeometry x="64" y="290" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-20" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
-          <mxGeometry x="64" y="290" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="290" width="7" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-21" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T001 · 分块 Prefill">
-          <mxGeometry x="80" y="295" width="293" height="43" as="geometry" />
+          <mxGeometry x="80" y="294" width="293" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-22" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="分块 token budget + 连续批处理，控制长输入阻塞">
-          <mxGeometry x="393" y="295" width="612" height="43" as="geometry" />
+          <mxGeometry x="393" y="294" width="612" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-23" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="TTFT · TPOT 尾部">
-          <mxGeometry x="1034" y="295" width="235" height="43" as="geometry" />
+          <mxGeometry x="1034" y="294" width="235" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-24" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="需混合负载 trace；切块增加轮次">
-          <mxGeometry x="1293" y="295" width="550" height="43" as="geometry" />
+          <mxGeometry x="1293" y="294" width="550" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-25" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="344" width="1792" height="53" as="geometry" />
+          <mxGeometry x="64" y="340" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-26" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
-          <mxGeometry x="64" y="344" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="340" width="7" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-27" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T005 · GR/PLE 序列并行">
-          <mxGeometry x="80" y="349" width="293" height="43" as="geometry" />
+          <mxGeometry x="80" y="344" width="293" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-28" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="长序列分片与依赖展开，换取更短 Prefill">
-          <mxGeometry x="393" y="349" width="612" height="43" as="geometry" />
+          <mxGeometry x="393" y="344" width="612" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-29" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="长输入 TTFT">
-          <mxGeometry x="1034" y="349" width="235" height="43" as="geometry" />
+          <mxGeometry x="1034" y="344" width="235" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-30" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="依赖框架 / 跨卡通信支持">
-          <mxGeometry x="1293" y="349" width="550" height="43" as="geometry" />
+          <mxGeometry x="1293" y="344" width="550" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-31" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="398" width="1792" height="53" as="geometry" />
+          <mxGeometry x="64" y="390" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-32" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
-          <mxGeometry x="64" y="398" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="390" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-33" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T008 · Prefix 状态缓存">
-          <mxGeometry x="80" y="403" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-33" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T008 · Prefix / KV 缓存">
+          <mxGeometry x="80" y="394" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-34" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="复用兼容的 QSA / GDN / SSM 等前缀状态">
-          <mxGeometry x="393" y="403" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-34" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="复用兼容 QSA / GDN 状态；按请求/token/成本测命中">
+          <mxGeometry x="393" y="394" width="612" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-35" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="多轮 TTFT · TPS">
-          <mxGeometry x="1034" y="403" width="235" height="43" as="geometry" />
+          <mxGeometry x="1034" y="394" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-36" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="状态正确性、命中率、显存容量">
-          <mxGeometry x="1293" y="403" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-36" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="两池容量、驱逐、恢复成本、数值一致性">
+          <mxGeometry x="1293" y="394" width="550" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-37" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="452" width="1792" height="53" as="geometry" />
+          <mxGeometry x="64" y="440" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-38" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
-          <mxGeometry x="64" y="452" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="440" width="7" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-39" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T011 · Host / Tokenizer">
-          <mxGeometry x="80" y="457" width="293" height="43" as="geometry" />
+          <mxGeometry x="80" y="444" width="293" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-40" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="减少 CPU、分词和 launch 的暴露等待">
-          <mxGeometry x="393" y="457" width="612" height="43" as="geometry" />
+          <mxGeometry x="393" y="444" width="612" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-41" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="短输入 TTFT · 尾延迟">
-          <mxGeometry x="1034" y="457" width="235" height="43" as="geometry" />
+          <mxGeometry x="1034" y="444" width="235" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-42" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="需 CPU/GPU 时间线证明瓶颈">
-          <mxGeometry x="1293" y="457" width="550" height="43" as="geometry" />
+          <mxGeometry x="1293" y="444" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-43" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F0EBFA;strokeColor=#F0EBFA;strokeWidth=1.4;">
-          <mxGeometry x="64" y="514" width="1792" height="27" as="geometry" />
+        <mxCell id="optimization-matrix-43" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="490" width="1792" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-44" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="B  ·  Decode / 单 token 步长">
-          <mxGeometry x="79" y="515" width="1745" height="24" as="geometry" />
+        <mxCell id="optimization-matrix-44" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
+          <mxGeometry x="64" y="490" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-45" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="541" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-45" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T013 · 上下文压缩">
+          <mxGeometry x="80" y="494" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-46" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="541" width="7" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-46" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="结构去重 / 检索剪裁 / 摘要；重算前缀 key">
+          <mxGeometry x="393" y="494" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-47" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T002 · CUDA Graph">
-          <mxGeometry x="80" y="546" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-47" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="TTFT · 质量">
+          <mxGeometry x="1034" y="494" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-48" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="消除部分 Host 提交与调度空隙">
-          <mxGeometry x="393" y="546" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-48" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="压缩开销、证据遗漏、缓存命中变化">
+          <mxGeometry x="1293" y="494" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-49" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 短请求">
-          <mxGeometry x="1034" y="546" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-49" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F0EBFA;strokeColor=#F0EBFA;strokeWidth=1.4;">
+          <mxGeometry x="64" y="543" width="1792" height="27" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-50" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="确认 graph capture / shape 覆盖">
-          <mxGeometry x="1293" y="546" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-50" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="B  ·  Decode / 单 token 步长">
+          <mxGeometry x="79" y="544" width="1745" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-51" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="595" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-51" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="570" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-52" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="595" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="570" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-53" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T003 · QSA Prepare 融合">
-          <mxGeometry x="80" y="600" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-53" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T002 · CUDA Graph">
+          <mxGeometry x="80" y="574" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-54" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="合并 QSA 前处理、访存与启动次数">
-          <mxGeometry x="393" y="600" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-54" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="消除部分 Host 提交与调度空隙">
+          <mxGeometry x="393" y="574" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-55" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT">
-          <mxGeometry x="1034" y="600" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-55" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 短请求">
+          <mxGeometry x="1034" y="574" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-56" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="先核对 upstream build 已包含部分">
-          <mxGeometry x="1293" y="600" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-56" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="确认 graph capture / shape 覆盖">
+          <mxGeometry x="1293" y="574" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-57" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="649" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-57" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="620" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-58" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="649" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="620" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-59" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T004 · QSA 投影融合">
-          <mxGeometry x="80" y="654" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-59" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T003 · QSA Prepare 融合">
+          <mxGeometry x="80" y="624" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-60" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="SM90 小 GEMM 与投影算子调度优化">
-          <mxGeometry x="393" y="654" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-60" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="合并 QSA 前处理、访存与启动次数">
+          <mxGeometry x="393" y="624" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-61" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 输出 TPS">
-          <mxGeometry x="1034" y="654" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-61" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT">
+          <mxGeometry x="1034" y="624" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-62" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="看真实 kernel shape / 数值一致性">
-          <mxGeometry x="1293" y="654" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-62" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="先核对 upstream build 已包含部分">
+          <mxGeometry x="1293" y="624" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-63" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="703" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-63" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="670" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-64" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="703" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="670" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-65" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T006 · PLE 异步预取">
-          <mxGeometry x="80" y="708" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-65" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T004 · QSA 投影融合">
+          <mxGeometry x="80" y="674" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-66" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="利用 overlap 隐藏 embedding 搬运延迟">
-          <mxGeometry x="393" y="708" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-66" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="SM90 小 GEMM 与投影算子调度优化">
+          <mxGeometry x="393" y="674" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-67" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TTFT · TPOT">
-          <mxGeometry x="1034" y="708" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-67" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 输出 TPS">
+          <mxGeometry x="1034" y="674" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-68" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="CPU / PCIe / NUMA 有暴露等待">
-          <mxGeometry x="1293" y="708" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-68" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="看真实 kernel shape / 数值一致性">
+          <mxGeometry x="1293" y="674" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-69" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="757" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-69" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="720" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-70" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="757" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="720" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T009 · 原生 MTP">
-          <mxGeometry x="80" y="762" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T006 · PLE 异步预取">
+          <mxGeometry x="80" y="724" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-72" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="降低每最终 token 的验证轮次成本">
-          <mxGeometry x="393" y="762" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-72" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="利用 overlap 隐藏 embedding 搬运延迟">
+          <mxGeometry x="393" y="724" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-73" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 输出 TPS">
-          <mxGeometry x="1034" y="762" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-73" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TTFT · TPOT">
+          <mxGeometry x="1034" y="724" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-74" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="接受分布、验证成本、质量门槛">
-          <mxGeometry x="1293" y="762" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-74" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="CPU / PCIe / NUMA 有暴露等待">
+          <mxGeometry x="1293" y="724" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-75" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="811" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-75" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="770" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-76" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
-          <mxGeometry x="64" y="811" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="770" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-77" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T010 · MoE 通信">
-          <mxGeometry x="80" y="816" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-77" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T009 · 原生 MTP">
+          <mxGeometry x="80" y="774" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-78" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="All-to-All 合并、专家负载平衡与重叠">
-          <mxGeometry x="393" y="816" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-78" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="降低每最终 token 的验证轮次成本">
+          <mxGeometry x="393" y="774" width="612" height="42" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-79" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 输出 TPS">
-          <mxGeometry x="1034" y="816" width="235" height="43" as="geometry" />
+          <mxGeometry x="1034" y="774" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-80" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="通信占比、路由和拓扑证据">
-          <mxGeometry x="1293" y="816" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-80" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="接受分布、验证成本、质量门槛">
+          <mxGeometry x="1293" y="774" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-81" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#E3F5F1;strokeColor=#E3F5F1;strokeWidth=1.4;">
+        <mxCell id="optimization-matrix-81" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="820" width="1792" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-82" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#7655C2;strokeColor=#7655C2;strokeWidth=1.4;">
+          <mxGeometry x="64" y="820" width="7" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-83" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T010 · MoE 通信">
+          <mxGeometry x="80" y="824" width="293" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-84" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="All-to-All 合并、专家负载平衡与重叠">
+          <mxGeometry x="393" y="824" width="612" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-85" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="TPOT · 输出 TPS">
+          <mxGeometry x="1034" y="824" width="235" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-86" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="通信占比、路由和拓扑证据">
+          <mxGeometry x="1293" y="824" width="550" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-87" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#E3F5F1;strokeColor=#E3F5F1;strokeWidth=1.4;">
           <mxGeometry x="64" y="873" width="1792" height="27" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-82" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="C  ·  多卡并行 / 端到端服务">
+        <mxCell id="optimization-matrix-88" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="C  ·  多卡并行 / 端到端服务">
           <mxGeometry x="79" y="874" width="1745" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-83" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="900" width="1792" height="53" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-84" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#078E87;strokeColor=#078E87;strokeWidth=1.4;">
-          <mxGeometry x="64" y="900" width="7" height="53" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-85" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T007 · TP / EP / DP">
-          <mxGeometry x="80" y="905" width="293" height="43" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-86" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="同预算重排计算、专家路由与服务副本">
-          <mxGeometry x="393" y="905" width="612" height="43" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-87" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="TTFT · TPOT · TPS">
-          <mxGeometry x="1034" y="905" width="235" height="43" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-88" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="总 H800 数固定；collective 与每卡吞吐">
-          <mxGeometry x="1293" y="905" width="550" height="43" as="geometry" />
-        </mxCell>
-        <mxCell id="optimization-matrix-89" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
-          <mxGeometry x="64" y="954" width="1792" height="53" as="geometry" />
+        <mxCell id="optimization-matrix-89" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="900" width="1792" height="50" as="geometry" />
         </mxCell>
         <mxCell id="optimization-matrix-90" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#078E87;strokeColor=#078E87;strokeWidth=1.4;">
-          <mxGeometry x="64" y="954" width="7" height="53" as="geometry" />
+          <mxGeometry x="64" y="900" width="7" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-91" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T012 · Prefill / Decode 分离">
-          <mxGeometry x="80" y="959" width="293" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-91" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T007 · TP / EP / DP">
+          <mxGeometry x="80" y="904" width="293" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-92" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="降低混合干扰，分配 P/D 资源与状态通道">
-          <mxGeometry x="393" y="959" width="612" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-92" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="同预算重排计算、专家路由与服务副本">
+          <mxGeometry x="393" y="904" width="612" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-93" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="尾延迟 · Goodput">
-          <mxGeometry x="1034" y="959" width="235" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-93" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="TTFT · TPOT · TPS">
+          <mxGeometry x="1034" y="904" width="235" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-94" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="状态传输、规模、SLO、框架支持">
-          <mxGeometry x="1293" y="959" width="550" height="43" as="geometry" />
+        <mxCell id="optimization-matrix-94" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="总 H800 数固定；collective 与每卡吞吐">
+          <mxGeometry x="1293" y="904" width="550" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="optimization-matrix-95" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="优先顺序由 profile 决定：局部算子加速不等于端到端收益；已经由基线覆盖的优化不得重复归功。">
+        <mxCell id="optimization-matrix-95" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F1F5FA;strokeColor=#E2E9F1;strokeWidth=0.8;">
+          <mxGeometry x="64" y="950" width="1792" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-96" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#078E87;strokeColor=#078E87;strokeWidth=1.4;">
+          <mxGeometry x="64" y="950" width="7" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-97" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T012 · Prefill / Decode 分离">
+          <mxGeometry x="80" y="954" width="293" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-98" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="降低混合干扰，分配 P/D 资源与状态通道">
+          <mxGeometry x="393" y="954" width="612" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-99" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="尾延迟 · Goodput">
+          <mxGeometry x="1034" y="954" width="235" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-100" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="状态传输、规模、SLO、框架支持">
+          <mxGeometry x="1293" y="954" width="550" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="optimization-matrix-101" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="优先顺序由 profile 决定：局部算子加速不等于端到端收益；已经由基线覆盖的优化不得重复归功。">
           <mxGeometry x="74" y="1009" width="1773" height="23" as="geometry" />
         </mxCell>
       </root>
@@ -561,13 +579,13 @@
         <mxCell id="benefit-predictor-2" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#2765D8;strokeColor=#2765D8;strokeWidth=1.4;">
           <mxGeometry x="0" y="0" width="1920" height="9" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-3" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="PREDICTION / PROFILE CALIBRATION / VALIDATION">
+        <mxCell id="benefit-predictor-3" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="CEILING / CACHE HIT / COMPRESSION / VALIDATION">
           <mxGeometry x="64" y="26" width="1400" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-4" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=39;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="优化收益预测模型与实验校准">
+        <mxCell id="benefit-predictor-4" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=39;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="收益天花板与缓存—压缩联合预测">
           <mxGeometry x="64" y="65" width="1740" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-5" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=19;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="Amdahl / Roofline / 重叠关键路径 / MTP / 饱和资源容量分账计算，并以真实 H800 A/B 迭代校准。">
+        <mxCell id="benefit-predictor-5" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=19;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="关键路径、资源容量与前缀命中分账；将有限缓存和输入压缩的质量代价纳入同一请求 trace。">
           <mxGeometry x="64" y="136" width="1750" height="36" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-6" parent="1" edge="1" style="endArrow=none;html=0;strokeColor=#DCE5F0;strokeWidth=2;">
@@ -591,7 +609,7 @@
         <mxCell id="benefit-predictor-11" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=22;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="输入 A · 实测基线">
           <mxGeometry x="86" y="232" width="531" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-12" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="同 trace 的 TTFT、TPOT 均值；Prefill、首步时间；&#10;相同 workload 下的饱和输出 tok/s。">
+        <mxCell id="benefit-predictor-12" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="TTFT/TPOT 与 Prefill 冷热配对；trace 顺序、&#10;输入/输出长度与饱和输出 tok/s。">
           <mxGeometry x="87" y="272" width="527" height="55" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-13" parent="1" vertex="1" style="rounded=1;arcSize=13;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
@@ -603,7 +621,7 @@
         <mxCell id="benefit-predictor-15" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=22;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="输入 B · Profile">
           <mxGeometry x="695" y="232" width="531" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-16" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="互斥 block 的串行 / 计算 / 通信时间与 overlap；&#10;各资源 busy / bytes / cost，形状相关的下界。">
+        <mxCell id="benefit-predictor-16" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="关键路径、资源忙碌与 Roofline 下界；&#10;每前缀 state MiB、restore、eviction 与来源层级。">
           <mxGeometry x="696" y="272" width="527" height="55" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-17" parent="1" vertex="1" style="rounded=1;arcSize=13;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
@@ -615,55 +633,55 @@
         <mxCell id="benefit-predictor-19" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=22;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="输入 C · 候选方案">
           <mxGeometry x="1304" y="232" width="531" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-20" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="k_s、k_c、k_m、η′、新增开销；&#10;资源需求因子 f_r；MTP 的 p、d 与验证成本。">
+        <mxCell id="benefit-predictor-20" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="cache MiB/前缀键/命中；压缩后 token、耗时、&#10;质量门槛；k_s/k_c/η、MTP 与资源因子。">
           <mxGeometry x="1305" y="272" width="527" height="55" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-21" parent="1" vertex="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="64" y="369" width="1102" height="466" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-22" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=26;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="关键路径与理论下界">
+        <mxCell id="benefit-predictor-22" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=26;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="计算式：延迟、缓存、质量与容量各自设限">
           <mxGeometry x="89" y="377" width="1049" height="41" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-23" parent="1" vertex="1" style="rounded=1;arcSize=9;whiteSpace=wrap;html=0;fillColor=#E8F0FF;strokeColor=#E8F0FF;strokeWidth=1.4;">
           <mxGeometry x="87" y="428" width="516" height="178" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-24" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="01  ·  Amdahl + Overlap">
+        <mxCell id="benefit-predictor-24" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="01  ·  关键路径 + Roofline">
           <mxGeometry x="107" y="438" width="474" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-25" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="t′_b = s/k_s + c′ + m′ − η′ min(c′,m′) + h&#10;T′stage ≈ Tstage,0 × (Σt′struct / Σt_0) + Σh">
-          <mxGeometry x="107" y="483" width="478" height="101" as="geometry" />
+        <mxCell id="benefit-predictor-25" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="t′_b = s/k_s + c′ + m′ − η′ min(c′,m′) + h&#10;c′ ≥ max(c/k_c, FLOPs/P_eff, Bytes/BW_eff)">
+          <mxGeometry x="107" y="482" width="478" height="110" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-26" parent="1" vertex="1" style="rounded=1;arcSize=9;whiteSpace=wrap;html=0;fillColor=#E3F5F1;strokeColor=#E3F5F1;strokeWidth=1.4;">
           <mxGeometry x="637" y="428" width="516" height="178" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-27" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="02  ·  Roofline 下界">
+        <mxCell id="benefit-predictor-27" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="02  ·  MTP + 饱和容量">
           <mxGeometry x="657" y="438" width="474" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-28" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="c′ ≥ max(c/k_c, ℓ_compute)&#10;ℓ_compute ≥ max(F/P_eff, Bytes/BW_eff)">
-          <mxGeometry x="657" y="483" width="478" height="101" as="geometry" />
+        <mxCell id="benefit-predictor-28" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="TPOT_MTP ≈ T_verify/E[K]；E[K]=Σ(i=0..d)p^i&#10;R′cap = R0 · max(u_r) / max(u_r f_r)&#10;R_served ≤ min(λ × E[O], R′cap)">
+          <mxGeometry x="657" y="482" width="478" height="110" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-29" parent="1" vertex="1" style="rounded=1;arcSize=9;whiteSpace=wrap;html=0;fillColor=#F0EBFA;strokeColor=#F0EBFA;strokeWidth=1.4;">
           <mxGeometry x="87" y="626" width="516" height="178" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-30" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="03  ·  MTP 净 token 成本">
+        <mxCell id="benefit-predictor-30" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="03  ·  Prefix 命中与缓存成本">
           <mxGeometry x="107" y="636" width="474" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-31" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="E[K] = Σ(i=0..d) p^i&#10;TPOT_MTP ≈ (k_verify · T_decode + h_draft) / E[K]">
-          <mxGeometry x="107" y="681" width="478" height="101" as="geometry" />
+        <mxCell id="benefit-predictor-31" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="h_req = ΣH_i / N；h_tok = Σ(H_i P_i)/ΣL_i&#10;T_cache = F + ℓ + (1−H)C + H(S+R)">
+          <mxGeometry x="107" y="680" width="478" height="110" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-32" parent="1" vertex="1" style="rounded=1;arcSize=9;whiteSpace=wrap;html=0;fillColor=#FFF1DB;strokeColor=#FFF1DB;strokeWidth=1.4;">
           <mxGeometry x="637" y="626" width="516" height="178" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-33" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#C9771A;strokeColor=none;fillColor=none;" value="04  ·  饱和容量约束">
+        <mxCell id="benefit-predictor-33" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=21;fontStyle=1;fontColor=#C9771A;strokeColor=none;fillColor=none;" value="04  ·  上下文压缩 + 质量门槛">
           <mxGeometry x="657" y="636" width="474" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-34" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="R′cap = R0 · max(u_r) / max(u_r f_r)&#10;R_served ≤ min(λ × E[O], R′cap)">
-          <mxGeometry x="657" y="681" width="478" height="101" as="geometry" />
+        <mxCell id="benefit-predictor-34" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="T_combo = F+A+ℓ′+(1−H′)C′+H′(S′+R′)&#10;A &lt; C−C′（冷态盈亏）；Quality ≥ Q_min&#10;S_abs = T0/F（全 Prefill 消失的极松上界）">
+          <mxGeometry x="657" y="680" width="478" height="110" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-35" parent="1" vertex="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="1199" y="369" width="656" height="466" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-36" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=25;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="合成情景：三项指标可能相反">
+        <mxCell id="benefit-predictor-36" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=25;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="合成情景：缓存容量与压缩交互">
           <mxGeometry x="1221" y="379" width="609" height="42" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-37" parent="1" vertex="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=0;fillColor=#FBEAF0;strokeColor=#FBEAF0;strokeWidth=1.4;">
@@ -676,126 +694,156 @@
           <mxGeometry x="1222" y="482" width="610" height="47" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-40" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="情景">
-          <mxGeometry x="1233" y="488" width="164" height="34" as="geometry" />
+          <mxGeometry x="1233" y="488" width="215" height="34" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-41" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="TTFT ms">
-          <mxGeometry x="1400" y="488" width="113" height="34" as="geometry" />
+          <mxGeometry x="1450" y="488" width="113" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-42" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="TPOT ms">
-          <mxGeometry x="1518" y="488" width="120" height="34" as="geometry" />
+        <mxCell id="benefit-predictor-42" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="请求 hit">
+          <mxGeometry x="1580" y="488" width="98" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-43" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="输出 tok/s">
-          <mxGeometry x="1650" y="488" width="169" height="34" as="geometry" />
+        <mxCell id="benefit-predictor-43" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="vs 冷原文">
+          <mxGeometry x="1682" y="488" width="139" height="34" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-44" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
-          <mxGeometry x="1222" y="531" width="610" height="53" as="geometry" />
+          <mxGeometry x="1222" y="529" width="610" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-45" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="Baseline">
-          <mxGeometry x="1233" y="535" width="164" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-45" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#2765D8;strokeColor=none;fillColor=none;" value="原文：无缓存">
+          <mxGeometry x="1233" y="531" width="215" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-46" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="150.00">
-          <mxGeometry x="1400" y="535" width="113" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-46" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="121.50">
+          <mxGeometry x="1450" y="531" width="113" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-47" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="22.00">
-          <mxGeometry x="1518" y="535" width="120" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-47" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="0%">
+          <mxGeometry x="1580" y="531" width="98" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-48" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1800.00">
-          <mxGeometry x="1650" y="535" width="169" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-48" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1.000×">
+          <mxGeometry x="1682" y="531" width="139" height="43" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-49" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F4F7FA;strokeColor=#DCE5F0;strokeWidth=1.4;">
-          <mxGeometry x="1222" y="585" width="610" height="53" as="geometry" />
+          <mxGeometry x="1222" y="576" width="610" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-50" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="QSA 融合">
-          <mxGeometry x="1233" y="589" width="164" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-50" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#078E87;strokeColor=none;fillColor=none;" value="原文：40 MiB LRU">
+          <mxGeometry x="1233" y="578" width="215" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-51" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="148.33">
-          <mxGeometry x="1400" y="589" width="113" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-51" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="114.62">
+          <mxGeometry x="1450" y="578" width="113" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-52" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="20.25">
-          <mxGeometry x="1518" y="589" width="120" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-52" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="12.5%">
+          <mxGeometry x="1580" y="578" width="98" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-53" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1894.74">
-          <mxGeometry x="1650" y="589" width="169" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-53" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1.060×">
+          <mxGeometry x="1682" y="578" width="139" height="43" as="geometry" />
         </mxCell>
         <mxCell id="benefit-predictor-54" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
-          <mxGeometry x="1222" y="639" width="610" height="53" as="geometry" />
+          <mxGeometry x="1222" y="623" width="610" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-55" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#C9771A;strokeColor=none;fillColor=none;" value="MTP 假设">
-          <mxGeometry x="1233" y="643" width="164" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-55" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="原文：无限完整键">
+          <mxGeometry x="1233" y="625" width="215" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-56" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="150.00*">
-          <mxGeometry x="1400" y="643" width="113" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-56" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="86.00">
+          <mxGeometry x="1450" y="625" width="113" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-57" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="15.87">
-          <mxGeometry x="1518" y="643" width="120" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-57" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="62.5%">
+          <mxGeometry x="1580" y="625" width="98" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-58" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1578.95">
-          <mxGeometry x="1650" y="643" width="169" height="43" as="geometry" />
+        <mxCell id="benefit-predictor-58" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1.413×">
+          <mxGeometry x="1682" y="625" width="139" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-59" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="MTP 可改善单请求 TPOT，却因新增资源需求而&#10;降低饱和容量。*首 token 影响尚未建模。&#10;无真实 profile 时仅输出情景，不宣称 H800 加速。">
-          <mxGeometry x="1225" y="710" width="595" height="108" as="geometry" />
+        <mxCell id="benefit-predictor-59" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#F4F7FA;strokeColor=#DCE5F0;strokeWidth=1.4;">
+          <mxGeometry x="1222" y="670" width="610" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-60" parent="1" vertex="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=0;fillColor=#EDF2F9;strokeColor=#DCE5F0;strokeWidth=1.4;">
+        <mxCell id="benefit-predictor-60" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#7655C2;strokeColor=none;fillColor=none;" value="原文：免费命中">
+          <mxGeometry x="1233" y="672" width="215" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-61" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="60.62">
+          <mxGeometry x="1450" y="672" width="113" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-62" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="62.5%">
+          <mxGeometry x="1580" y="672" width="98" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-63" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="2.004×">
+          <mxGeometry x="1682" y="672" width="139" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-64" parent="1" vertex="1" style="rounded=0;arcSize=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
+          <mxGeometry x="1222" y="717" width="610" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-65" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=1;fontColor=#C9771A;strokeColor=none;fillColor=none;" value="压缩+LRU*">
+          <mxGeometry x="1233" y="719" width="215" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-66" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="75.92">
+          <mxGeometry x="1450" y="719" width="113" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-67" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="50.0%">
+          <mxGeometry x="1580" y="719" width="98" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-68" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=18;fontStyle=0;fontColor=#14243B;strokeColor=none;fillColor=none;" value="1.600×">
+          <mxGeometry x="1682" y="719" width="139" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-69" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=17;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="*压缩质量未验证；8 个虚构请求，非 H800 实测。&#10;仅预测低载 TTFT；饱和 TPS 仍需另测资源需求。">
+          <mxGeometry x="1225" y="774" width="595" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="benefit-predictor-70" parent="1" vertex="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=0;fillColor=#EDF2F9;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="64" y="859" width="1791" height="152" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-61" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=23;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="模型校准与验证闭环">
+        <mxCell id="benefit-predictor-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=23;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="模型校准与验证闭环">
           <mxGeometry x="85" y="869" width="1760" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-62" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
+        <mxCell id="benefit-predictor-72" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="88" y="908" width="383" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-63" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="固定基线">
+        <mxCell id="benefit-predictor-73" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="固定基线">
           <mxGeometry x="100" y="915" width="354" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-64" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="模型 / 精度 / GPU / trace">
+        <mxCell id="benefit-predictor-74" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="模型 / 精度 / GPU / 有序 trace">
           <mxGeometry x="99" y="948" width="361" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-65" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
+        <mxCell id="benefit-predictor-75" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="477" y="947" as="sourcePoint" />
             <mxPoint x="519" y="947" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="benefit-predictor-66" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
+        <mxCell id="benefit-predictor-76" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="531" y="908" width="383" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-67" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="三档预测">
+        <mxCell id="benefit-predictor-77" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="三层天花板">
           <mxGeometry x="543" y="915" width="354" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-68" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="保守 / 中心 / 乐观">
+        <mxCell id="benefit-predictor-78" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="免费 oracle / 无淘汰 / 有限容量">
           <mxGeometry x="542" y="948" width="361" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-69" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
+        <mxCell id="benefit-predictor-79" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="920" y="947" as="sourcePoint" />
             <mxPoint x="962" y="947" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="benefit-predictor-70" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
+        <mxCell id="benefit-predictor-80" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="974" y="908" width="383" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-71" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="单变量 A/B">
+        <mxCell id="benefit-predictor-81" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="单变量 A/B">
           <mxGeometry x="986" y="915" width="354" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-72" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="均值 + 分位数 + 质量">
+        <mxCell id="benefit-predictor-82" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="均值 + 分位数 + 质量">
           <mxGeometry x="985" y="948" width="361" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-73" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
+        <mxCell id="benefit-predictor-83" parent="1" edge="1" style="endArrow=block;endFill=1;html=0;strokeColor=#2765D8;strokeWidth=3;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1363" y="947" as="sourcePoint" />
             <mxPoint x="1405" y="947" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="benefit-predictor-74" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
+        <mxCell id="benefit-predictor-84" parent="1" vertex="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#DCE5F0;strokeWidth=1.4;">
           <mxGeometry x="1417" y="908" width="383" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-75" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="误差更新">
+        <mxCell id="benefit-predictor-85" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=20;fontStyle=1;fontColor=#14243B;strokeColor=none;fillColor=none;" value="误差更新">
           <mxGeometry x="1429" y="915" width="354" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-76" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="(预测−实测)/实测；留出集">
+        <mxCell id="benefit-predictor-86" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=0;fontColor=#60718A;strokeColor=none;fillColor=none;" value="(预测−实测)/实测；留出集">
           <mxGeometry x="1428" y="948" width="361" height="31" as="geometry" />
         </mxCell>
-        <mxCell id="benefit-predictor-77" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="可运行实现：theory/predictor/predict.py    ·    未输入真实基线前不预测 p95/p99、排队 TTFT 或 P/D 调度收益。">
+        <mxCell id="benefit-predictor-87" parent="1" vertex="1" style="text;whiteSpace=wrap;html=0;overflow=visible;align=center;verticalAlign=middle;spacing=0;fontFamily=Noto Sans CJK SC;fontSize=16;fontStyle=1;fontColor=#C64F64;strokeColor=none;fillColor=none;" value="模型：predict.py（关键路径/容量） + cache_context.py（Prefix/压缩）    ·    无真实 H800 trace / 质量结果时不宣称收益。">
           <mxGeometry x="72" y="1011" width="1776" height="21" as="geometry" />
         </mxCell>
       </root>

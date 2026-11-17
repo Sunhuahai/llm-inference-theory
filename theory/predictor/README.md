@@ -1,4 +1,4 @@
-# H800 推理优化收益预测器（v0.1）
+# H800 推理优化收益预测器（v0.2：关键路径 / 资源容量 + Prefix / 上下文）
 
 > **状态：可运行的物理约束 + 基线校准情景模型；尚无用户 H800 实测数据。** 本目录的数字案例全部是 **SYNTHETIC**，不能引用为加速成绩。
 
@@ -9,7 +9,16 @@
 3. 固定负载形状下，饱和输出 tokens/s 容量能增加多少？
 4. 新瓶颈在哪里？哪些预测缺乏证据？
 
-配套的三页技术综述见 [可编辑 draw.io 图解](../diagrams/README.md)；完整理论推导见 [原理论文档](../optimization-benefit-prediction.md)。
+配套的三页技术综述见 [可编辑 draw.io 图解](../diagrams/README.md)；完整理论推导见 [原理论文档](../optimization-benefit-prediction.md)；缓存与压缩的专门推导见 [前缀状态复用、上下文压缩与性能天花板](../cache-context-ceilings.md)。
+
+**两个相互补充的预测模块：**
+
+| 模块 | 负责什么 | 不负责什么 |
+|---|---|---|
+| [`predict.py`](predict.py) + [`model.py`](model.py) | 不同内核/调度改动对 TTFT、TPOT 与饱和输出 tok/s 的情景预测 | 不会凭空生成业务缓存命中率或语义压缩质量 |
+| [`cache_context.py`](cache_context.py) | 按序 trace 重放 Prefix 命中、LRU 驱逐、压缩前后缓存键，输出 TTFT 上界与质量 gate | 不预测并发 p99、块级混合状态缓存或饱和 TPS |
+
+**组合原则**：以真实冷/热 trace 为起点逐项应用干预。缓存与上下文压缩会重写实际 Prefill 负载、键分布与资源需求，**不能将两个模块的 speedup 直接相乘**。
 
 ## 30 秒运行
 
@@ -22,12 +31,15 @@ python3 theory/predictor/predict.py \
 python3 theory/predictor/predict.py \
   theory/predictor/examples/synthetic-baseline.json --format json
 
+python3 theory/predictor/cache_context.py \
+  theory/predictor/examples/synthetic-cache-context.json --format markdown
+
 python3 -m unittest discover -s theory/predictor/tests -v
 ~~~
 
 使用自己的数据时，复制 JSON 到一个新实验文件，填入真实基线与 profile；不要把演示数据改名后冒充真实结果。CLI 可用 `--output result.json` 写入可复查预测。
 
-不运行代码也可以先看 [合成情景预测输出](examples/synthetic-prediction.md)，再按 [输入字段约定](SCHEMA.md) 将自己的 profile 转换为 JSON。
+不运行代码也可以先看 [普通优化合成预测](examples/synthetic-prediction.md)与[缓存/压缩合成预测](examples/synthetic-cache-context-result.md)；它们的输入契约分别见 [普通场景 schema](SCHEMA.md)和[缓存/压缩 trace schema](CACHE_CONTEXT_SCHEMA.md)。
 
 ## 四层模型
 
@@ -140,8 +152,10 @@ E[K]=\sum_{i=0}^{d}p^i,\qquad
 | 饱和输出 tok/s 与资源忙碌比例 | 吞吐容量预测 |
 | 局部提速、额外开销、资源需求变更、质量检查 | A/B 情景及约束 |
 | MTP 实际接受长度、验证时间、draft 成本 | MTP 单位最终 token 成本 |
+| 盐化前缀键、有序请求、hit token 数、混合 state MiB、驱逐次数 | 业务条件下的 Prefix 命中与容量天花板 |
+| 压缩前后 token、压缩耗时、输出质量与新的 prefix key | 压缩后的真实净收益与质量约束 |
 
-路径：**v0.1 情景模型（已实现） → v0.2 真实 H800 校准（待数据） → v0.3 trace 级仿真（待做） → v1 留出集检验与残差学习（待做）**。
+路径：**v0.1 结构情景模型（已实现） → v0.2 精确键 LRU trace 回放（已实现） → 真实 H800 校准（待数据） → 分块/多池/并发模拟（待做） → 留出集检验与残差学习（待做）**。
 
 ## 参考与边界
 
@@ -151,4 +165,4 @@ E[K]=\sum_{i=0}^{d}p^i,\qquad
 - [Vidur, MLSys 2024](https://proceedings.mlsys.org/paper_files/paper/2024/hash/b74a8de47d2b3c928360e0a011f48351-Abstract-Conference.html)：profile 驱动的端到端推理模拟。
 - 本仓库原文档包含 [16 项一手资料](../optimization-benefit-prediction.md)。
 
-**不会预测**未经验证的 p95/p99、排队 TTFT、prefix 命中率、多节点 P/D 传输、显存溢出退化或动态专家倾斜。正式报告仍要按 [Benchmark 协议](../../docs/benchmark-protocol.md) 测分位数、失败率、质量与 GPU 预算；不允许通过改精度、模型或回答长度冒充优化收益。
+主预测器**不会预测**未经输入的 prefix 命中率；新的 cache 模块可以对**已给出的按序精确键 trace**做有限容量回放，但仍不能预测未经验证的 p95/p99、排队 TTFT、多节点 P/D 传输、显存溢出退化或动态专家倾斜。正式报告仍要按 [Benchmark 协议](../../docs/benchmark-protocol.md) 测分位数、失败率、质量与 GPU 预算；不允许通过改精度、模型或回答长度冒充优化收益。

@@ -171,7 +171,7 @@ def page_performance():
     p.text(64, 206, 1500, 37, "请求生命周期与关键时间区间", 24, INK, bold=True)
     steps = [
         ("接入 / 调度", "Tokenize、排队、batch 决策", MUTED, "#E9EDF3"),
-        ("Prefill", "输入 token 并行处理；状态生成", BLUE, BLUE_TINT),
+        ("Prefill", "Prefix 命中 / 上下文压缩 / 状态生成", BLUE, BLUE_TINT),
         ("首 token Decode", "首次 target step；首个有效输出", TEAL, TEAL_TINT),
         ("迭代 Decode", "后续 token、MoE/QSA/GDN/MTP", VIOLET, VIOLET_TINT),
         ("输出与完成", "Streaming、实际生成长度", ORANGE, ORANGE_TINT),
@@ -219,7 +219,8 @@ def page_performance():
     cards = [
         (64, BLUE, "TTFT / 首 token 延迟",
          "低负载均值用于结构预测；线上还受队列影响。\n"
-         "按 p50/p95/p99 报告，并分开冷热缓存和长短输入。"),
+         "按 p50/p95/p99 报告；冷/热缓存、压缩与\n"
+         "前缀命中成本单独分组，质量不能退化。"),
         (674, VIOLET, "TPOT / 生成节拍",
          "后续有效 token 的平均步长；MTP 必须按\n"
          "每次验证实际交付 token 数摊销，不能用 chunk 间隔。"),
@@ -233,16 +234,16 @@ def page_performance():
         p.text(x + 24, 793, 528, 45, title, 23, INK, bold=True)
         p.text(x + 25, 846, 520, 119, body, 18, MUTED)
     p.text(70, 997, 1780, 28,
-           "比较约束：固定模型 revision、精度、H800 总数、实际输出长度分布、采样设置、并发 / RPS、缓存状态与拓扑。",
+           "比较约束：固定模型 revision、精度、H800 总数、业务任务与采样；分层记录实际输出、输入压缩、冷热缓存、并发 / RPS。",
            17, ROSE, bold=True, align="center")
     return p
 
 
 def page_strategies():
     p = Page("optimization-matrix", "02｜优化策略与架构映射", 2,
-             "OPTIMIZATION MATRIX / T001–T012",
+             "OPTIMIZATION MATRIX / T001–T013",
              "优化策略与架构映射",
-             "以现有 12 张 trick 卡为索引：机制、直接影响指标、适用条件与代价；所有收益仍待固定 H800 环境的 A/B 证实。")
+             "按 13 个研究候选对齐机制、影响指标、版本前提与代价；Prefix 命中与上下文压缩必须联合评估质量及缓存策略。")
     xs = [64, 379, 1021, 1281, 1856]
     p.rect(64, 210, 1792, 46, "#DCE5F1", stroke="#DCE5F1", radius=9)
     for x, w, label in zip([78, 390, 1031, 1292], [281, 613, 228, 544],
@@ -256,24 +257,25 @@ def page_strategies():
         p.text(79, y + 1, 1745, 24, label, 17, color, bold=True)
 
     def row(y, label, mechanism, metric, requirement, color, even):
-        p.rect(64, y, 1792, 53, "#FFFFFF" if even else "#F1F5FA", stroke="#E2E9F1", radius=0, width=0.8)
-        p.rect(64, y, 7, 53, color, stroke=color, radius=0)
-        p.text(80, y + 5, 293, 43, label, 18, INK, bold=True)
-        p.text(393, y + 5, 612, 43, mechanism, 18, MUTED)
-        p.text(1034, y + 5, 235, 43, metric, 18, color, bold=True)
-        p.text(1293, y + 5, 550, 43, requirement, 17, MUTED)
+        p.rect(64, y, 1792, 50, "#FFFFFF" if even else "#F1F5FA", stroke="#E2E9F1", radius=0, width=0.8)
+        p.rect(64, y, 7, 50, color, stroke=color, radius=0)
+        p.text(80, y + 4, 293, 42, label, 18, INK, bold=True)
+        p.text(393, y + 4, 612, 42, mechanism, 18, MUTED)
+        p.text(1034, y + 4, 235, 42, metric, 18, color, bold=True)
+        p.text(1293, y + 4, 550, 42, requirement, 17, MUTED)
 
     group(263, "A  ·  Prefill / 首 token 路径", BLUE, BLUE_TINT)
     data_a = [
         ("T001 · 分块 Prefill", "分块 token budget + 连续批处理，控制长输入阻塞", "TTFT · TPOT 尾部", "需混合负载 trace；切块增加轮次"),
         ("T005 · GR/PLE 序列并行", "长序列分片与依赖展开，换取更短 Prefill", "长输入 TTFT", "依赖框架 / 跨卡通信支持"),
-        ("T008 · Prefix 状态缓存", "复用兼容的 QSA / GDN / SSM 等前缀状态", "多轮 TTFT · TPS", "状态正确性、命中率、显存容量"),
+        ("T008 · Prefix / KV 缓存", "复用兼容 QSA / GDN 状态；按请求/token/成本测命中", "多轮 TTFT · TPS", "两池容量、驱逐、恢复成本、数值一致性"),
         ("T011 · Host / Tokenizer", "减少 CPU、分词和 launch 的暴露等待", "短输入 TTFT · 尾延迟", "需 CPU/GPU 时间线证明瓶颈"),
+        ("T013 · 上下文压缩", "结构去重 / 检索剪裁 / 摘要；重算前缀 key", "TTFT · 质量", "压缩开销、证据遗漏、缓存命中变化"),
     ]
     for i, item in enumerate(data_a):
-        row(290 + i * 54, *item, BLUE, i % 2 == 0)
+        row(290 + i * 50, *item, BLUE, i % 2 == 0)
 
-    group(514, "B  ·  Decode / 单 token 步长", VIOLET, VIOLET_TINT)
+    group(543, "B  ·  Decode / 单 token 步长", VIOLET, VIOLET_TINT)
     data_b = [
         ("T002 · CUDA Graph", "消除部分 Host 提交与调度空隙", "TPOT · 短请求", "确认 graph capture / shape 覆盖"),
         ("T003 · QSA Prepare 融合", "合并 QSA 前处理、访存与启动次数", "TPOT", "先核对 upstream build 已包含部分"),
@@ -283,12 +285,12 @@ def page_strategies():
         ("T010 · MoE 通信", "All-to-All 合并、专家负载平衡与重叠", "TPOT · 输出 TPS", "通信占比、路由和拓扑证据"),
     ]
     for i, item in enumerate(data_b):
-        row(541 + i * 54, *item, VIOLET, i % 2 == 0)
+        row(570 + i * 50, *item, VIOLET, i % 2 == 0)
 
     group(873, "C  ·  多卡并行 / 端到端服务", TEAL, TEAL_TINT)
     row(900, "T007 · TP / EP / DP", "同预算重排计算、专家路由与服务副本",
         "TTFT · TPOT · TPS", "总 H800 数固定；collective 与每卡吞吐", TEAL, True)
-    row(954, "T012 · Prefill / Decode 分离", "降低混合干扰，分配 P/D 资源与状态通道",
+    row(950, "T012 · Prefill / Decode 分离", "降低混合干扰，分配 P/D 资源与状态通道",
         "尾延迟 · Goodput", "状态传输、规模、SLO、框架支持", TEAL, False)
     p.text(74, 1009, 1773, 23,
            "优先顺序由 profile 决定：局部算子加速不等于端到端收益；已经由基线覆盖的优化不得重复归功。",
@@ -298,20 +300,20 @@ def page_strategies():
 
 def page_prediction():
     p = Page("benefit-predictor", "03｜收益预测与实验校准", 3,
-             "PREDICTION / PROFILE CALIBRATION / VALIDATION",
-             "优化收益预测模型与实验校准",
-             "Amdahl / Roofline / 重叠关键路径 / MTP / 饱和资源容量分账计算，并以真实 H800 A/B 迭代校准。")
+             "CEILING / CACHE HIT / COMPRESSION / VALIDATION",
+             "收益天花板与缓存—压缩联合预测",
+             "关键路径、资源容量与前缀命中分账；将有限缓存和输入压缩的质量代价纳入同一请求 trace。")
 
     inputs = [
         (64, BLUE, BLUE_TINT, "输入 A · 实测基线",
-         "同 trace 的 TTFT、TPOT 均值；Prefill、首步时间；\n"
-         "相同 workload 下的饱和输出 tok/s。"),
+         "TTFT/TPOT 与 Prefill 冷热配对；trace 顺序、\n"
+         "输入/输出长度与饱和输出 tok/s。"),
         (673, TEAL, TEAL_TINT, "输入 B · Profile",
-         "互斥 block 的串行 / 计算 / 通信时间与 overlap；\n"
-         "各资源 busy / bytes / cost，形状相关的下界。"),
+         "关键路径、资源忙碌与 Roofline 下界；\n"
+         "每前缀 state MiB、restore、eviction 与来源层级。"),
         (1282, VIOLET, VIOLET_TINT, "输入 C · 候选方案",
-         "k_s、k_c、k_m、η′、新增开销；\n"
-         "资源需求因子 f_r；MTP 的 p、d 与验证成本。"),
+         "cache MiB/前缀键/命中；压缩后 token、耗时、\n"
+         "质量门槛；k_s/k_c/η、MTP 与资源因子。"),
     ]
     for x, accent, tint, title, body in inputs:
         p.rect(x, 220, 575, 123, WHITE, stroke=BORDER)
@@ -320,56 +322,59 @@ def page_prediction():
         p.text(x + 23, 272, 527, 55, body, 17, MUTED)
 
     p.rect(64, 369, 1102, 466, WHITE, stroke=BORDER)
-    p.text(89, 377, 1049, 41, "关键路径与理论下界", 26, BLUE, bold=True)
+    p.text(89, 377, 1049, 41, "计算式：延迟、缓存、质量与容量各自设限", 26, BLUE, bold=True)
     formulas = [
-        (87, 428, BLUE_TINT, BLUE, "01  ·  Amdahl + Overlap",
+        (87, 428, BLUE_TINT, BLUE, "01  ·  关键路径 + Roofline",
          "t′_b = s/k_s + c′ + m′ − η′ min(c′,m′) + h\n"
-         "T′stage ≈ Tstage,0 × (Σt′struct / Σt_0) + Σh"),
-        (637, 428, TEAL_TINT, TEAL, "02  ·  Roofline 下界",
-         "c′ ≥ max(c/k_c, ℓ_compute)\n"
-         "ℓ_compute ≥ max(F/P_eff, Bytes/BW_eff)"),
-        (87, 626, VIOLET_TINT, VIOLET, "03  ·  MTP 净 token 成本",
-         "E[K] = Σ(i=0..d) p^i\n"
-         "TPOT_MTP ≈ (k_verify · T_decode + h_draft) / E[K]"),
-        (637, 626, ORANGE_TINT, ORANGE, "04  ·  饱和容量约束",
+         "c′ ≥ max(c/k_c, FLOPs/P_eff, Bytes/BW_eff)"),
+        (637, 428, TEAL_TINT, TEAL, "02  ·  MTP + 饱和容量",
+         "TPOT_MTP ≈ T_verify/E[K]；E[K]=Σ(i=0..d)p^i\n"
          "R′cap = R0 · max(u_r) / max(u_r f_r)\n"
          "R_served ≤ min(λ × E[O], R′cap)"),
+        (87, 626, VIOLET_TINT, VIOLET, "03  ·  Prefix 命中与缓存成本",
+         "h_req = ΣH_i / N；h_tok = Σ(H_i P_i)/ΣL_i\n"
+         "T_cache = F + ℓ + (1−H)C + H(S+R)"),
+        (637, 626, ORANGE_TINT, ORANGE, "04  ·  上下文压缩 + 质量门槛",
+         "T_combo = F+A+ℓ′+(1−H′)C′+H′(S′+R′)\n"
+         "A < C−C′（冷态盈亏）；Quality ≥ Q_min\n"
+         "S_abs = T0/F（全 Prefill 消失的极松上界）"),
     ]
     for x, y, tint, accent, title, formula in formulas:
         p.rect(x, y, 516, 178, tint, stroke=tint)
         p.text(x + 20, y + 10, 474, 38, title, 21, accent, bold=True)
-        p.text(x + 20, y + 55, 478, 101, formula, 18, INK)
+        p.text(x + 20, y + 54, 478, 110, formula, 17, INK)
 
     p.rect(1199, 369, 656, 466, WHITE, stroke=BORDER)
-    p.text(1221, 379, 609, 42, "合成情景：三项指标可能相反", 25, VIOLET, bold=True)
+    p.text(1221, 379, 609, 42, "合成情景：缓存容量与压缩交互", 25, VIOLET, bold=True)
     p.chip(1221, 428, 215, "SYNTHETIC · 非实测", ROSE_TINT, ROSE)
     p.rect(1222, 482, 610, 47, "#E9EEF5", stroke="#E9EEF5", radius=0)
-    for x, w, txt in [(1233,164,"情景"),(1400,113,"TTFT ms"),
-                      (1518,120,"TPOT ms"),(1650,169,"输出 tok/s")]:
+    for x, w, txt in [(1233,215,"情景"),(1450,113,"TTFT ms"),
+                      (1580,98,"请求 hit"),(1682,139,"vs 冷原文")]:
         p.text(x, 488, w, 34, txt, 18, INK, bold=True)
     rows = [
-        ("Baseline", "150.00", "22.00", "1800.00", BLUE),
-        ("QSA 融合", "148.33", "20.25", "1894.74", TEAL),
-        ("MTP 假设", "150.00*", "15.87", "1578.95", ORANGE),
+        ("原文：无缓存", "121.50", "0%", "1.000×", BLUE),
+        ("原文：40 MiB LRU", "114.62", "12.5%", "1.060×", TEAL),
+        ("原文：无限完整键", "86.00", "62.5%", "1.413×", VIOLET),
+        ("原文：免费命中", "60.62", "62.5%", "2.004×", VIOLET),
+        ("压缩+LRU*", "75.92", "50.0%", "1.600×", ORANGE),
     ]
-    for i, (name, ttft, tpot, tps, accent) in enumerate(rows):
-        y = 531 + i * 54
-        p.rect(1222, y, 610, 53, WHITE if i % 2 == 0 else "#F4F7FA", stroke=BORDER, radius=0)
-        for x, w, txt in [(1233,164,name),(1400,113,ttft),
-                          (1518,120,tpot),(1650,169,tps)]:
-            p.text(x, y + 4, w, 43, txt, 18, accent if x == 1233 else INK,
+    for i, (name, ttft, hit, speedup, accent) in enumerate(rows):
+        y = 529 + i * 47
+        p.rect(1222, y, 610, 47, WHITE if i % 2 == 0 else "#F4F7FA", stroke=BORDER, radius=0)
+        for x, w, txt in [(1233,215,name),(1450,113,ttft),
+                          (1580,98,hit),(1682,139,speedup)]:
+            p.text(x, y + 2, w, 43, txt, 18, accent if x == 1233 else INK,
                    bold=(x == 1233))
-    p.text(1225, 710, 595, 108,
-           "MTP 可改善单请求 TPOT，却因新增资源需求而\n"
-           "降低饱和容量。*首 token 影响尚未建模。\n"
-           "无真实 profile 时仅输出情景，不宣称 H800 加速。",
-           18, MUTED)
+    p.text(1225, 774, 595, 54,
+           "*压缩质量未验证；8 个虚构请求，非 H800 实测。\n"
+           "仅预测低载 TTFT；饱和 TPS 仍需另测资源需求。",
+           17, MUTED)
 
     p.rect(64, 859, 1791, 152, "#EDF2F9", stroke=BORDER)
     p.text(85, 869, 1760, 30, "模型校准与验证闭环", 23, INK, bold=True)
     flow = [
-        ("固定基线", "模型 / 精度 / GPU / trace"),
-        ("三档预测", "保守 / 中心 / 乐观"),
+        ("固定基线", "模型 / 精度 / GPU / 有序 trace"),
+        ("三层天花板", "免费 oracle / 无淘汰 / 有限容量"),
         ("单变量 A/B", "均值 + 分位数 + 质量"),
         ("误差更新", "(预测−实测)/实测；留出集"),
     ]
@@ -381,7 +386,7 @@ def page_prediction():
         if i < 3:
             p.arrow(x + 389, 947, x + 431, 947, BLUE)
     p.text(72, 1011, 1776, 21,
-           "可运行实现：theory/predictor/predict.py    ·    未输入真实基线前不预测 p95/p99、排队 TTFT 或 P/D 调度收益。",
+           "模型：predict.py（关键路径/容量） + cache_context.py（Prefix/压缩）    ·    无真实 H800 trace / 质量结果时不宣称收益。",
            16, ROSE, bold=True, align="center")
     return p
 

@@ -15,6 +15,7 @@
 | 了解模型与支持边界 | [模型核对](docs/model-and-support.md) |
 | 统一性能测量方法 | [Benchmark 协议](docs/benchmark-protocol.md) |
 | 在实施前预测优化收益与上限 | [理论预测方法](theory/optimization-benefit-prediction.md) |
+| 研究 Prefix/KV 命中率、上下文压缩与理论天花板 | [专项推导与可运行 trace 模型](theory/cache-context-ceilings.md) |
 | 查看三页高密度优化综述 | [可编辑 draw.io 与 SVG](theory/diagrams/README.md) |
 | 用模型预测 TTFT / TPOT / 吞吐 | [可运行预测器、情景与测试](theory/predictor/README.md) |
 | 填写机器与基线 | [环境清单](environment.yaml) |
@@ -45,6 +46,7 @@
 | T010 | MoE 通信与专家负载 | TPOT、吞吐量 | 通信占比高时试 |
 | T011 | CPU、分词与运行时调度 | 短请求 TTFT、尾延迟 | CPU 瓶颈时试 |
 | T012 | Prefill / decode 分离 | 混合负载尾延迟 | 后置条件候选 |
+| T013 | 上下文结构去重 / 查询相关压缩 | 长输入 TTFT、质量与缓存交互 | 需要业务质量基准后试 |
 
 机制与依据见各卡片；该排序是本仓库的研究判断，不是性能排行榜。实际基线已包含的功能记为 `baseline-covered`，不重复实现。
 

@@ -30,3 +30,13 @@ QSA/Gated DeltaNet 混合模型复用前缀时，还需要对应的递归状态�
 ## 已知与未知
 
 已知：官方已有该模型的相关路径。未知：用户版本支持度、会话分布和最优池比例；没有 H800 收益，不照抄其他模型比例。
+
+## 2026-11-17 · 命中率与天花板补充
+
+**区分三类指标**：请求命中率、命中输入 token 比例和按 `cold−hit` 计算成本加权命中率。vLLM 当前官方 `vllm:prefix_cache_hits`、`prefix_cache_queries` 为**token Counter**，不是请求 Counter；应对同一监测窗口计数器增量取比，结合 `prompt_tokens_cached_by_source` 区分 device/host/disk/p2p。
+
+同一 trace 按真实 QSA/GDN 状态 MiB 对比**有限容量 LRU → 无淘汰完整键 → 免费命中 oracle → 全 Prefill 消失的 Amdahl 极松上界**。不把完整键命中回放冒充真实 block-level checkpoint 性能；并发、two-pool、状态恢复和驱逐仍需引擎验证。
+
+上游 [LMCache Qwen3.8-Flash-Next 配方](https://docs.lmcache.ai/recipes/qwen3_8_flash_next.html) 对 vLLM 8-GPU 文本路径标已验证，但该模型的 GDN `align` 属实验性、QSA scratch ring 不缓存、CacheGen 不支持、MTP 组合未验证。该验证**不等于**用户的 FP8/H800/具体版本已验证。
+
+与 [T013 上下文压缩](T013-context-compression.md) 联合评估时，应重新计算压缩后的 prefix key 和状态容量，不相加 TTFT 改善百分比。完整推导与脚本见 [theory/cache-context-ceilings.md](../../../theory/cache-context-ceilings.md)。

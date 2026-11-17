@@ -57,6 +57,12 @@ docs/benchmark-protocol.md、weeks/2026-W47/README.md 与本任务书。
 | 业务多轮/分叉前缀复用显著 | [T008](tricks/T008-hybrid-prefix-cache.md) |
 | 输出阶段主导、已有原生 MTP 支持 | [T009](tricks/T009-native-mtp.md) |
 
+### 补充 P0：Prefix/上下文专项数据包（2026-11-17）
+
+**不要立刻做有损压缩上线。** 在已核对的 H800 环境中，先脱敏采集一份按序 trace：实际 input/output token 数、固定模板与 tokenizer 版本、带隔离域的盐化 prefix key、可复用 prefix token 数、真实 QSA/GDN cache MiB、命中层级、cache eviction / preemption、冷/热 prefill、lookup/restore 与客户端 TTFT。再准备原任务的配对压缩质量集。
+
+先用 [`cache_context.py`](../../theory/predictor/cache_context.py) 填真实参数，对 **容量受限 LRU、无淘汰完整键、免费命中 oracle** 给出情景区间。若原 trace 无前缀复用或已有策略覆盖，就记录负结论，不强行试 T008；若业务确有冗余且质量 gate 可定义，再依据 [T013](tricks/T013-context-compression.md) 做结构去重的独立单变量 A/B。不得把压缩后的 prefix key 沿用原 key，质量未验证时不得宣称可采纳收益。
+
 一次只实施一张卡。组合试验只在单项已解释后安排，不能把叠加效果简单相乘。
 
 ## 交付目录与记录

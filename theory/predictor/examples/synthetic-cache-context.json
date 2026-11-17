@@ -1,0 +1,54 @@
+{
+  "_notice": "SYNTHETIC ONLY: all timings, cache sizes, request keys and outcomes are invented for software verification; not an H800 measurement. Null quality means no compression acceptance.",
+  "schema_version": 1,
+  "data_kind": "synthetic",
+  "config": {
+    "fixed_ttft_ms": 30,
+    "cache_capacity_mib": 40,
+    "lookup_ms": 1,
+    "restore_ms_per_mib": 0.1,
+    "minimum_quality_pass_rate": 1
+  },
+  "requests": [
+    {
+      "id": "synthetic-r01",
+      "baseline": {"prompt_tokens": 1000, "prefix_tokens": 700, "prefix_key": "A", "state_mib": 30, "cold_prefill_ms": 100, "hit_prefill_ms": 35},
+      "compressed": {"prompt_tokens": 510, "prefix_tokens": 350, "prefix_key": "A1", "state_mib": 15, "cold_prefill_ms": 55, "hit_prefill_ms": 24, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r02",
+      "baseline": {"prompt_tokens": 800, "prefix_tokens": 550, "prefix_key": "B", "state_mib": 25, "cold_prefill_ms": 80, "hit_prefill_ms": 30},
+      "compressed": {"prompt_tokens": 420, "prefix_tokens": 290, "prefix_key": "B1", "state_mib": 12, "cold_prefill_ms": 45, "hit_prefill_ms": 21, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r03",
+      "baseline": {"prompt_tokens": 1100, "prefix_tokens": 700, "prefix_key": "A", "state_mib": 30, "cold_prefill_ms": 108, "hit_prefill_ms": 42},
+      "compressed": {"prompt_tokens": 580, "prefix_tokens": 330, "prefix_key": "A2", "state_mib": 15, "cold_prefill_ms": 60, "hit_prefill_ms": 28, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r04",
+      "baseline": {"prompt_tokens": 600, "prefix_tokens": 400, "prefix_key": "C", "state_mib": 10, "cold_prefill_ms": 65, "hit_prefill_ms": 29},
+      "compressed": {"prompt_tokens": 330, "prefix_tokens": 200, "prefix_key": "C1", "state_mib": 5, "cold_prefill_ms": 38, "hit_prefill_ms": 20, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r05",
+      "baseline": {"prompt_tokens": 900, "prefix_tokens": 550, "prefix_key": "B", "state_mib": 25, "cold_prefill_ms": 90, "hit_prefill_ms": 35},
+      "compressed": {"prompt_tokens": 465, "prefix_tokens": 290, "prefix_key": "B1", "state_mib": 12, "cold_prefill_ms": 51, "hit_prefill_ms": 24, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r06",
+      "baseline": {"prompt_tokens": 980, "prefix_tokens": 700, "prefix_key": "A", "state_mib": 30, "cold_prefill_ms": 99, "hit_prefill_ms": 34},
+      "compressed": {"prompt_tokens": 510, "prefix_tokens": 330, "prefix_key": "A2", "state_mib": 15, "cold_prefill_ms": 55, "hit_prefill_ms": 21, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r07",
+      "baseline": {"prompt_tokens": 1050, "prefix_tokens": 700, "prefix_key": "A", "state_mib": 30, "cold_prefill_ms": 104, "hit_prefill_ms": 38},
+      "compressed": {"prompt_tokens": 560, "prefix_tokens": 330, "prefix_key": "A2", "state_mib": 15, "cold_prefill_ms": 59, "hit_prefill_ms": 25, "compressor_ms": 8, "quality_pass": null}
+    },
+    {
+      "id": "synthetic-r08",
+      "baseline": {"prompt_tokens": 870, "prefix_tokens": 550, "prefix_key": "B", "state_mib": 25, "cold_prefill_ms": 86, "hit_prefill_ms": 32},
+      "compressed": {"prompt_tokens": 455, "prefix_tokens": 290, "prefix_key": "B1", "state_mib": 12, "cold_prefill_ms": 49, "hit_prefill_ms": 22, "compressor_ms": 8, "quality_pass": null}
+    }
+  ]
+}
