@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "data_kind": "synthetic",
+  "baseline": {
+    "id": "SYNTHETIC-DEMO-NOT-H800-MEASURED",
+    "ttft_mean_ms": 150,
+    "tpot_mean_ms": 22,
+    "saturated_output_tps": 1800,
+    "stage_mean_ms": {
+      "prefill": 100,
+      "first_decode": 26
+    },
+    "decode_tokens_per_step": 1,
+    "resource_busy_fraction": {
+      "gpu_compute": 0.92,
+      "hbm": 0.68,
+      "interconnect": 0.46,
+      "cpu": 0.62
+    },
+    "arrival_rps": 8,
+    "avg_output_tokens": 128
+  },
+  "profile": {
+    "prefill": [
+      {"name": "host", "serial_ms": 8},
+      {"name": "gemm", "compute_ms": 28, "compute_floor_ms": 12},
+      {"name": "qsa", "compute_ms": 37, "comm_ms": 6, "overlap_fraction": 0.5, "compute_floor_ms": 18},
+      {"name": "collective", "comm_ms": 14, "comm_floor_ms": 7},
+      {"name": "ple", "compute_ms": 6, "comm_ms": 3, "overlap_fraction": 0}
+    ],
+    "first_decode": [
+      {"name": "host", "serial_ms": 4},
+      {"name": "qsa", "compute_ms": 9, "compute_floor_ms": 4},
+      {"name": "moe", "compute_ms": 9, "comm_ms": 5, "overlap_fraction": 1, "compute_floor_ms": 4},
+      {"name": "output", "serial_ms": 3}
+    ],
+    "decode": [
+      {"name": "host", "serial_ms": 3},
+      {"name": "qsa", "compute_ms": 7, "compute_floor_ms": 3},
+      {"name": "moe", "compute_ms": 8, "comm_ms": 4, "overlap_fraction": 1, "compute_floor_ms": 4},
+      {"name": "state", "compute_ms": 4, "compute_floor_ms": 2}
+    ]
+  },
+  "scenarios": [
+    {
+      "name": "T003-QSA-conservative",
+      "assumption": "保守：局部提速但仍有融合开销，纯合成情景",
+      "effects": [
+        {"stage": "first_decode", "block": "qsa", "compute_speedup": 1.25, "added_ms": 0.2},
+        {"stage": "decode", "block": "qsa", "compute_speedup": 1.4, "added_ms": 0.25}
+      ],
+      "resource_demand_factors": {
+        "gpu_compute": 0.95,
+        "hbm": 0.99,
+        "interconnect": 1.0,
+        "cpu": 1.0
+      }
+    },
+    {
+      "name": "T003-QSA-optimistic",
+      "assumption": "乐观：更高的 QSA 局部提速，纯合成情景",
+      "effects": [
+        {"stage": "first_decode", "block": "qsa", "compute_speedup": 1.8, "added_ms": 0.1},
+        {"stage": "decode", "block": "qsa", "compute_speedup": 2.0, "added_ms": 0.1}
+      ],
+      "resource_demand_factors": {
+        "gpu_compute": 0.82,
+        "hbm": 0.95,
+        "interconnect": 1.0,
+        "cpu": 1.0
+      }
+    },
+    {
+      "name": "T009-MTP-hypothetical",
+      "assumption": "验算成本和接受率均为假设；更低 TPOT 可能伴随更低吞吐容量",
+      "effects": [],
+      "speculation": {
+        "draft_tokens": 3,
+        "acceptance_probability": 0.7,
+        "verification_multiplier": 1.6,
+        "extra_per_round_ms": 5
+      },
+      "resource_demand_factors": {
+        "gpu_compute": 1.14,
+        "hbm": 0.75,
+        "interconnect": 1.03,
+        "cpu": 1.03
+      }
+    },
+    {
+      "name": "T006-PLE-overlap-only",
+      "assumption": "假设 PLE 数据搬运由串行变为重叠，容量 GPU 瓶颈保持",
+      "effects": [
+        {"stage": "prefill", "block": "ple", "overlap_fraction": 1.0}
+      ],
+      "resource_demand_factors": {
+        "gpu_compute": 1.0,
+        "hbm": 1.0,
+        "interconnect": 0.80,
+        "cpu": 1.0
+      }
+    }
+  ]
+}
