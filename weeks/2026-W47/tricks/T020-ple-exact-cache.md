@@ -1,5 +1,7 @@
 # T020 · Qwen4Exp PLE 的精确行缓存与静态投影复用
 
+> **深入更新：先过真实 trace 门槛。** [RFC #66467](https://github.com/vllm-project/vllm/issues/66467)的 host row-cache 子实验报告真实文本近零重复，硬件与缓存层不同，不能直接外推本机，但不能预设高命中。当前实施入口为 [R02 任务卡](../tasks/R02-ple-memoization.md)，先分别测行与完整 tuple 命中，再决定是否开发。
+
 - 状态：`conditional`；本轮主线候选。证据来源：`literature + hypothesis`。
 - 调研日期：2026-11-20（Asia/Shanghai）。本机结果：`unknown`。
 - 目标：现有 Qwen3.8-Flash-Next-FP8 / H800；沿用 Week 1 最佳有效配置与全部实际 dtype。

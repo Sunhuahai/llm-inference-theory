@@ -4,22 +4,25 @@
 
 **用户已反馈首轮全部尝试，当前进入第二轮。** 逐项成功/失败、运行 commit 和原始指标尚未归档；本轮研究没有运行 H800 实验。实际部署与首轮最佳配置由已有运行记录补齐，不从官方示例猜测。
 
-## 当前推荐：只推进三项
+## 当前派发：三个大改方向
 
 | 顺序 | 卡片 | 状态 | 触发条件 |
 |---|---|---|---|
-| 1 | [T016 HC 小 M 融合](tricks/T016-hc-small-m-fusion.md) | conditional | 小 M 上投影/门控仍分离，且 HC 占时可见 |
-| 2 | [T017 GDN 固定精度 ReplaySSM](tricks/T017-replayssm-fixed-precision.md) | conditional | 36 层状态写回/回滚是瓶颈，SM90 移植可保持原精度 |
-| 3 | [T020 PLE 精确缓存](tricks/T020-ple-exact-cache.md) | conditional | 局部 n-gram 有复用，且 host lookup/静态投影等待实际暴露 |
+| 1 | [R01 GDN 状态重构与原生 MTP](tasks/R01-gdn-state-mtp.md) | conditional | 保持原 state/ring/math 精度，按单层、生命周期、固定 MTP 分阶段 |
+| 2 | [R02 PLE 静态计算缓存](tasks/R02-ple-memoization.md) | conditional | 先过真实 trace 的命中/等待/容量门槛，再写 cache |
+| 3 | [R03 MoE 内部分段与流水化](tasks/R03-moe-pipeline.md) | conditional | 实际后端和高水位存在空间，原路由、kernel、scale 合同可保持 |
 
-直接交付：[第二轮任务书](agent-tasks-round-02.md)。判断依据：[第二轮研究](research-round-02.md)、[具体模型源码审计](model-audit-round-02.md)、[固定版本来源](sources-round-02.md)。
+直接交付：[三张任务卡与新增发现](tasks/README.md)、[第二轮总任务书](agent-tasks-round-02.md)。判断依据：[第二轮研究](research-round-02.md)、[具体模型源码审计](model-audit-round-02.md)、[固定版本来源](sources-round-02.md)。
+
+R01 是主研究线；R02 当前先做可否决的 trace 分析；R03 是条件储备。HC 小 M 的 T016 保留为短期独立实验。当前任务卡落实已有 trick，不重新启动 Week 1。
 
 | 储备 | 状态 | 为什么不列入本批 |
 |---|---|---|
+| [T016 HC 小 M 融合](tricks/T016-hc-small-m-fusion.md) | conditional | 初筛优先的小改造，仍可独立快速验证；不与三条大改合并计收益 |
 | [T014 head + sampling](tricks/T014-fused-lm-head-sampling.md) | conditional | 必须保留目标 MTP 验证所需 logits；部分 draft 接口可独立适配 |
 | [T015 adaptive verification](tricks/T015-adaptive-verification.md) | blocked | 当前审计 vLLM 的 PLE 与 QSA/indexer 有后端能力缺口 |
-| [T018 tile collective fusion](tricks/T018-tile-collective-fusion.md) | conditional | 先核实本模型 BF16 输出投影的实际等待；不搬用 MXFP8 路径 |
-| [T019 bounded expert workspace](tricks/T019-bounded-ep-workspace.md) | conditional | 先查实际 prepare/finalize、现有分桶与高水位，不重复已实现功能 |
+| [T018 tile collective fusion](tricks/T018-tile-collective-fusion.md) | conditional | 已整理进 R03；原 kernel 无 tile-ready 接口时先研究 chunk 完成边 |
+| [T019 bounded expert workspace](tricks/T019-bounded-ep-workspace.md) | conditional | 已整理进 R03；真实释放高水位是开发门槛，不重复已有分桶 |
 
 所有第二轮收益都相对首轮当前最佳有效配置；不把上游基准当成本机结果。第二轮仍发生在 W47，未提前创建 W48。
 

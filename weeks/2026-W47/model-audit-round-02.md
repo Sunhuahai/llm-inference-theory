@@ -3,6 +3,8 @@
 日期：2026-11-20（Asia/Shanghai）。研究仓库基点：`eab2d2fdce3f22ee596c9b11ce6e50845fa16de8`。
 上游 vLLM 源码固定为 `12924016eb8dbaae87d5163a1b7ec2614a44a797`。本文核对上游实现；用户本机引擎、SHA、H800 数量与实际配置仍以部署记录为准。
 
+深入任务卡另核至 `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d`，见 [R01–R03](tasks/README.md)。PLE 的 `ple_layer_ids=[2]` 是 1-based 配置，实际 Python 模块为 `language_model.layers.1.ple`；执行时不要把它解释为索引 2。
+
 **第二轮按具体模型执行路径选题。** 用户已反馈首轮全部尝试，不回到 T001–T013 从头扫开关。源码中的已有能力只作去重依据，不能据此认定本机已经开启。
 
 ## 1. 需要据此选优化的模型结构

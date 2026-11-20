@@ -2,7 +2,7 @@
 
 初次检索：2026-11-16；第二轮源码更新：2026-11-20。此处记录上游信息；用户部署环境见 [environment.yaml](../environment.yaml)，当前尚未登记。用户已反馈首轮尝试完成，不能将环境字段缺失解释为尚未部署。
 
-**当前研究入口：**[Qwen4Exp 第二轮源码审计](../weeks/2026-W47/model-audit-round-02.md)、[实施任务书](../weeks/2026-W47/agent-tasks-round-02.md)。本轮固定审计 vLLM `12924016eb8dbaae87d5163a1b7ec2614a44a797`，以 HC 小 M、GDN state 和 PLE 精确缓存为主线。
+**当前研究入口：**[三张大改任务卡](../weeks/2026-W47/tasks/README.md)、[实施任务书](../weeks/2026-W47/agent-tasks-round-02.md)。初筛固定 vLLM `12924016eb8dbaae87d5163a1b7ec2614a44a797`，深入核查固定 `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d`；原[模型审计](../weeks/2026-W47/model-audit-round-02.md)保留其版本含义。当前为 GDN 状态主线、PLE trace 门槛和 MoE 条件储备，HC 小 M 另作短期实验。
 
 ## 一、目标模型
 

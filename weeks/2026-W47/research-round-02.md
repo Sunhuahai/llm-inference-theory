@@ -1,8 +1,10 @@
 # 第二轮调研 · Qwen3.8-Flash-Next-FP8 的 H800 专项改造
 
+> **2026-11-20 深入更新：**用户要求选取改动最大的方向并写任务卡，当前派发使用 [R01–R03](tasks/README.md)及[更新后的任务书](agent-tasks-round-02.md)。下文第 1–5 节保留初筛判断，第 6 节记录新证据与任务顺序调整。
+
 日期：2026-11-20（Asia/Shanghai）。用户已反馈 Week 1 全部尝试，并允许本轮采用更激进的测试。随后明确要求针对这个具体模型研究。本轮仍归档在实际 ISO 周 W47，称“第二轮”，不提前创建 W48。
 
-**推荐下一批只做三条：T016 的 HC 小 M 融合、T017 的 GDN 状态写回改造、T020 的 PLE 精确缓存。** 它们直接对应这个模型的四路残差、36 层 recurrent state 和大型 n-gram 查表路径。研究状态与用户口述完成状态分开；尚未取得首轮逐项原始结果，本轮没有 H800 实测。
+**初筛推荐三条：T016 的 HC 小 M 融合、T017 的 GDN 状态写回改造、T020 的 PLE 精确缓存。** 它们直接对应这个模型的四路残差、36 层 recurrent state 和大型 n-gram 查表路径。当前更大改造的阶段安排见第 6 节。研究状态与用户口述完成状态分开；尚未取得首轮逐项原始结果，本轮没有 H800 实测。
 
 实施入口：[第二轮任务书](agent-tasks-round-02.md)。
 证据入口：[模型源码审计](model-audit-round-02.md)与[固定版本来源](sources-round-02.md)。
@@ -95,3 +97,18 @@ GDN 的写回理论先用 payload 与 replay-buffer 流量估局部上限；PLE 
 每项先单模块、再完整路径、再同 trace 的三次交错重复。报 TTFT/TPOT 分位数、输出/总 token 吞吐、失败与显存。必须把首轮效果、第二轮增量、兼容性适配和不支持的负结论分别记录。
 
 “可以激进”在这里体现在允许改模型专属执行代码、状态表达与缓存路径。仍须保持既定精度、全部专家贡献、采样约束和状态历史。
+
+## 6. 深入更新：将三个大改方向拆成任务卡
+
+用户随后要求聚焦改动最大的方向，并继续调研、写进本周文档。本次在研究仓库 `be556f7` 之上补核 vLLM `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d` 与相关 PR head；当前入口改为 [R01–R03](tasks/README.md)。
+
+| 方向 | 相比初筛新增的实质证据 | 当前决定 |
+|---|---|---|
+| GDN / MTP | PR 正文的 host cursor 已落后于 GPU planner 代码；每 cache group 游标只推进一次。ring dtype 外还需审计 tf32x3，target/draft 配置与接受游标单独提交 | [R01](tasks/R01-gdn-state-mtp.md)为主线；单层→生命周期→固定 MTP，adaptive 后置且仍 blocked |
+| PLE | 真实文本 host cache 有公开负结果；行命中不等于完整 tuple 命中。实际模块是 layers.1.ple；early probe、舍入与 Graph miss-count 有精确入口 | [R02](tasks/R02-ple-memoization.md)先做可否决的 trace/预算分析，不预设收益 |
+| MoE | Qwen4Exp 不能直接启用通用 DBO。SM90 block-FP8 MegaMoE 也可能重缩放 FC1；原 Triton 则存在完整 prepare 后只切专家计算的候选入口 | [R03](tasks/R03-moe-pipeline.md)为条件储备；先内部串行 token 分段，再判断通信分段 |
+
+依据见[任务卡固定源码引用](tasks/README.md)和[来源增补](sources-round-02.md)。普通 decode 的 replay 不保证省显存，PLE 高行命中不保证能跳投影，MoE 单层缩 workspace 也不保证释放进程高水位；三卡都要求记录新增成本和完整模型证据。
+
+首轮最佳配置不变。HC 小 M 的 T016 仍可作短期独立实验；本次按大改方向重排研究资源，没有把旧候选判为失败，没有新增 H800 实测。各阶段列出唯一变量、最小 commit、交付、通过与退出、回滚。
+

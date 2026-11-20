@@ -1,5 +1,7 @@
 # T019 · Qwen4Exp top-10 专家 workspace 与固定容量 EP 路由
 
+> 深入实施入口：[R03 任务卡](../tasks/R03-moe-pipeline.md)。优先核查 NoDPEP 下完整 prepare 不变的专家内 token 分段；Qwen4Exp 的 DBO 限制、尾行有效性与跨层/Graph 高水位另列为必须满足的条件。
+
 - 状态：`conditional`
 - 调研日期：2026-11-20（Asia/Shanghai）
 - 目标指标：真实 workspace 峰值、KV/SSM 可用容量、相同负载尾延迟。

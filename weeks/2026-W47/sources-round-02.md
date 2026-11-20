@@ -64,3 +64,24 @@
 
 PR 状态、main 文档及模型卡均可能变化，以上锁定的是本次读取时的证据。继续工作先查实际部署和上游差异，不把“当前 blocked”扩展为永久不支持，也不以“已合并”替代完整功能验证。
 
+## 5. 大改任务卡的增补证据（2026-11-20）
+
+本节对应 [R01–R03](tasks/README.md)，为同日深入核查。新 main 锁定 [aefea5c8e00c47032cda6d0b75704f6cd0a7c66d](https://github.com/vllm-project/vllm/tree/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d)，commit 时间 2026-11-20 14:42:40（Asia/Shanghai）。初筛 `12924016…` 保留原证据范围，不要求用户升级部署。
+
+| 新核验来源 | 固定点 / 范围 | 对任务的影响 |
+|---|---|---|
+| [#62004](https://github.com/vllm-project/vllm/pull/62004)与[dtype calculator](https://github.com/vllm-project/vllm/blob/0880cb87383330070f6a2546536ee99496306bab/vllm/model_executor/layers/mamba/mamba_utils.py) | 再查仍 open；head `0880cb87383330070f6a2546536ee99496306bab` | d/k ring 默认 FP16；普通 decode 验证不代表 MTP 支持 |
+| [replay kernel](https://github.com/vllm-project/vllm/blob/0880cb87383330070f6a2546536ee99496306bab/vllm/third_party/flash_linear_attention/ops/fused_recurrent_replayssm.py) | 同一 PR head | tf32x3 要求核对 math mode，不能只看 FP32 tensor |
+| [GPU planner](https://github.com/vllm-project/vllm/blob/0880cb87383330070f6a2546536ee99496306bab/vllm/model_executor/layers/mamba/ops/ssu_dispatch.py)及[group tracker](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/v1/worker/replayssm_utils.py) | PR head / 新 main | 正文 host cursor 与代码有差异；每组首层推进、prefill/reset/align flush 按代码接线，runner 实际验证 |
+| [#65657](https://github.com/vllm-project/vllm/pull/65657)的[MTP 隔离](https://github.com/vllm-project/vllm/blob/682a577e7e50bfcc9786544152244ece7f2c7be2/vllm/models/qwen4_exp/nvidia/mtp.py)与[状态提交](https://github.com/vllm-project/vllm/blob/682a577e7e50bfcc9786544152244ece7f2c7be2/vllm/v1/worker/gpu/model_states/mamba_hybrid.py) | 再查仍 open；head `682a577e7e50bfcc9786544152244ece7f2c7be2` | 参考 target/draft 隔离与接受提交；SM100/FP16 kernel 和 QSA 对齐案例不直接搬用 |
+| [PLE cache RFC #66467](https://github.com/vllm-project/vllm/issues/66467) | open；正文更新 2026-11-11；自报 host-cache 子实验 | 先验证真实 trace。主评测为 GB300、NVFP4 主体/FP8 PLE；真实文本子实验未公开 trace，不作普遍无效结论 |
+| [PLE model](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/models/qwen4_exp/nvidia/model.py)、[embedding](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/models/qwen4_exp/common/ngram_embedding.py)、[model_state](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/models/qwen4_exp/nvidia/model_state.py) | 新 main；R02 所列 PLE/model_state/model_runner 文件与旧基点同 blob | 1-based 层号、原反量化舍入、已提交上下文与 early probe 的具体落点 |
+| [EngramConfig](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/config/engram.py) | 新 main；该文件有更新 | peer pool 仍限定 engram_layer_ids，不为 Qwen ple_layer_ids 提供现成 cache |
+| [模型 DBO 检查](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/model_executor/models/config.py)、[#63483](https://github.com/vllm-project/vllm/pull/63483) | merge `5e51c0ca1041168de7aa9e096982aebaeebabd38` | 通用纯 TP DBO 不解除 Qwen4Exp 限制，R03 保留模型外层边界 |
+| [SM90 MegaMoE #62603](https://github.com/vllm-project/vllm/pull/62603)与[适配代码](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/model_executor/layers/fused_moe/flashinfer_moe_ep.py) | merge `94febce7563ae2d67a062dc0f8ab408cd817f66c` | block-FP8 仍有 FC1 scale 重设/重缩放；不新增该转换。H200 专家几何测试非整模型服务证据 |
+| [PaddedStandard #54109](https://github.com/vllm-project/vllm/pull/54109) | merge `24a49203eeb9f2d61ef8d7b86e89470d26e45dea` | 未初始化尾行不可读，保留 topk=-1、有效长度和设备端 prefix 元数据 |
+| [modular kernel](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/model_executor/layers/fused_moe/modular_kernel.py)、[量化](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/model_executor/layers/fused_moe/utils.py)、[workspace](https://github.com/vllm-project/vllm/blob/aefea5c8e00c47032cda6d0b75704f6cd0a7c66d/vllm/v1/worker/workspace.py) | 新 main | prepare 后沿 M 切原专家执行；跨层/Graph 高水位须实际释放 |
+
+本次是来源核验与研究推导，没有新的 `agent_measured` H800 结果。PR 正文、测试范围与代码能力分别记录；发生差异时以固定代码设计适配，再由实际环境验证。
+
+

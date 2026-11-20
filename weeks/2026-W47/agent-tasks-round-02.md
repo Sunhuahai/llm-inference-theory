@@ -1,89 +1,87 @@
-# 第二轮实施任务书 · Qwen4Exp / H800
+# 第二轮实施任务书 · 三个大改方向
 
-日期：2026-11-20。目标仅为用户现有 Qwen3.8-Flash-Next 8-bit 部署，仓库暂定官方制品 `Qwen/Qwen3.8-Flash-Next-FP8`。用户已完成首轮尝试，允许测试性的大幅代码改造；逐项原始结果尚未归档。
+更新：2026-11-20（Asia/Shanghai）。目标：用户现有 Qwen3.8-Flash-Next 8-bit / Qwen4Exp + H800。用户已反馈 Week 1 全部尝试，要求更激进、模型特定的研究，并进一步要求写成本周任务卡。
+
+**当前派发入口为 [R01–R03 任务卡](tasks/README.md)。** 本次将 GDN、PLE、MoE 三个大改方向拆成阶段任务；原 T016 HC 小 M 保留为短期独立实验。已有 T 编号和首轮历史保留，不把同一方向重复登记为新 trick。
 
 ## 可直接交给 Codex 的提示词
 
 ```text
-接手 Sunhuahai/qwen38-next-h800-tricks 的第二轮模型专属优化。
-先读最新 main 的 AGENTS.md、environment.yaml、docs/model-and-support.md、
-docs/benchmark-protocol.md，以及 weeks/2026-W47 下：
-model-audit-round-02.md、research-round-02.md、本任务书和对应 trick 卡。
+接手 Sunhuahai/qwen38-next-h800-tricks 本周的三个大改方向。
+先读取最新 main 的 AGENTS.md、environment.yaml、docs/model-and-support.md、
+docs/benchmark-protocol.md、weeks/2026-W47/tasks/README.md，
+以及本任务书和 R01/R02/R03 中实际选择的一张卡。
 
-这次只针对我的实际 Qwen3.8-Flash-Next-FP8/Qwen4Exp + H800。
-Week 1 的 T001–T013 我已全部尝试，先找到现有最佳有效配置、运行commit和profile，
-不要重新从初始13项做起；缺的环境字段从当前部署读取并归档，不凭官方demo补猜。
+目标只用我的实际 Qwen3.8-Flash-Next-FP8/Qwen4Exp + H800。
+Week 1 的 T001–T013 已全部尝试，先从已有部署找到 W1-best、实现commit、
+环境快照和profile，不重做首轮。未知字段从当前运行环境读取，不按官方demo猜测。
+如果我实际使用另一引擎或版本，映射实际模块并记录差异，不为匹配研究稿而换基线。
 
-沿用现有checkpoint和全部实际dtype，包括激活、weight scale、KV/indexer、
-GDN checkpoint、卷积/PLE历史、新增correction/replay buffer及累加精度。
-不换模型、不量化、不剪枝/蒸馏、不缩短输出、不关闭reasoning或采样功能，
-不扩大已有GPU总预算。研究仓库不预造另一个推理引擎，代码落在当前实施项目。
+固定现有checkpoint及全部实际dtype、scale和计算精度，包括weight、activation、
+KV/indexer、GDN state、卷积/PLE历史、新增ring/correction、dot math mode和累加。
+保持原top-10、采样/grammar/logprobs、reasoning、EOS/输出要求和总GPU预算。
+实现落在我的现有推理项目；研究仓库只保存文档、脱敏配置和结果。
+只使用已有授权资源。若当前只有研究仓库，就交付代码适配方案和缺失入口，
+不声称已经启动或完成GPU实验。
 
-当前研究的vLLM证据固定SHA为12924016eb8dbaae87d5163a1b7ec2614a44a797；
-若我用的是别的版本或SGLang，先映射实际同类模块，不为匹配文档升级后混淆基线。
-所有新代码使用独立开关，能回退到原路径。工作只使用已获授权的服务器和资源；
-若只有研究仓库，就先完成代码适配方案并准确记录执行入口缺失。
+三项任务按以下范围推进，不能把所有阶段一次改完再报一个总数字：
 
-本批最多实施以下三项，按profile触发，单项通过才组合：
+R01：GDN状态重构与原生MTP，主线。
+先做真实GDN shape的固定精度单层对照，再接分页、cursor/planner、prefill、
+prefix/align flush、preemption和slot生命周期，然后独立接固定深度MTP。
+普通decode仅为机制诊断，最终性能对照仍为W1-best。
+核对上游PR正文和固定head代码的差异：不能照旧正文实现host cursor，
+也不能仅按FP32 state标签忽略FP16 ring或tf32x3重建。
+target/draft能力分别核对，PLE/QSA历史单独处理。
+动态验证长度属于后续阶段；PLE/QSA/Indexer能力缺口修复前保持blocked，
+不修改capability声明或删断言来跳过实现。
 
-1) T016：Qwen4Exp HC小M上投影+门控融合。
-   查真实M分布和原kernel。现有HC已含PDL，不能把“打开PDL”算新收益。
-   对原小M路径与仅改变fused-up适用阈值做A/B；若现有fused kernel不适合H800，
-   再独立写SM90小M kernel。最终mixer的down→SiLU作为单独变体。
-   数值、scale、累加语义不变，测完整HC链及端到端增量。
+R02：PLE静态计算缓存，先做trace门槛。
+公开host row-cache实验有真实文本近零重复的负结果；先用我的真实访问trace
+分别测owner行命中、完整16-ID tuple命中、复用距离和实际暴露等待。
+校准/评估trace分离；已有prefix cache消掉的工作不能再次算作PLE收益。
+只有命中/成本/容量上界通过才写owner原字节热行cache，miss回原UVA；
+投影cache是独立后续变体。想省lookup，probe必须早于现有prefetch。
+保持唯一owner、精确键、原scale、ETP/HC-SP、MTP历史、Graph和失效规则。
+trace不支持收益就交付parked结论，不为完成任务强写缓存。
 
-2) T017：GDN固定精度checkpoint/replay执行。
-   针对36层、48 value heads、128×128 state的实际TP分片，先做单层。
-   不照抄SM100/FP16 FlashInfer开关；保持现有state与全部buffer/correction精度，
-   核查论文代码里FP16 correction缓存是否违反本机原精度。
-   先teacher-forced logits和每种接受长度后的状态等价，再接Qwen4Exp注册、
-   QSA scratch、PLE卷积、prefill/prefix/preemption/slot生命周期。
-   普通decode与原有固定深度MTP分开对照，不同时改验证策略。
+R03：MoE内部分段与流水化，条件储备。
+先查prepare/experts/finalize真实类、NoDPEP还是dispatcher、权重与scale布局、
+top10路由、workspace别名、Graph和进程高水位。
+先研究固定请求batch下的内部token分段，保留原专家kernel和外层调用边界；
+有实际dispatch时再处理全rank一致容量和idle rank，不能丢路由或改变shared合并。
+不启用Qwen4Exp当前不支持的DBO/ubatching，不把更换kernel与流水粒度混在一个A/B。
+native MXFP8路径和重新缩放FC1的SM90 block-FP8路径都需按原精度合同排除；
+名称含FP8不能代替权重字节/scale核对。
 
-3) T020：PLE精确缓存。
-   保留目前的prefetch、ETP、HC-SP和lookup输出shape。
-   先在owner内建立只读热行HBM缓存，缓存原字节，miss回原UVA；
-   必须维持一个global row只有一个有效owner，不能把多个rank的缓存字节相加。
-   用独立trace验证命中，统计真实暴露等待和state池容量损失。
-   只有热行试验完成后，再独立尝试精确16个row IDs对应的[k,v]投影缓存；
-   hidden-dependent gate和short-conv继续正常执行，不缓存它们。
+每张卡按阶段提交最小可回退commit，自定义开关标为拟议/项目内开关。
+升级runner/engine/backend单独建对照；没有收益证据不扩大组合扫描。
+采用同trace、同采样、同冷热状态和至少三次交错重复，测TTFT/TPOT分位数、
+输出/总吞吐、stream gap、错误、显存和对应机制成本，保留实际输出长度。
+草稿拒绝token不计吞吐；小kernel变快不能替代完整服务结果。
 
-T014、T018、T019是储备，除非本批方向不满足触发条件，不并行扩成大扫描。
-T015在所审计vLLM路径被PLE和QSA/Indexer能力检查阻塞，不盲目开
-enable_adaptive_verification，也不跳过能力检查伪装可用。
-Qwen4Exp MegaMoE路径会将block128 FP8转成MXFP8，不能作为保持现有精度的方案。
-
-每项用首轮最佳有效配置为baseline，报告新增收益；不得回到弱eager基线。
-单变量、固定工作负载/采样/冷热状态/总GPU、至少三次交错重复。
-报告真实TTFT/TPOT/输出tokens/s/总tokens/s、错误率、显存、机制profile和质量；
-草稿拒绝token不计吞吐，尾延迟与失败不能从统计里丢掉。
-
-交付每项实现commit、开关/配置diff、baseline/candidate IDs、环境快照、
-dtype/scale清单、实际shape、正确性与性能结果、是否保留及回滚方式。
-全部实测与负结果归档到本周results/和feedback/，不伪造成功数字。
-一个方向被阻塞时把代码证据写清，继续下一个可执行方向，不要求我重新确认常规可逆工作。
+交付阶段commit、baseline/candidate IDs、配置diff、shape/dtype/math清单、
+正确性证据、真实性能或明确阻塞、是否继续及回滚方式。
+每完成一个阶段再决定下一阶段；缺触发条件时继续下一个可执行方向。
+结果按本周results和feedback规范归档，未运行字段保持unknown。
 ```
 
-## 先复用的首轮证据
+## 当前范围与停止点
 
-只补必要信息：最佳运行的 model revision/engine SHA、卡数与进程组、所有实际 dtype、baseline ID、固定负载、一次阶段 profile。若当前工作目录已有这些，不重复采集同一组数据。
+| 任务 | 现在先交付什么 | 什么时候进入后续开发 |
+|---|---|---|
+| [R01](tasks/R01-gdn-state-mtp.md) | 固定版本适配图、原状态与 replay 的精度/生命周期合同、单层对照 | 状态正确、机制有空间，且当前 runner 接口可实现 |
+| [R02](tasks/R02-ple-memoization.md) | 独立 trace 的行/tuple 命中与成本加权上界 | cache overhead 与容量代价后仍有净收益空间 |
+| [R03](tasks/R03-moe-pipeline.md) | 真实执行类和 workspace 生命周期、一个内部 chunk 的可行性设计 | 原 dtype/scale、路由与 collective 合同能保持，且有可释放成本 |
 
-不能推断“全部尝试”意味着全部成功或失败，也不能在无结果文件时给 T001–T013 批量标 validated。用户报告已归档为 [user_report](feedback/2026-11-20.md)。
+当前三项均为 `conditional`，R01 动态验证子阶段为 `blocked`。这表示研究任务已具体化，尚不表示用户环境已核对或 GPU 任务正在运行。实施负责人、仓库、运行 ID 和收益保持 `unknown`，由执行时填写。
 
-## 三项各自的最小交付
+[HC 小 M 融合 T016](tricks/T016-hc-small-m-fusion.md)是另外保留的短期实验。若选择它，就作为一个独立任务，不能加入上面三项的组合结果而不做对照。
 
-| 任务 | 第一阶段 | 进入完整模型的条件 | 不值得继续时 |
-|---|---|---|---|
-| T016 | 一份真实小 M HC 链 A/B | 同精度正确、链路时间改善超过波动 | 原阈值已覆盖或新融合使小 GEMM变慢，保留负结果 |
-| T017 | 真实 GDN shape 的 replay/flush/accept-state 验证 | dtype完整一致、状态生命周期正确，且I/O有净节省 | SM90实现未能保精度或flush尾延迟抵消平均收益 |
-| T020 | owner内不可变热行cache + 独立trace回放 | miss正确、实际等待减少、容量代价可接受 | lookup早已完全隐藏、命中低或占用state池导致吞吐回退 |
+## 版本、交付与组合
 
-主场景加一个回归场景即可完成首轮筛选。更广的组合/负载扫描只在解释具体剩余风险时做。
+初筛代码固定 `12924016eb8dbaae87d5163a1b7ec2614a44a797`；本次深入核验 main 为 `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d`，各 PR 另锁 head。详见[来源增补](sources-round-02.md)。这些是证据版本，不要求用户升级。
 
-## 组合顺序与结果口径
+每项先独立对 W1-best，再在有效方案之间做组合。R01 ring、R02 cache、R03 workspace 可能竞争同一显存与带宽，不能乘各自局部倍数。若改变并发容量，先报告同工作量的资源变化，再单独验证容量带来的吞吐。
 
-先各自对 W1-best 做单变量对照，确定两个胜者后再做组合；组合对照使用其中一个胜者为基线，另外保留 W1-best 锚点。不能把局部倍数相乘。
-
-T016 改计算组织，T017 改 GDN state 数据流，T020 使用 HBM 缓存；三者可能竞争带宽和显存，组合收益需要实测。若未来加入 T014，保留 MTP target verification 的 logits 及 sampler功能；若未来完成 T015 适配，无 confidence head 的接受估计仍需要 draft logits。
-
-结果文件沿用 [既有CSV表头](../../templates/result.csv)，附 `<run_id>-summary.md` 和环境快照。新增诊断可放 summary/JSON 附件，不临时破坏统一 CSV。尚未跑就写 unknown，不写示例速度。
+结果沿用[既有 CSV](../../templates/result.csv)，附 `<run_id>-summary.md` 和环境快照；新增机制诊断放 summary/JSON，不改统一表头。实验失败、支持缺口与无效方向同样保存。当前没有本轮 H800 实测。

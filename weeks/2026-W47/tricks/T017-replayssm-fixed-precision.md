@@ -1,5 +1,7 @@
 # T017 · 针对 36 层 GDN 的固定精度 ReplaySSM 移植
 
+> 深入实施入口：[R01 分阶段任务卡](../tasks/R01-gdn-state-mtp.md)。新核查覆盖 GPU planner/cursor、PR 正文与代码的 runner 差异、ring dtype 与 dot math mode；本卡保留初筛版本与机制分析。
+
 - 状态：`conditional`；模型特定的高工程主线，先以 profile 决定是否投入实现。
 - 调研日期：2026-11-20；证据：`literature` + 源码静态核查 + `hypothesis`；没有 H800 实测。
 - 目标：保持现有所有 dtype，减少 GDN recurrent state 写回和投机快照成本；不是现成开关。

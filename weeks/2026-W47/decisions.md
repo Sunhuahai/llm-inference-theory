@@ -28,3 +28,13 @@
 - **精度边界**：ReplaySSM 现成 Qwen4Exp PR 的 SM100/FP16 路径不适用 H800 固定精度；FP32-state 论文数字里的 FP16 corrections 不直接采用。MegaMoE block-FP8→MXFP8 转换排除。激进范围是执行代码、状态数据流与精确缓存。
 - **最小下一步**：复用 W1-best 和已有 profile，按 HC 小 M / GDN 状态 / PLE 等待的触发条件选项；每项独立 A/B，缺触发条件则跳到下一项。[完整任务书](agent-tasks-round-02.md)已给出实现入口、正确性、机制指标与退出条件。
 - **状态**：第二轮研究完成；无本轮 agent_measured H800 结果，未启动 GPU 作业。按实际日期继续归档 W47，不因“第二轮”提前建 W48。
+
+## 2026-11-20 · 深入三个大改方向，落地阶段任务卡
+
+- **用户要求**：选择改动最大的方向，再进一步调研并写入本周文档。范围为 GDN 状态重构＋MTP、PLE 静态计算缓存、MoE 内部分段与流水化。
+- **基点**：研究仓库 `be556f74a34d32daab28754183c1a1dff2823c2b`；上游 `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d`，PR head 与初筛分开锁定。
+- **新证据**：GPU planner 与 PR 正文存在演进差异，ring/math-mode 和接受游标要一起核对；PLE 有外部真实文本低复用负结果；MoE 的 DBO/尾行/Graph 高水位和 FC1 scale 转换均有具体限制。[来源增补](sources-round-02.md)。
+- **决策**：新增 [R01](tasks/R01-gdn-state-mtp.md)、[R02](tasks/R02-ple-memoization.md)、[R03](tasks/R03-moe-pipeline.md)，不新增重复 T 编号。R01 主线分阶段，adaptive 仍 blocked；R02 先过 trace/预算门槛才开发；R03 条件储备，先只分段原专家计算。
+- **原候选处理**：T016 保留短期独立实验；T017/T020/T018/T019 增加任务入口，保留初筛证据。用户完成首轮的报告不变，没有逐项收益就不改 validated 状态。
+- **交付与状态**：更新总任务书、周目录、首页、来源和反馈。设计完成，未启动 GPU；实施 commit/质量/收益均 unknown，每阶段有唯一变量、交付、通过与退出、回滚。
+
