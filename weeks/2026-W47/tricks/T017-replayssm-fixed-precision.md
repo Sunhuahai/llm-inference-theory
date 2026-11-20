@@ -1,5 +1,7 @@
 # T017 · 针对 36 层 GDN 的固定精度 ReplaySSM 移植
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 > 深入实施入口：[R01 分阶段任务卡](../tasks/R01-gdn-state-mtp.md)。新核查覆盖 GPU planner/cursor、PR 正文与代码的 runner 差异、ring dtype 与 dot math mode；本卡保留初筛版本与机制分析。
 
 - 状态：`conditional`；模型特定的高工程主线，先以 profile 决定是否投入实现。

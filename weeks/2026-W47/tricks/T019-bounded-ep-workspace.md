@@ -1,5 +1,7 @@
 # T019 · Qwen4Exp top-10 专家 workspace 与固定容量 EP 路由
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 > 深入实施入口：[R03 任务卡](../tasks/R03-moe-pipeline.md)。优先核查 NoDPEP 下完整 prepare 不变的专家内 token 分段；Qwen4Exp 的 DBO 限制、尾行有效性与跨层/Graph 高水位另列为必须满足的条件。
 
 - 状态：`conditional`

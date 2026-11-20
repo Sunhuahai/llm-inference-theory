@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qwen H800 单项优化执行助手"
+  short_description: "按任务卡逐步优化 Qwen4Exp，固定精度、单变量实验并保存真实证据"
+  default_prompt: "使用 $optimize-qwen-h800 执行指定的 Qwen4Exp/H800 优化任务卡，先核对基线和前置条件，再按步骤实现与验证。"

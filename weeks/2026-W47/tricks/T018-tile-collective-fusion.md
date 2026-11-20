@@ -1,5 +1,7 @@
 # T018 · Qwen4Exp 输出投影与 collective 的 tile 级融合
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 > 深入实施入口：[R03 任务卡](../tasks/R03-moe-pipeline.md)。新增核查区分内部 chunk 完成边和真正 tile-ready 接口；现成 SM90 block-FP8 MegaMoE 也有 FC1 scale 重缩放，不能仅凭名称判断符合原精度。
 
 - 状态：`conditional`

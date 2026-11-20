@@ -1,5 +1,7 @@
 # T016 · Qwen4Exp HC 小 M 投影与门控融合
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 - 状态：**conditional**；第二轮主线候选，按本机占比决定实施顺序。
 - 调研日期：2026-11-20（Asia/Shanghai）。
 - 目标指标：TPOT、输出吞吐量；重点为低/中并发 decode 的 HC 小矩阵链。

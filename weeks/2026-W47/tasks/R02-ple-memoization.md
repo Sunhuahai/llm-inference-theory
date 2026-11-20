@@ -1,5 +1,7 @@
 # R02 · PLE 静态计算缓存实施任务
 
+> **辅助执行：** 先读 [optimize-qwen-h800](../../../skills/optimize-qwen-h800/SKILL.md)，从本工作流选择一个阶段和对应 T 编号。每次只做一个变量，不将整条工作流一起叠加测试。
+
 - 状态：**conditional**；关联 [T020](../tricks/T020-ple-exact-cache.md)，不是新增 trick。
 - 基线：W1-best；固定 Qwen3.8-Flash-Next-FP8、H800 总预算、全部实际 dtype、采样、MTP 与输出要求。结果 **unknown**，本轮无 GPU 实测。
 - 源码锁定 vLLM **aefea5c8e00c47032cda6d0b75704f6cd0a7c66d**。下列 Qwen PLE、model_state、model_runner 文件与前次 12924016 审计的 Git blob 相同；本机版本另登记。

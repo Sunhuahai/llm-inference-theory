@@ -9,7 +9,7 @@
 ## 每次先读
 
 1. `README.md`、`environment.yaml`、`docs/model-and-support.md`、`docs/benchmark-protocol.md`。
-2. 当前周 `README.md`、`decisions.md`、`agent-tasks.md`、新增 `feedback/` 与 `results/`。
+2. 当前周 `README.md`、`decisions.md`、新增 `feedback/` 与 `results/`，以及首页指向的当前 round 任务书。
 3. 相关 trick 卡片及其一手来源；以当前远程 main 为准，不从旧对话重建事实。
 
 ## 证据与状态
@@ -29,6 +29,13 @@
 | `parked` | 有理由暂缓，不能删除既有负结果 |
 
 状态与证据来源分开记录：`literature`（上游资料）、`user_report`、`agent_measured`、`hypothesis`。仅用户口头报“更快”先记 `user_report`，不能自动升级 `validated`。
+
+## 当前任务与参考 skill
+
+- 当前新增候选在 `rounds/round-03/`，T001–T013 已在 `archive/round-01/` 归档。`archived` 是生命周期，`user_report / attempted` 是尝试记录；不能替代性能状态。
+- 实施 Agent 先读取 `skills/optimize-qwen-h800/SKILL.md`，再执行选中卡片的一个阶段。研究 Agent 负责提供完整的前置条件、代码入口、步骤、检查、停止与回滚，减少执行模型自行推断。
+- 用户明确要求本批新增 10 项，因此本批目录为 T021–T030；默认实际下一步仍只推荐 2–3 个有证据的入口，一次实验只改一个变量。
+- 实验轮次与日历周分开。轮次可在同一周递增；结果按实际运行日期归档，不提前创建下一周。
 
 ## 每晚维护
 

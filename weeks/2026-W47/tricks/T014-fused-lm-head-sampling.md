@@ -1,5 +1,7 @@
 # T014 · Qwen4Exp LM-head 与精确采样融合
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 - 状态：**conditional**；第二轮**储备项**，优先级低于已定位的 HC/GDN/PLE 主线。
 - 调研日期：2026-11-20（Asia/Shanghai）。
 - 目标指标：TPOT、输出吞吐量；先证明输出端有实际占比及兼容请求。

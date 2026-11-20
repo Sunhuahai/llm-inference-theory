@@ -1,5 +1,7 @@
 # R03 · Qwen4Exp top-10 窄专家的有界执行任务
 
+> **辅助执行：** 先读 [optimize-qwen-h800](../../../skills/optimize-qwen-h800/SKILL.md)，从本工作流选择一个阶段和对应 T 编号。每次只做一个变量，不将整条工作流一起叠加测试。
+
 - 状态：`conditional`；MoE 条件储备，HC 短期实验另行推进。
 - 日期：2026-11-20；证据：`literature` + `hypothesis`；本轮无 GPU 实测。
 - 承接：[T018](../tricks/T018-tile-collective-fusion.md)、[T019](../tricks/T019-bounded-ep-workspace.md)，不新增 trick 编号。

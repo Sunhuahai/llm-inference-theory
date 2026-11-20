@@ -1,5 +1,7 @@
 # T020 · Qwen4Exp PLE 的精确行缓存与静态投影复用
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 > **深入更新：先过真实 trace 门槛。** [RFC #66467](https://github.com/vllm-project/vllm/issues/66467)的 host row-cache 子实验报告真实文本近零重复，硬件与缓存层不同，不能直接外推本机，但不能预设高命中。当前实施入口为 [R02 任务卡](../tasks/R02-ple-memoization.md)，先分别测行与完整 tuple 命中，再决定是否开发。
 
 - 状态：`conditional`；本轮主线候选。证据来源：`literature + hypothesis`。

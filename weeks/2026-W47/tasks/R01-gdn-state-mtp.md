@@ -1,5 +1,7 @@
 # R01 · GDN 状态重构与原生 MTP
 
+> **辅助执行：** 先读 [optimize-qwen-h800](../../../skills/optimize-qwen-h800/SKILL.md)，从本工作流选择一个阶段和对应 T 编号。每次只做一个变量，不将整条工作流一起叠加测试。
+
 - 状态：`conditional`；后续 adaptive 阶段仍为 `blocked`。本卡承接 [T017](../tricks/T017-replayssm-fixed-precision.md) 与 [T015](../tricks/T015-adaptive-verification.md)，不新增 trick ID。
 - 更新：2026-11-20（Asia/Shanghai）；证据为 `literature` / 源码核验 / `hypothesis`，无 H800 实测。仓库基点 `be556f74a34d32daab28754183c1a1dff2823c2b`。
 

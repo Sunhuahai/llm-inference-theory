@@ -1,5 +1,7 @@
 # 第二轮实施任务书 · 三个大改方向
 
+> **执行方式更新：** 配合 [optimize-qwen-h800 参考 skill](../../skills/optimize-qwen-h800/SKILL.md) 逐阶段实施。新的十个候选已独立收录到 [Round 03](../../rounds/round-03/README.md)；此处保留第二轮工作流。
+
 更新：2026-11-20（Asia/Shanghai）。目标：用户现有 Qwen3.8-Flash-Next 8-bit / Qwen4Exp + H800。用户已反馈 Week 1 全部尝试，要求更激进、模型特定的研究，并进一步要求写成本周任务卡。
 
 **当前派发入口为 [R01–R03 任务卡](tasks/README.md)。** 本次将 GDN、PLE、MoE 三个大改方向拆成阶段任务；原 T016 HC 小 M 保留为短期独立实验。已有 T 编号和首轮历史保留，不把同一方向重复登记为新 trick。

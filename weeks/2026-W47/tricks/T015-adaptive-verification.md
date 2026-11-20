@@ -1,5 +1,7 @@
 # T015 · Qwen4Exp 动态验证预算：先解决 PLE 与 QSA 阻塞
 
+> **实施入口更新（2026-11-20）：** 先读 [optimize-qwen-h800 参考 skill](../../../skills/optimize-qwen-h800/SKILL.md)，再执行本卡的一个阶段。此卡属于 Round 02，用户未报告其全部尝试；当前新增十卡见 [Round 03](../../../rounds/round-03/README.md)。
+
 - 状态：`blocked`；降为后端移植储备，当前不能作为直接开启的第二优先实验。
 - 调研日期：2026-11-20；证据：`literature` + 源码静态核查 + `hypothesis`；没有 H800 实测。
 - 阻塞范围：下述固定 vLLM SHA 的 Qwen4Exp 路径；不代表其他引擎或未来版本普遍不可能。

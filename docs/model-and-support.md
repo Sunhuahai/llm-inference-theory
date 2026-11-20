@@ -2,7 +2,7 @@
 
 初次检索：2026-11-16；第二轮源码更新：2026-11-20。此处记录上游信息；用户部署环境见 [environment.yaml](../environment.yaml)，当前尚未登记。用户已反馈首轮尝试完成，不能将环境字段缺失解释为尚未部署。
 
-**当前研究入口：**[三张大改任务卡](../weeks/2026-W47/tasks/README.md)、[实施任务书](../weeks/2026-W47/agent-tasks-round-02.md)。初筛固定 vLLM `12924016eb8dbaae87d5163a1b7ec2614a44a797`，深入核查固定 `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d`；原[模型审计](../weeks/2026-W47/model-audit-round-02.md)保留其版本含义。当前为 GDN 状态主线、PLE trace 门槛和 MoE 条件储备，HC 小 M 另作短期实验。
+**当前研究入口：**[Round 03 的十张新卡](../rounds/round-03/README.md)、[参考 skill](../skills/optimize-qwen-h800/SKILL.md) 与[任务书](../rounds/round-03/agent-tasks.md)。新一轮参考 vLLM `cc23ce153ec82cdda7046fb0d8369f8cd4dfba4f`，逐卡说明新增点与现成实现的边界；这不是要求用户升级。第二轮的[模型审计](../weeks/2026-W47/model-audit-round-02.md)仍按 `12924016eb8dbaae87d5163a1b7ec2614a44a797` / `aefea5c8e00c47032cda6d0b75704f6cd0a7c66d` 保留历史含义。T001–T013 已[归档](../archive/round-01/README.md)，T014–T020 与 R01–R03 未被用户报告为全部完成。
 
 ## 一、目标模型
 
