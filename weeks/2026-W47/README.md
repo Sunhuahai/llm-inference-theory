@@ -1,10 +1,29 @@
-# 2026-W47 · 建立可信基线，筛选第一轮优化
+# 2026-W47 · 首轮反馈与 Qwen4Exp 第二轮专项
 
-日期：**2026-11-16—2026-11-22**（Asia/Shanghai）。调研完成日期：2026-11-16。
+日期：**2026-11-16—2026-11-22**（Asia/Shanghai）。首轮调研：2026-11-16；第二轮更新：2026-11-20。
 
-**当前没有 H800 实测数据。** 已建立 13 张候选卡片、测量协议与实施任务。部署卡数、框架、业务 trace 和基线仍待提供。
+**用户已反馈首轮全部尝试，当前进入第二轮。** 逐项成功/失败、运行 commit 和原始指标尚未归档；本轮研究没有运行 H800 实验。实际部署与首轮最佳配置由已有运行记录补齐，不从官方示例猜测。
 
-## 本周最值得先做的事
+## 当前推荐：只推进三项
+
+| 顺序 | 卡片 | 状态 | 触发条件 |
+|---|---|---|---|
+| 1 | [T016 HC 小 M 融合](tricks/T016-hc-small-m-fusion.md) | conditional | 小 M 上投影/门控仍分离，且 HC 占时可见 |
+| 2 | [T017 GDN 固定精度 ReplaySSM](tricks/T017-replayssm-fixed-precision.md) | conditional | 36 层状态写回/回滚是瓶颈，SM90 移植可保持原精度 |
+| 3 | [T020 PLE 精确缓存](tricks/T020-ple-exact-cache.md) | conditional | 局部 n-gram 有复用，且 host lookup/静态投影等待实际暴露 |
+
+直接交付：[第二轮任务书](agent-tasks-round-02.md)。判断依据：[第二轮研究](research-round-02.md)、[具体模型源码审计](model-audit-round-02.md)、[固定版本来源](sources-round-02.md)。
+
+| 储备 | 状态 | 为什么不列入本批 |
+|---|---|---|
+| [T014 head + sampling](tricks/T014-fused-lm-head-sampling.md) | conditional | 必须保留目标 MTP 验证所需 logits；部分 draft 接口可独立适配 |
+| [T015 adaptive verification](tricks/T015-adaptive-verification.md) | blocked | 当前审计 vLLM 的 PLE 与 QSA/indexer 有后端能力缺口 |
+| [T018 tile collective fusion](tricks/T018-tile-collective-fusion.md) | conditional | 先核实本模型 BF16 输出投影的实际等待；不搬用 MXFP8 路径 |
+| [T019 bounded expert workspace](tricks/T019-bounded-ep-workspace.md) | conditional | 先查实际 prepare/finalize、现有分桶与高水位，不重复已实现功能 |
+
+所有第二轮收益都相对首轮当前最佳有效配置；不把上游基准当成本机结果。第二轮仍发生在 W47，未提前创建 W48。
+
+## 首轮任务历史（保留，已尝试）
 
 1. **P0 环境与基线**：确认模型、H800/拓扑、实际 dtype、版本，查已有融合路径；产出可比较的 baseline。
 2. **P1 调度与 Graph**：依据 baseline 分别做 T001 或 T002 单变量试验；优先短/长请求混合时的尾延迟。
@@ -12,9 +31,11 @@
 
 **新增研究入口（2026-11-17）**：[前缀缓存命中、有限状态容量与上下文压缩的收益上界](../../theory/cache-context-ceilings.md)，附可运行合成回放与质量 gate；T008/T013 的真实收益均待实测。仅在真实长前缀重复或业务冗余充分时提升它们的优先级。
 
-直接交付入口：[实施任务书](agent-tasks.md)。完整研究判断：[research.md](research.md)。
+历史任务入口：[首轮任务书](agent-tasks.md)。历史研究判断：[research.md](research.md)。以上初始次序不再作为默认下一步。
 
-## 候选登记
+## 首轮登记快照
+
+下表状态是初始研究时的登记；整体尝试完成另以 `user_report` 记录。未得到逐项可复查结果前，不臆造成功/失败，不把研究状态当作仍未执行。
 
 | ID | 卡片 | 状态 | 决定先后顺序的条件 |
 |---|---|---|---|
@@ -35,8 +56,10 @@
 ## 记录入口
 
 - [反馈说明](feedback/README.md)
+- [首轮已尝试与本轮范围反馈](feedback/2026-11-20.md)
 - [结果说明](results/README.md)
 - [决策记录](decisions.md)
 - [一手来源索引](sources.md)
+- [第二轮来源与版本](sources-round-02.md)
 
 首周无 carry-over。每晚更新只补新增反馈和明确下一步；尚未运行的候选不写收益数字。
