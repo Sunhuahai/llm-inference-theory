@@ -20,6 +20,7 @@
 | 核对模型与数值边界 | [模型与支持](docs/model-and-support.md) · [第二轮源码审计](weeks/2026-W47/model-audit-round-02.md) |
 | 按统一口径测量 | [Benchmark 协议](docs/benchmark-protocol.md) |
 | 学习推理优化理论与实践方向 | [理论框架图解导读](theory/inference-optimization-framework.md) · [完整理论总纲](theory/llm-inference-optimization-theory.md) |
+| 调研 AI 自动优化推理 | [Agentic Inference Optimization 专题](theory/ai-driven-inference-optimization.md) |
 | 估算收益与天花板 | [优化预测方法](theory/optimization-benefit-prediction.md) · [可运行预测器](theory/predictor/README.md) |
 | 研究 prefix/上下文上界 | [专项理论与 trace 模型](theory/cache-context-ceilings.md) |
 | 看优化结构图 | [draw.io 与 SVG](theory/diagrams/README.md) |
