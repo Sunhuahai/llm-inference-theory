@@ -4,13 +4,15 @@
 > 日期：2026-11-24｜版本：v1.0｜性质：理论综述与条件性推导。  
 > 本文不绑定特定 checkpoint、硬件、引擎或并行拓扑，不提供未经实测的加速承诺。训练、后训练及通用集群运维不在研究范围内。
 
-## 理论总览
+## 理论总览：推理系统的全局关系
 
-[查看独立大图及阅读说明](diagrams/llm-inference-theory-overview.md) · [独立 SVG](diagrams/previews/llm-inference-theory-overview.svg)
+[查看独立大图及关系解读](diagrams/llm-inference-theory-overview.md) · [独立 SVG](diagrams/previews/llm-inference-theory-overview.svg)
 
-![LLM 推理优化理论总图：统一性能关系、六个理论支柱、跨理论耦合及评价目标](diagrams/previews/llm-inference-theory-overview.svg)
+![LLM 推理全局关系图：请求调度、Prefill/Decode、持久状态、算子与硬件资源、服务结果及跨模块耦合](diagrams/previews/llm-inference-theory-overview.svg)
 
-总图以单位有效输出的成本为中心：一次执行时间受计算、数据移动、通信与依赖约束；状态容量、质量与服务负载共同限定可行域。六个理论分别刻画不同的约束与优化机制，其收益通过批处理、状态和资源竞争相互耦合。图中的模块不是优化步骤，也不代表固定的优先级。
+这张图以真实的推理执行与资源共享关系为骨架。Prefill 建立状态，Decode 反复读取和追加状态；调度决定每批计算规模，状态容量反过来限制调度；算子与并行策略将工作映射到计算、带宽和互联资源；有效提交数、执行时间与等待共同决定服务指标。六个理论不是孤立分类，而是解释同一个系统不同部分的数学关系。
+
+图底部列出四个关键耦合：Batch 与权重/KV 成本，缓存与 Prefill/调度，投机生成与验证成本，并行与通信。理解这些关系才能判断局部优化为何会改变其他模块的瓶颈。图中执行箭头描述系统本身，而非规定优化流程。
 
 ## 摘要
 

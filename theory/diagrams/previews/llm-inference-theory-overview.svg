@@ -1,93 +1,128 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000" role="img" aria-labelledby="title desc">
-<title id="title">LLM 推理优化理论总图</title>
-<desc id="desc">统一性能方程连接六类理论：推理成本、计算访存平衡、状态复用、自回归生成、并行通信和服务效率；下方展示跨层耦合与优化目标。此图不依赖 Mermaid、LaTeX、脚本或外部资源。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1140" viewBox="0 0 1680 1140" role="img" aria-labelledby="title desc">
+<title id="title">LLM 推理全局关系图：任务、执行、状态、资源与服务</title>
+<desc id="desc">请求进入共享调度器。Prefill 创建状态并生成首 token；Decode 读取与更新状态，反复生成。调度决定每批 token 与资源分配，状态可用容量反过来限制调度。算子执行受计算、数据移动和通信边界约束。执行时间、生成数量、等待和干扰共同决定服务指标。底部说明批处理、缓存、自回归生成与并行的跨模块相互作用。</desc>
+<defs><marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#087F8A"/></marker><marker id="at-back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#087F8A"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#315F91"/></marker><marker id="ab-back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#315F91"/></marker><marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#67578E"/></marker><marker id="ap-back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#67578E"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#8598A8"/></marker><marker id="ag-back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#8598A8"/></marker></defs>
 <g font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Source Han Sans SC, Hiragino Sans GB, WenQuanYi Micro Hei, Arial, sans-serif">
-<rect x="0" y="0" width="1500" height="1000" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.5"/>
-<text x="48" y="52" font-size="37" fill="#11243B" font-weight="700" text-anchor="start">LLM 推理优化理论总图</text>
-<text x="1452" y="49" font-size="18" fill="#486176" font-weight="600" text-anchor="end">LLM INFERENCE OPTIMIZATION THEORY</text>
-<text x="49" y="83" font-size="22" fill="#516477" font-weight="400" text-anchor="start">模型与硬件无关 · 从资源边界到有效生成和服务效率</text>
-<rect x="48" y="107" width="1404" height="172" rx="12" fill="#102D46" stroke="none" stroke-width="1.5"/>
-<text x="76" y="140" font-size="25" fill="#F4FAFF" font-weight="700" text-anchor="start">统一性能关系  |  单位有效输出的资源成本</text>
-<text x="76" y="185" font-size="32" fill="#FFFFFF" font-weight="600" text-anchor="start" font-family="Arial, sans-serif">X = E[K] / E[Tcycle]</text>
-<text x="695" y="185" font-size="31" fill="#FFFFFF" font-weight="600" text-anchor="start" font-family="Arial, sans-serif">Tcycle ≥ max(F/P, D/B, C/β, S)</text>
-<text x="76" y="216" font-size="22" fill="#BBD3E7" font-weight="400" text-anchor="start">有效提交数 ÷ 生成周期时间</text>
-<text x="695" y="216" font-size="22" fill="#BBD3E7" font-weight="400" text-anchor="start">计算 · 数据移动 · 通信 · 依赖路径下界</text>
-<path d="M663 152 H663 V217" fill="none" stroke="#59788F" stroke-width="1" stroke-linecap="round"/>
-<path d="M76 233 H1424 V233" fill="none" stroke="#36546D" stroke-width="1" stroke-linecap="round"/>
-<text x="76" y="260" font-size="20" fill="#E0EFF9" font-weight="500" text-anchor="start">共同约束：M(t) ≤ Mavailable  ·  语义与质量  ·  负载与资源预算</text>
-<path d="M750 279 H750 V300" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
-<path d="M274 300 H1226 V300" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
-<path d="M274 300 H274 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
-<path d="M750 300 H750 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
-<path d="M1226 300 H1226 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
-<rect x="48" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="48" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
-<text x="72" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">01</text>
-<text x="116" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">推理成本理论</text>
-<text x="72" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">WORK &amp; DATA MOVEMENT</text>
-<path d="M72 401 H476 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="72" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">FD ≈ b f(ℓ)</text>
-<text x="72" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">DD ≈ w + b k(ℓ) + Dother</text>
-<text x="72" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">区分共享权重与独立状态成本</text>
-<text x="72" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：算子融合 / 减少计算与搬运</text>
-<path d="M274 548 H274 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
-<rect x="524" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="524" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
-<text x="548" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">02</text>
-<text x="592" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">计算–访存平衡</text>
-<text x="548" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">ROOFLINE &amp; BATCHING</text>
-<path d="M548 401 H952 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="548" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">X ≤ min(P/f, B/(w/b + k))</text>
-<text x="548" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">bWK = w/k</text>
-<text x="548" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">批处理摊薄权重，KV 限制极限</text>
-<text x="548" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：Batch / 算子效率</text>
-<path d="M750 548 H750 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
-<rect x="1000" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="1000" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
-<text x="1024" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">03</text>
-<text x="1068" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">状态复用与压缩</text>
-<text x="1024" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">STATE &amp; REUSE</text>
-<path d="M1024 401 H1428 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="1024" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">MKV ≈ bℓκ</text>
-<text x="1024" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">V = 节省重算 − 恢复与驻留代价</text>
-<text x="1024" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">容量与流量是不同约束</text>
-<text x="1024" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：KV / Prefix / 分页与复用</text>
-<path d="M1226 548 H1226 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
-<rect x="48" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="48" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
-<text x="72" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">04</text>
-<text x="116" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">自回归生成效率</text>
-<text x="72" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">EFFECTIVE GENERATION</text>
-<path d="M72 636 H476 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="72" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">E[K] = 1 + α + ⋯ + αᵞ</text>
-<text x="72" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">收益：E[K] &gt; E[Tcycle]/T₀</text>
-<text x="72" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">额外验证换取更少串行轮次</text>
-<text x="72" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：投机解码 / MTP</text>
-<rect x="524" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="524" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
-<text x="548" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">05</text>
-<text x="592" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">并行与通信理论</text>
-<text x="548" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">PARALLELISM &amp; COMMUNICATION</text>
-<path d="M548 636 H952 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="548" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">Tcomm ≈ nα + D/β</text>
-<text x="548" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">本地时间节省 &gt; 新增暴露开销</text>
-<text x="548" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">容量解除不等于延迟改善</text>
-<text x="548" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：TP / PP / EP / CP</text>
-<rect x="1000" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
-<rect x="1000" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
-<text x="1024" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">06</text>
-<text x="1068" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">推理服务效率</text>
-<text x="1024" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">SERVING &amp; GOODPUT</text>
-<path d="M1024 636 H1428 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
-<text x="1024" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">G = λ Pr(成功且 SLO 达标)</text>
-<text x="1024" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">E[T] = 1/(μ − λ)  (M/M/1)</text>
-<text x="1024" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">排队、干扰与尾延迟</text>
-<text x="1024" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：动态调度 / P-D 分离 / 路由</text>
-<rect x="48" y="804" width="1404" height="114" rx="12" fill="#F6F8FB" stroke="#D1DCE6" stroke-width="1.5"/>
-<text x="72" y="833" font-size="24" fill="#172F48" font-weight="700" text-anchor="start">跨理论耦合：优化会改变可行域，也会迁移瓶颈</text>
-<text x="72" y="866" font-size="22" fill="#263D55" font-weight="500" text-anchor="start">权重摊薄 ↔ KV 流量与容量 ↔ 活跃 Batch ↔ 计算 / 通信限制</text>
-<text x="72" y="895" font-size="22" fill="#263D55" font-weight="500" text-anchor="start">投机验证 ↔ 执行成本与资源竞争 ↔ 排队 / TTFT / TPOT / Goodput</text>
-<text x="48" y="952" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">评价目标</text>
-<text x="174" y="952" font-size="25" fill="#172B42" font-weight="600" text-anchor="start">TTFT  ·  TPOT / ITL  ·  输出吞吐  ·  SLO Goodput  ·  单位任务成本</text>
-<text x="48" y="978" font-size="16" fill="#536779" font-weight="400" text-anchor="start">注：公式为各自假设下的解析关系；Tcycle 的资源项为下界，示意耦合不代表固定的优化流程。</text>
+<rect x="0" y="0" width="1680" height="1140" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.5"/>
+<text x="48" y="50" font-size="39" fill="#172F47" font-weight="700" text-anchor="start">LLM 推理全局关系图</text>
+<text x="48" y="83" font-size="24" fill="#50677B" font-weight="400" text-anchor="start">从模型执行到在线服务：共享资源、持久状态与生成依赖如何共同决定性能</text>
+<text x="1632" y="49" font-size="18" fill="#50677B" font-weight="600" text-anchor="end">SYSTEM MAP  /  THEORY v1.1</text>
+<rect x="48" y="110" width="1584" height="80" rx="10" fill="#F2F6F9" stroke="#D6E0E8" stroke-width="1.5"/>
+<text x="70" y="137" font-size="19" fill="#50677B" font-weight="700" text-anchor="start">给定条件</text>
+<text x="70" y="166" font-size="25" fill="#172F47" font-weight="600" text-anchor="start">模型结构与语义</text>
+<text x="302" y="166" font-size="21" fill="#50677B" font-weight="400" text-anchor="start">决定 f、w、k、κ 及允许的近似</text>
+<polyline points="689,126 689,176" fill="none" stroke="#CCD9E3" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="719" y="137" font-size="19" fill="#50677B" font-weight="700" text-anchor="start">工作负载</text>
+<text x="719" y="166" font-size="22" fill="#172F47" font-weight="500" text-anchor="start">到达率 λ · 输入/输出长度 · 前缀共享 · 质量与 SLO</text>
+<polyline points="278,281 342,281" fill="none" stroke="#087F8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)"/>
+<polyline points="584,327 584,385" fill="none" stroke="#315F91" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ab)"/>
+<polyline points="1027,327 1027,385" fill="none" stroke="#315F91" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ab)"/>
+<polyline points="765,456 828,456" fill="none" stroke="#087F8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)"/>
+<polyline points="1198,456 1322,456" fill="none" stroke="#087F8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)"/>
+<polyline points="1198,290 1322,290" fill="none" stroke="#315F91" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ab)"/>
+<polyline points="541,525 541,585" fill="none" stroke="#087F8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)"/>
+<polyline points="981,525 981,585" fill="none" stroke="#087F8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)" marker-start="url(#at-back)"/>
+<polyline points="393,650 313,650 313,303 342,303" fill="none" stroke="#67578E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ap)"/>
+<polyline points="460,744 460,711" fill="none" stroke="#67578E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ap)"/>
+<polyline points="1112,744 1112,711" fill="none" stroke="#67578E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ap)"/>
+<polyline points="342,784 293,784 293,476 393,476" fill="none" stroke="#8598A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ag)"/>
+<polyline points="1248,784 1280,784 1280,481 1198,481" fill="none" stroke="#8598A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ag)"/>
+<rect x="48" y="226" width="230" height="110" rx="12" fill="#E8F5F5" stroke="#99C9CB" stroke-width="1.5"/>
+<text x="67" y="257" font-size="26" fill="#172F47" font-weight="700" text-anchor="start">请求入口</text>
+<text x="67" y="287" font-size="22" fill="#087F8A" font-weight="600" text-anchor="start">Prompt / 会话</text>
+<text x="67" y="314" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">到达与路由</text>
+<rect x="342" y="220" width="906" height="107" rx="12" fill="#EBF1F8" stroke="#A9BDD3" stroke-width="1.5"/>
+<text x="368" y="250" font-size="27" fill="#172F47" font-weight="700" text-anchor="start">⑥  在线调度与资源共享</text>
+<text x="368" y="280" font-size="23" fill="#315F91" font-weight="600" text-anchor="start">准入 · 路由 · 连续批处理 · Chunked Prefill · P/D 资源配置</text>
+<text x="368" y="308" font-size="22" fill="#50677B" font-weight="400" text-anchor="start">选择 Prefill token 数、活跃 Decode 序列数 b 与执行顺序</text>
+<rect x="393" y="385" width="372" height="140" rx="12" fill="#EAF6F6" stroke="#9BC9CB" stroke-width="1.5"/>
+<text x="415" y="419" font-size="29" fill="#172F47" font-weight="700" text-anchor="start">①  Prefill</text>
+<text x="415" y="451" font-size="23" fill="#087F8A" font-weight="600" text-anchor="start">已有前缀 m + 新输入 q</text>
+<text x="415" y="481" font-size="22" fill="#50677B" font-weight="400" text-anchor="start">建立状态；可产出首 token</text>
+<text x="415" y="509" font-size="21" fill="#50677B" font-weight="400" text-anchor="start">Fₚ 受 q、m 和模型结构影响</text>
+<rect x="828" y="385" width="370" height="140" rx="12" fill="#EAF6F6" stroke="#9BC9CB" stroke-width="1.5"/>
+<text x="850" y="419" font-size="27" fill="#172F47" font-weight="700" text-anchor="start">①  Decode  /  ④  生成</text>
+<text x="850" y="451" font-size="23" fill="#087F8A" font-weight="600" text-anchor="start">每周期提交 K 个有效 token</text>
+<text x="850" y="481" font-size="21" fill="#50677B" font-weight="400" text-anchor="start">读取状态 → 计算 → 追加状态</text>
+<text x="850" y="509" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">投机：提交量与验证成本同时变化</text>
+<text x="584" y="355" font-size="19" fill="#315F91" font-weight="600" text-anchor="middle">新输入预算</text>
+<text x="1027" y="355" font-size="19" fill="#315F91" font-weight="600" text-anchor="middle">活跃 batch</text>
+<text x="796" y="444" font-size="17" fill="#087F8A" font-weight="600" text-anchor="middle">交接</text>
+<text x="1259" y="445" font-size="18" fill="#087F8A" font-weight="600" text-anchor="middle">输出</text>
+<text x="1260" y="280" font-size="18" fill="#315F91" font-weight="600" text-anchor="middle">等待</text>
+<text x="555" y="560" font-size="19" fill="#087F8A" font-weight="600" text-anchor="start">写入</text>
+<text x="998" y="560" font-size="19" fill="#087F8A" font-weight="600" text-anchor="start">读 / 追加</text>
+<rect x="393" y="585" width="805" height="126" rx="12" fill="#F2EFF8" stroke="#C1B7D8" stroke-width="1.5"/>
+<text x="416" y="618" font-size="27" fill="#172F47" font-weight="700" text-anchor="start">③  持久状态与缓存</text>
+<text x="416" y="649" font-size="23" fill="#67578E" font-weight="600" text-anchor="start">KV / 混合状态 · Prefix 复用 · 分页 / 淘汰 / 恢复</text>
+<text x="416" y="680" font-size="22" fill="#50677B" font-weight="400" text-anchor="start">驻留容量 ≈ bℓκ；访问流量取决于 k(ℓ) 与共享方式</text>
+<text x="48" y="368" font-size="22" fill="#67578E" font-weight="700" text-anchor="start">状态反馈</text>
+<text x="48" y="399" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">容量限制可运行 batch</text>
+<text x="48" y="427" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">前缀命中改变新计算</text>
+<text x="48" y="455" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">路由与淘汰改变复用</text>
+<text x="48" y="560" font-size="22" fill="#50677B" font-weight="700" text-anchor="start">资源反馈</text>
+<text x="48" y="591" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">计算与访存限制步时</text>
+<text x="48" y="619" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">并行改变本地需求</text>
+<text x="48" y="647" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">通信决定暴露开销</text>
+<text x="480" y="733" font-size="18" fill="#67578E" font-weight="600" text-anchor="start">容量</text>
+<text x="1054" y="733" font-size="18" fill="#67578E" font-weight="600" text-anchor="start">流量</text>
+<rect x="342" y="744" width="906" height="118" rx="12" fill="#F1F4F7" stroke="#BFCDD9" stroke-width="1.5"/>
+<text x="365" y="776" font-size="26" fill="#172F47" font-weight="700" text-anchor="start">②  计算–访存平衡    ·    ⑤  并行与通信</text>
+<text x="365" y="807" font-size="23" fill="#50677B" font-weight="600" text-anchor="start">算子 / 编译 / 运行时  →  计算 P · 带宽 B · 容量 M · 互联 β</text>
+<text x="365" y="840" font-size="22" fill="#172F47" font-weight="500" text-anchor="start">Tcycle ≥ max(F/P, D/B, C/β, S) ；实际还受调度与执行开销限制</text>
+<rect x="1322" y="220" width="310" height="642" rx="12" fill="#F7F9FB" stroke="#CEDAE4" stroke-width="1.5"/>
+<text x="1345" y="252" font-size="28" fill="#172F47" font-weight="700" text-anchor="start">服务结果</text>
+<polyline points="1345,270 1609,270" fill="none" stroke="#CFDCE4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1345" y="305" font-size="25" fill="#315F91" font-weight="700" text-anchor="start">TTFT</text>
+<text x="1345" y="333" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">排队 + 首次生成路径</text>
+<text x="1345" y="363" font-size="19" fill="#50677B" font-weight="400" text-anchor="start">受前缀、Prefill 与调度影响</text>
+<polyline points="1345,386 1609,386" fill="none" stroke="#CFDCE4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1345" y="421" font-size="25" fill="#315F91" font-weight="700" text-anchor="start">TPOT / ITL</text>
+<text x="1345" y="449" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">Decode 周期与提交节奏</text>
+<text x="1345" y="479" font-size="19" fill="#50677B" font-weight="400" text-anchor="start">受验证、通信与干扰影响</text>
+<polyline points="1345,503 1609,503" fill="none" stroke="#CFDCE4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1345" y="539" font-size="25" fill="#315F91" font-weight="700" text-anchor="start">输出吞吐 X</text>
+<text x="1345" y="570" font-size="22" fill="#172F47" font-weight="600" text-anchor="start">X = E[K] / E[Tcycle]</text>
+<text x="1345" y="600" font-size="19" fill="#50677B" font-weight="400" text-anchor="start">稳定串行生成周期</text>
+<polyline points="1345,623 1609,623" fill="none" stroke="#CFDCE4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1345" y="658" font-size="25" fill="#315F91" font-weight="700" text-anchor="start">SLO Goodput</text>
+<text x="1345" y="689" font-size="22" fill="#172F47" font-weight="600" text-anchor="start">G = λ Pr(达标且成功)</text>
+<text x="1345" y="719" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">兼顾质量与尾延迟</text>
+<polyline points="1345,744 1609,744" fill="none" stroke="#CFDCE4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1345" y="780" font-size="22" fill="#172F47" font-weight="700" text-anchor="start">单位有效任务成本</text>
+<text x="1345" y="811" font-size="20" fill="#50677B" font-weight="400" text-anchor="start">资源时间 / 达标工作</text>
+<text x="48" y="905" font-size="27" fill="#172F47" font-weight="700" text-anchor="start">跨模块耦合：为什么同一优化在不同场景可能得到相反收益</text>
+<rect x="48" y="924" width="390" height="155" rx="9" fill="#F7F9FB" stroke="#D2DEE6" stroke-width="1.5"/>
+<rect x="48" y="924" width="390" height="5" rx="2" fill="#087F8A" stroke="none" stroke-width="1.5"/>
+<text x="63" y="955" font-size="22" fill="#087F8A" font-weight="700" text-anchor="start">A  Batch ↔ 状态 ↔ 带宽</text>
+<text x="63" y="985" font-size="20" fill="#172F47" font-weight="600" text-anchor="start">b ↑  →  权重成本 w/b ↓</text>
+<text x="63" y="1012" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">同时 bℓκ ↑，KV 流量 ↑</text>
+<text x="63" y="1039" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">容量 / 带宽限制 batch</text>
+<rect x="446" y="924" width="390" height="155" rx="9" fill="#F7F9FB" stroke="#D2DEE6" stroke-width="1.5"/>
+<rect x="446" y="924" width="390" height="5" rx="2" fill="#67578E" stroke="none" stroke-width="1.5"/>
+<text x="461" y="955" font-size="22" fill="#67578E" font-weight="700" text-anchor="start">B  缓存 ↔ Prefill ↔ 调度</text>
+<text x="461" y="985" font-size="20" fill="#172F47" font-weight="600" text-anchor="start">前缀命中 ↑  →  重算 ↓</text>
+<text x="461" y="1012" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">保留状态占容量，恢复有成本</text>
+<text x="461" y="1039" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">可用 batch 与等待随之改变</text>
+<rect x="844" y="924" width="390" height="155" rx="9" fill="#F7F9FB" stroke="#D2DEE6" stroke-width="1.5"/>
+<rect x="844" y="924" width="390" height="5" rx="2" fill="#087F8A" stroke="none" stroke-width="1.5"/>
+<text x="859" y="955" font-size="22" fill="#087F8A" font-weight="700" text-anchor="start">C  投机 ↔ 执行 ↔ 吞吐</text>
+<text x="859" y="985" font-size="20" fill="#172F47" font-weight="600" text-anchor="start">候选长度 ↑  →  E[K] 增长趋缓</text>
+<text x="859" y="1012" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">验证工作与资源占用也改变</text>
+<text x="859" y="1039" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">比较 E[K] / E[Tcycle]</text>
+<rect x="1242" y="924" width="390" height="155" rx="9" fill="#F7F9FB" stroke="#D2DEE6" stroke-width="1.5"/>
+<rect x="1242" y="924" width="390" height="5" rx="2" fill="#315F91" stroke="none" stroke-width="1.5"/>
+<text x="1257" y="955" font-size="22" fill="#315F91" font-weight="700" text-anchor="start">D  并行 ↔ 通信 ↔ 延迟</text>
+<text x="1257" y="985" font-size="20" fill="#172F47" font-weight="600" text-anchor="start">并行度 ↑  →  本地需求可下降</text>
+<text x="1257" y="1012" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">额外通信 / 同步可能增加</text>
+<text x="1257" y="1039" font-size="20" fill="#172F47" font-weight="400" text-anchor="start">比较暴露开销与节省时间</text>
+<polyline points="48,1102 84,1102" fill="none" stroke="#087F8A" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#at)"/>
+<text x="96" y="1108" font-size="18" fill="#50677B" font-weight="400" text-anchor="start">数据 / 状态流</text>
+<polyline points="258,1102 294,1102" fill="none" stroke="#315F91" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="306" y="1108" font-size="18" fill="#50677B" font-weight="400" text-anchor="start">调度与等待</text>
+<polyline points="474,1102 510,1102" fill="none" stroke="#67578E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ap)"/>
+<text x="522" y="1108" font-size="18" fill="#50677B" font-weight="400" text-anchor="start">状态 / 容量反馈</text>
+<polyline points="728,1102 764,1102" fill="none" stroke="#8598A8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#ag)"/>
+<text x="776" y="1108" font-size="18" fill="#50677B" font-weight="400" text-anchor="start">资源约束</text>
+<text x="1632" y="1108" font-size="17" fill="#50677B" font-weight="400" text-anchor="end">①–⑥ 对应理论正文六章；示意关系非固定优化流程。</text>
 </g></svg>

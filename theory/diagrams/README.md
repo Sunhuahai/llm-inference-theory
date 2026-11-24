@@ -12,7 +12,7 @@
 
 ![LLM 推理优化理论总图](previews/llm-inference-theory-overview.svg)
 
-这张独立总图与下方三页 H800 专项技术图互补，采用标准 SVG 预览，不属于原三页 draw.io 的自动生成产物。
+这张全局关系图以请求调度、Prefill/Decode、状态与执行资源的相互作用为主线，解释 Batch、缓存、投机与并行的跨层耦合。与下方三页 H800 专项技术图互补，采用标准 SVG 预览，不属于原三页 draw.io 的自动生成产物。
 
 ## 01 · 推理性能分解与瓶颈识别
 
