@@ -6,6 +6,14 @@
 
 **[下载三页 draw.io 源文件](inference-optimization-map.drawio)** · 画布 1920×1080 · 原生 mxCell、文字、连线、表格均可单独编辑。
 
+## 理论总览（模型与硬件无关）
+
+[LLM 推理优化理论总图](llm-inference-theory-overview.md) · [完整理论总纲](../llm-inference-optimization-theory.md)
+
+![LLM 推理优化理论总图](previews/llm-inference-theory-overview.svg)
+
+这张独立总图与下方三页 H800 专项技术图互补，采用标准 SVG 预览，不属于原三页 draw.io 的自动生成产物。
+
 ## 01 · 推理性能分解与瓶颈识别
 
 [查看独立 SVG](previews/01-performance.svg)

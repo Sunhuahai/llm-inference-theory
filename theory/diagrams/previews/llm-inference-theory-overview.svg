@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000" role="img" aria-labelledby="title desc">
+<title id="title">LLM 推理优化理论总图</title>
+<desc id="desc">统一性能方程连接六类理论：推理成本、计算访存平衡、状态复用、自回归生成、并行通信和服务效率；下方展示跨层耦合与优化目标。此图不依赖 Mermaid、LaTeX、脚本或外部资源。</desc>
+<g font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Source Han Sans SC, Hiragino Sans GB, WenQuanYi Micro Hei, Arial, sans-serif">
+<rect x="0" y="0" width="1500" height="1000" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.5"/>
+<text x="48" y="52" font-size="37" fill="#11243B" font-weight="700" text-anchor="start">LLM 推理优化理论总图</text>
+<text x="1452" y="49" font-size="18" fill="#486176" font-weight="600" text-anchor="end">LLM INFERENCE OPTIMIZATION THEORY</text>
+<text x="49" y="83" font-size="22" fill="#516477" font-weight="400" text-anchor="start">模型与硬件无关 · 从资源边界到有效生成和服务效率</text>
+<rect x="48" y="107" width="1404" height="172" rx="12" fill="#102D46" stroke="none" stroke-width="1.5"/>
+<text x="76" y="140" font-size="25" fill="#F4FAFF" font-weight="700" text-anchor="start">统一性能关系  |  单位有效输出的资源成本</text>
+<text x="76" y="185" font-size="32" fill="#FFFFFF" font-weight="600" text-anchor="start" font-family="Arial, sans-serif">X = E[K] / E[Tcycle]</text>
+<text x="695" y="185" font-size="31" fill="#FFFFFF" font-weight="600" text-anchor="start" font-family="Arial, sans-serif">Tcycle ≥ max(F/P, D/B, C/β, S)</text>
+<text x="76" y="216" font-size="22" fill="#BBD3E7" font-weight="400" text-anchor="start">有效提交数 ÷ 生成周期时间</text>
+<text x="695" y="216" font-size="22" fill="#BBD3E7" font-weight="400" text-anchor="start">计算 · 数据移动 · 通信 · 依赖路径下界</text>
+<path d="M663 152 H663 V217" fill="none" stroke="#59788F" stroke-width="1" stroke-linecap="round"/>
+<path d="M76 233 H1424 V233" fill="none" stroke="#36546D" stroke-width="1" stroke-linecap="round"/>
+<text x="76" y="260" font-size="20" fill="#E0EFF9" font-weight="500" text-anchor="start">共同约束：M(t) ≤ Mavailable  ·  语义与质量  ·  负载与资源预算</text>
+<path d="M750 279 H750 V300" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
+<path d="M274 300 H1226 V300" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
+<path d="M274 300 H274 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
+<path d="M750 300 H750 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
+<path d="M1226 300 H1226 V330" fill="none" stroke="#879EAE" stroke-width="2" stroke-linecap="round"/>
+<rect x="48" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="48" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
+<text x="72" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">01</text>
+<text x="116" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">推理成本理论</text>
+<text x="72" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">WORK &amp; DATA MOVEMENT</text>
+<path d="M72 401 H476 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="72" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">FD ≈ b f(ℓ)</text>
+<text x="72" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">DD ≈ w + b k(ℓ) + Dother</text>
+<text x="72" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">区分共享权重与独立状态成本</text>
+<text x="72" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：算子融合 / 减少计算与搬运</text>
+<path d="M274 548 H274 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="524" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="524" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
+<text x="548" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">02</text>
+<text x="592" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">计算–访存平衡</text>
+<text x="548" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">ROOFLINE &amp; BATCHING</text>
+<path d="M548 401 H952 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="548" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">X ≤ min(P/f, B/(w/b + k))</text>
+<text x="548" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">bWK = w/k</text>
+<text x="548" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">批处理摊薄权重，KV 限制极限</text>
+<text x="548" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：Batch / 算子效率</text>
+<path d="M750 548 H750 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="1000" y="330" width="452" height="218" rx="12" fill="#EDF7F8" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="1000" y="330" width="8" height="218" rx="4" fill="#146C80" stroke="none" stroke-width="1.5"/>
+<text x="1024" y="362" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">03</text>
+<text x="1068" y="363" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">状态复用与压缩</text>
+<text x="1024" y="388" font-size="15" fill="#526779" font-weight="600" text-anchor="start">STATE &amp; REUSE</text>
+<path d="M1024 401 H1428 V401" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="1024" y="433" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">MKV ≈ bℓκ</text>
+<text x="1024" y="464" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">V = 节省重算 − 恢复与驻留代价</text>
+<text x="1024" y="498" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">容量与流量是不同约束</text>
+<text x="1024" y="527" font-size="20" fill="#146C80" font-weight="600" text-anchor="start">方向：KV / Prefix / 分页与复用</text>
+<path d="M1226 548 H1226 V565" fill="none" stroke="#A1B3C1" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="48" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="48" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
+<text x="72" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">04</text>
+<text x="116" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">自回归生成效率</text>
+<text x="72" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">EFFECTIVE GENERATION</text>
+<path d="M72 636 H476 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="72" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">E[K] = 1 + α + ⋯ + αᵞ</text>
+<text x="72" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">收益：E[K] &gt; E[Tcycle]/T₀</text>
+<text x="72" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">额外验证换取更少串行轮次</text>
+<text x="72" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：投机解码 / MTP</text>
+<rect x="524" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="524" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
+<text x="548" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">05</text>
+<text x="592" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">并行与通信理论</text>
+<text x="548" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">PARALLELISM &amp; COMMUNICATION</text>
+<path d="M548 636 H952 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="548" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">Tcomm ≈ nα + D/β</text>
+<text x="548" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">本地时间节省 &gt; 新增暴露开销</text>
+<text x="548" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">容量解除不等于延迟改善</text>
+<text x="548" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：TP / PP / EP / CP</text>
+<rect x="1000" y="565" width="452" height="218" rx="12" fill="#EEF3FA" stroke="#CFDCE7" stroke-width="1.5"/>
+<rect x="1000" y="565" width="8" height="218" rx="4" fill="#325E91" stroke="none" stroke-width="1.5"/>
+<text x="1024" y="597" font-size="21" fill="#325E91" font-weight="700" text-anchor="start">06</text>
+<text x="1068" y="598" font-size="27" fill="#162C42" font-weight="700" text-anchor="start">推理服务效率</text>
+<text x="1024" y="623" font-size="15" fill="#526779" font-weight="600" text-anchor="start">SERVING &amp; GOODPUT</text>
+<path d="M1024 636 H1428 V636" fill="none" stroke="#C5D5E0" stroke-width="1" stroke-linecap="round"/>
+<text x="1024" y="668" font-size="23" fill="#173F61" font-weight="600" text-anchor="start">G = λ Pr(成功且 SLO 达标)</text>
+<text x="1024" y="699" font-size="22" fill="#173F61" font-weight="500" text-anchor="start">E[T] = 1/(μ − λ)  (M/M/1)</text>
+<text x="1024" y="733" font-size="21" fill="#263C50" font-weight="500" text-anchor="start">排队、干扰与尾延迟</text>
+<text x="1024" y="762" font-size="20" fill="#325E91" font-weight="600" text-anchor="start">方向：动态调度 / P-D 分离 / 路由</text>
+<rect x="48" y="804" width="1404" height="114" rx="12" fill="#F6F8FB" stroke="#D1DCE6" stroke-width="1.5"/>
+<text x="72" y="833" font-size="24" fill="#172F48" font-weight="700" text-anchor="start">跨理论耦合：优化会改变可行域，也会迁移瓶颈</text>
+<text x="72" y="866" font-size="22" fill="#263D55" font-weight="500" text-anchor="start">权重摊薄 ↔ KV 流量与容量 ↔ 活跃 Batch ↔ 计算 / 通信限制</text>
+<text x="72" y="895" font-size="22" fill="#263D55" font-weight="500" text-anchor="start">投机验证 ↔ 执行成本与资源竞争 ↔ 排队 / TTFT / TPOT / Goodput</text>
+<text x="48" y="952" font-size="21" fill="#146C80" font-weight="700" text-anchor="start">评价目标</text>
+<text x="174" y="952" font-size="25" fill="#172B42" font-weight="600" text-anchor="start">TTFT  ·  TPOT / ITL  ·  输出吞吐  ·  SLO Goodput  ·  单位任务成本</text>
+<text x="48" y="978" font-size="16" fill="#536779" font-weight="400" text-anchor="start">注：公式为各自假设下的解析关系；Tcycle 的资源项为下界，示意耦合不代表固定的优化流程。</text>
+</g></svg>
