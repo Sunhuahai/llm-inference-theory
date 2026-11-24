@@ -23,7 +23,7 @@
 | Theory | [图解导读](theory/README.md) · [完整理论总纲](theory/foundations/unified-theory.md) · [章节索引](theory/INDEX.md) |
 | Models | [性能建模](models/README.md) · [已有 Python 预测器](models/predictor/README.md) |
 | Optimizer | [理论驱动自主优化研究](optimizer/README.md)（设计阶段） |
-| Research | [文献与业界研究](research/README.md) · [开放问题](research/open-problems/README.md) |
+| Research | [文献与业界研究](research/README.md) · [AI 自主优化图解导读](research/industry/agentic-inference-optimization-guide.md) · [开放问题](research/open-problems/README.md) |
 | Experiments | [理论验证](experiments/README.md) · [Qwen/H800 案例](experiments/case-studies/qwen-h800/README.md) |
 | Visualizations | [图谱与可视化](visualizations/README.md) |
 | Roadmap | [研究路线](docs/roadmap.md) · [符号体系](docs/notation.md) · [研究方法](docs/methodology.md) |
