@@ -1,57 +1,47 @@
-# Qwen3.8-Flash-Next · H800 推理优化笔记
+# LLM Inference Theory
 
-围绕固定模型与全部实际精度，研究 **TTFT、TPOT、输出吞吐量与总 token 吞吐量**，把可核对的方案交给实施 Agent。
+**Understanding the limits. Modeling performance. Optimizing intelligently.**
 
-**当前：Round 03（2026-11-20）。T001–T013 已按用户反馈归档，新增 T021–T030 共 10 项，并提供逐阶段执行的参考 skill。** 日期仍在 2026-W47；实验轮次独立递增。归档表示“用户已尝试”，不表示全部失败或已验证成功。
+大语言模型推理优化理论研究：建立模型与硬件无关的资源成本、性能边界、优化收益与耦合关系，探索理论驱动的自主优化。
 
-目标研究对象为 [`Qwen/Qwen3.8-Flash-Next-FP8`](https://huggingface.co/Qwen/Qwen3.8-Flash-Next-FP8) / `Qwen4Exp` / **H800**。实际部署身份、revision、引擎、卡数和 dtype 以用户已有运行记录为准；[环境清单](environment.yaml) 的未知项不从官方示例补猜。本轮仅完成研究与任务设计，没有运行 H800 实验。
+[![推理优化理论全景思维导图](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg)](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg)
 
-## 当前入口
+[高清全景图](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg) · [可编辑 draw.io](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.drawio) · [全局关系图](visualizations/diagrams/llm-inference-theory-overview.md)
 
-| 目的 | 入口 |
-|---|---|
-| 看本轮十个新增 trick、条件和优先顺序 | [Round 03](rounds/round-03/README.md) |
-| 让实施模型按步骤工作 | [optimize-qwen-h800 参考 skill](skills/optimize-qwen-h800/SKILL.md) |
-| 直接复制交接任务 | [Round 03 任务书](rounds/round-03/agent-tasks.md) |
-| 查排重、工程边界与负证据 | [研究判断](rounds/round-03/research.md) · [固定来源](rounds/round-03/sources.md) |
-| 查首轮 T001–T013 原文 | [Round 01 归档](archive/round-01/README.md) |
-| 继续第二轮 T014–T020 / R01–R03 | [第二轮研究](weeks/2026-W47/research-round-02.md) · [三张大改任务卡](weeks/2026-W47/tasks/README.md) |
-| 查本周反馈、结果和决策 | [2026-W47 日期目录](weeks/2026-W47/README.md) |
-| 核对模型与数值边界 | [模型与支持](docs/model-and-support.md) · [第二轮源码审计](weeks/2026-W47/model-audit-round-02.md) |
-| 按统一口径测量 | [Benchmark 协议](docs/benchmark-protocol.md) |
-| 学习推理优化理论与实践方向 | [理论框架图解导读](theory/inference-optimization-framework.md) · [完整理论总纲](theory/llm-inference-optimization-theory.md) |
-| 调研 AI 自动优化推理 | [Agentic Inference Optimization 专题](theory/ai-driven-inference-optimization.md) |
-| 估算收益与天花板 | [优化预测方法](theory/optimization-benefit-prediction.md) · [可运行预测器](theory/predictor/README.md) |
-| 研究 prefix/上下文上界 | [专项理论与 trace 模型](theory/cache-context-ceilings.md) |
-| 看优化结构图 | [draw.io 与 SVG](theory/diagrams/README.md) |
-| 提交反馈与维护 | [反馈模板](templates/feedback.md) · [反馈闭环](docs/feedback-loop.md) |
+## 研究问题
 
-## Round 03：先核对三个可否决的入口
+1. 给定模型、硬件与负载，推理性能的物理和算法极限是什么？
+2. 如何建立可解释、可校准、可组合的性能预测模型？
+3. 如何预测优化的边际收益、瓶颈迁移和多策略耦合？
+4. 如何利用理论提高自主优化 Agent 的搜索效率？
+5. 如何通过独立实验验证或否定理论假设？
 
-1. **T027 完整 logits 分片**：核对本模型接口、实际 TP/采样行数与 NCCL 额外内存；有明确公开修复入口，收益仍取决于负载。
-2. **T021 QSA score→精确 top-k 融合**：只在索引打分/选择是实际瓶颈时实现 H800 分页 kernel，保持原索引语义。
-3. **T029 状态页物理打包**：先用 CPU 做 raw/padded 页账本，确认总池容量会下降，再动 allocator。
+## 研究入口
 
-这三个是条件顺序，不是承诺收益。其余七项和逐卡触发条件见 [完整十卡表](rounds/round-03/README.md)。首轮最佳有效配置继续作基线；不从最初调度/Graph 开关重新试起。第二轮未被用户报告为全部完成，原研究继续保留。
+| 主线 | 内容与入口 |
+| --- | --- |
+| Theory | [图解导读](theory/README.md) · [完整理论总纲](theory/foundations/unified-theory.md) · [章节索引](theory/INDEX.md) |
+| Models | [性能建模](models/README.md) · [已有 Python 预测器](models/predictor/README.md) |
+| Optimizer | [理论驱动自主优化研究](optimizer/README.md)（设计阶段） |
+| Research | [文献与业界研究](research/README.md) · [开放问题](research/open-problems/README.md) |
+| Experiments | [理论验证](experiments/README.md) · [Qwen/H800 案例](experiments/case-studies/qwen-h800/README.md) |
+| Visualizations | [图谱与可视化](visualizations/README.md) |
+| Roadmap | [研究路线](docs/roadmap.md) · [符号体系](docs/notation.md) · [研究方法](docs/methodology.md) |
 
-## 参考 skill 怎样使用
+## 统一理论与性能建模
 
-让执行模型先读 `skills/optimize-qwen-h800/SKILL.md`，再指定一张任务卡和实际推理仓库。Skill 提供 S0–S5 固定流程、条件分支、精度与混合状态合同、计划模板、结构检查脚本和证据交付格式。支持显式 skill 调用的工具可用 `$optimize-qwen-h800`；其余工具直接读取文件。
+![推理优化的统一理论框架](visualizations/diagrams/framework-guide/07-unified-model.svg)
 
-[任务书](rounds/round-03/agent-tasks.md) 已给出完整可复制提示词。每次只实施一个变量，缺少前提时完成可做的分析并准确报告阻塞。
+理论描述工作量和资源边界；模型将它们转化为可计算的预测；自主优化利用预测缩小搜索空间；实验提供独立证据并反向修正理论。通用理论不绑定 checkpoint、引擎或加速器。案例实验必须明确精度、任务语义和资源预算。
 
-## 分工与证据
+## 当前研究状态
 
-- **研究 Agent**：核对一手来源和当前代码，解释机制、适用条件、负证据，写任务卡。
-- **实施 Agent**：在用户指定的推理仓库实现、验证、测试与回滚，提交真实代码和运行证据。
-- **用户反馈**：可先给现象；缺失字段保留 unknown，不要求先整理完整报告。
+- 已有：统一理论综述、图解导读、前缀及状态复用推导、初步收益预测器、业界性能建模及自主优化研究。
+- 研究中：跨负载性能极限、可校准的模型组合、优化耦合与性能瓶颈相图。
+- 规划：理论指导的自主优化控制器、独立实验评价和跨模型/硬件验证。尚无通用自主优化器或新增 GPU 实测结论。
 
-本仓库存研究、任务书、参考 skill 与脱敏结果。状态与来源分开记录；`user_report / attempted` 不自动升级为 `validated`。具体度量遵循统一协议：TTFT/TPOT 报尾分位，吞吐附实际输出长度、错误与总 GPU 预算，原始证据可定位。
+## 历史与维护
 
-## 实验批次与日期
+原 Qwen/H800 优化研究完整保存在 [历史快照](archive/qwen-h800-tricks/README.md)，仅作为研究案例和负面证据，不再以收集 Tricks 或轮次为主线。旧 Git 历史保留。项目维护遵循 [AGENTS.md](AGENTS.md)。
 
-- `rounds/round-03/` 表示第三批研究，不依赖周号递增。
-- `archive/round-01/` 保存已尝试的首轮内容；旧链接保留跳转。
-- `weeks/YYYY-Www/` 按 **Asia/Shanghai 的 ISO 周**保存日期、反馈、结果和决策。2026-11-20 属于 2026-W47（11 月 16–22 日）。
-
-跨周继续同一 trick 时沿用 ID；不复制成“新发现”。维护规范见 [AGENTS.md](AGENTS.md)。
+**证据原则：** 理论下界、近似预测、文献报告、用户反馈和独立实测不可互相替代。所有新的性能结论应可复现。

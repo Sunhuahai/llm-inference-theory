@@ -91,7 +91,7 @@ post_first_chunk_ms_per_token = (e_i - f_i) / (O_i - m_i)
 
 ## 5. 文件与证据
 
-每个 `env_id`/`workload_id` 应能定位到固定 manifest；其中保存长命令、版本、数据/采样、SLO 和缓存设置。逐次结果使用 [CSV 表头](../templates/result.csv)，每晚提交 [反馈模板](../templates/feedback.md)。CSV 一行对应一次重复，缺失指标留空；解释写 `notes`，不使用 0 表示未知。
+每个 `env_id`/`workload_id` 应能定位到固定 manifest；其中保存长命令、版本、数据/采样、SLO 和缓存设置。逐次结果使用 [CSV 表头](../archive/qwen-h800-tricks/templates/result.csv)，每晚提交 [反馈模板](../archive/qwen-h800-tricks/templates/feedback.md)。CSV 一行对应一次重复，缺失指标留空；解释写 `notes`，不使用 0 表示未知。
 
 `evidence_origin` 区分 `user_report`、`agent_measured`、`literature`（上游资料）、`hypothesis`；只有前两类进入本项目性能对照，文献结果保留其原硬件与条件。`artifact_ref` 链接原始统计/脱敏日志，`config_git_sha` 对应实际运行配置。`gpu_budget_gpus` 为该服务总卡数，`peak_gpu_mem_gib` 为各卡显存峰值的最大值；各卡明细存附件。`quality_pass` 取 true/false/unknown。
 

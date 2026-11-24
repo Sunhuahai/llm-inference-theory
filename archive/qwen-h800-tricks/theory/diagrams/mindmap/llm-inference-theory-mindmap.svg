@@ -1,0 +1,480 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4400" height="2910" viewBox="0 0 4400 2910" role="img" aria-labelledby="title desc"><title id="title">LLM 推理优化理论全景思维导图</title><desc id="desc">六个理论主分支、二十四个二级主题、九十六个知识节点；中央统一性能关系，下方八组跨层耦合。适合缩放阅读。</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#889BAC"/></marker><marker id="back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#889BAC"/></marker></defs><g font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, Source Han Sans SC, Hiragino Sans GB, WenQuanYi Micro Hei, Arial, sans-serif">
+<rect width="4400" height="2910" fill="#FFFFFF"/>
+<text x="50" y="84" font-size="52" font-weight="700" fill="#152C43" text-anchor="start">LLM 推理优化理论全景思维导图</text>
+<text x="54" y="136" font-size="29" font-weight="400" fill="#52677A" text-anchor="start">六大理论 · 24 个二级主题 · 96 个知识节点 · 8 组跨层耦合</text>
+<text x="3920" y="68" font-size="24" font-weight="600" fill="#52677A" text-anchor="middle">INFERENCE THEORY ATLAS  /  v1.2</text>
+<polyline points="1830,562 1860,562 1860,1257 1900,1257" fill="none" stroke="#137A82" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,562 1350,562 1350,288 1280,288" fill="none" stroke="#137A82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,288 765,288 765,230 730,230" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,288 765,288 765,268 730,268" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,288 765,288 765,306 730,306" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,288 765,288 765,344 730,344" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,562 1350,562 1350,468 1280,468" fill="none" stroke="#137A82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,468 765,468 765,410 730,410" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,468 765,468 765,448 730,448" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,468 765,468 765,486 730,486" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,468 765,468 765,524 730,524" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,562 1350,562 1350,648 1280,648" fill="none" stroke="#137A82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,648 765,648 765,590 730,590" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,648 765,648 765,628 730,628" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,648 765,648 765,666 730,666" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,648 765,648 765,704 730,704" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,562 1350,562 1350,828 1280,828" fill="none" stroke="#137A82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,828 765,828 765,770 730,770" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,828 765,828 765,808 730,808" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,828 765,828 765,846 730,846" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,828 765,828 765,884 730,884" fill="none" stroke="#137A82" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1830,1332 1860,1332 1860,1329 1900,1329" fill="none" stroke="#25619B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,1332 1350,1332 1350,1058 1280,1058" fill="none" stroke="#25619B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1058 765,1058 765,1000 730,1000" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1058 765,1058 765,1038 730,1038" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1058 765,1058 765,1076 730,1076" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1058 765,1058 765,1114 730,1114" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,1332 1350,1332 1350,1238 1280,1238" fill="none" stroke="#25619B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1238 765,1238 765,1180 730,1180" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1238 765,1238 765,1218 730,1218" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1238 765,1238 765,1256 730,1256" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1238 765,1238 765,1294 730,1294" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,1332 1350,1332 1350,1418 1280,1418" fill="none" stroke="#25619B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1418 765,1418 765,1360 730,1360" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1418 765,1418 765,1398 730,1398" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1418 765,1418 765,1436 730,1436" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1418 765,1418 765,1474 730,1474" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,1332 1350,1332 1350,1598 1280,1598" fill="none" stroke="#25619B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1598 765,1598 765,1540 730,1540" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1598 765,1598 765,1578 730,1578" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1598 765,1598 765,1616 730,1616" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1598 765,1598 765,1654 730,1654" fill="none" stroke="#25619B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1830,2102 1860,2102 1860,1401 1900,1401" fill="none" stroke="#7153A3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,2102 1350,2102 1350,1828 1280,1828" fill="none" stroke="#7153A3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1828 765,1828 765,1770 730,1770" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1828 765,1828 765,1808 730,1808" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1828 765,1828 765,1846 730,1846" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,1828 765,1828 765,1884 730,1884" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,2102 1350,2102 1350,2008 1280,2008" fill="none" stroke="#7153A3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2008 765,2008 765,1950 730,1950" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2008 765,2008 765,1988 730,1988" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2008 765,2008 765,2026 730,2026" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2008 765,2008 765,2064 730,2064" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,2102 1350,2102 1350,2188 1280,2188" fill="none" stroke="#7153A3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2188 765,2188 765,2130 730,2130" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2188 765,2188 765,2168 730,2168" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2188 765,2188 765,2206 730,2206" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2188 765,2188 765,2244 730,2244" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1420,2102 1350,2102 1350,2368 1280,2368" fill="none" stroke="#7153A3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2368 765,2368 765,2310 730,2310" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2368 765,2368 765,2348 730,2348" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2368 765,2368 765,2386 730,2386" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,2368 765,2368 765,2424 730,2424" fill="none" stroke="#7153A3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2570,562 2540,562 2540,1257 2500,1257" fill="none" stroke="#16805E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,562 3050,562 3050,288 3120,288" fill="none" stroke="#16805E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,288 3635,288 3635,230 3670,230" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,288 3635,288 3635,268 3670,268" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,288 3635,288 3635,306 3670,306" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,288 3635,288 3635,344 3670,344" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,562 3050,562 3050,468 3120,468" fill="none" stroke="#16805E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,468 3635,468 3635,410 3670,410" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,468 3635,468 3635,448 3670,448" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,468 3635,468 3635,486 3670,486" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,468 3635,468 3635,524 3670,524" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,562 3050,562 3050,648 3120,648" fill="none" stroke="#16805E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,648 3635,648 3635,590 3670,590" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,648 3635,648 3635,628 3670,628" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,648 3635,648 3635,666 3670,666" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,648 3635,648 3635,704 3670,704" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,562 3050,562 3050,828 3120,828" fill="none" stroke="#16805E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,828 3635,828 3635,770 3670,770" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,828 3635,828 3635,808 3670,808" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,828 3635,828 3635,846 3670,846" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,828 3635,828 3635,884 3670,884" fill="none" stroke="#16805E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2570,1332 2540,1332 2540,1329 2500,1329" fill="none" stroke="#A26821" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,1332 3050,1332 3050,1058 3120,1058" fill="none" stroke="#A26821" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1058 3635,1058 3635,1000 3670,1000" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1058 3635,1058 3635,1038 3670,1038" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1058 3635,1058 3635,1076 3670,1076" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1058 3635,1058 3635,1114 3670,1114" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,1332 3050,1332 3050,1238 3120,1238" fill="none" stroke="#A26821" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1238 3635,1238 3635,1180 3670,1180" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1238 3635,1238 3635,1218 3670,1218" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1238 3635,1238 3635,1256 3670,1256" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1238 3635,1238 3635,1294 3670,1294" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,1332 3050,1332 3050,1418 3120,1418" fill="none" stroke="#A26821" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1418 3635,1418 3635,1360 3670,1360" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1418 3635,1418 3635,1398 3670,1398" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1418 3635,1418 3635,1436 3670,1436" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1418 3635,1418 3635,1474 3670,1474" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,1332 3050,1332 3050,1598 3120,1598" fill="none" stroke="#A26821" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1598 3635,1598 3635,1540 3670,1540" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1598 3635,1598 3635,1578 3670,1578" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1598 3635,1598 3635,1616 3670,1616" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1598 3635,1598 3635,1654 3670,1654" fill="none" stroke="#A26821" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2570,2102 2540,2102 2540,1401 2500,1401" fill="none" stroke="#B24D53" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,2102 3050,2102 3050,1828 3120,1828" fill="none" stroke="#B24D53" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1828 3635,1828 3635,1770 3670,1770" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1828 3635,1828 3635,1808 3670,1808" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1828 3635,1828 3635,1846 3670,1846" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,1828 3635,1828 3635,1884 3670,1884" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,2102 3050,2102 3050,2008 3120,2008" fill="none" stroke="#B24D53" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2008 3635,2008 3635,1950 3670,1950" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2008 3635,2008 3635,1988 3670,1988" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2008 3635,2008 3635,2026 3670,2026" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2008 3635,2008 3635,2064 3670,2064" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,2102 3050,2102 3050,2188 3120,2188" fill="none" stroke="#B24D53" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2188 3635,2188 3635,2130 3670,2130" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2188 3635,2188 3635,2168 3670,2168" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2188 3635,2188 3635,2206 3670,2206" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2188 3635,2188 3635,2244 3670,2244" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="2980,2102 3050,2102 3050,2368 3120,2368" fill="none" stroke="#B24D53" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2368 3635,2368 3635,2310 3670,2310" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2368 3635,2368 3635,2348 3670,2348" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2368 3635,2368 3635,2386 3670,2386" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="3580,2368 3635,2368 3635,2424 3670,2424" fill="none" stroke="#B24D53" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1625,499 1625,412 2775,412 2775,499" fill="none" stroke="#889BAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<rect id="crossBg0" x="1890" y="387" width="620" height="50" rx="10" fill="#FFFFFF" stroke="#D5DFE6" stroke-width="2"/>
+<text x="2200" y="418" font-size="23" font-weight="600" fill="#536A7C" text-anchor="middle">① ↔ ④   单次执行成本 × 有效提交</text>
+<polyline points="1625,1269 1625,1182 2775,1182 2775,1269" fill="none" stroke="#889BAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<rect id="crossBg1" x="1890" y="1157" width="620" height="50" rx="10" fill="#FFFFFF" stroke="#D5DFE6" stroke-width="2"/>
+<text x="2200" y="1188" font-size="23" font-weight="600" fill="#536A7C" text-anchor="middle">② ↔ ⑤   本地资源收益 × 通信代价</text>
+<polyline points="1625,2039 1625,1952 2775,1952 2775,2039" fill="none" stroke="#889BAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 8" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<rect id="crossBg2" x="1890" y="1927" width="620" height="50" rx="10" fill="#FFFFFF" stroke="#D5DFE6" stroke-width="2"/>
+<text x="2200" y="1958" font-size="23" font-weight="600" fill="#536A7C" text-anchor="middle">③ ↔ ⑥   状态容量 / 复用 × 调度</text>
+<rect id="root" x="1900" y="1195" width="600" height="270" rx="20" fill="#15364E" stroke="#15364E" stroke-width="2"/>
+<text x="2200" y="1259.5" font-size="43" font-weight="700" fill="#FFFFFF" text-anchor="middle">LLM 推理优化理论</text>
+<text x="2200" y="1312.5" font-size="29" font-weight="600" fill="#D6EDF6" text-anchor="middle">X = E[K] / E[Tcycle]</text>
+<text x="2200" y="1351.5" font-size="29" font-weight="600" fill="#D6EDF6" text-anchor="middle">Tcycle ≥ max(F/P, D/B, C/β, S)</text>
+<text x="2200" y="1401" font-size="26" font-weight="400" fill="#FFFFFF" text-anchor="middle">M(t) ≤ Mavailable</text>
+<text x="2200" y="1435" font-size="26" font-weight="400" fill="#FFFFFF" text-anchor="middle">约束：语义、质量、资源与负载</text>
+<rect id="inputs" x="1900" y="210" width="600" height="155" rx="14" fill="#F2F6F9" stroke="#D0DBE4" stroke-width="2"/>
+<text x="2200" y="251" font-size="27" font-weight="700" fill="#152C43" text-anchor="middle">系统边界 / 给定条件</text>
+<text x="2200" y="296" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">模型语义 · 请求长度分布 · 到达过程</text>
+<text x="2200" y="331" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">计算 P · 带宽 B · 容量 M · 互联 β</text>
+<rect id="principle" x="1900" y="690" width="600" height="178" rx="14" fill="#F2F6F9" stroke="#D0DBE4" stroke-width="2"/>
+<text x="2200" y="734.5" font-size="28" font-weight="700" fill="#152C43" text-anchor="middle">三类性能限制</text>
+<text x="2200" y="781" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">时间边界：计算 / I/O / 通信 / 依赖</text>
+<text x="2200" y="813" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">空间边界：状态驻留与分配</text>
+<text x="2200" y="845" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">随机边界：排队、干扰与负载波动</text>
+<rect id="outputs" x="1900" y="1610" width="600" height="170" rx="14" fill="#F2F6F9" stroke="#D0DBE4" stroke-width="2"/>
+<text x="2200" y="1654.5" font-size="28" font-weight="700" fill="#152C43" text-anchor="middle">全局评价目标</text>
+<text x="2200" y="1699" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">TTFT · TPOT / ITL · 输出吞吐</text>
+<text x="2200" y="1729" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">SLO Goodput · 单位有效任务成本</text>
+<text x="2200" y="1759" font-size="24" font-weight="400" fill="#52677A" text-anchor="middle">局部加速 ≠ 整体加速</text>
+<rect id="scope" x="1900" y="2250" width="600" height="152" rx="14" fill="#F2F6F9" stroke="#D0DBE4" stroke-width="2"/>
+<text x="2200" y="2289" font-size="27" font-weight="700" fill="#152C43" text-anchor="middle">理论适用边界</text>
+<text x="2200" y="2325.5" font-size="23" font-weight="400" fill="#52677A" text-anchor="middle">不绑定模型、硬件或推理框架</text>
+<text x="2200" y="2354.5" font-size="23" font-weight="400" fill="#52677A" text-anchor="middle">公式依赖各自假设；实际性能须校准</text>
+<text x="2200" y="2383.5" font-size="23" font-weight="400" fill="#52677A" text-anchor="middle">近似算法须满足质量约束</text>
+<rect id="branch1" x="1420" y="499" width="410" height="126" rx="14" fill="#EDF7F7" stroke="#137A82" stroke-width="2"/>
+<text x="1625" y="539.5" font-size="31" font-weight="700" fill="#137A82" text-anchor="middle">01  推理成本理论</text>
+<text x="1625" y="576.5" font-size="18" font-weight="600" fill="#137A82" text-anchor="middle">WORK &amp; DATA MOVEMENT</text>
+<text x="1625" y="612" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">F、w、k、Dother、S</text>
+<rect id="group1_0" x="820" y="250" width="460" height="76" rx="10" fill="#EDF7F7" stroke="#137A82" stroke-width="2"/>
+<text x="1050" y="281.5" font-size="27" font-weight="700" fill="#137A82" text-anchor="middle">1.1  模型结构与工作量</text>
+<text x="1050" y="315.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">模型结构如何改变成本函数</text>
+<circle cx="730" cy="230" r="4" fill="#137A82"/>
+<text x="55" y="239.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Dense：每 token 活跃线性层工作</text>
+<circle cx="730" cy="268" r="4" fill="#137A82"/>
+<text x="55" y="277.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">MoE：活跃专家、热点、权重并集</text>
+<circle cx="730" cy="306" r="4" fill="#137A82"/>
+<text x="55" y="315.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">MHA / GQA / MLA：状态与头结构</text>
+<circle cx="730" cy="344" r="4" fill="#137A82"/>
+<text x="55" y="353.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">滑窗 / 稀疏 / SSM：替换 f(ℓ)、k(ℓ)</text>
+<rect id="group1_1" x="820" y="430" width="460" height="76" rx="10" fill="#EDF7F7" stroke="#137A82" stroke-width="2"/>
+<text x="1050" y="461.5" font-size="27" font-weight="700" fill="#137A82" text-anchor="middle">1.2  Prefill 成本</text>
+<text x="1050" y="495.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">输入并行与前缀依赖</text>
+<circle cx="730" cy="410" r="4" fill="#137A82"/>
+<text x="55" y="419.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">A(m,q) = mq + q(q+1)/2</text>
+<circle cx="730" cy="448" r="4" fill="#137A82"/>
+<text x="55" y="457.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Fₚ ≈ 2qNlin + 4Lhqd·A(m,q)</text>
+<circle cx="730" cy="486" r="4" fill="#137A82"/>
+<text x="55" y="495.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">新 token 数决定线性层成本</text>
+<circle cx="730" cy="524" r="4" fill="#137A82"/>
+<text x="55" y="533.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">全注意力：位置对随长度二次增长</text>
+<rect id="group1_2" x="820" y="610" width="460" height="76" rx="10" fill="#EDF7F7" stroke="#137A82" stroke-width="2"/>
+<text x="1050" y="641.5" font-size="27" font-weight="700" fill="#137A82" text-anchor="middle">1.3  Decode 成本</text>
+<text x="1050" y="675.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">串行依赖与重复访问</text>
+<circle cx="730" cy="590" r="4" fill="#137A82"/>
+<text x="55" y="599.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Fᴅ ≈ b·f(ℓ)；f 随结构与长度变化</text>
+<circle cx="730" cy="628" r="4" fill="#137A82"/>
+<text x="55" y="637.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Dᴅ ≈ w + b·k(ℓ) + Dother</text>
+<circle cx="730" cy="666" r="4" fill="#137A82"/>
+<text x="55" y="675.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">权重共享；KV 通常按序列独立</text>
+<circle cx="730" cy="704" r="4" fill="#137A82"/>
+<text x="55" y="713.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">输出 n 步：Σℓ ≈ nℓ₀ + n(n−1)/2</text>
+<rect id="group1_3" x="820" y="790" width="460" height="76" rx="10" fill="#EDF7F7" stroke="#137A82" stroke-width="2"/>
+<text x="1050" y="821.5" font-size="27" font-weight="700" fill="#137A82" text-anchor="middle">1.4  I/O 与执行图</text>
+<text x="1050" y="855.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">计算图映射到资源</text>
+<circle cx="730" cy="770" r="4" fill="#137A82"/>
+<text x="55" y="779.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">必要 I/O ≠ FLOPs；区分额外流量</text>
+<circle cx="730" cy="808" r="4" fill="#137A82"/>
+<text x="55" y="817.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">FlashAttention：分块、在线归一化</text>
+<circle cx="730" cy="846" r="4" fill="#137A82"/>
+<text x="55" y="855.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Fusion / tiling：复用局部中间状态</text>
+<circle cx="730" cy="884" r="4" fill="#137A82"/>
+<text x="55" y="893.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Graph / launch：减少串行启动开销</text>
+<rect id="branch2" x="1420" y="1269" width="410" height="126" rx="14" fill="#EDF3FA" stroke="#25619B" stroke-width="2"/>
+<text x="1625" y="1309.5" font-size="31" font-weight="700" fill="#25619B" text-anchor="middle">02  计算–访存平衡</text>
+<text x="1625" y="1346.5" font-size="18" font-weight="600" fill="#25619B" text-anchor="middle">ROOFLINE &amp; BATCHING</text>
+<text x="1625" y="1382" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">P、B、I、b、ℓ</text>
+<rect id="group2_0" x="820" y="1020" width="460" height="76" rx="10" fill="#EDF3FA" stroke="#25619B" stroke-width="2"/>
+<text x="1050" y="1051.5" font-size="27" font-weight="700" fill="#25619B" text-anchor="middle">2.1  资源下界与 Roofline</text>
+<text x="1050" y="1085.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">计算与数据移动的相对限制</text>
+<circle cx="730" cy="1000" r="4" fill="#25619B"/>
+<text x="55" y="1009.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">T ≥ max(F/P, D/B, C/β, S)</text>
+<circle cx="730" cy="1038" r="4" fill="#25619B"/>
+<text x="55" y="1047.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">I = F/D；平衡点 I* = P/B</text>
+<circle cx="730" cy="1076" r="4" fill="#25619B"/>
+<text x="55" y="1085.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Pactual ≤ min(P, B·I)</text>
+<circle cx="730" cy="1114" r="4" fill="#25619B"/>
+<text x="55" y="1123.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">峰值、实际效率、关键路径分开</text>
+<rect id="group2_1" x="820" y="1200" width="460" height="76" rx="10" fill="#EDF3FA" stroke="#25619B" stroke-width="2"/>
+<text x="1050" y="1231.5" font-size="27" font-weight="700" fill="#25619B" text-anchor="middle">2.2  Batch 与吞吐</text>
+<text x="1050" y="1265.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">共享成本与独立成本</text>
+<circle cx="730" cy="1180" r="4" fill="#25619B"/>
+<text x="55" y="1189.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Xroof = min(P/f, B/(w/b+k))</text>
+<circle cx="730" cy="1218" r="4" fill="#25619B"/>
+<text x="55" y="1227.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">w/b 随 b 增加而下降</text>
+<circle cx="730" cy="1256" r="4" fill="#25619B"/>
+<text x="55" y="1265.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">大 b 极限：min(P/f, B/k)</text>
+<circle cx="730" cy="1294" r="4" fill="#25619B"/>
+<text x="55" y="1303.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">吞吐增加不保证单请求步时下降</text>
+<rect id="group2_2" x="820" y="1380" width="460" height="76" rx="10" fill="#EDF3FA" stroke="#25619B" stroke-width="2"/>
+<text x="1050" y="1411.5" font-size="27" font-weight="700" fill="#25619B" text-anchor="middle">2.3  临界点与相图</text>
+<text x="1050" y="1445.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">计算、权重与 KV 主导区</text>
+<circle cx="730" cy="1360" r="4" fill="#25619B"/>
+<text x="55" y="1369.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">权重/KV 分界：bWK = w/k(ℓ)</text>
+<circle cx="730" cy="1398" r="4" fill="#25619B"/>
+<text x="55" y="1407.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">若 k ≈ κℓ，bWK ∝ 1/ℓ</text>
+<circle cx="730" cy="1436" r="4" fill="#25619B"/>
+<text x="55" y="1445.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">计算/访存分界：bCB = Pw/(Bf−Pk)</text>
+<circle cx="730" cy="1474" r="4" fill="#25619B"/>
+<text x="55" y="1483.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">仅当 Bf &gt; Pk 且容量可行时可达</text>
+<rect id="group2_3" x="820" y="1560" width="460" height="76" rx="10" fill="#EDF3FA" stroke="#25619B" stroke-width="2"/>
+<text x="1050" y="1591.5" font-size="27" font-weight="700" fill="#25619B" text-anchor="middle">2.4  边际价值与实现</text>
+<text x="1050" y="1625.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">收益上限、利用率和迁移</text>
+<circle cx="730" cy="1540" r="4" fill="#25619B"/>
+<text x="55" y="1549.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">访存区弹性：w/(w+bk)、bk/(w+bk)</text>
+<circle cx="730" cy="1578" r="4" fill="#25619B"/>
+<text x="55" y="1587.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">优化权重后可能进入 KV 主导区</text>
+<circle cx="730" cy="1616" r="4" fill="#25619B"/>
+<text x="55" y="1625.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">形状、布局、融合影响有效 P、B</text>
+<circle cx="730" cy="1654" r="4" fill="#25619B"/>
+<text x="55" y="1663.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">流水 / 异步搬运：减少暴露等待</text>
+<rect id="branch3" x="1420" y="2039" width="410" height="126" rx="14" fill="#F3EFF9" stroke="#7153A3" stroke-width="2"/>
+<text x="1625" y="2079.5" font-size="31" font-weight="700" fill="#7153A3" text-anchor="middle">03  状态复用与压缩</text>
+<text x="1625" y="2116.5" font-size="18" font-weight="600" fill="#7153A3" text-anchor="middle">STATE &amp; REUSE</text>
+<text x="1625" y="2152" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">κ、M、m、q、V</text>
+<rect id="group3_0" x="820" y="1790" width="460" height="76" rx="10" fill="#F3EFF9" stroke="#7153A3" stroke-width="2"/>
+<text x="1050" y="1821.5" font-size="27" font-weight="700" fill="#7153A3" text-anchor="middle">3.1  KV 与混合状态</text>
+<text x="1050" y="1855.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">状态规模、流量和生命周期</text>
+<circle cx="730" cy="1770" r="4" fill="#7153A3"/>
+<text x="55" y="1779.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">全注意力：κ = 2Lhkv·d·s</text>
+<circle cx="730" cy="1808" r="4" fill="#7153A3"/>
+<text x="55" y="1817.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">逻辑容量 MKV = bℓκ（无共享）</text>
+<circle cx="730" cy="1846" r="4" fill="#7153A3"/>
+<text x="55" y="1855.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">k(ℓ) ≈ ℓκ 仅在指定读取假设下</text>
+<circle cx="730" cy="1884" r="4" fill="#7153A3"/>
+<text x="55" y="1893.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">GQA / MLA / 混合状态：改变 κ、k</text>
+<rect id="group3_1" x="820" y="1970" width="460" height="76" rx="10" fill="#F3EFF9" stroke="#7153A3" stroke-width="2"/>
+<text x="1050" y="2001.5" font-size="27" font-weight="700" fill="#7153A3" text-anchor="middle">3.2  容量、分页与层级</text>
+<text x="1050" y="2035.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">驻留、分配与迁移的成本</text>
+<circle cx="730" cy="1950" r="4" fill="#7153A3"/>
+<text x="55" y="1959.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">bmax ≈ floor(M₀/(ℓκ))</text>
+<circle cx="730" cy="1988" r="4" fill="#7153A3"/>
+<text x="55" y="1997.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">PagedAttention：降低碎片、支持共享</text>
+<circle cx="730" cy="2026" r="4" fill="#7153A3"/>
+<text x="55" y="2035.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Offload / 分层：容量换恢复流量</text>
+<circle cx="730" cy="2064" r="4" fill="#7153A3"/>
+<text x="55" y="2073.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">分配优化 ≠ 降低每步读取量</text>
+<rect id="group3_2" x="820" y="2150" width="460" height="76" rx="10" fill="#F3EFF9" stroke="#7153A3" stroke-width="2"/>
+<text x="1050" y="2181.5" font-size="27" font-weight="700" fill="#7153A3" text-anchor="middle">3.3  Prefix 与上下文复用</text>
+<text x="1050" y="2215.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">避免重复 Prefill 与共享历史</text>
+<circle cx="730" cy="2130" r="4" fill="#7153A3"/>
+<text x="55" y="2139.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">复用 m 前缀：ΔA = m(m+1)/2</text>
+<circle cx="730" cy="2168" r="4" fill="#7153A3"/>
+<text x="55" y="2177.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">前缀比例 r：位置对节省约 r²</text>
+<circle cx="730" cy="2206" r="4" fill="#7153A3"/>
+<text x="55" y="2215.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">逐 token 线性计算节省约 r</text>
+<circle cx="730" cy="2244" r="4" fill="#7153A3"/>
+<text x="55" y="2253.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">请求 / token / FLOPs 命中率不同</text>
+<rect id="group3_3" x="820" y="2330" width="460" height="76" rx="10" fill="#F3EFF9" stroke="#7153A3" stroke-width="2"/>
+<text x="1050" y="2361.5" font-size="27" font-weight="700" fill="#7153A3" text-anchor="middle">3.4  保存、压缩与重算</text>
+<text x="1050" y="2395.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">状态价值及质量边界</text>
+<circle cx="730" cy="2310" r="4" fill="#7153A3"/>
+<text x="55" y="2319.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">V = 预期省重算 − 恢复 − 保存 − 驻留</text>
+<circle cx="730" cy="2348" r="4" fill="#7153A3"/>
+<text x="55" y="2357.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">TTL / LRU / 路由：决定复用机会</text>
+<circle cx="730" cy="2386" r="4" fill="#7153A3"/>
+<text x="55" y="2395.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">精确共享需状态键、位置、版本一致</text>
+<circle cx="730" cy="2424" r="4" fill="#7153A3"/>
+<text x="55" y="2433.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">压缩：容量/流量收益须计恢复与质量</text>
+<rect id="branch4" x="2570" y="499" width="410" height="126" rx="14" fill="#EBF7F1" stroke="#16805E" stroke-width="2"/>
+<text x="2775" y="539.5" font-size="31" font-weight="700" fill="#16805E" text-anchor="middle">04  自回归生成效率</text>
+<text x="2775" y="576.5" font-size="18" font-weight="600" fill="#16805E" text-anchor="middle">EFFECTIVE GENERATION</text>
+<text x="2775" y="612" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">K、Tcycle、α、γ</text>
+<rect id="group4_0" x="3120" y="250" width="460" height="76" rx="10" fill="#EBF7F1" stroke="#16805E" stroke-width="2"/>
+<text x="3350" y="281.5" font-size="27" font-weight="700" fill="#16805E" text-anchor="middle">4.1  依赖与有效提交</text>
+<text x="3350" y="315.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">从逐 token 执行到周期生成</text>
+<circle cx="3670" cy="230" r="4" fill="#16805E"/>
+<text x="3675" y="239.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">p(x₁:ₙ) = ∏ p(xₜ | x&lt;ₜ)</text>
+<circle cx="3670" cy="268" r="4" fill="#16805E"/>
+<text x="3675" y="277.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">常规单序列 Decode：每步 K = 1</text>
+<circle cx="3670" cy="306" r="4" fill="#16805E"/>
+<text x="3675" y="315.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">稳定串行周期：τ = E[Tcycle]/E[K]</text>
+<circle cx="3670" cy="344" r="4" fill="#16805E"/>
+<text x="3675" y="353.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">草稿、padding、拒绝 token 不计产出</text>
+<rect id="group4_1" x="3120" y="430" width="460" height="76" rx="10" fill="#EBF7F1" stroke="#16805E" stroke-width="2"/>
+<text x="3350" y="461.5" font-size="27" font-weight="700" fill="#16805E" text-anchor="middle">4.2  投机解码机理</text>
+<text x="3350" y="495.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">候选、接受、验证和修正</text>
+<circle cx="3670" cy="410" r="4" fill="#16805E"/>
+<text x="3675" y="419.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Draft 提议；目标模型并行 Verify</text>
+<circle cx="3670" cy="448" r="4" fill="#16805E"/>
+<text x="3675" y="457.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">条件接受率 aᵢ：E[K] = 1 + Σ∏aᵢ</text>
+<circle cx="3670" cy="486" r="4" fill="#16805E"/>
+<text x="3675" y="495.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">恒定 α：E[K] = 1 + α + … + αᵞ</text>
+<circle cx="3670" cy="524" r="4" fill="#16805E"/>
+<text x="3675" y="533.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">精确采样需正确接受/拒绝及残差</text>
+<rect id="group4_2" x="3120" y="610" width="460" height="76" rx="10" fill="#EBF7F1" stroke="#16805E" stroke-width="2"/>
+<text x="3350" y="641.5" font-size="27" font-weight="700" fill="#16805E" text-anchor="middle">4.3  收益与临界条件</text>
+<text x="3350" y="675.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">有效提交量 / 总执行成本</text>
+<circle cx="3670" cy="590" r="4" fill="#16805E"/>
+<text x="3675" y="599.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Sspec = T₀·E[K]/E[Tcycle]</text>
+<circle cx="3670" cy="628" r="4" fill="#16805E"/>
+<text x="3675" y="637.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">有效加速：E[K] &gt; E[Tcycle]/T₀</text>
+<circle cx="3670" cy="666" r="4" fill="#16805E"/>
+<text x="3675" y="675.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">增加 γ：提交量相对增益 &gt; 成本相对增益</text>
+<circle cx="3670" cy="704" r="4" fill="#16805E"/>
+<text x="3675" y="713.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">候选越长，接受增量趋缓（固定 α）</text>
+<rect id="group4_3" x="3120" y="790" width="460" height="76" rx="10" fill="#EBF7F1" stroke="#16805E" stroke-width="2"/>
+<text x="3350" y="821.5" font-size="27" font-weight="700" fill="#16805E" text-anchor="middle">4.4  生成算法与执行耦合</text>
+<text x="3350" y="855.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">额外工作换取更少串行轮次</text>
+<circle cx="3670" cy="770" r="4" fill="#16805E"/>
+<text x="3675" y="779.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">MTP / Self-speculation / Tree Verify</text>
+<circle cx="3670" cy="808" r="4" fill="#16805E"/>
+<text x="3675" y="817.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">验证 batch 形状改变计算与权重复用</text>
+<circle cx="3670" cy="846" r="4" fill="#16805E"/>
+<text x="3675" y="855.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">高并发时额外验证竞争 GPU 资源</text>
+<circle cx="3670" cy="884" r="4" fill="#16805E"/>
+<text x="3675" y="893.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">吞吐、TPOT、ITL 抖动分别评价</text>
+<rect id="branch5" x="2570" y="1269" width="410" height="126" rx="14" fill="#FBF4E9" stroke="#A26821" stroke-width="2"/>
+<text x="2775" y="1309.5" font-size="31" font-weight="700" fill="#A26821" text-anchor="middle">05  并行与通信理论</text>
+<text x="2775" y="1346.5" font-size="18" font-weight="600" fill="#A26821" text-anchor="middle">PARALLELISM &amp; COMMUNICATION</text>
+<text x="2775" y="1382" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">p、C、β、关键路径</text>
+<rect id="group5_0" x="3120" y="1020" width="460" height="76" rx="10" fill="#FBF4E9" stroke="#A26821" stroke-width="2"/>
+<text x="3350" y="1051.5" font-size="27" font-weight="700" fill="#A26821" text-anchor="middle">5.1  并行维度</text>
+<text x="3350" y="1085.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">分解权重、计算、状态或请求</text>
+<circle cx="3670" cy="1000" r="4" fill="#A26821"/>
+<text x="3675" y="1009.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">TP：权重/计算分片；集合通信</text>
+<circle cx="3670" cy="1038" r="4" fill="#A26821"/>
+<text x="3675" y="1047.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">PP：按层分片；气泡与跨层激活</text>
+<circle cx="3670" cy="1076" r="4" fill="#A26821"/>
+<text x="3675" y="1085.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">EP：专家分布；All-to-All 与热点</text>
+<circle cx="3670" cy="1114" r="4" fill="#A26821"/>
+<text x="3675" y="1123.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">CP：上下文分片；DP：独立服务副本</text>
+<rect id="group5_1" x="3120" y="1200" width="460" height="76" rx="10" fill="#FBF4E9" stroke="#A26821" stroke-width="2"/>
+<text x="3350" y="1231.5" font-size="27" font-weight="700" fill="#A26821" text-anchor="middle">5.2  通信模型</text>
+<text x="3350" y="1265.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">拓扑、消息与暴露开销</text>
+<circle cx="3670" cy="1180" r="4" fill="#A26821"/>
+<text x="3675" y="1189.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Tcomm ≈ nα + D/β（简化）</text>
+<circle cx="3670" cy="1218" r="4" fill="#A26821"/>
+<text x="3675" y="1227.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">AllReduce / AllGather / All-to-All</text>
+<circle cx="3670" cy="1256" r="4" fill="#A26821"/>
+<text x="3675" y="1265.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">链路拓扑、消息粒度、拥塞</text>
+<circle cx="3670" cy="1294" r="4" fill="#A26821"/>
+<text x="3675" y="1303.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">计算/通信重叠只隐藏非关键路径部分</text>
+<rect id="group5_2" x="3120" y="1380" width="460" height="76" rx="10" fill="#FBF4E9" stroke="#A26821" stroke-width="2"/>
+<text x="3350" y="1411.5" font-size="27" font-weight="700" fill="#A26821" text-anchor="middle">5.3  扩展与负载均衡</text>
+<text x="3350" y="1445.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">并行收益与增长代价</text>
+<circle cx="3670" cy="1360" r="4" fill="#A26821"/>
+<text x="3675" y="1369.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Tp ≈ Tlocal + 暴露通信 + 其他开销</text>
+<circle cx="3670" cy="1398" r="4" fill="#A26821"/>
+<text x="3675" y="1407.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">收益：本地节省 &gt; 新增暴露代价</text>
+<circle cx="3670" cy="1436" r="4" fill="#A26821"/>
+<text x="3675" y="1445.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">MoE：T ≥ maxⱼ(Wⱼ/Pⱼ)</text>
+<circle cx="3670" cy="1474" r="4" fill="#A26821"/>
+<text x="3675" y="1483.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">容量解除不等于单请求延迟下降</text>
+<rect id="group5_3" x="3120" y="1560" width="460" height="76" rx="10" fill="#FBF4E9" stroke="#A26821" stroke-width="2"/>
+<text x="3350" y="1591.5" font-size="27" font-weight="700" fill="#A26821" text-anchor="middle">5.4  资源组织与分离</text>
+<text x="3350" y="1625.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">映射和放置改变系统约束</text>
+<circle cx="3670" cy="1540" r="4" fill="#A26821"/>
+<text x="3675" y="1549.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">副本与分片：容量 / 吞吐 / 通信取舍</text>
+<circle cx="3670" cy="1578" r="4" fill="#A26821"/>
+<text x="3675" y="1587.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">P/D 分离：独立资源池 + KV 传输</text>
+<circle cx="3670" cy="1616" r="4" fill="#A26821"/>
+<text x="3675" y="1625.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Attention / FFN 分离：通信边界</text>
+<circle cx="3670" cy="1654" r="4" fill="#A26821"/>
+<text x="3675" y="1663.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">并行度的最优点取决于负载与拓扑</text>
+<rect id="branch6" x="2570" y="2039" width="410" height="126" rx="14" fill="#FBEEF0" stroke="#B24D53" stroke-width="2"/>
+<text x="2775" y="2079.5" font-size="31" font-weight="700" fill="#B24D53" text-anchor="middle">06  推理服务效率</text>
+<text x="2775" y="2116.5" font-size="18" font-weight="600" fill="#B24D53" text-anchor="middle">SERVING &amp; GOODPUT</text>
+<text x="2775" y="2152" font-size="21" font-weight="400" fill="#152C43" text-anchor="middle">λ、ρ、TTFT、TPOT、G</text>
+<rect id="group6_0" x="3120" y="1790" width="460" height="76" rx="10" fill="#FBEEF0" stroke="#B24D53" stroke-width="2"/>
+<text x="3350" y="1821.5" font-size="27" font-weight="700" fill="#B24D53" text-anchor="middle">6.1  工作负载与指标</text>
+<text x="3350" y="1855.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">请求级、token 级和任务级目标</text>
+<circle cx="3670" cy="1770" r="4" fill="#B24D53"/>
+<text x="3675" y="1779.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">λ、输入/输出分布、突发性、前缀共享</text>
+<circle cx="3670" cy="1808" r="4" fill="#B24D53"/>
+<text x="3675" y="1817.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">TTFT：到达 → 首个有效 token</text>
+<circle cx="3670" cy="1846" r="4" fill="#B24D53"/>
+<text x="3675" y="1855.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">TPOT：请求内平均 ITL；尾部另统计</text>
+<circle cx="3670" cy="1884" r="4" fill="#B24D53"/>
+<text x="3675" y="1893.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">E2E = TTFT + (n−1)·TPOT（n&gt;1）</text>
+<rect id="group6_1" x="3120" y="1970" width="460" height="76" rx="10" fill="#FBEEF0" stroke="#B24D53" stroke-width="2"/>
+<text x="3350" y="2001.5" font-size="27" font-weight="700" fill="#B24D53" text-anchor="middle">6.2  随机负载与排队</text>
+<text x="3350" y="2035.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">局部执行到服务时延的传递</text>
+<circle cx="3670" cy="1950" r="4" fill="#B24D53"/>
+<text x="3675" y="1959.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Little：E[N] = λE[T]（稳定系统）</text>
+<circle cx="3670" cy="1988" r="4" fill="#B24D53"/>
+<text x="3675" y="1997.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">M/M/1：E[T] = 1/(μ−λ)（简化）</text>
+<circle cx="3670" cy="2026" r="4" fill="#B24D53"/>
+<text x="3675" y="2035.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">ρ 接近 1：等待对负载波动更敏感</text>
+<circle cx="3670" cy="2064" r="4" fill="#B24D53"/>
+<text x="3675" y="2073.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">系统内 N ≠ 活跃 batch b</text>
+<rect id="group6_2" x="3120" y="2150" width="460" height="76" rx="10" fill="#FBEEF0" stroke="#B24D53" stroke-width="2"/>
+<text x="3350" y="2181.5" font-size="27" font-weight="700" fill="#B24D53" text-anchor="middle">6.3  调度、共享与干扰</text>
+<text x="3350" y="2215.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">资源效率与交互延迟的取舍</text>
+<circle cx="3670" cy="2130" r="4" fill="#B24D53"/>
+<text x="3675" y="2139.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Continuous Batching / token budget</text>
+<circle cx="3670" cy="2168" r="4" fill="#B24D53"/>
+<text x="3675" y="2177.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Chunked Prefill：改变 P/D 干扰</text>
+<circle cx="3670" cy="2206" r="4" fill="#B24D53"/>
+<text x="3675" y="2215.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">准入 / 路由 / 缓存亲和 / 公平性</text>
+<circle cx="3670" cy="2244" r="4" fill="#B24D53"/>
+<text x="3675" y="2253.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">P/D：λ ≤ min(μP, μD, μtransfer)</text>
+<rect id="group6_3" x="3120" y="2330" width="460" height="76" rx="10" fill="#FBEEF0" stroke="#B24D53" stroke-width="2"/>
+<text x="3350" y="2361.5" font-size="27" font-weight="700" fill="#B24D53" text-anchor="middle">6.4  SLO 与全局效率</text>
+<text x="3350" y="2395.5" font-size="21" font-weight="400" fill="#52677A" text-anchor="middle">优化目标与可行域</text>
+<circle cx="3670" cy="2310" r="4" fill="#B24D53"/>
+<text x="3675" y="2319.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">G = λ Pr(成功且质量、SLO 达标)</text>
+<circle cx="3670" cy="2348" r="4" fill="#B24D53"/>
+<text x="3675" y="2357.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">吞吐 tok/s ≠ 请求/s ≠ Goodput</text>
+<circle cx="3670" cy="2386" r="4" fill="#B24D53"/>
+<text x="3675" y="2395.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">尾延迟、成本、质量构成共同约束</text>
+<circle cx="3670" cy="2424" r="4" fill="#B24D53"/>
+<text x="3675" y="2433.5" font-size="25" font-weight="400" fill="#152C43" text-anchor="start">Pareto：固定目标与资源比较收益</text>
+<text x="52" y="2531" font-size="36" font-weight="700" fill="#152C43" text-anchor="start">跨理论耦合网络   |   一项优化改变另一部分的约束与边际收益</text>
+<rect id="link0" x="52" y="2560" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="69" y="2600.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">① → ②   计算量与数据流量 → Roofline</text>
+<text x="69" y="2652" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">F、w、k 改变算术强度与瓶颈区</text>
+<rect id="link1" x="1134" y="2560" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="1151" y="2600.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">② ↔ ③   Batch ↔ KV 容量 / 带宽</text>
+<text x="1151" y="2652" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">b ↑ 摊薄 w/b，也增加状态需求</text>
+<rect id="link2" x="2216" y="2560" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="2233" y="2600.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">③ ↔ ①   Prefix 复用 ↔ Prefill 工作</text>
+<text x="2233" y="2652" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">减少重复计算，但后缀仍读历史状态</text>
+<rect id="link3" x="3298" y="2560" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="3315" y="2600.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">④ ↔ ②   投机验证 ↔ 执行效率</text>
+<text x="3315" y="2652" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">K 增长与验证计算/访存共同变化</text>
+<rect id="link4" x="52" y="2698" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="69" y="2738.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">⑤ ↔ ②   并行分片 ↔ 计算 / 通信</text>
+<text x="69" y="2790" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">本地需求下降，暴露通信可能增加</text>
+<rect id="link5" x="1134" y="2698" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="1151" y="2738.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">③ ↔ ⑥   缓存 / 容量 ↔ 调度 / 路由</text>
+<text x="1151" y="2790" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">复用收益、恢复与驻留影响排队</text>
+<rect id="link6" x="2216" y="2698" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="2233" y="2738.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">④ ↔ ⑥   生成节奏 ↔ 服务质量</text>
+<text x="2233" y="2790" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">平均 token 成本与 ITL 尾部不同</text>
+<rect id="link7" x="3298" y="2698" width="1048" height="124" rx="12" fill="#F6F8FA" stroke="#CEDAE3" stroke-width="2"/>
+<text x="3315" y="2738.5" font-size="27" font-weight="700" fill="#152C43" text-anchor="start">⑤ ↔ ⑥   资源分离 ↔ 阶段容量</text>
+<text x="3315" y="2790" font-size="25" font-weight="400" fill="#52677A" text-anchor="start">P/D 减少干扰，但增加传输与失衡</text>
+<text x="53" y="2879.5" font-size="23" font-weight="400" fill="#52677A" text-anchor="start">图例：彩色实线 = 知识归属；灰色虚线 = 主干耦合；底部 = 跨分支关系索引。公式为条件性关系；固定精度是当前仓库的实验约束。</text>
+</g></svg>

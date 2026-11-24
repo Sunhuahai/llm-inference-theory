@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.nsys-rep
+*.ncu-rep
+raw_private/
