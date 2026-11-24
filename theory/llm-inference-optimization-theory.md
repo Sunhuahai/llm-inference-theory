@@ -28,7 +28,7 @@ LLM 推理优化的核心，是降低单位有效生成结果所需的计算、�
 
 本文将严格的恒等式和资源下界、依赖假设的解析模型、经验规律与实测结论区分开来。解析式用于解释优化成立的条件与理论空间；具体参数需要由目标系统确定。此文是通用理论层，现有仓库中的[优化收益预测](optimization-benefit-prediction.md)、[缓存与上下文专项推导](cache-context-ceilings.md)和[预测器](predictor/README.md)属于后续实例化。仓库当前固定权重、激活及各类状态精度的研究范围不变；量化、近似计算等仅作为一般理论中的边界变换讨论，不表示将其加入当前实验。
 
-**业界专题研究：** [InferSim 与 AIConfigurator：LLM 推理性能建模及配置优化](infersim-aiconfigurator.md)，介绍解析成本、算子实测数据库、服务建模、P/D 容量匹配与 Pareto 边界。
+**业界工具专题：** [InferSim 与 AIConfigurator：使用指南与应用场景](infersim-aiconfigurator.md)，介绍安装、命令、参数、结果解读、性能分析、部署搜索与资源规划，并说明 AIConfigurator 向 AISimulate 的迁移。
 
 ## 0. 统一描述
 
