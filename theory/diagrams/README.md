@@ -8,6 +8,12 @@
 
 ## 理论总览（模型与硬件无关）
 
+[全景思维导图：六大分支与 96 个细分节点](llm-inference-theory-mindmap.md) · [高清 SVG](mindmap/llm-inference-theory-mindmap.svg) · [可编辑 draw.io](mindmap/llm-inference-theory-mindmap.drawio)
+
+[![LLM 推理优化理论全景思维导图](mindmap/llm-inference-theory-mindmap.svg)](mindmap/llm-inference-theory-mindmap.svg)
+
+### 辅助图：推理系统的全局关系
+
 [LLM 推理优化理论总图](llm-inference-theory-overview.md) · [完整理论总纲](../llm-inference-optimization-theory.md)
 
 ![LLM 推理优化理论总图](previews/llm-inference-theory-overview.svg)

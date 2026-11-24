@@ -4,7 +4,15 @@
 > 日期：2026-11-24｜版本：v1.0｜性质：理论综述与条件性推导。  
 > 本文不绑定特定 checkpoint、硬件、引擎或并行拓扑，不提供未经实测的加速承诺。训练、后训练及通用集群运维不在研究范围内。
 
-## 理论总览：推理系统的全局关系
+## 理论总览：全景知识体系
+
+**[打开 4400 × 2910 高清思维导图](diagrams/mindmap/llm-inference-theory-mindmap.svg) · [可编辑 draw.io](diagrams/mindmap/llm-inference-theory-mindmap.drawio) · [完整文字索引与关系说明](diagrams/llm-inference-theory-mindmap.md)**
+
+[![LLM 推理优化理论全景思维导图：六个主分支、24 个二级主题、96 个细分节点与跨层耦合](diagrams/mindmap/llm-inference-theory-mindmap.svg)](diagrams/mindmap/llm-inference-theory-mindmap.svg)
+
+全景图采用中心发散的知识树：左侧为成本、计算–访存平衡、状态复用；右侧为自回归生成、并行通信和服务效率。每个理论继续展开至基本变量、解析关系、优化机制和适用边界；虚线与图底部关系索引连接不同理论。GitHub 内嵌图会自动缩小，点击图像打开独立 SVG 或导入 draw.io 放大阅读。
+
+### 辅助图：推理系统的全局关系
 
 [查看独立大图及关系解读](diagrams/llm-inference-theory-overview.md) · [独立 SVG](diagrams/previews/llm-inference-theory-overview.svg)
 
