@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "record_kind": "template",
+  "workload_id": null,
+  "data_hash": null,
+  "split": null,
+  "task_semantics": null,
+  "arrival": {"mode": null, "trace_hash": null, "offered_rps": null, "concurrency": null, "seed": null},
+  "tokens": {"input_distribution": null, "actual_output_distribution": null, "includes_reasoning": null},
+  "generation": {"sampling": null, "eos_stop_policy": null, "chat_template_hash": null},
+  "cache": {"condition": null, "preparation": null, "prefix_length_distribution": null},
+  "constraints": {"quality_oracle_id": null, "quality_threshold": null, "slo": null, "gpu_total": null},
+  "measurement_window": null,
+  "timeout_retry_policy": null
+}

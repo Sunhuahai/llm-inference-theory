@@ -39,14 +39,18 @@ LMCache 官方还说明：QSA 压缩组的 per-request scratch ring 不缓存；
 
 对 N 个按到达顺序处理的请求，输入长度为 `L_i`、可复用前缀长度为 `P_i`、实际命中指示为 `H_i\in\{0,1\}`。区分：
 
-\[
+
+$$
 h_{\rm req}=\frac{\sum_i H_i}{N},\qquad
 h_{\rm tok}=\frac{\sum_i H_iP_i}{\sum_i L_i},
-\]
-\[
+$$
+
+
+$$
 h_{\rm cost}=
 \frac{\sum_i H_i\,[C_i-S_i]_+}{\sum_i[C_i-S_i]_+}.
-\]
+$$
+
 
 `C_i` 是同条件**未复用**的 prefill wall time，`S_i` 是命中后**剩余计算** wall time；成本加权比使用单个请求能避免的最大计算成本作为权重。它是定位指标，不等于净加速：还要扣查找、状态恢复/传输、eviction、队列及共享 batch 的干扰。
 
@@ -58,16 +62,20 @@ h_{\rm cost}=
 
 设每请求固定 TTFT `F_i`（tokenize/调度/首步/网络等），忽略队列的低负载基线：
 
-\[
+
+$$
 \bar T_0=\frac1N\sum_i(F_i+C_i).
-\]
+$$
+
 
 对指定部署方案，令 `H_i(B,\pi)` 为池容量 `B` 和缓存策略 `\pi` 回放后的命中标记，查找成本 `\ell_i`，读取/拷贝状态成本 `R_i`。则：
 
-\[
+
+$$
 \bar T_{\rm cache}(B,\pi)=\frac1N
 \sum_i\big[F_i+\ell_i+(1-H_i)C_i+H_i(S_i+R_i)\big].
-\]
+$$
+
 
 每个真实命中的**必要条件**是其预期节省 `C_i-S_i` 足以支付 `R_i` 和相应查找成本；服务队列和容量竞争会继续改变实际收益。理论上：
 
@@ -97,19 +105,23 @@ L1 / L2 不一定是**整个 vLLM 前缀缓存算法的全局上界**：现实�
 
 记压缩前后输入 `L_i,L'_i`，压缩器成本 `A_i`，压缩后的冷 prefill `C'_i`，以及**重新计算**的压缩前缀命中 `H'_i`。无缓存的必要盈亏条件：
 
-\[
+
+$$
 \bar A < \overline{C-C'}.
-\]
+$$
+
 
 若基线已经启用缓存，实际要比较的是：
 
-\[
+
+$$
 \bar T'_{\rm combo}=\frac1N\sum_i
 \big[F_i+A_i+\ell'_i+(1-H'_i)C'_i+
 H'_i(S'_i+R'_i)\big]
 \quad\text{与}\quad
 \bar T_{\rm cache}.
-\]
+$$
+
 
 **不能直接把“压缩 50% token”换算成“TTFT ×2”**：Prefill FLOPs 不必随 token 数线性变化；这个混合模型已有 QSA 内部压缩；外层 tokenizer、首步、恢复、排队不消失。也不能把未压缩 trace 的缓存命中率用于压缩后 trace。
 

@@ -1,5 +1,7 @@
 # LLM 推理优化理论框架：从性能极限到优化实践
 
+**新增专题入口：** [瓶颈诊断](diagnosis/README.md) · [性能边界](performance/README.md) · [执行与并行](execution/README.md) · [状态内存](memory/README.md) · [生成效率](generation/README.md) · [服务理论](serving/README.md) · [优化机制](optimization/mechanisms.md) · [耦合与全局目标](optimization/coupling.md)。[完整索引](INDEX.md)将这些关系连接到 [性能模型](../models/README.md)和 [Agent 自主优化](../optimizer/README.md)。
+
 > 2026-11-24 · 图解导读 · 模型与硬件无关  
 > 本文是[完整理论总纲](foundations/unified-theory.md)的入门导读，重心是理解理论关系、判断优化方向与估计收益。所有曲线和数值示例均为理论演示，不是 H800 实测结果。项目保持现有 checkpoint、精度、任务语义与资源预算，不引入重新量化作为优化手段。
 

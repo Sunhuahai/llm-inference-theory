@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "record_kind": "template",
+  "environment_id": null,
+  "evidence_status": "hypothesis",
+  "model": {"checkpoint": null, "revision": null, "tokenizer_revision": null, "architecture": null},
+  "precision": {"weights": null, "compute": null, "kv_cache": null, "other_states": null},
+  "hardware": {"accelerator_model": null, "device_count": null, "memory_bytes_per_device": null, "topology": null, "exclusive": null},
+  "software": {"engine_git_sha": null, "container_digest": null, "driver": null, "runtime": null, "compiler": null},
+  "measurement": {"tool_version": null, "timing_scope": null, "warmup_policy": null, "clock_power_policy": null},
+  "artifacts": []
+}

@@ -2,46 +2,77 @@
 
 **Understanding the limits. Modeling performance. Optimizing intelligently.**
 
-大语言模型推理优化理论研究：建立模型与硬件无关的资源成本、性能边界、优化收益与耦合关系，探索理论驱动的自主优化。
+理论驱动的大语言模型推理优化研究：理解资源成本与性能边界，建立可计算的预测模型，研究 Agent 如何在有限预算内自主发现、实现和验证优化。
 
-[![推理优化理论全景思维导图](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg)](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg)
+## 三条核心研究主线
 
-[高清全景图](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.svg) · [可编辑 draw.io](visualizations/diagrams/mindmap/llm-inference-theory-mindmap.drawio) · [全局关系图](visualizations/diagrams/llm-inference-theory-overview.md)
+[![理论、性能建模、Agent 自主优化与共享实验平台](visualizations/diagrams/research-framework/research-map.svg)](visualizations/diagrams/research-framework/research-map.svg)
 
-## 研究问题
+[高清研究架构](visualizations/diagrams/research-framework/research-map.svg) · [可编辑 draw.io](visualizations/diagrams/research-framework/research-map.drawio) · [自主优化闭环图](visualizations/diagrams/research-framework/optimization-loop.svg) · [内容地图与完成状态](docs/content-map.md)
 
-1. 给定模型、硬件与负载，推理性能的物理和算法极限是什么？
-2. 如何建立可解释、可校准、可组合的性能预测模型？
-3. 如何预测优化的边际收益、瓶颈迁移和多策略耦合？
-4. 如何利用理论提高自主优化 Agent 的搜索效率？
-5. 如何通过独立实验验证或否定理论假设？
+| 主线 | 核心问题 | 从这里开始 |
+| --- | --- | --- |
+| **推理性能理论** | 为什么慢？边界在哪里？哪些干预有意义？ | [图解导读](theory/README.md) · [统一理论](theory/foundations/unified-theory.md) · [瓶颈诊断](theory/diagnosis/README.md) · [章节索引](theory/INDEX.md) |
+| **性能建模与预测** | 怎样把理论变成可校准、可组合的预测？ | [分层模型](models/README.md) · [统一契约](models/contracts.md) · [校准与不确定性](models/calibration/README.md) · [CPU 解析参考](models/analytic/README.md) |
+| **Agent 自主优化** | 在质量与资源约束下，怎样更高效地搜索、实现和验证？ | [自主优化总入口](optimizer/README.md) · [理论总纲](optimizer/foundations/autonomous-optimization.md) · [规划与搜索](optimizer/planning/README.md) · [离线控制参考](optimizer/systems/README.md) |
 
-## 研究入口
+[实验与评估](experiments/README.md)为三条主线提供共同证据；[文献研究](research/README.md)提供外部方法与对照；[图谱](visualizations/README.md)解释它们之间的关系。
 
-| 主线 | 内容与入口 |
+理论给出条件和可证伪判断，模型给出带来源的估计，优化器选择下一次干预。实验可以支持或否定三者，负结果同样用于更新知识。Agent 自主优化与理论、建模并行推进，不等待全部理论完成。
+
+## 首次阅读
+
+1. 先读 [推理性能图解](theory/README.md)，理解成本、Roofline、关键路径与服务指标。
+2. 再读 [AI 如何自动优化 AI 推理](research/industry/agentic-inference-optimization-guide.md)，了解已有工作的思想。
+3. 进入本仓库的 [自主优化理论总纲](optimizer/foundations/autonomous-optimization.md)，从问题、约束与反馈建立完整认识。
+4. 沿 [瓶颈诊断](theory/diagnosis/README.md) → [优化机制](theory/optimization/mechanisms.md) → [收益与耦合](theory/optimization/coupling.md) → [搜索评价](experiments/agent-benchmark/README.md)阅读。
+
+底层六大理论及其细分关系继续见 [全景思维导图](visualizations/diagrams/llm-inference-theory-mindmap.md)。完整专题与实现状态统一记录在 [内容地图](docs/content-map.md)。
+
+## 现在可以运行什么
+
+以下均在 CPU 上运行，只依赖 Python 标准库；输入是明确标注的合成数据。
+
+```bash
+# 资源边界、固定执行图及候选重算
+python3 models/analytic/analyze.py models/analytic/examples/synthetic-system.json
+
+# 预算受限搜索与独立结果回放
+python3 optimizer/systems/replay.py optimizer/systems/examples/synthetic-search.json --policy cost-aware --budget 12 --seed 0
+
+# 已有的收益场景与缓存 trace 模型
+python3 models/predictor/predict.py models/predictor/examples/synthetic-baseline.json --format markdown
+python3 models/predictor/cache_context.py models/predictor/examples/synthetic-cache-context.json --format markdown
+```
+
+解析参考区分严格资源下界与有效速率预测；离线搜索参考验证预算、失败处理与最佳候选更新，不调用 Coding Agent 或 GPU。示例结果不作为真实加速成绩。[合成验证说明](experiments/synthetic/README.md)
+
+## 研究状态
+
+| 内容 | 当前能力与边界 |
 | --- | --- |
-| Theory | [图解导读](theory/README.md) · [完整理论总纲](theory/foundations/unified-theory.md) · [章节索引](theory/INDEX.md) |
-| Models | [性能建模](models/README.md) · [已有 Python 预测器](models/predictor/README.md) |
-| Optimizer | [理论驱动自主优化研究](optimizer/README.md)（设计阶段） |
-| Research | [文献与业界研究](research/README.md) · [AI 自主优化图解导读](research/industry/agentic-inference-optimization-guide.md) · [开放问题](research/open-problems/README.md) |
-| Experiments | [理论验证](experiments/README.md) · [Qwen/H800 案例](experiments/case-studies/qwen-h800/README.md) |
-| Visualizations | [图谱与可视化](visualizations/README.md) |
-| Roadmap | [研究路线](docs/roadmap.md) · [符号体系](docs/notation.md) · [研究方法](docs/methodology.md) |
+| 理论体系 | 统一综述和独立专题，含假设、条件推导、反例及可证伪预测 |
+| 性能模型 | 已有场景预测器、缓存回放和新的解析参考；没有经过跨环境实测校准的通用预测库 |
+| 自主优化 | 已有算法/系统设计与 CPU 离线搜索参考；真实 LLM、编译器、profiler 和 GPU 适配仍待接入 |
+| 评价体系 | 已有模型验证、Agent 对照、预算账本、实验模板与跨环境方案；没有新增 GPU 或真实 Agent 对照结果 |
 
-## 统一理论与性能建模
+研究路线、验收条件与待接入工作见 [Roadmap](docs/roadmap.md)；尚未解决的科学问题见 [Open problems](research/open-problems/README.md)。
 
-![推理优化的统一理论框架](visualizations/diagrams/framework-guide/07-unified-model.svg)
+## 证据与维护
 
-理论描述工作量和资源边界；模型将它们转化为可计算的预测；自主优化利用预测缩小搜索空间；实验提供独立证据并反向修正理论。通用理论不绑定 checkpoint、引擎或加速器。案例实验必须明确精度、任务语义和资源预算。
+固定任务实验保持模型、精度、任务语义、输出口径和资源预算一致。理论下界、预测、文献报告、用户反馈、合成数据与独立实测分别登记，不互相替代。
 
-## 当前研究状态
+[研究方法](docs/methodology.md) · [符号与单位](docs/notation.md) · [性能测量协议](docs/benchmark-protocol.md) · [实验模板](experiments/templates/README.md) · [维护规则](AGENTS.md)
 
-- 已有：统一理论综述、图解导读、前缀及状态复用推导、初步收益预测器、业界性能建模及自主优化研究。
-- 研究中：跨负载性能极限、可校准的模型组合、优化耦合与性能瓶颈相图。
-- 规划：理论指导的自主优化控制器、独立实验评价和跨模型/硬件验证。尚无通用自主优化器或新增 GPU 实测结论。
+维护时可从仓库根目录运行以下检查：
 
-## 历史与维护
+```bash
+python3 scripts/check_docs.py
+python3 -m unittest discover -s models/predictor/tests -v
+python3 -m unittest discover -s models/analytic/tests -v
+python3 -m unittest discover -s optimizer/systems/tests -v
+```
 
-原 Qwen/H800 优化研究完整保存在 [历史快照](archive/qwen-h800-tricks/README.md)，仅作为研究案例和负面证据，不再以收集 Tricks 或轮次为主线。旧 Git 历史保留。项目维护遵循 [AGENTS.md](AGENTS.md)。
+[文档检查器](scripts/check_docs.py)检查当前研究文档的本地链接、公式块与代码围栏，以及 JSON、SVG 和 draw.io 文件的格式；外部链接可用性、锚点和数学正确性仍需人工审阅。
 
-**证据原则：** 理论下界、近似预测、文献报告、用户反馈和独立实测不可互相替代。所有新的性能结论应可复现。
+原 Qwen/H800 优化研究保存在 [历史快照](archive/qwen-h800-tricks/README.md)，通过 [案例索引](experiments/case-studies/qwen-h800/README.md)访问。历史保持只读，不再以收集固定数量 Tricks 或轮次为主线。

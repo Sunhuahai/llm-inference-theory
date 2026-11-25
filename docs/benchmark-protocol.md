@@ -1,17 +1,17 @@
 # 性能测量协议
 
-状态：实验协议，2026-11-20 状态更新。用户已反馈首轮全部尝试，逐项原始结果尚未归档；后续各轮使用当前最佳有效配置作比较基线，并保留它与首轮结果的关联。协议初版：2026-11-16。
+状态：通用实验协议，2026-11-25。保留原有指标定义与固定任务原则，移除日/轮次维护要求；[历史 H800 协议](../archive/qwen-h800-tricks/docs/benchmark-protocol.md)及其证据保持原样。
 
-目标是在固定模型、固定精度、固定 H800 总预算和相同任务下，量化 TTFT、TPOT 与吞吐量的变化。第一轮暂以文本请求为主；若实际业务含图片、视频或音频，另建 workload track，固定媒体输入及编码/预处理范围，不能与纯文本请求混合排名。
+目标是在固定模型、固定精度、固定硬件总预算和相同任务下，量化 TTFT、TPOT、吞吐与 Goodput 的变化。具体设备与架构由每个案例 manifest 给出。文本、多模态分别建立 workload track，固定媒体输入及编码/预处理范围，不能混合排名。[Agent benchmark](../experiments/agent-benchmark/README.md)另约束优化搜索成本。
 
 ## 1. 一次实验固定什么
 
-每次先验证一个 trick，单项通过后再组合。环境清单记录下列内容，并给出 `env_id`；未知项写 `unknown`，不猜测。
+每次先验证一个明确机制的候选，单项通过后再组合。环境清单记录下列内容，并给出 `env_id`（通用 JSON 中为 `environment_id`）；文档未知项写 `unknown`，JSON 用 `null`，不猜测。
 
 | 类别 | 必须固定或显式记录 |
 |---|---|
-| 模型 | 完整 checkpoint ID、revision、tokenizer 与 chat template、现有 8-bit 格式、实际计算与 KV/state dtype |
-| 硬件 | H800 总卡数、显存、节点数、GPU/CPU/NIC 拓扑、功耗设置、是否独占 |
+| 模型 | 完整 checkpoint ID、revision、tokenizer 与 chat template、既定权重格式、实际计算与 KV/state dtype |
+| 硬件 | 加速器型号与总卡数、显存、节点数、GPU/CPU/NIC 拓扑、功耗设置、是否独占 |
 | 软件 | 引擎版本及 commit、容器 digest、驱动/CUDA/PyTorch/通信与 kernel 依赖版本、完整脱敏启动命令 |
 | 任务 | 数据集/trace hash、输入和实际输出 token 分布、采样、thinking 模式、EOS/stop、工具调用约束 |
 | 测量 | benchmark 工具/版本、客户端位置、流式协议、负载、缓存状态、预热、超时、SLO |
@@ -54,7 +54,7 @@ post_first_chunk_ms_per_token = (e_i - f_i) / (O_i - m_i)
 
 ## 3. 最小负载矩阵
 
-以下是**建议筛选起点，不是最佳配置或用户业务分布**。每个 trick 先选 1–2 个主场景与一个回归场景；通过后再扩展，真实 trace 到位后优先使用固定业务子集。
+以下是**建议筛选起点，不是最佳配置或用户业务分布**。每个候选先选 1–2 个主场景与一个回归场景；通过后再扩展，真实 trace 到位后优先使用固定业务子集。
 
 | Track | 输入 / 输出 token | 主要观察 |
 |---|---|---|
@@ -85,18 +85,18 @@ post_first_chunk_ms_per_token = (e_i - f_i) / (O_i - m_i)
 3. **重复与顺序**：每点至少 3 次，交错 baseline/candidate，避免单向温度或缓存漂移。首次筛选可从每次 ≥200 个成功请求开始；这并不保证 p99 稳定，样本不足时不作强尾部结论。
 4. **失败完整计数**：`sent_n = success_n + error_n`；`error_n` 包含 timeout、OOM、取消及其他失败，`timeout_n` 是其中子集。所有测量请求都应有最终状态。成功延迟统计不能掩盖错误率；不能丢弃失败请求或缩短计时窗口来改善吞吐。固定超时与重试策略，推荐禁用隐式自动重试。
 5. **质量和功能回归**：固定一组小型请求，检查完整性、终止行为、NaN、结构化输出及任务得分；不要要求随机采样逐字一致。MTP 的“无损”声明必须核实实现与采样保证，并做对应回归。
-6. **接受条件**：收益超过 baseline 重复波动，关键尾延迟、错误率和质量约束通过，无隐藏资源增加，配置与结果可复现。否则标为 inconclusive、regressed、unsupported 或 blocked。
+6. **接受条件**：收益超过 baseline 重复波动，关键尾延迟、错误率和质量约束通过，无隐藏资源增加，配置与结果可复现。否则记录 `decision=inconclusive/rejected/blocked`，将 regressed、unsupported 等放入 `failure_reason`；证据状态仍按实际来源登记。
 
 用户 SLO 尚未知时，goodput 为 `unknown`，先报告 TTFT/TPOT/吞吐的 Pareto 权衡，不擅自指定业务阈值。延迟改善定义为 `(B-C)/B`，吞吐改善为 `(C-B)/B`，均乘 100%。已有质量或延迟门槛必须预先记录，不能看完结果再调整。
 
 ## 5. 文件与证据
 
-每个 `env_id`/`workload_id` 应能定位到固定 manifest；其中保存长命令、版本、数据/采样、SLO 和缓存设置。逐次结果使用 [CSV 表头](../archive/qwen-h800-tricks/templates/result.csv)，每晚提交 [反馈模板](../archive/qwen-h800-tricks/templates/feedback.md)。CSV 一行对应一次重复，缺失指标留空；解释写 `notes`，不使用 0 表示未知。
+每个 `env_id`/`workload_id` 应能定位到固定 manifest；其中保存长命令、版本、数据/采样、SLO 和缓存设置。新实验使用 [通用模板](../experiments/templates/README.md)，完整记录每次尝试与原始重复；历史 CSV 可按 [既有表头](../archive/qwen-h800-tricks/templates/result.csv)读取。CSV 一行对应一次重复，缺失指标留空；解释写 `notes`，不使用 0 表示未知。JSON 记录用 `null`，不要求按日或固定数量提交。
 
-`evidence_origin` 区分 `user_report`、`agent_measured`、`literature`（上游资料）、`hypothesis`；只有前两类进入本项目性能对照，文献结果保留其原硬件与条件。`artifact_ref` 链接原始统计/脱敏日志，`config_git_sha` 对应实际运行配置。`gpu_budget_gpus` 为该服务总卡数，`peak_gpu_mem_gib` 为各卡显存峰值的最大值；各卡明细存附件。`quality_pass` 取 true/false/unknown。
+历史 `evidence_origin` 区分 `user_report`、`agent_measured`、`literature` 与 `hypothesis`。用户反馈可以进入证据清单，缺少原始数据时不能充当独立验证的数值对照；文献结果保留原硬件与条件。新记录采用 [研究方法中的证据状态](methodology.md)。`artifact_ref` 链接原始统计/脱敏日志，`config_git_sha` 对应实际运行配置。`gpu_budget_gpus` 为该服务总卡数，`peak_gpu_mem_gib` 为各卡显存峰值的最大值；各卡明细存附件。`quality_pass` 取 true/false/unknown。
 
 CSV 的 `slo_tpot_ms_per_token` 单位为 ms/token；TTFT/E2E SLO 单位为 ms。CSV 的 `input_tokens`、`output_tokens` 是成功请求的累计数量，与吞吐分子一致；错误请求消耗的 token 如可得，另存原始结果。`date_local` 使用 Asia/Shanghai；每请求的精确时间戳保留在附件。
 
-先选定一套主 benchmark 工具及版本并保持一致。NVIDIA 已宣布 GenAI-Perf 不再新增功能、建议新工作采用 AIPerf；旧数据保留原工具标签，不无声混合。[NVIDIA 官方公告](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html)
+先选定一套主 benchmark 工具及版本并保持一致，逐项核对当前版本的指标公式与实现。旧数据保留原工具标签，不无声混合；工具迁移应采用同一 trace 做重叠对照。
 
-本文件没有 H800 实测数字。负载矩阵、样本量和流程是本仓库实验设计建议；执行 Agent 仍须以安装版本的 `--help`/源码核对参数。
+本文件没有新增 GPU 实测数字。负载矩阵、样本量和流程是本仓库实验设计建议；执行 Agent 仍须以安装版本的 `--help`/源码核对参数。跨模型、硬件验证见 [系统案例](../experiments/case-studies/README.md)。

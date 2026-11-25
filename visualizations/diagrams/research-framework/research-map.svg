@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1190" width="1920" height="1190" role="img">
+  <title>LLM 推理优化：理论、建模与 Agent 自主优化</title>
+  <desc>三条核心研究主线，以独立实验连接解释、预测、决策和反馈</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#64748b" />
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1190" fill="#f8fafc" />
+  <text x="60" y="65" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="36" fill="#0f172a" font-weight="700">LLM 推理优化：理论、建模与 Agent 自主优化</text>
+  <text x="60" y="108" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" fill="#475569" font-weight="400">三条核心研究主线，以独立实验连接解释、预测、决策和反馈</text>
+  <rect x="60" y="160" width="560" height="650" rx="16" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+  <rect x="61" y="161" width="558" height="114" rx="16" fill="#eff6ff" stroke="#eff6ff" stroke-width="2" />
+  <text x="86" y="211" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="29" fill="#2563eb" font-weight="700">01  推理性能理论</text>
+  <text x="86" y="248" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" fill="#475569" font-weight="400">理解成本、边界和优化成立的条件</text>
+  <text x="86" y="318" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">资源与性能边界</text>
+  <text x="86" y="350" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">FLOPs / 多级访存 / 通信 / 串行依赖</text>
+  <text x="86" y="400" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">状态与生成效率</text>
+  <text x="86" y="432" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">容量、复用、有效提交数与生成周期</text>
+  <text x="86" y="482" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">执行与服务</text>
+  <text x="86" y="514" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">关键路径、并行、动态批处理与 SLO</text>
+  <text x="86" y="564" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">瓶颈诊断</text>
+  <text x="86" y="596" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">观测可辨识性、敏感性与区分性实验</text>
+  <text x="86" y="646" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">优化机制与耦合</text>
+  <text x="86" y="678" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">干预资源量、边际收益和瓶颈迁移</text>
+  <text x="86" y="728" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">输出：可证伪的条件判断</text>
+  <text x="86" y="760" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">明确假设、反例、适用域和测量需求</text>
+  <path d="M340 810 L340 862" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="680" y="160" width="560" height="650" rx="16" fill="#ffffff" stroke="#0d9488" stroke-width="2" />
+  <rect x="681" y="161" width="558" height="114" rx="16" fill="#f0fdfa" stroke="#f0fdfa" stroke-width="2" />
+  <text x="706" y="211" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="29" fill="#0d9488" font-weight="700">02  性能建模与预测</text>
+  <text x="706" y="248" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" fill="#475569" font-weight="400">把理论转化为可计算、可校准的模型</text>
+  <text x="706" y="318" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">资源账本与算子模型</text>
+  <text x="706" y="350" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">shape / dtype / 路径 / 硬件速率来源</text>
+  <text x="706" y="400" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">执行图模型</text>
+  <text x="706" y="432" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">依赖、资源互斥、重叠与完成时间</text>
+  <text x="706" y="482" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">服务与负载模型</text>
+  <text x="706" y="514" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">到达、长度、缓存和调度的共同作用</text>
+  <text x="706" y="564" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">校准与不确定性</text>
+  <text x="706" y="596" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">噪声、模型误差、留出与分布外识别</text>
+  <text x="706" y="646" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">候选收益与反事实</text>
+  <text x="706" y="678" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">重算变化后的成本，保留预测误差</text>
+  <text x="706" y="728" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">输出：带来源的预测</text>
+  <text x="706" y="760" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">区分严格下界、情景值和真实测量</text>
+  <path d="M960 810 L960 862" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="1300" y="160" width="560" height="650" rx="16" fill="#ffffff" stroke="#7c3aed" stroke-width="2" />
+  <rect x="1301" y="161" width="558" height="114" rx="16" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="2" />
+  <text x="1326" y="211" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="29" fill="#7c3aed" font-weight="700">03  Agent 自主优化</text>
+  <text x="1326" y="248" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" fill="#475569" font-weight="400">有限预算内，寻找并验证更好的实现</text>
+  <text x="1326" y="318" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">感知与假设</text>
+  <text x="1326" y="350" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">profile → 诊断 → 机制不同的候选</text>
+  <text x="1326" y="400" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">优化空间</text>
+  <text x="1326" y="432" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">配置 / Kernel / Runtime / Serving</text>
+  <text x="1326" y="482" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">规划与搜索</text>
+  <text x="1326" y="514" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">约束、收益、实验成本与探索价值</text>
+  <text x="1326" y="564" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">代码进化与组合</text>
+  <text x="1326" y="596" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">独立工作区、版本谱系、组合回归</text>
+  <text x="1326" y="646" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">独立验证与经验记忆</text>
+  <text x="1326" y="678" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">冻结 oracle、复测、正负结果复用</text>
+  <text x="1326" y="728" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" fill="#0f172a" font-weight="700">输出：可复现的改进</text>
+  <text x="1326" y="760" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">patch + 适用域 + 证据 + 搜索成本</text>
+  <path d="M1580 810 L1580 862" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <path d="M620 225 L674 225" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <path d="M1240 225 L1294 225" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <rect x="60" y="866" width="1800" height="188" rx="16" fill="#fff7ed" stroke="#d97706" stroke-width="2" />
+  <text x="88" y="910" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="28" fill="#9a3412" font-weight="700">共享实验与评估平台</text>
+  <text x="88" y="961" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="24" fill="#0f172a" font-weight="700">合成验证</text>
+  <text x="88" y="999" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">检验数学与控制逻辑</text>
+  <text x="530" y="961" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="24" fill="#0f172a" font-weight="700">微基准与校准</text>
+  <text x="530" y="999" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">测量真实执行成本</text>
+  <text x="972" y="961" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="24" fill="#0f172a" font-weight="700">模型留出验证</text>
+  <text x="972" y="999" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">检验干预与迁移误差</text>
+  <text x="1414" y="961" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="24" fill="#0f172a" font-weight="700">Agent / 系统对照</text>
+  <text x="1414" y="999" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#475569" font-weight="400">同预算、同质量、独立复测</text>
+  <text x="60" y="1100" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="22" fill="#334155" font-weight="400">反馈方向：实验误差修正模型，模型修正诊断与搜索，负结果限定理论适用范围。</text>
+  <text x="60" y="1146" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" fill="#64748b" font-weight="400">结构示意 · CPU 示例为合成验证 · 通用 GPU 优化器与真实 Agent 对照仍需接入和实测</text>
+</svg>

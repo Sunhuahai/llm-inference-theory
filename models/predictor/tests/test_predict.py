@@ -49,7 +49,7 @@ class PredictorTests(unittest.TestCase):
         ]
         s = predict(inp)["scenarios"][0]
         self.assertAlmostEqual(s["tpot_mean_ms"], 18)
-        self.assertTrue(any("下界" in hit for hit in s["floor_hits"]))
+        self.assertTrue(any("情景时间下限" in hit for hit in s["floor_hits"]))
 
     def test_new_overhead_is_absolute_ms_not_calibrated(self):
         inp = self.one()

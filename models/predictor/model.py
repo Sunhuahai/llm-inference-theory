@@ -75,9 +75,9 @@ def _duration(b: dict[str, Any], e: dict[str, Any] | None = None) -> tuple[float
     added = _number(e.get("added_ms", 0), "effect.added_ms")
     warnings = []
     if compute > compute_requested + 1e-8:
-        warnings.append("计算 lane 已触及所提供的性能下界")
+        warnings.append("计算 lane 已触及输入的情景时间下限；不自动表示严格物理界限")
     if comm > comm_requested + 1e-8:
-        warnings.append("通信 lane 已触及所提供的性能下界")
+        warnings.append("通信 lane 已触及输入的情景时间下限；不自动表示严格物理界限")
     # overlap=0: serial sum. overlap=1: fully overlapped max(compute, comm).
     return serial + compute + comm - overlap * min(compute, comm) + added, warnings
 

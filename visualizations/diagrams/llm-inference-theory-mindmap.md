@@ -1,5 +1,7 @@
 # LLM 推理优化理论全景思维导图
 
+本图展示底层六大推理理论。仓库的三条核心研究主线与 Agent 自主优化请同时查看 [研究架构与自主优化闭环](research-framework/README.md)，新增理论专题见 [章节索引](../../theory/INDEX.md)。
+
 > v1.2 · 模型与硬件无关 · 4400 × 2910 大画布 · 六个理论主分支、24 个二级主题、96 个知识节点、8 组跨层耦合关系。
 
 [打开高清 SVG 大图](mindmap/llm-inference-theory-mindmap.svg) · [下载可编辑 draw.io 源文件](mindmap/llm-inference-theory-mindmap.drawio) · [推理系统关系图](llm-inference-theory-overview.md) · [理论正文](../../theory/foundations/unified-theory.md)

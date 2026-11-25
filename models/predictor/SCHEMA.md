@@ -32,7 +32,7 @@
 | `serial_ms` | ms，默认 0 | 暴露的串行片段 |
 | `compute_ms` / `comm_ms` | ms，默认 0 | 可并行计算与通信 lane 的时间 |
 | `overlap_fraction` | 0–1，默认 1 | 两条 lane 实际隐藏较短 lane 的比例 |
-| `compute_floor_ms` / `comm_floor_ms` | ms，默认 0 | 可实证支持的物理/实现下界，不得高于基线 lane 时间 |
+| `compute_floor_ms` / `comm_floor_ms` | ms，默认 0 | 用户提供的情景时间下限，不得高于基线 lane 时间；有效速率估计不自动构成严格物理下界，来源/适用条件在实验记录中说明 |
 
 每个 block 必须有非零成本。每阶段所有 block 的时间**不能重复计费**：例如已经计入 GPU 执行的时间，不能再按 CPU 调用耗时完整加一遍。
 

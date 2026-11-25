@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "evidence_origin": "synthetic",
+  "task_id": "synthetic-search-control-demo-v1",
+  "baseline": {"id": "baseline", "latency_ms": 100.0, "setup_cost_units": 1.0},
+  "minimum_improvement_ms": 0.5,
+  "candidates": [
+    {"id": "A-fusion", "parent_id": "baseline", "mechanism": "remove_intermediate_traffic", "predicted_latency_ms": 80, "uncertainty_ms": 5, "feasibility_probability": 0.9, "estimated_cost_units": 2.0, "cost_cap_units": 3.0},
+    {"id": "B-overlap", "parent_id": "baseline", "mechanism": "hide_exposed_communication", "predicted_latency_ms": 75, "uncertainty_ms": 8, "feasibility_probability": 0.85, "estimated_cost_units": 3.0, "cost_cap_units": 4.0},
+    {"id": "C-fast-incorrect", "parent_id": "baseline", "mechanism": "aggressive_reduction", "predicted_latency_ms": 45, "uncertainty_ms": 3, "feasibility_probability": 0.95, "estimated_cost_units": 1.0, "cost_cap_units": 2.0},
+    {"id": "D-regression", "parent_id": "baseline", "mechanism": "larger_tile", "predicted_latency_ms": 85, "uncertainty_ms": 4, "feasibility_probability": 0.95, "estimated_cost_units": 1.5, "cost_cap_units": 2.0},
+    {"id": "E-surprise", "parent_id": "baseline", "mechanism": "alternate_backend", "predicted_latency_ms": 110, "uncertainty_ms": 4, "feasibility_probability": 0.8, "estimated_cost_units": 2.5, "cost_cap_units": 3.0},
+    {"id": "F-build-failure", "parent_id": "baseline", "mechanism": "specialized_codegen", "predicted_latency_ms": 65, "uncertainty_ms": 6, "feasibility_probability": 0.75, "estimated_cost_units": 1.0, "cost_cap_units": 2.0},
+    {"id": "G-overrun", "parent_id": "baseline", "mechanism": "expensive_tuning", "predicted_latency_ms": 55, "uncertainty_ms": 10, "feasibility_probability": 0.8, "estimated_cost_units": 3.0, "cost_cap_units": 4.0},
+    {"id": "H-small-gain", "parent_id": "baseline", "mechanism": "reduce_host_gap", "predicted_latency_ms": 96, "uncertainty_ms": 1, "feasibility_probability": 0.99, "estimated_cost_units": 0.5, "cost_cap_units": 1.0}
+  ],
+  "outcomes": {
+    "A-fusion": {"status": "completed", "correctness_pass": true, "latency_ms": 90, "cost_units": 2.5, "reason": "Synthetic: reduced traffic, but added indexing reduces the predicted gain."},
+    "B-overlap": {"status": "completed", "correctness_pass": true, "latency_ms": 82, "cost_units": 3.5, "reason": "Synthetic: exposed communication falls, with residual synchronization."},
+    "C-fast-incorrect": {"status": "completed", "correctness_pass": false, "latency_ms": 40, "cost_units": 1.5, "reason": "Synthetic: an oracle counterexample rejects this fast but incorrect candidate."},
+    "D-regression": {"status": "completed", "correctness_pass": true, "latency_ms": 108, "cost_units": 1.7, "reason": "Synthetic: increased resource pressure outweighs the hoped-for gain."},
+    "E-surprise": {"status": "completed", "correctness_pass": true, "latency_ms": 69, "cost_units": 2.8, "reason": "Synthetic: a misranked alternative outperforms the prediction."},
+    "F-build-failure": {"status": "compile_error", "correctness_pass": null, "latency_ms": null, "cost_units": 0.8, "reason": "Synthetic: the proposed implementation does not compile."},
+    "G-overrun": {"status": "completed", "correctness_pass": true, "latency_ms": 60, "cost_units": 7.0, "reason": "Synthetic hidden outcome: actual cost exceeds the cap, so result must remain censored."},
+    "H-small-gain": {"status": "completed", "correctness_pass": true, "latency_ms": 97, "cost_units": 0.7, "reason": "Synthetic: a cheap, small valid improvement."}
+  }
+}

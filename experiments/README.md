@@ -1,9 +1,25 @@
-# Experiments
+# 实验与评估：三条研究主线的共同证据
 
-实验服务于理论的检验，不再以尝试新 Trick 为目标。
+实验分别检验三个问题：理论关系是否成立，预测是否准确，以及理论能否帮助 Agent 更高效地寻找优化。每个问题需要自己的对照与评价单位。
 
-- [Synthetic](synthetic/README.md)：验证数学关系、极端条件与模型实现。
-- [Microbenchmarks](microbenchmarks/README.md)：校准算子效率、通信与容量。
-- [Case studies](case-studies/README.md)：完整推理系统下的预测与独立测量。
+| 实验层次 | 回答的问题 | 入口 | 当前状态 |
+| --- | --- | --- | --- |
+| 合成验证 | 公式、单位、预算和控制逻辑是否自洽？ | [Synthetic](synthetic/README.md) | 有可执行 CPU 示例与测试 |
+| 微基准 | 给定形状与硬件，实际执行成本是多少？ | [Microbenchmarks](microbenchmarks/README.md) | 采集方案；待独立 GPU 数据 |
+| 模型验证 | 未参与校准的输入及候选能否被预测？ | [Model validation](model-validation/README.md) | 评价设计与记录契约 |
+| 自主优化评价 | 同预算下，理论是否提升搜索效率？ | [Agent benchmark](agent-benchmark/README.md) | 协议与离线搜索回放；未进行真实 Agent 对照 |
+| 系统案例 | 局部改进能否改善完整服务？ | [Case studies](case-studies/README.md) | 历史案例与跨环境验证设计 |
 
-记录模型 revision、硬件、引擎、精度、负载、资源预算、基线、正确性、重复测量与原始证据。统一 [Benchmark 协议](../docs/benchmark-protocol.md)。本次仓库重构未运行 GPU 实验。
+## 从一个可证伪判断开始
+
+例如：“在指定执行图与工作负载下，消除主机提交间隙能减少至少 5% TPOT”。先记录间隙的暴露时间、预期变化和可能反例，再实施 A/B。若 kernel 时间下降而服务指标不变，结果仍然有效：它否定的是原来的端到端假设。
+
+模型拟合数据、搜索开发数据和最终留出评价承担不同职责。保留数据分组及时间顺序，避免把同一条 trace 的相邻请求随机分到两边而造成泄漏。
+
+## 最小证据包
+
+一次实验至少关联：环境与工作负载 manifest、基线/候选 SHA、预先登记的假设与预测、固定 oracle、所有尝试及失败、原始测量、统计程序与结论。[模板及字段约定](templates/README.md)提供通用入口；[性能测量协议](../docs/benchmark-protocol.md)固定指标口径。
+
+结论必须说明适用域：模型架构、精度、输入/输出分布、并发/到达方式、缓存状态与资源预算。`derived`、`simulated`、`measured` 和 `validated` 是不同证据状态；单元测试通过只说明被覆盖的实现行为。
+
+2026-11-25 的内容补全包含 CPU 合成验证，不包含新增 GPU 实测或真实 Coding Agent 性能结论。

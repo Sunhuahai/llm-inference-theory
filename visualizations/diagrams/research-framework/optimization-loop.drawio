@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram name="理论引导的 Agent 自主优化：决策与独立证据" id="optimization-loop">
+    <mxGraphModel dx="1660" dy="1040" grid="1" page="1" pageWidth="1660" pageHeight="1040">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="理论引导的 Agent 自主优化：决策与独立证据" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=36;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="58" y="26" width="872" height="57.6" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="控制器负责预算与接受规则；Agent 负责提出假设和实现候选" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=21;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="58" y="84" width="638" height="33.6" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="165" width="300" height="716" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="确定性控制器" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=28;fontColor=#334155;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="179" width="176" height="44.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="固定任务契约" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="262" width="146" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="模型、精度、资源、质量" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=18;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="83" y="303" width="206" height="28.8" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="管理实验预算" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="379" width="146" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="预留、实际消耗、超时" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=18;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="83" y="420" width="188" height="28.8" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="保持评价独立" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="496" width="146" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="冻结 oracle 与留出规则" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=18;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="83" y="537" width="278" height="28.8" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="管理候选状态" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="613" width="146" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="基线、最佳、失败、回退" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=18;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="83" y="654" width="206" height="28.8" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="执行停止条件" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#0f172a;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="83" y="730" width="146" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="预算耗尽或继续价值不足" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=18;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="83" y="771" width="206" height="28.8" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="180" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="1  感知与观测" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#2563eb;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="193" width="224" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="服务时间线、计数器" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="248" width="188" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="环境 / 负载 / 执行版本" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="284" width="288" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#2563eb;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="830" y="180" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="2  理论诊断" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#2563eb;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="193" width="197" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="资源账本、关键路径" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="248" width="188" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="竞争假设与区分性实验" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="284" width="208" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="180" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="3  规划与选择" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#7c3aed;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="193" width="224" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="预测收益、成本和不确定性" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="248" width="248" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="可行性、探索与候选依赖" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="284" width="228" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#7c3aed;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="466" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="4  独立实现" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#7c3aed;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="479" width="197" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="Coding Agent / 配置变更" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="534" width="388" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="可审查 patch 与 parent 版本" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="570" width="428" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#d97706;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="830" y="466" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="5  独立评估" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#d97706;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="479" width="197" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="正确性 → 微基准 → 服务" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="534" width="288" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="所有尝试计费，留出复测" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="570" width="228" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#0d9488;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="466" width="350" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="6  更新与归因" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#0d9488;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="479" width="224" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="接受、拒绝或证据不足" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="534" width="208" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="重新诊断，更新模型与记忆" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#475569;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="570" width="248" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="40" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="268" as="sourcePoint" />
+            <mxPoint x="824" y="268" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1180" y="268" as="sourcePoint" />
+            <mxPoint x="1234" y="268" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="356" as="sourcePoint" />
+            <mxPoint x="1415" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="候选及预算契约" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1264" y="393" width="148" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="44" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="554" as="sourcePoint" />
+            <mxPoint x="1186" y="554" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="830" y="554" as="sourcePoint" />
+            <mxPoint x="776" y="554" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="466" as="sourcePoint" />
+            <mxPoint x="595" y="362" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="下一轮观测" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="431" y="393" width="108" height="32.0" as="geometry" />
+        </mxCell>
+        <mxCell id="48" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="742" width="1170" height="139" as="geometry" />
+        </mxCell>
+        <mxCell id="49" value="共享知识与证据库" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=27;fontColor=#0f766e;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="444" y="758" width="224" height="43.2" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="成功与失败、机制与适用域、预测与偏差、候选谱系、实验原始证据" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=22;fontColor=#334155;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="444" y="806" width="668" height="35.2" as="geometry" />
+        </mxCell>
+        <mxCell id="51" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1005" y="642" as="sourcePoint" />
+            <mxPoint x="1005" y="736" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="52" edge="1" parent="1" style="endArrow=block;html=0;strokeColor=#64748b;strokeWidth=2;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="742" as="sourcePoint" />
+            <mxPoint x="595" y="648" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="53" value="记录观测" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=19;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1038" y="677" width="100" height="30.400000000000002" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="条件化复用" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=19;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="431" y="677" width="103" height="30.400000000000002" as="geometry" />
+        </mxCell>
+        <mxCell id="55" value="理论决定哪些实验值得做；独立评价决定哪些改进可信；历史结果只在其适用条件下复用。" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=23;fontColor=#334155;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="58" y="912" width="928" height="36.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="架构设计示意 · 当前离线原型只回放合成候选，不调用 LLM、编译器或 GPU" style="text;html=0;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;fontFamily=Noto Sans CJK SC;fontSize=20;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="58" y="968" width="788" height="32.0" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

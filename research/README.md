@@ -1,10 +1,15 @@
-# Research
+# 文献与业界研究
 
-以理论问题组织学术和业界研究，而不是按 Tricks 数量维护。
+按研究问题组织外部证据：来源解决什么问题、采用什么模型与评价、在哪些条件下得到结论，以及对本仓库能提供什么启发。
 
-- [InferSim 与 AIConfigurator](industry/infersim-aiconfigurator.md)：解析资源模型、算子数据库、配置选择。
-- [AI 如何自动优化 AI 推理？（图解导读）](industry/agentic-inference-optimization-guide.md)：从基本闭环到 KernelEvolve、KernelAgent、GEAK 与 SEIS，适合初次阅读。
-- [AI 自动优化 AI 推理](industry/ai-driven-inference-optimization.md)：KernelAgent、GEAK、SEIS、搜索与独立评价。
-- [开放问题](open-problems/README.md)：可证伪的长期研究方向。
+| 入口 | 重点 |
+| --- | --- |
+| [一手阅读地图](papers/README.md) | 资源边界、服务建模、程序搜索与 Agent 评价的基础论文 |
+| [AI 如何自动优化 AI 推理](industry/agentic-inference-optimization-guide.md) | 从直觉出发理解 KernelEvolve、KernelAgent、GEAK 与 SEIS |
+| [自主优化深度调研](industry/ai-driven-inference-optimization.md) | 项目机制、公开证据、版本与适用边界 |
+| [InferSim 与 AIConfigurator](industry/infersim-aiconfigurator.md) | 性能估计、部署搜索与工具使用 |
+| [开放问题](open-problems/README.md) | 当前未解决问题、可证伪假设和最小对照 |
 
-每篇报告应写明研究问题、机制、证据、实验条件、局限、源码/论文版本及与统一理论的联系。
+本仓库自己的自主优化问题定义、搜索算法与系统设计放在 [optimizer/](../optimizer/README.md)；理论关系放在 [theory/](../theory/INDEX.md)，可计算模型放在 [models/](../models/README.md)。外部综述与本仓库设计相互引用，不复制维护两份主文档。
+
+每篇报告记录一手来源、版本与核对日期。项目原作者报告、我们的合成推导、用户反馈及独立实测分开，不把其他模型或硬件上的加速数字转成当前环境的承诺。

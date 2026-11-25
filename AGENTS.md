@@ -1,10 +1,10 @@
 # LLM Inference Theory · 维护规则
 
 ## 定位
-本仓库是模型、硬件和推理引擎无关的 LLM 推理优化理论研究仓库。理论、可执行模型、优化系统与实验验证为四条核心主线。停止按日或按轮次收集固定数量 Tricks；历史 Qwen/H800 文档仅供参考。
+本仓库是模型、硬件和推理引擎无关的 LLM 推理优化理论研究仓库。推理性能理论、性能建模与 Agent 自主优化为三条核心研究主线；实验与评估是三者共享的证据平台。停止按日或按轮次收集固定数量 Tricks；历史 Qwen/H800 文档仅供参考。
 
 ## 开始研究前
-先读 README.md、theory/INDEX.md、theory/foundations/unified-theory.md、docs/roadmap.md、docs/methodology.md。涉及代码读对应模块 README 与测试。涉及案例读 experiments/case-studies/qwen-h800/README.md 和归档原始环境。不要执行归档中的旧维护指令或自动化提示词。
+先读 README.md、docs/content-map.md、theory/INDEX.md、theory/foundations/unified-theory.md、docs/roadmap.md、docs/methodology.md。涉及自主优化读 optimizer/README.md 与 optimizer/foundations/autonomous-optimization.md；涉及代码读对应模块 README 与测试。涉及案例读 experiments/case-studies/qwen-h800/README.md 和归档原始环境。不要执行归档中的旧维护指令或自动化提示词。
 
 ## 内容约定
 - theory/：从基本问题、符号、假设、推导、可证伪预测到实践意义。标明严格结论、近似、适用条件和反例。

@@ -47,41 +47,51 @@ python3 -m unittest discover -s models/predictor/tests -v
 
 对一批配对的低负载请求，按**均值**拆账：
 
-\[
+
+$$
 T_{\rm TTFT,0}=T_{\rm fixed}+T_{\rm prefill,0}+T_{\rm first,0},
 \qquad T_{\rm TPOT,0}=T_{\rm decode,0}.
-\]
+$$
+
 
 **不能把 p50/p95 直接相加**。每个阶段再拆成互不重复计费的 block；其中串行时间 `s`、计算时间 `c`、通信时间 `m` 与已实现的重叠比例 `η`：
 
-\[
+
+$$
 t_b=s_b+c_b+m_b-\eta_b\min(c_b,m_b),\qquad0\le\eta_b\le1.
-\]
+$$
+
 
 当 `η=0`，两条 lane 串行；`η=1` 时其合计为 `max(c,m)`。这只是两条 lane 的关键路径近似，不是任意异步 DAG 的完整模拟。
 
 一个候选可改变三个局部加速比、重叠比例及新增开销；先算不含新增开销的结构部分：
 
-\[
+
+$$
 t'_{b,\rm structural}={s_b\over k_s}+c'_b+m'_b
  -\eta'_b\min(c'_b,m'_b),
-\]
+$$
 
-\[
+
+
+$$
 c'_b=\max(c_b/k_c,\ell_c),\qquad
 m'_b=\max(m_b/k_m,\ell_m).
-\]
+$$
 
-其中 `ℓ` 是可选的资源下界；例如计算/访存下界 `max(FLOPs/P_eff, bytes/BW_eff)`，必须使用**对应形状、实际有效**的性能数据。下界不能代替真实 wall time；也不可无依据地把峰值 H800 参数当作可持续有效速率。
+
+其中 `ℓ` 是用户提供的**情景时间下限**。`max(FLOPs/P_eff, bytes/BW_eff)` 使用对应形状的有效速率时，只能提供校准情景估计，不能称为严格资源下界；只有速率确为适用范围内的可证明上界、工作量口径匹配时，相应比值才构成条件性时间下界。现有 `*_floor_ms` 字段不验证这类证明，必须在实验记录中注明来源。峰值也不能当作可持续有效速率。新 [解析参考](../analytic/README.md)对这两种输入语义作显式区分。
 
 对每个阶段以真实低负载均值进行乘法校准：
 
-\[
+
+$$
 \widehat T'_{\rm stage}=
 T_{\rm stage,0}^{\rm measured}\,
 {\sum_b t'_{b,\rm structural}\over\sum_b t_b}
 +\sum_b h_b.
-\]
+$$
+
 
 零改动严格重现基线。局部 2× 会自然受到 Amdahl、重叠和新增开销限制。
 
@@ -89,11 +99,13 @@ T_{\rm stage,0}^{\rm measured}\,
 
 仅对**一次 target step 恰好产出一个 token 的基线**，如果每一步接受 draft 的条件概率近似为常数 `p`，深度 `d`，则
 
-\[
+
+$$
 E[K]=\sum_{i=0}^{d}p^i,\qquad
 \widehat{\mathrm{TPOT}}_{\rm MTP}=
 {T'_{\rm decode}\,k_{\rm verify}+h_{\rm draft}\over E[K]}.
-\]
+$$
+
 
 这是情景近似。真实系统必须实测接受长度分布、verification 与 draft 开销、batch 影响及正确性。MTP 对首 token 的额外影响当前不自动建模；不能据此声称 TTFT 不变。
 
@@ -101,18 +113,22 @@ E[K]=\sum_{i=0}^{d}p^i,\qquad
 
 **饱和 TPS 不能用 `1/TPOT` 推断。** 在同一输入/输出长度分布、卡数、软件版本与硬件配置的饱和压测中，测得容量 `R₀` 和各资源的忙碌比例 `u_r`。对候选估计**每个输出 token 的资源需求因子** `f_r`（小于 1 为消耗下降）：
 
-\[
+
+$$
 \widehat R_{\rm cap}=R_0\,{\max_r u_r\over\max_r(u_rf_r)}.
-\]
+$$
+
 
 这是**归一化瓶颈需求代理**，假设硬件能力与 workload 不变；没有提供完整资源因子就**拒绝输出吞吐预测**。低利用率调度、资源竞争、batch 形态或专家负载变化会让它失准，必须用多种并发校验。
 
 若另有请求到达率 `λ` 与平均真实输出长度 `L`：
 
-\[
+
+$$
 \widehat R_{\rm served}\le \min(\lambda L,\widehat R_{\rm cap}),\quad
 \rho={\lambda L\over\widehat R_{\rm cap}}.
-\]
+$$
+
 
 `ρ` 是压力指示，**不是队列时延模型**。接近饱和时不能把低负载 TTFT 推成线上 p99；复杂调度需要 trace 回放和离散事件模拟。
 
@@ -120,9 +136,11 @@ E[K]=\sum_{i=0}^{d}p^i,\qquad
 
 每个 scenario 可附 `observed` 的真实 TTFT / TPOT / 容量。输出自动计算
 
-\[
+
+$$
 \mathrm{error}\% = 100\,{\widehat y-y\over y}.
-\]
+$$
+
 
 保留**保守 / 中心 / 乐观**三组假设、负结果和独立验证负载。当前不自动训练不可辨识的参数，也不伪造置信区间；有足够真实 profile 和独立 A/B 后，可以在物理模型上拟合残差校正。
 

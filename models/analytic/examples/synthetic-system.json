@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "input_origin": "synthetic",
+  "mode": "bound",
+  "task_signature": "SYNTHETIC: identical one-step task, fixed precision and resource budget",
+  "baseline_id": "baseline",
+  "resources": {
+    "device.compute": {"rate": 1000000000000, "work_unit": "FLOP", "rate_unit": "FLOP/s", "rate_kind": "physical_upper", "source": "SYNTHETIC resource ceiling; not a device specification"},
+    "device.hbm": {"rate": 100000000000, "work_unit": "byte", "rate_unit": "byte/s", "rate_kind": "physical_upper", "source": "SYNTHETIC resource ceiling; not a device specification"},
+    "link": {"rate": 10000000000, "work_unit": "byte", "rate_unit": "byte/s", "rate_kind": "physical_upper", "source": "SYNTHETIC independent-link ceiling"}
+  },
+  "scenarios": [
+    {
+      "id": "baseline",
+      "graph_semantics": "fixed_schedule",
+      "serialization_orders": [["attention", "projection"]],
+      "memory": {"required_peak_bytes": 6000000000, "available_bytes": 8000000000, "source": "SYNTHETIC supplied peak, not inferred"},
+      "nodes": [
+        {"id": "attention", "after": [], "demands": {"device.compute": {"amount": 2000000000, "unit": "FLOP"}, "device.hbm": {"amount": 800000000, "unit": "byte"}}},
+        {"id": "projection", "after": ["attention"], "demands": {"device.compute": {"amount": 3000000000, "unit": "FLOP"}, "device.hbm": {"amount": 100000000, "unit": "byte"}}},
+        {"id": "transfer", "after": ["attention"], "demands": {"link": {"amount": 40000000, "unit": "byte"}}}
+      ]
+    },
+    {
+      "id": "less_traffic",
+      "graph_semantics": "fixed_schedule",
+      "serialization_orders": [["attention", "projection"]],
+      "memory": {"required_peak_bytes": 6500000000, "available_bytes": 8000000000, "source": "SYNTHETIC supplied peak, includes extra workspace"},
+      "nodes": [
+        {"id": "attention", "after": [], "demands": {"device.compute": {"amount": 2000000000, "unit": "FLOP"}, "device.hbm": {"amount": 100000000, "unit": "byte"}}},
+        {"id": "projection", "after": ["attention"], "demands": {"device.compute": {"amount": 3000000000, "unit": "FLOP"}, "device.hbm": {"amount": 100000000, "unit": "byte"}}},
+        {"id": "transfer", "after": ["attention"], "demands": {"link": {"amount": 40000000, "unit": "byte"}}}
+      ]
+    },
+    {
+      "id": "less_traffic_and_transfer",
+      "graph_semantics": "fixed_schedule",
+      "serialization_orders": [["attention", "projection"]],
+      "memory": {"required_peak_bytes": 6500000000, "available_bytes": 8000000000, "source": "SYNTHETIC supplied peak"},
+      "nodes": [
+        {"id": "attention", "after": [], "demands": {"device.compute": {"amount": 2000000000, "unit": "FLOP"}, "device.hbm": {"amount": 100000000, "unit": "byte"}}},
+        {"id": "projection", "after": ["attention"], "demands": {"device.compute": {"amount": 3000000000, "unit": "FLOP"}, "device.hbm": {"amount": 100000000, "unit": "byte"}}},
+        {"id": "transfer", "after": ["attention"], "demands": {"link": {"amount": 10000000, "unit": "byte"}}}
+      ]
+    }
+  ]
+}

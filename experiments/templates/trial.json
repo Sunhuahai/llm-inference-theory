@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "record_kind": "template",
+  "trial_id": null,
+  "environment_id": null,
+  "workload_id": null,
+  "parent_git_sha": null,
+  "candidate_git_sha": null,
+  "mechanism": null,
+  "evidence_status": "hypothesis",
+  "prediction": {"model_version": null, "kind": null, "target": null, "value": null, "unit": null, "assumptions": [], "invalidation_conditions": [], "interval_method": null},
+  "budget": {
+    "planned": {"gpu_seconds": null, "cpu_seconds": null, "llm_tokens": null, "wall_seconds": null},
+    "reserved": {"gpu_seconds": null, "cpu_seconds": null, "llm_tokens": null, "wall_seconds": null},
+    "actual": {"gpu_seconds": null, "cpu_seconds": null, "llm_tokens": null, "wall_seconds": null}
+  },
+  "correctness": {"oracle_id": null, "oracle_hash": null, "status": "unknown", "evidence_ref": null},
+  "measurements": [],
+  "decision": "pending",
+  "failure_reason": null,
+  "independent_validation_ref": null,
+  "artifacts": []
+}
