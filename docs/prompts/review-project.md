@@ -6,6 +6,8 @@
 
 ## 可直接复制
 
+如果 Agent 已安装 [LLM Inference Optimizer Skill](../../skills/llm-inference-optimizer/README.md)，可直接调用 `$llm-inference-optimizer` 并说明 Review + Plan；下面的长提示词仍可供未安装 Skill 的 Agent 使用。
+
 ```text
 请基于当前项目已经尝试的推理优化及其结果，分析下一轮最值得推进的优化方向。
 

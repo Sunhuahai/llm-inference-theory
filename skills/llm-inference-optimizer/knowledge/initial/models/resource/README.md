@@ -1,0 +1,59 @@
+<!-- Generated seed snapshot; source: models/resource/README.md @ 1b4c5a37763475eb39b31dd083fcad256fc2578e. Do not hand-edit. -->
+# 资源账本：模型与硬件之间的共同语言
+
+> 状态：`derived`，2026-11-25。公式在所列假设下成立；数字为合成例。
+
+## 1. 先记工作，再估时间
+
+“模型参数量大”不能单独决定延迟。一次执行可能只触及部分专家，也可能反复读取同一权重。资源账本要记录算法和实现实际要求的工作，并说明统计边界。
+
+| 量 | 单位 | 必须附带的定义 |
+| --- | --- | --- |
+| $F_{j,c}$ | FLOP | 节点 $j$、计算类别 $c$、精度、乘加是否计 2 FLOPs |
+| $D_{j,r}$ | byte | HBM/L2/主机等边界 $r$ 上的读写量；不能混入驻留容量 |
+| $C_{j,e}$ | byte | 链路或通信资源 $e$ 上的流量及方向；不能用全网总量除单链路带宽 |
+| $M_r(t)$ | byte | 资源池 $r$ 的随时间占用，包含状态、workspace、Graph 和预留 |
+| $K_j$ | token | 最终提交的有效生成数，排除未接受草稿和 padding |
+
+同一字节跨 HBM、L2 和网络可以出现在多个**不同资源**账目中，但不能在同一瓶颈链路的时间分解中重复计费。逻辑张量大小、算法必要流量和 profiler 实际流量是三个不同字段。
+
+## 2. 下界与预测使用不同速率
+
+在工作量和资源统计范围匹配时，若 $P_c^{\max},B_r^{\max},\beta_e^{\max}$ 是可证明的可用速率上界：
+
+$$
+T_j\ge L_j=\max\left\{\max_c\frac{F_{j,c}}{P_c^{\max}},\max_r\frac{D_{j,r}}{B_r^{\max}},\max_e\frac{C_{j,e}}{\beta_e^{\max}}\right\}.
+$$
+
+这是资源必要条件，不能保证达到。换成通过微基准得到的有效速率 $P_{\rm eff},B_{\rm eff}$ 后，同形表达式只能是**性能估计**。例如一个较快实现可能超过旧实现的有效带宽，因而旧有效带宽算出的时间不可能约束所有候选。[Roofline 原论文][roofline]提供资源上界的分析框架。
+
+合成例：$F=2\times10^9$ FLOPs、$D=8\times10^8$ bytes，给定 $P^{\max}=10^{12}$ FLOP/s、$B^{\max}=10^{11}$ byte/s，资源时间为 2 ms 和 8 ms。减少流量到 $10^8$ bytes 后下界为 2 ms。若融合同时把计算量增至 $5\times10^9$，新下界就是 5 ms，不能只记录访存节省。
+
+## 3. 架构适配器的最小责任
+
+适配器应从明确模型版本与执行形状产生账本，不依赖模型名字猜成本：
+
+- Dense：本步参与的线性层、注意力位置对、KV 读写。
+- MoE：实际激活专家集合、每专家 token 分布、每 rank dispatch/combine；总参数量和每 token 激活量不能替代批内读取。
+- 稀疏/混合注意力：indexer、gather、选中状态、全局/局部位置集合分别计量。
+- 循环状态：状态更新、snapshot、回滚与恢复；不能套普通 KV 每 token 容量式。
+
+第一版可人工输入账本。自动从图/trace 提取是后续实现，当前 [analytic 参考](https://github.com/Sunhuahai/llm-inference-theory/blob/1b4c5a37763475eb39b31dd083fcad256fc2578e/models/analytic/README.md)不会解析 checkpoint。
+
+## 4. 容量是可行性约束
+
+$$
+\max_t M_r(t)\le M_{r,\rm available},\qquad\forall r.
+$$
+
+单个算子的 workspace 峰值与全局同时驻留峰值不同；多个 rank 也必须分别满足容量。容量不足的方案不能因为计算下界很好就获得推荐。当前参考程序校验**输入的**峰值与容量，尚未实现生命周期内存模拟。
+
+## 5. 可证伪检查与 Agent 用途
+
+若正式测量低于声称严格的下界，应先核对工作量、单位、计时边界和硬件峰值口径；这表明至少一个前提不成立。Agent 可据账本提出“减少哪项工作”的可检验假设，但应把不可消除的必要工作与基线冗余流量分开。
+
+[算子模型](../operator/README.md) · [统一契约](../contracts.md) · [状态理论](../../theory/memory/README.md)
+
+若多个机制都能解释当前耗时，先按[瓶颈诊断](../../theory/diagnosis/README.md)选择区分性实验，再把结果交给[候选诊断接口](../../optimizer/diagnosis/README.md)。资源账本中的工作量大小本身不足以确定当前瓶颈。
+
+[roofline]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-134.html "Williams et al., Roofline, 2008 technical report; 核对于 2026-11-25"

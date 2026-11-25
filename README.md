@@ -22,6 +22,10 @@
 
 ## 用于具体项目
 
+**推荐安装 [LLM Inference Optimizer Skill](skills/llm-inference-optimizer/README.md)**：可在任意推理项目中调用 `$llm-inference-optimizer`。内置 37 篇版本化理论快照、项目审计与决策、每轮事前预测/实测比较，以及私有跨项目理论库。通过预先登记的留出实验和独立审阅验证理论修订，保留全部历史版本和正负证据。
+
+[Skill 入口](skills/llm-inference-optimizer/SKILL.md) · [初始知识](skills/llm-inference-optimizer/knowledge/INDEX.md) · [理论演化](skills/llm-inference-optimizer/references/theory-evolution.md)
+
 已有推理项目和优化记录时，从 **[项目优化指导](docs/project-optimization-guide.md)** 进入：整理历史结果的可比性，把尝试转成机制证据，再按问题选读理论、模型与验证章节，形成下一轮优先方向、最小区分实验和停止条件。
 
 **[直接交给项目 Agent 的完整提示词](docs/prompts/review-project.md)** · [项目使用关系图](visualizations/diagrams/research-atlas/06-project.svg)。指导分析可以直接使用当前项目的源码、日志与历史结果；已有 CPU 原型是辅助参考。
@@ -78,6 +82,7 @@ python3 visualizations/diagrams/research-atlas/build_atlas.py
 python3 -m unittest discover -s models/predictor/tests -v
 python3 -m unittest discover -s models/analytic/tests -v
 python3 -m unittest discover -s optimizer/systems/tests -v
+python3 -m unittest discover -s skills/llm-inference-optimizer/tests -v
 ```
 
 [文档检查器](scripts/check_docs.py)检查当前研究文档的本地链接、公式块与代码围栏，以及 JSON、SVG 和 draw.io 文件的格式；外部链接可用性、锚点和数学正确性仍需人工审阅。

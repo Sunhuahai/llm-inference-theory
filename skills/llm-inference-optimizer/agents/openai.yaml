@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Inference Optimizer"
+  short_description: "Theory-guided inference optimization and evolving evidence"
+  default_prompt: "Use $llm-inference-optimizer to review this inference project, identify the next evidence-based optimization, and compare frozen predictions with measurements for each authorized round."

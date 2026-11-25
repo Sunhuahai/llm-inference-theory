@@ -55,3 +55,7 @@ $$
 [解析参考](../../models/analytic/README.md)用 CPU 验证多资源边界、固定 DAG 与反事实重算；[已有预测器](../../models/predictor/README.md)验证场景及缓存 trace。二者的测试不构成真实性能模型的外部验证。
 
 接入 GPU 数据时从 [微基准](../microbenchmarks/README.md)开始，独立部署评价遵循 [测量协议](../../docs/benchmark-protocol.md)。[Vidur](https://arxiv.org/abs/2405.05465v2)展示了算子 profiling、预测和端到端仿真的结合；它的报告结果只适用于论文设置，不能作为本仓库精度承诺。校准方法与接口见 [Calibration](../../models/calibration/README.md)。
+
+## Skill 实践接口
+
+[安装、逐轮比较与用户理论演化](../../skills/llm-inference-optimizer/references/prediction-comparison.md) 将本专题连接到具体项目的长期优化。程序负责结构化证据与版本管理；实际模型校准、留出实验和独立审阅仍以项目真实数据为准。

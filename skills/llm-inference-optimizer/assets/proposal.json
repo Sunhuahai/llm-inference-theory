@@ -1,0 +1,24 @@
+{
+  "version": "candidate-v2-example",
+  "parent": "seed-1b4c5a377634",
+  "scope": "TEMPLATE ONLY; replace with actual hardware, architecture, workload and context",
+  "category": "calibration",
+  "rationale": "TEMPLATE ONLY; explain why measured data support change and what is not identified",
+  "training": [
+    "example-project/train-001",
+    "example-project/train-002"
+  ],
+  "validation_rounds": [
+    "example-project/holdout-001",
+    "example-project/holdout-002"
+  ],
+  "validation_contexts": [
+    "example-context"
+  ],
+  "targets": {
+    "tpot": 2
+  },
+  "changes": {
+    "models/calibration/local-v2-example.md": "# TEMPLATE ONLY\nReplace with actual formula, units, scope, evidence, assumptions, constraints, and prospective validation. Do not use example as measured knowledge.\n"
+  }
+}

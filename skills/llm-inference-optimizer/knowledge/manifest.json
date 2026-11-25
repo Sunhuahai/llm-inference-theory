@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "source_repository": "https://github.com/Sunhuahai/llm-inference-theory",
+  "source_commit": "1b4c5a37763475eb39b31dd083fcad256fc2578e",
+  "format": "Markdown snapshots; non-bundled links pinned to source; source_blob_sha identifies upstream original",
+  "documents": {
+    "docs/project-optimization-guide.md": {
+      "source_blob_sha": "2775a750ea7950e81a9b12f566187f7e54b00066"
+    },
+    "docs/methodology.md": {
+      "source_blob_sha": "0422be6c1275fac85e7e337071a37b08a421226d"
+    },
+    "docs/benchmark-protocol.md": {
+      "source_blob_sha": "c56c98866dadc5f9ea9669273f6a0ccbe378d83f"
+    },
+    "theory/INDEX.md": {
+      "source_blob_sha": "b0e63ada625eb66efe53a487fb14a793749c2a12"
+    },
+    "theory/foundations/unified-theory.md": {
+      "source_blob_sha": "ad7cf8c525f325aa9ce4afe861cad0500f4cee5c"
+    },
+    "theory/foundations/cache-context-ceilings.md": {
+      "source_blob_sha": "0b389b6211dc1275c7e1dfaae83a3ae925585863"
+    },
+    "theory/performance/README.md": {
+      "source_blob_sha": "128f1c6ab57692c025d29283d023ad8d0a5a398c"
+    },
+    "theory/diagnosis/README.md": {
+      "source_blob_sha": "c5f4ef6b19633561fd04c9a63c53ef211572730d"
+    },
+    "theory/execution/README.md": {
+      "source_blob_sha": "26696f65dbe440fb07242dd6d09618047a02d779"
+    },
+    "theory/memory/README.md": {
+      "source_blob_sha": "c52aab40f248d2b50e1131c33c90bea655450f57"
+    },
+    "theory/generation/README.md": {
+      "source_blob_sha": "cf21033d7d39da75270112402df44d716729888f"
+    },
+    "theory/serving/README.md": {
+      "source_blob_sha": "1dddb7269946198a25037548141a414b769e15ef"
+    },
+    "theory/optimization/mechanisms.md": {
+      "source_blob_sha": "58743a8ba427749964548ea5e0932d79eebad9c4"
+    },
+    "theory/optimization/coupling.md": {
+      "source_blob_sha": "83fbc3252f6146e8711e63e52b6d0ffa8636b2f6"
+    },
+    "theory/optimization/benefit-prediction.md": {
+      "source_blob_sha": "01bb2c02821eea92055294f4ed4fef81a7308140"
+    },
+    "models/README.md": {
+      "source_blob_sha": "86e1c7693b5fbae76db1ce855bd417eecb380b2a"
+    },
+    "models/contracts.md": {
+      "source_blob_sha": "470a4ffc5d09af118704ede08b7d85cc5faa3ab1"
+    },
+    "models/resource/README.md": {
+      "source_blob_sha": "b2f9f73da4fefaa72a08a621e3d876f3196fb6f5"
+    },
+    "models/operator/README.md": {
+      "source_blob_sha": "5e65dcdc1b1e393e5466208a98bc1dac709d648f"
+    },
+    "models/execution/README.md": {
+      "source_blob_sha": "af771d96dcfb9af3c693c54a8cb994934872763e"
+    },
+    "models/serving/README.md": {
+      "source_blob_sha": "266b159ab8a7d56013f00c91f339a8471320e23e"
+    },
+    "models/simulation/README.md": {
+      "source_blob_sha": "46ac8889a5bd20552ed53ac52450514c4e68e226"
+    },
+    "models/calibration/README.md": {
+      "source_blob_sha": "6f448ac71a5f52b40e4159e046356d2e3eb16948"
+    },
+    "optimizer/README.md": {
+      "source_blob_sha": "9a635834f58be8e8ab647428167a2e1f796c924c"
+    },
+    "optimizer/foundations/autonomous-optimization.md": {
+      "source_blob_sha": "440a246b553a2d78d5e72edf09d01d82b433e54c"
+    },
+    "optimizer/diagnosis/README.md": {
+      "source_blob_sha": "8e7a2a9e7c5bb9d77fb983800dc91ebd3a2fbb60"
+    },
+    "optimizer/search-space/README.md": {
+      "source_blob_sha": "5a44546f4c28641bc97fb3dcca9e5f3b96ab2e7d"
+    },
+    "optimizer/planning/README.md": {
+      "source_blob_sha": "15e45044f8184917215ba0ca63451ac240eddcc9"
+    },
+    "optimizer/evolution/README.md": {
+      "source_blob_sha": "5e64decefb3b77421ecf064dc7e9cd1f3d9bc0d0"
+    },
+    "optimizer/evaluation/README.md": {
+      "source_blob_sha": "699afd98687b66b9ec79e5ef49f1b020c7e93e9e"
+    },
+    "optimizer/memory/README.md": {
+      "source_blob_sha": "8d5dec33a1d0af879f5b4d7ae944efa1a91a039e"
+    },
+    "optimizer/systems/README.md": {
+      "source_blob_sha": "a056164fc319e7f226eafd21929e164f44e9e0ca"
+    },
+    "experiments/agent-benchmark/README.md": {
+      "source_blob_sha": "ee0888981a9479b2b29945ce72f1d103aca8a25e"
+    },
+    "experiments/model-validation/README.md": {
+      "source_blob_sha": "9260a117215b9878764fbbf8dafeb03d7f6673e5"
+    },
+    "experiments/templates/README.md": {
+      "source_blob_sha": "9f1948c8322df830c54140bf1b0282d0b8763888"
+    },
+    "experiments/microbenchmarks/README.md": {
+      "source_blob_sha": "ac9b25dc7911b25b863f3c21f96cc4c0df3adda7"
+    },
+    "experiments/case-studies/README.md": {
+      "source_blob_sha": "3bd8aaae10dde483ba650acb5919e0a5182b3783"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "description": "Historical audit template; not a prospective comparison receipt",
+  "records": [
+    {
+      "trial_id": null,
+      "parent_ref": null,
+      "baseline_ref": null,
+      "context_ref": null,
+      "implementation": null,
+      "mechanism": null,
+      "correctness": "unknown",
+      "measurement_refs": [],
+      "metric_scope": null,
+      "result": null,
+      "cost": null,
+      "comparability": "conditional",
+      "evidence_status": "inconclusive",
+      "decision": "inconclusive",
+      "prospective_prediction_ref": null,
+      "limitations": []
+    }
+  ]
+}

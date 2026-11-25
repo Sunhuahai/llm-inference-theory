@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "project": "synthetic-demo",
+  "round": "round-001",
+  "parent_ref": "SYNTHETIC-BASE",
+  "candidate_ref": "SYNTHETIC-FUSION",
+  "context_id": "SYNTHETIC-CTX",
+  "status": "completed",
+  "correctness": "passed",
+  "comparability": "comparable",
+  "evidence": "simulated",
+  "implementation_ref": "SYNTHETIC-IMPLEMENTATION",
+  "evaluator_ref": "SYNTHETIC-EVALUATOR",
+  "evidence_refs": [
+    "SYNTHETIC ONLY; no real logs"
+  ],
+  "metrics": {
+    "hbm_bytes": {
+      "level": "resource",
+      "unit": "bytes",
+      "direction": "lower",
+      "statistic": "per_step",
+      "baseline": 1000000,
+      "actual": 720000
+    },
+    "kernel_ms": {
+      "level": "execution",
+      "unit": "ms",
+      "direction": "lower",
+      "statistic": "mean",
+      "baseline": 4,
+      "actual": 3.28
+    },
+    "tpot": {
+      "level": "service",
+      "unit": "ms/token",
+      "direction": "lower",
+      "statistic": "mean",
+      "baseline": 10,
+      "actual": 8.6
+    },
+    "throughput": {
+      "level": "service",
+      "unit": "tokens/s",
+      "direction": "higher",
+      "statistic": "mean",
+      "baseline": 100,
+      "actual": 110
+    }
+  }
+}

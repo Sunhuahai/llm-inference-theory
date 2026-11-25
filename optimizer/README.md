@@ -10,6 +10,8 @@
 
 ## 阅读路线
 
+**实践接口：[LLM Inference Optimizer Skill](../skills/llm-inference-optimizer/README.md)**。把本模块的诊断、候选选择、独立验证与经验积累转换为跨项目可安装的 Agent 工作流，支持逐轮理论预测对比、版本化用户知识库和验证后理论晋升；不等同于已实现通用 GPU 自主优化器。
+
 已有具体项目时，先用[项目优化指导](../docs/project-optimization-guide.md)复盘已有尝试，并将[完整提示词](../docs/prompts/review-project.md)交给项目 Agent；再按复盘识别的问题进入下列专题。
 
 | 入口 | 解决的问题 | 内容状态 |

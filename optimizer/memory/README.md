@@ -50,3 +50,7 @@
 最低可检验目标是：使用记忆后，同预算下重复无效实验是否减少，独立确认收益是否改善，错误迁移是否增加。实验设计见 [Agent Benchmark](../../experiments/agent-benchmark/README.md)。这些属于本仓库研究假设，需要真实任务证据。
 
 具体项目可用[复盘指南](../../docs/project-optimization-guide.md)和[项目 Agent 提示词](../../docs/prompts/review-project.md)把这类记录转成下一轮方向；[项目使用子图](../../visualizations/diagrams/research-atlas/06-project.svg)展示结果回写后怎样更新假设与优先级。
+
+## Skill 实践接口
+
+[安装、逐轮比较与用户理论演化](../../skills/llm-inference-optimizer/references/theory-evolution.md) 将本专题连接到具体项目的长期优化。程序负责结构化证据与版本管理；实际模型校准、留出实验和独立审阅仍以项目真实数据为准。

@@ -6,6 +6,8 @@
 
 ## 1. 从已有结果形成下一步判断
 
+持续使用时推荐安装 [LLM Inference Optimizer Skill](../skills/llm-inference-optimizer/README.md)，将本文的复盘与阅读方法封装为统一调用。实际实施的每个候选必须在测量前冻结理论预测，结束后生成[对比报告](../skills/llm-inference-optimizer/references/prediction-comparison.md)，并评价是否应[修订用户级理论模型](../skills/llm-inference-optimizer/references/theory-evolution.md)。历史无预测的资料仍作回顾性证据，不伪造事前记录。
+
 一个项目可能已经尝试融合、缓存、CUDA Graph 和不同并行配置，有的变快，有的没有收益。下一轮最有价值的问题是：**这些结果共同说明了什么，哪些慢因仍无法区分，还有哪种改动可能改变当前真正限制目标的因素？**
 
 例如，一项减少访存的改动没有变快，至少允许几种解释：实际流量没有下降；流量下降但计算更慢；局部确实变快但不在服务关键路径；新增开销抵消了收益。仅记录“融合失败”会丢掉这些区别，也可能错误地排除后续机会。对应理论见[瓶颈诊断](../theory/diagnosis/README.md)和[优化机制](../theory/optimization/mechanisms.md)。

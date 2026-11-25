@@ -55,3 +55,7 @@ $$
 [统一契约](../contracts.md) · [模型验证](../../experiments/model-validation/README.md) · [理论引导搜索](../../optimizer/planning/README.md)
 
 [profile]: https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html "NVIDIA Nsight Compute Profiling Guide; 核对于 2026-11-25"
+
+## Skill 实践接口
+
+[安装、逐轮比较与用户理论演化](../../skills/llm-inference-optimizer/references/theory-evolution.md) 将本专题连接到具体项目的长期优化。程序负责结构化证据与版本管理；实际模型校准、留出实验和独立审阅仍以项目真实数据为准。

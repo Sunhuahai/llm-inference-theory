@@ -65,3 +65,7 @@ draw.io 的页面链接与原生连接遵循[官方格式说明](https://www.dra
 - [三主线与自主优化简图](../research-framework/README.md)：保留简洁入口，适合快速说明研究定位。
 - [理论图解导读](../../../theory/README.md)：通过小图和算例解释 Roofline、关键路径、Amdahl 与排队。
 - [业界自主优化图解](../../../research/industry/agentic-inference-optimization-guide.md)：解释外部项目的思想与证据。
+
+## Skill 实践接口
+
+[安装、逐轮比较与用户理论演化](../../../skills/llm-inference-optimizer/README.md) 将本专题连接到具体项目的长期优化。程序负责结构化证据与版本管理；实际模型校准、留出实验和独立审阅仍以项目真实数据为准。

@@ -33,6 +33,7 @@
 | 统一记录 | [环境、工作负载、trial JSON 模板](../experiments/templates/README.md) | 可复用模板，未知字段不伪填 |
 | 全局关系图谱 | [全局总图与理论、机制、模型、Agent、证据、项目六张子图](../visualizations/diagrams/research-atlas/README.md) | 七页 draw.io、七张 SVG、节点文档链接与统一生成脚本 |
 | 项目使用指导 | [历史证据复盘、问题驱动选读、下一轮方向与验证](project-optimization-guide.md) · [Agent 提示词](prompts/review-project.md) | 可直接用于已有项目分析；具体建议需由项目证据支持 |
+| 自演化 Agent Skill | [安装与调用](../skills/llm-inference-optimizer/README.md) · [逐轮预测](../skills/llm-inference-optimizer/references/prediction-comparison.md) · [理论演化](../skills/llm-inference-optimizer/references/theory-evolution.md) | 37 篇初始理论、CPU 比较/证据/拟合/版本治理；真实实验由使用者授权并验证 |
 | 研究路线 | [共同里程碑与验收要求](roadmap.md) | 三条主线并行推进 |
 | 文献入口 | [问题导向的一手阅读地图](../research/papers/README.md) | 基础与评价资料；保留现有业界专题 |
 

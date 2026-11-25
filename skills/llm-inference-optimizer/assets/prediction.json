@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "project": "synthetic-demo",
+  "round": "round-001",
+  "theory_version": "seed-1b4c5a377634",
+  "parent_ref": "SYNTHETIC-BASE",
+  "candidate_ref": "SYNTHETIC-FUSION",
+  "context_id": "SYNTHETIC-CTX",
+  "mechanism": "教学示例：减少 HBM 流量；绝非项目实测。",
+  "assumptions": "同模型精度、工作负载和质量；假设有效速率近似稳定。",
+  "validation_plan": "SYNTHETIC: compare predefined resource/execution/service values; no GPU execution",
+  "theory_refs": [
+    "theory/optimization/mechanisms.md",
+    "theory/execution/README.md",
+    "models/calibration/README.md"
+  ],
+  "validation_role": "search",
+  "metrics": {
+    "hbm_bytes": {
+      "level": "resource",
+      "unit": "bytes",
+      "direction": "lower",
+      "statistic": "per_step",
+      "baseline": 1000000,
+      "baseline_tolerance_rel": 0.02,
+      "kind": "point",
+      "value": 700000
+    },
+    "kernel_ms": {
+      "level": "execution",
+      "unit": "ms",
+      "direction": "lower",
+      "statistic": "mean",
+      "baseline": 4,
+      "baseline_tolerance_rel": 0.02,
+      "kind": "interval",
+      "low": 2.8,
+      "high": 3.2,
+      "value": 3
+    },
+    "tpot": {
+      "level": "service",
+      "unit": "ms/token",
+      "direction": "lower",
+      "statistic": "mean",
+      "baseline": 10,
+      "baseline_tolerance_rel": 0.02,
+      "kind": "point",
+      "value": 8
+    },
+    "throughput": {
+      "level": "service",
+      "unit": "tokens/s",
+      "direction": "higher",
+      "statistic": "mean",
+      "baseline": 100,
+      "baseline_tolerance_rel": 0.02,
+      "kind": "unknown",
+      "reason": "没有服务调度模型，不能据局部时间推算"
+    }
+  }
+}
