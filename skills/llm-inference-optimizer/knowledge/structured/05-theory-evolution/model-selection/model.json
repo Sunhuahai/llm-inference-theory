@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "LRN-SELECTION",
+  "revision": 1,
+  "layer": "05-theory-evolution",
+  "kind": "method",
+  "title": "理论修订与独立模型选择",
+  "formula": "compare paired holdout errors of M_k and M'_k; promote only with preregistered gates and review",
+  "inputs": [
+    {
+      "id": "training",
+      "unit": "record",
+      "description": "支持修订的证据"
+    },
+    {
+      "id": "holdout",
+      "unit": "record",
+      "description": "预登记独立数据及目标"
+    },
+    {
+      "id": "candidate_version",
+      "unit": "record",
+      "description": "冻结修订及依赖影响"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "decision",
+      "unit": "record",
+      "description": "保留、晋升、拒绝或回滚"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "LRN-CALIBRATION",
+    "AGT-EXPERIMENT"
+  ],
+  "tags": [
+    "theory",
+    "promotion",
+    "holdout",
+    "validation",
+    "revision"
+  ],
+  "applicability": "训练/验证隔离、同一真实观测的双模型预测、实际审核授权。",
+  "limitations": "最小 MAE 门槛非科学充分条件；结构修订需理论审查。",
+  "validation": "核查所有登记轮次、上下文、配对误差、泄漏、物理约束及下游回归。",
+  "sources": [
+    "experiments/model-validation/README.md",
+    "models/calibration/README.md",
+    "docs/methodology.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

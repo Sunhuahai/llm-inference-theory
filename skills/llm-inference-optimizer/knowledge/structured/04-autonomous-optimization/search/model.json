@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "AGT-SEARCH",
+  "revision": 1,
+  "layer": "04-autonomous-optimization",
+  "kind": "method",
+  "title": "候选表示与约束搜索",
+  "formula": "A(s) = admissible interventions given state, task, constraints, parent and evidence",
+  "inputs": [
+    {
+      "id": "state",
+      "unit": "record",
+      "description": "当前系统、理论、证据和预算"
+    },
+    {
+      "id": "mechanisms",
+      "unit": "record",
+      "description": "可能干预及前提"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "candidate_set",
+      "unit": "record",
+      "description": "可行/未知/不可行与理由"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "OPT-TRANSFORM",
+    "OPT-COUPLING",
+    "AGT-DIAGNOSIS"
+  ],
+  "tags": [
+    "search",
+    "candidate",
+    "agent",
+    "evolution",
+    "候选"
+  ],
+  "applicability": "候选 ID 绑定 parent、作用机制、前提、成本和验证；硬约束与近似排名区分。",
+  "limitations": "不能因一次历史失败排除机制；未校准预测不是安全剪枝。",
+  "validation": "记录搜索过程、重复尝试、拒绝原因；同预算比较候选有效率。",
+  "sources": [
+    "optimizer/foundations/autonomous-optimization.md",
+    "optimizer/search-space/README.md",
+    "optimizer/planning/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

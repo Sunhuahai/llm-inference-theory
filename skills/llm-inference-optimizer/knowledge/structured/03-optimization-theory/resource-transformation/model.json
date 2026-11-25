@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "OPT-TRANSFORM",
+  "revision": 1,
+  "layer": "03-optimization-theory",
+  "kind": "method",
+  "title": "优化操作与资源变换",
+  "formula": "x' = a(x); Delta R = R(x')-R(x); evaluate both complete systems",
+  "inputs": [
+    {
+      "id": "baseline_spec",
+      "unit": "record",
+      "description": "当前 parent 的资源、依赖与配置"
+    },
+    {
+      "id": "intervention",
+      "unit": "record",
+      "description": "实际作用机制、前提与额外成本"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "transformed_spec",
+      "unit": "record",
+      "description": "变换后的完整模型"
+    },
+    {
+      "id": "resource_delta",
+      "unit": "record",
+      "description": "计算、流量、容量、通信、依赖、提交量变化"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "PERF-RESOURCE",
+    "PERF-EXECUTION",
+    "PERF-STATE",
+    "PERF-GENERATION"
+  ],
+  "tags": [
+    "fusion",
+    "cache",
+    "optimization",
+    "overlap",
+    "transform",
+    "优化机制"
+  ],
+  "applicability": "以同任务和资源预算比较完整系统，区分资源节约和新增成本。",
+  "limitations": "局部流量减少不保证整体加速；技术名称不能代替实际变化。",
+  "validation": "对照资源账本和运行路径，记录同时变化的机制，检查可逆干预。",
+  "sources": [
+    "theory/optimization/mechanisms.md",
+    "optimizer/search-space/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

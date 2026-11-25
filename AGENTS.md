@@ -21,5 +21,9 @@
 ## 实验约束
 通用理论允许讨论不同精度与架构，但固定任务实验不得以改变 checkpoint、重新量化、降低 KV/state 精度、剪枝、缩短回答或关闭必要 reasoning 冒充同条件优化。保持同等 GPU 预算、输入/输出口径与质量要求。TTFT、TPOT、吞吐、Goodput 和优化搜索成本分开报告；未测量不声称成功。状态：hypothesis / derived / literature / simulated / user_report / measured / validated / inconclusive，证据独立登记。
 
+## 结构化理论维护
+
+维护 Skill 理论库时以稳定 ID、revision、输入输出单位、适用域与可证伪条件为核心，保留原始 37 篇快照。更新 model.json/theory.md、参数契约和注册表时检查依赖、版本与来源，更新发布 manifest；不得将使用者的私有库或未验证参数提交公共仓库。详见 [结构化理论使用说明](skills/llm-inference-optimizer/references/structured-theory.md)。
+
 ## 交付
 明确问题和假设，优先有价值的新推导或证据，不以新增数量为目标。保留失败与负结果；检查相对链接、公式渲染、代码测试。公共仓库不提交密钥、内部地址、私密 prompt 或未脱敏数据。提交前读取最新 head，正常 fast-forward，禁止强推覆盖其他 Agent 变更。

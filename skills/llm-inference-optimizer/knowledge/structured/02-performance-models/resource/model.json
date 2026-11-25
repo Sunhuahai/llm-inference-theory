@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "id": "PERF-RESOURCE",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "模型架构资源账本",
+  "formula": "R(x) = {F_i, D_i,l, M_i(t), C_i} for operations and ranks",
+  "inputs": [
+    {
+      "id": "model_spec",
+      "unit": "record",
+      "description": "架构、shape、权重、状态"
+    },
+    {
+      "id": "workload_spec",
+      "unit": "record",
+      "description": "实际 token/batch/长度分布"
+    },
+    {
+      "id": "execution_spec",
+      "unit": "record",
+      "description": "布局、融合、路由及并行"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "flops",
+      "unit": "FLOP",
+      "description": "计算需求"
+    },
+    {
+      "id": "traffic",
+      "unit": "byte",
+      "description": "分层流量"
+    },
+    {
+      "id": "state",
+      "unit": "byte",
+      "description": "状态容量"
+    },
+    {
+      "id": "ledger",
+      "unit": "record",
+      "description": "分算子分 rank 成本"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "FND-COMPUTE",
+    "FND-IO",
+    "DEF-TASK"
+  ],
+  "tags": [
+    "resource",
+    "flops",
+    "bytes",
+    "moe",
+    "shape"
+  ],
+  "applicability": "按真实架构、路由与布局建账；密集/稀疏/混合状态分开。",
+  "limitations": "理论必要量、预计实际量和 profiler 观测分离；不把峰值当实际。",
+  "validation": "核对算子 shape、真实后端、流量计数器、容量高水位及专家负载。",
+  "sources": [
+    "models/resource/README.md",
+    "theory/foundations/unified-theory.md",
+    "models/contracts.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "hypothesis_or_model"
+}

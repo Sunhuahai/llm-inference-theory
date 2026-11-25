@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "id": "OPT-BENEFIT",
+  "revision": 1,
+  "layer": "03-optimization-theory",
+  "kind": "derived",
+  "title": "净收益与条件加速上限",
+  "formula": "g=(T0-T1)/T0; S=T0/T1; S_max=T0/L1 if L1 is a valid lower bound",
+  "inputs": [
+    {
+      "id": "baseline_time",
+      "unit": "s",
+      "description": "已测或明确标注的基线"
+    },
+    {
+      "id": "candidate_time",
+      "unit": "s",
+      "description": "同口径候选时间预测"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "gain",
+      "unit": "ratio",
+      "description": "预测改善"
+    },
+    {
+      "id": "speedup",
+      "unit": "ratio",
+      "description": "条件加速比"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-METRIC",
+    "FND-AMDAHL",
+    "PERF-EXECUTION",
+    "PERF-SERVING",
+    "OPT-TRANSFORM"
+  ],
+  "tags": [
+    "benefit",
+    "speedup",
+    "gain",
+    "prediction",
+    "收益"
+  ],
+  "applicability": "基线和候选同任务、同指标；严格上限需要实测 T0 与有效必要下界 L1。",
+  "limitations": "两个近似值相除只是估计；不能直接把不同层的节省叠加。",
+  "validation": "冻结预测并独立对照同工作点；报告收益偏差与资源变化。",
+  "sources": [
+    "theory/optimization/benefit-prediction.md",
+    "theory/optimization/coupling.md",
+    "models/contracts.md"
+  ],
+  "evaluator": "benefit",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

@@ -2,7 +2,7 @@
 
 ## 三层知识
 
-- **Seed**：随 Skill 分发的 [37 篇初始文档](../knowledge/INDEX.md)，固定上游 commit；不可原地修改。上游是通用理论权威来源，本地是有适用域的演化副本。
+- **Seed**：随 Skill 分发的 [33 个结构化理论单元和 37 篇初始文档](../knowledge/INDEX.md)，固定上游 commit；不可原地修改。上游是通用理论权威来源，本地是有适用域的演化副本。
 - **User**：默认 ~/.local/share/llm-inference-optimizer（或 LLM_OPTIMIZER_HOME / --home）。init 只在首次建立库，不覆盖已存在 active。每次 resolve 从 active.json 指向的版本读取，版本有完整 documents、INDEX 和 manifest。读取新增文档的域、来源、限制与验证状态。用户之间物理隔离目录；不默认同步，不把私有证据提交公共仓库。
 - **Project**：每个具体项目保留完整日志、配置、历史台账、轮次报告；用户库接收本地授权的结构化记录及引用，不复制原始大 trace。不同项目可以共用 user 目录但用不同 project ID；context ID 区分工作点。对于有保密要求的项目使用独立 --home，禁止跨保密域复制任何数据。
 
@@ -13,10 +13,14 @@ user-home/
     INDEX.md
     manifest.json
     documents/{theory,models,optimizer,experiments,docs}/...
+    structured/{00-definitions,...,05-theory-evolution}/...
+    structured/registry.json dependencies.json parameters.json
+    migration.json             # 显式迁移才有
     proposal.json               # 候选才有
   evidence/<project>/<round>/
     prediction.json freeze.json measurement.json
     comparison.json receipt.json theory-update.md
+    theory-update.json module-update-receipt.json # v2
   promotions/<version>.json
   rollbacks/<timestamp>.json
 ```
@@ -27,7 +31,7 @@ store 采用本地单写者目录锁和原子重命名。不要编辑 active.jso
 
 读 [预测对比](prediction-comparison.md)、[校准](../knowledge/initial/models/calibration/README.md)、[经验记忆](../knowledge/initial/optimizer/memory/README.md)。
 
-理论更新不是每次都改公式。填写 theory-update.md：事前假设、可比实测、机制验证、偏差来源（未辨识则不下定论）、保留/修订理由、证据、适用域与下一轮可证伪预测。record 接纳真实失败及未决作为知识线索，模拟不入库；报告类不参与实测统计。历史无预测的项目资料仍可用于形成假设，不伪造事前误差。
+理论更新不是每次都改公式。v2 从 result/module-review-template.json 填写 theory-update.json，绑定主模型 ID、revision、指标、决定和依据；可补充先修模块。model-gap 单独登记，不反向伪造引用。填写 theory-update.md：事前假设、可比实测、机制验证、偏差来源（未辨识则不下定论）、保留/修订理由、证据、适用域与下一轮可证伪预测。record 接纳真实失败及未决作为知识线索，模拟不入库；报告类不参与实测统计。历史无预测的项目资料仍可用于形成假设，不伪造事前误差。
 
 类型分为 calibration（有效速率/参数），correction（原模型遗漏项），extension（增加新机制），empirical（条件经验规律），revision（假设/推导变更）。经验拟合不得修改严格物理界的逻辑结论。新参数或残差模型必须写清单位、适用硬件、模型结构、负载、输入范围和失败边界；不同 context 不直接复用数值。
 
@@ -41,6 +45,10 @@ python3 "$SKILL_DIR/scripts/skill.py" calibrate tpot project-a/round-001 project
 
 仅对同 active theory version、同 context、同指标定义下至少两个可比实测 search 点，计算 factor=median(actual/predicted)。这给出候选的乘性修正，保留原模型，必须检查新预测是否满足物理边界。不是自动学习所有模型参数，不保证泛化，也不应强加到物理界。更复杂拟合可以由 Agent 用授权数据设计并记录训练集、特征、目标、方法、参数、域和不确定性；只提交候选文档，不自动改 active。物理结构加残差的模型要保持已知约束，跨域重新校准。
 
+## 结构化修订（v2）
+
+详见 [结构化理论使用说明](structured-theory.md)。模型结构和参数分离。structured_changes 只能成对修改 model.json/theory.md；既有 ID、目录不变，revision 增 1。改变数值公式/接口须关闭旧 evaluator；新增模块不得指定未经实现的 evaluator。parameter_sets 新 ID 不得覆盖旧 ID，绑定模型 revision、context、参数值/单位、训练轮次和方法，初始为空。模型修订后旧参数不再适用，原版本仍完整保留。程序自动重建注册表与图谱，计算 changed_modules、impacted_modules、retired_parameter_sets、new_parameter_sets。只修订 Markdown 的旧流程仅用于 v1。结构化晋升还需覆盖变更模型的配对预测链、新参数集实际用于合格的 shadow target，并检查逐指标/逐 context MAE 不退步。未能用数值预测验证的决策理论改动要另外做独立研究审查，不强行晋升。
+
 ## 候选、验证与晋升
 
 1. 基于实测证据写 [proposal.json](../assets/proposal.json)：version 新 ID、parent 当前 active、scope、category、rationale、training（证据 ID）、changes（相对 documents 的 Markdown 路径 -> 完整文档内容）、targets（metric ID -> 最小可比留出数），validation_rounds 与 validation_contexts 在验证前一次性固定。新文档应带关联路径、数学式/单位、假设、失效范围、证据引用；替换文档保留原章节仍成立内容。训练和验证 ID 不重叠，验证 ID 尚无记录。不要选已知道结果的轮次。
@@ -52,7 +60,7 @@ python3 "$SKILL_DIR/scripts/skill.py" calibrate tpot project-a/round-001 project
 ```bash
 python3 "$SKILL_DIR/scripts/skill.py" propose /path/to/proposal.json
 python3 "$SKILL_DIR/scripts/skill.py" promote local-v2 actual-review-ref project-a/holdout-001 project-b/holdout-001
-python3 "$SKILL_DIR/scripts/skill.py" rollback seed-1b4c5a377634 actual-rollback-approval-ref
+python3 "$SKILL_DIR/scripts/skill.py" rollback seed-1b4c5a377634-v2 actual-rollback-approval-ref
 ```
 
 示例标识需替换为真实版本/批准引用；不存在的引用不应执行。摘要按 scope 解读，不用更新后的模型在训练集上回算并冒充历史事前预测。跨项目迁移优先迁移机制和带适用条件的经验律，硬件率和 shape 分段参数需验证。升级 Skill 时 init 保留旧库；新 seed 由用户审查差异后作为独立知识来源/候选纳入，未提供自动三方合并。

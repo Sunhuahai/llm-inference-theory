@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structured theory model v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "revision",
+    "layer",
+    "kind",
+    "title",
+    "formula",
+    "inputs",
+    "outputs",
+    "parameters",
+    "depends_on",
+    "tags",
+    "applicability",
+    "limitations",
+    "validation",
+    "sources",
+    "evaluator",
+    "status",
+    "evidence_type"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "layer": {
+      "enum": [
+        "00-definitions",
+        "01-fundamentals",
+        "02-performance-models",
+        "03-optimization-theory",
+        "04-autonomous-optimization",
+        "05-theory-evolution"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "definition",
+        "derived",
+        "physical_bound",
+        "performance_model",
+        "method",
+        "learning",
+        "hypothesis"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formula": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "unit",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+          },
+          "unit": {
+            "enum": [
+              "record",
+              "scalar",
+              "ratio",
+              "count",
+              "s",
+              "ms",
+              "byte",
+              "FLOP",
+              "FLOP/s",
+              "byte/s",
+              "FLOP/byte",
+              "1/s",
+              "s/token",
+              "ms/token",
+              "tokens/s",
+              "requests/s"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "unit",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+          },
+          "unit": {
+            "enum": [
+              "record",
+              "scalar",
+              "ratio",
+              "count",
+              "s",
+              "ms",
+              "byte",
+              "FLOP",
+              "FLOP/s",
+              "byte/s",
+              "FLOP/byte",
+              "1/s",
+              "s/token",
+              "ms/token",
+              "tokens/s",
+              "requests/s"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "unit",
+          "description",
+          "learnable",
+          "bounds"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+          },
+          "unit": {
+            "enum": [
+              "record",
+              "scalar",
+              "ratio",
+              "count",
+              "s",
+              "ms",
+              "byte",
+              "FLOP",
+              "FLOP/s",
+              "byte/s",
+              "FLOP/byte",
+              "1/s",
+              "s/token",
+              "ms/token",
+              "tokens/s",
+              "requests/s"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "learnable": {
+            "const": true
+          },
+          "bounds": {
+            "type": "object",
+            "required": [
+              "min"
+            ],
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "exclusive_min": {
+                "type": "boolean"
+              },
+              "exclusive_max": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+      },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "applicability": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evaluator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "analytic_reference",
+        "documented_model"
+      ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

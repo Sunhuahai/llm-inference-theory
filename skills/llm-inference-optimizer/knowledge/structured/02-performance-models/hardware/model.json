@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "id": "PERF-HARDWARE",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "硬件能力与有效速率",
+  "formula": "P_eff=eta_P*P_peak; B_eff=eta_B*B_peak",
+  "inputs": [
+    {
+      "id": "hardware_spec",
+      "unit": "record",
+      "description": "设备、dtype、拓扑和峰值来源"
+    },
+    {
+      "id": "shape",
+      "unit": "record",
+      "description": "微基准工作点"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "effective_compute",
+      "unit": "FLOP/s",
+      "description": "条件有效计算率"
+    },
+    {
+      "id": "effective_bandwidth",
+      "unit": "byte/s",
+      "description": "条件有效带宽"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "eta_compute",
+      "unit": "ratio",
+      "description": "计算效率；(0,1] 且峰值口径一致",
+      "learnable": true,
+      "bounds": {
+        "min": 0,
+        "max": 1,
+        "exclusive_min": true
+      }
+    },
+    {
+      "id": "eta_bandwidth",
+      "unit": "ratio",
+      "description": "带宽效率；(0,1] 且峰值口径一致",
+      "learnable": true,
+      "bounds": {
+        "min": 0,
+        "max": 1,
+        "exclusive_min": true
+      }
+    }
+  ],
+  "depends_on": [
+    "DEF-RESOURCE"
+  ],
+  "tags": [
+    "hardware",
+    "bandwidth",
+    "gpu",
+    "h800",
+    "a800",
+    "efficiency"
+  ],
+  "applicability": "设备、频率、dtype、shape、后端、并发与热状态明确。",
+  "limitations": "效率非硬件常数；未知值不默认 1；峰值与持续速率区别。",
+  "validation": "独立微基准拟合后对未见 shape/负载验证，报告不确定性。",
+  "sources": [
+    "models/resource/README.md",
+    "models/operator/README.md",
+    "models/calibration/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "hypothesis_or_model"
+}

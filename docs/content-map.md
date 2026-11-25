@@ -1,5 +1,8 @@
 # 内容地图与能力状态
 
+
+**结构化理论库 v2**：[六层模型索引](../skills/llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](../skills/llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](../skills/llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](../skills/llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
 > 2026-11-25。这里对应仓库结构审计提出的缺项，区分已补充的研究内容、可执行参考以及仍需外部实验的能力。
 
 需要先建立整体认识时，打开[全局关系总图与六张子图](../visualizations/diagrams/research-atlas/README.md)。已有具体项目和历史结果时，从[项目优化指导](project-optimization-guide.md)及[可复制提示词](prompts/review-project.md)进入，再按问题回到本页相应章节。

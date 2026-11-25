@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "id": "PERF-COMMUNICATION",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "通信与拓扑时间",
+  "formula": "T_hat=alpha*N_messages+bytes/B_eff (fixed route/algorithm)",
+  "inputs": [
+    {
+      "id": "messages",
+      "unit": "count",
+      "description": "协议消息数"
+    },
+    {
+      "id": "bytes",
+      "unit": "byte",
+      "description": "通信工作量"
+    },
+    {
+      "id": "bandwidth",
+      "unit": "byte/s",
+      "description": "对应路径的条件有效带宽"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "通信阶段时间估计"
+    },
+    {
+      "id": "time_ms",
+      "unit": "ms",
+      "description": "通信阶段时间估计"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "startup",
+      "unit": "s",
+      "description": "每消息启动开销",
+      "learnable": true,
+      "bounds": {
+        "min": 0
+      }
+    }
+  ],
+  "depends_on": [
+    "DEF-RESOURCE",
+    "PERF-HARDWARE",
+    "FND-IO"
+  ],
+  "tags": [
+    "communication",
+    "collective",
+    "nccl",
+    "tp",
+    "ep",
+    "allreduce",
+    "通信"
+  ],
+  "applicability": "固定 collective、rank、消息规模、拓扑及竞争状态；明确 bytes 计量。",
+  "limitations": "未建模拥塞、rank 晚到、分段协议和重叠；不能据该式直接算端到端。",
+  "validation": "按消息和拓扑做微基准、核对 rank 时间线，并在并发条件下留出验证。",
+  "sources": [
+    "theory/execution/README.md",
+    "models/execution/README.md",
+    "models/operator/README.md"
+  ],
+  "evaluator": "communication_time",
+  "status": "analytic_reference",
+  "evidence_type": "hypothesis_or_model"
+}

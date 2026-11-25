@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Module-level theory review",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "decisions",
+    "gaps"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "revision",
+          "metric_ids",
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "metric_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "decision": {
+            "enum": [
+              "keep",
+              "observe",
+              "calibrate",
+              "correct",
+              "extend",
+              "empirical",
+              "revise",
+              "inconclusive"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "gaps": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

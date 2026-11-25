@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "id": "DEF-TASK",
+  "revision": 1,
+  "layer": "00-definitions",
+  "kind": "definition",
+  "title": "任务与不变量",
+  "formula": "TaskSpec = checkpoint + tokenizer + precision + semantics + quality contract",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "task_spec",
+      "unit": "record",
+      "description": "任务语义签名"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [],
+  "tags": [
+    "quality",
+    "checkpoint",
+    "precision"
+  ],
+  "applicability": "候选的比较必须保持任务语义和质量约束；可调整变量由项目声明。",
+  "limitations": "不能从速度推断质量。任务变化必须单列研究。",
+  "validation": "对照固定 tokenizer、采样、功能、质量 oracle 和资源预算；记录实际生效后端。",
+  "sources": [
+    "theory/foundations/unified-theory.md",
+    "models/contracts.md",
+    "docs/benchmark-protocol.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "definition"
+}

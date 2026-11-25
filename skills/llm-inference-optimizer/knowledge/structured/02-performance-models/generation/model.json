@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "PERF-GENERATION",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "有效生成轮次与单位 token 成本",
+  "formula": "TPOT_hat = E[T_round]/E[K_committed] (long-run renewal-style average)",
+  "inputs": [
+    {
+      "id": "round_time",
+      "unit": "s",
+      "description": "平均完整 draft/verify/回退时间"
+    },
+    {
+      "id": "committed",
+      "unit": "count",
+      "description": "每轮平均有效提交 token 数"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "tpot",
+      "unit": "s/token",
+      "description": "长期单位有效 token 成本"
+    },
+    {
+      "id": "tpot_ms",
+      "unit": "ms/token",
+      "description": "长期单位有效 token 成本"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "PERF-EXECUTION",
+    "PERF-STATE"
+  ],
+  "tags": [
+    "mtp",
+    "speculative",
+    "decode",
+    "acceptance",
+    "token",
+    "tpot"
+  ],
+  "applicability": "同生成语义，稳定可比的轮次；分子包含所有实际成本，分母只计提交 token。",
+  "limitations": "不能代替逐请求 TPOT 分布、尾延迟或输出质量；短序列边界需另处理。",
+  "validation": "记录轮次分布、接受率、有效 token、状态成本及 reference 输出。",
+  "sources": [
+    "theory/generation/README.md",
+    "theory/optimization/benefit-prediction.md"
+  ],
+  "evaluator": "generation_time",
+  "status": "analytic_reference",
+  "evidence_type": "hypothesis_or_model"
+}

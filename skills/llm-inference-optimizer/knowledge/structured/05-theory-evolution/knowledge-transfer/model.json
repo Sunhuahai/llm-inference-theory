@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "LRN-TRANSFER",
+  "revision": 1,
+  "layer": "05-theory-evolution",
+  "kind": "method",
+  "title": "跨项目知识迁移与反例",
+  "formula": "transfer mechanisms conditionally; recalibrate numeric parameters for new contexts",
+  "inputs": [
+    {
+      "id": "source_evidence",
+      "unit": "record",
+      "description": "原项目理论、正负证据和 scope"
+    },
+    {
+      "id": "target_context",
+      "unit": "record",
+      "description": "目标模型/硬件/负载/引擎"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "transfer_plan",
+      "unit": "record",
+      "description": "可复用机制、待校准项、限制与反例"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "LRN-CALIBRATION",
+    "LRN-SELECTION",
+    "AGT-STOPPING"
+  ],
+  "tags": [
+    "transfer",
+    "memory",
+    "context",
+    "negative",
+    "counterexample",
+    "迁移"
+  ],
+  "applicability": "对照硬件、shape、dtype、架构、引擎及负载，证据同保密域且获授权。",
+  "limitations": "单一项目实测不能证明普适规律；跨保密域不得自动共享证据。",
+  "validation": "在新环境先运行低成本校准和独立验证，记录失败和适用范围。",
+  "sources": [
+    "optimizer/memory/README.md",
+    "experiments/case-studies/README.md",
+    "models/calibration/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "AGT-STOPPING",
+  "revision": 1,
+  "layer": "04-autonomous-optimization",
+  "kind": "method",
+  "title": "停止条件与重新开启",
+  "formula": "stop if declared goal met, feasible verification budget exhausted, or justified marginal value insufficient",
+  "inputs": [
+    {
+      "id": "state",
+      "unit": "record",
+      "description": "当前 best、剩余预算、未决假设与目标"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "decision",
+      "unit": "record",
+      "description": "继续、暂缓、停止及重启条件"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "AGT-PLANNING",
+    "AGT-EXPERIMENT",
+    "FND-FEASIBILITY"
+  ],
+  "tags": [
+    "stop",
+    "budget",
+    "plateau",
+    "restart",
+    "停止"
+  ],
+  "applicability": "使用用户/项目预先规定目标和约束，不发明门槛。",
+  "limitations": "数轮失败不是全局最优证明；瓶颈变化可使旧失败重新有价值。",
+  "validation": "登记剩余预算和机会、不可辨识因素、停止依据与可复核重启条件。",
+  "sources": [
+    "optimizer/planning/README.md",
+    "optimizer/memory/README.md",
+    "optimizer/foundations/autonomous-optimization.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

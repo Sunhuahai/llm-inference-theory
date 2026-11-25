@@ -22,3 +22,7 @@ keep / calibration / correction / extension / empirical / revision；即使 keep
 
 ## 下一轮
 最小区分办法、预算、候选排序变化、停止/重启条件。
+
+## v2 模块级复盘
+
+将 result/module-review-template.json 复制成轮次根目录 theory-update.json。为所有 primary model/metric 组合填写 decision 和 rationale；必要时登记先修模块。保留 model_gap；记录候选修订 ID、revision、拟合 context、数据引用、下游影响、需要的独立验证。模型引用只表示预测出处，不等于误差因果定位。

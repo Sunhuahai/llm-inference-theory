@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "relations": [
+    {
+      "from": "FND-ROOFLINE",
+      "to": "PERF-OPERATOR",
+      "type": "constrains",
+      "note": "适用条件成立时，算子预测不得违反必要时间界"
+    },
+    {
+      "from": "FND-CRITICAL-PATH",
+      "to": "PERF-EXECUTION",
+      "type": "constrains",
+      "note": "必要依赖不能仅凭性能预测删去"
+    },
+    {
+      "from": "FND-FEASIBILITY",
+      "to": "AGT-SEARCH",
+      "type": "constrains",
+      "note": "质量、容量、SLO 和预算定义可行域"
+    },
+    {
+      "from": "PERF-RESOURCE",
+      "to": "PERF-OPERATOR",
+      "type": "feeds",
+      "note": "分算子工作量与流量"
+    },
+    {
+      "from": "PERF-HARDWARE",
+      "to": "PERF-OPERATOR",
+      "type": "feeds",
+      "note": "有效算力与带宽"
+    },
+    {
+      "from": "PERF-OPERATOR",
+      "to": "PERF-EXECUTION",
+      "type": "feeds",
+      "note": "条件节点时间"
+    },
+    {
+      "from": "PERF-COMMUNICATION",
+      "to": "PERF-EXECUTION",
+      "type": "feeds",
+      "note": "通信与等待的条件时间"
+    },
+    {
+      "from": "PERF-STATE",
+      "to": "PERF-SERVING",
+      "type": "feeds",
+      "note": "容量、状态驻留和复用条件"
+    },
+    {
+      "from": "PERF-EXECUTION",
+      "to": "PERF-GENERATION",
+      "type": "feeds",
+      "note": "完整轮次成本"
+    },
+    {
+      "from": "PERF-GENERATION",
+      "to": "PERF-SERVING",
+      "type": "feeds",
+      "note": "有效提交数与单位 token 成本"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "OPT-BENEFIT",
+      "type": "feeds",
+      "note": "端到端指标"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "AGT-PLANNING",
+      "type": "feeds",
+      "note": "条件收益、限制与不确定性"
+    },
+    {
+      "from": "AGT-EXPERIMENT",
+      "to": "LRN-CALIBRATION",
+      "type": "feeds",
+      "note": "合格的配对测量"
+    },
+    {
+      "from": "LRN-RESIDUAL",
+      "to": "PERF-OPERATOR",
+      "type": "extends",
+      "note": "候选残差修正是研究方向，不表示已实现或验证"
+    }
+  ]
+}

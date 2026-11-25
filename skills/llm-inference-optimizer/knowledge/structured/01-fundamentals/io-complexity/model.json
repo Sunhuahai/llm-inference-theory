@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "id": "FND-IO",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "physical_bound",
+  "title": "数据移动与 I/O 复杂度",
+  "formula": "T_io >= D_level / B_level_max",
+  "inputs": [
+    {
+      "id": "bytes",
+      "unit": "byte",
+      "description": "某层必须移动的字节数"
+    },
+    {
+      "id": "bandwidth",
+      "unit": "byte/s",
+      "description": "相应层速率上界"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "条件 I/O 时间下界"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-RESOURCE"
+  ],
+  "tags": [
+    "memory",
+    "traffic",
+    "hbm",
+    "cache",
+    "访存"
+  ],
+  "applicability": "指定存储层与算法、布局、复用假设；工作量和上界成立时。",
+  "limitations": "逻辑张量大小不等于 HBM 实际流量；不同层下界不可随意相加。",
+  "validation": "采集相应层流量及速率上界，若实际低于下界审计工作量与计时范围。",
+  "sources": [
+    "theory/performance/README.md",
+    "theory/memory/README.md"
+  ],
+  "evaluator": "io_bound",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "FND-COMPUTE",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "derived",
+  "title": "计算工作量与复杂度",
+  "formula": "F_GEMM=2*M*N*K (multiply-add counted as 2 FLOP)",
+  "inputs": [
+    {
+      "id": "m",
+      "unit": "count",
+      "description": "行维度"
+    },
+    {
+      "id": "n",
+      "unit": "count",
+      "description": "输出列"
+    },
+    {
+      "id": "k",
+      "unit": "count",
+      "description": "归约维度"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "flops",
+      "unit": "FLOP",
+      "description": "逻辑乘加工作量"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-RESOURCE"
+  ],
+  "tags": [
+    "gemm",
+    "flops",
+    "compute",
+    "计算"
+  ],
+  "applicability": "密集 GEMM 的乘加计数；明确是否包含 epilogue、稀疏和重算。",
+  "limitations": "不等于实际 issued instructions；padding、专家路由、特殊算子需另计。",
+  "validation": "对照 shape、算子图、真实指令或 profiler；检查计数口径。",
+  "sources": [
+    "theory/foundations/unified-theory.md",
+    "models/resource/README.md"
+  ],
+  "evaluator": "gemm_flops",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "PERF-EXECUTION",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "执行图与排程估计",
+  "formula": "T_hat = longest_path(G_with_resource_order, t_hat)",
+  "inputs": [
+    {
+      "id": "dag",
+      "unit": "record",
+      "description": "依赖与固定资源顺序 DAG；节点使用有效时长"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "给定排程的模型估计"
+    },
+    {
+      "id": "time_ms",
+      "unit": "ms",
+      "description": "给定排程的模型估计"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "PERF-OPERATOR",
+    "PERF-COMMUNICATION",
+    "FND-CRITICAL-PATH"
+  ],
+  "tags": [
+    "dag",
+    "runtime",
+    "cuda-graph",
+    "overlap",
+    "launch",
+    "schedule"
+  ],
+  "applicability": "资源顺序和依赖明确；节点时间对应相同工作点；关键路径需重算。",
+  "limitations": "固定顺序估计不等于任意调度下界；未建模共享资源竞争、CPU 空隙和动态依赖。",
+  "validation": "核对 trace 中暴露时间、重叠和实际服务 step，做干预前后留出比较。",
+  "sources": [
+    "theory/execution/README.md",
+    "models/execution/README.md"
+  ],
+  "evaluator": "execution_time",
+  "status": "analytic_reference",
+  "evidence_type": "hypothesis_or_model"
+}

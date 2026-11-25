@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "id": "PERF-STATE",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "状态容量、流量与复用",
+  "formula": "M_KV=2*L*B*S*H_kv*d_head*bytes_per_element (uniform, unsharded)",
+  "inputs": [
+    {
+      "id": "layers",
+      "unit": "count",
+      "description": "层数"
+    },
+    {
+      "id": "batch",
+      "unit": "count",
+      "description": "序列数"
+    },
+    {
+      "id": "length",
+      "unit": "count",
+      "description": "每序列 token 数"
+    },
+    {
+      "id": "kv_heads",
+      "unit": "count",
+      "description": "KV head 数"
+    },
+    {
+      "id": "head_dim",
+      "unit": "count",
+      "description": "head 维数"
+    },
+    {
+      "id": "element_bytes",
+      "unit": "byte",
+      "description": "元素字节数"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "state",
+      "unit": "byte",
+      "description": "理想未分片 KV 大小"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "PERF-RESOURCE",
+    "FND-IO"
+  ],
+  "tags": [
+    "kv",
+    "cache",
+    "memory",
+    "context",
+    "state",
+    "prefix"
+  ],
+  "applicability": "均匀 KV 形状、未分片且不计 padding；混合架构按层独立累加。",
+  "limitations": "实际驻留另含 allocator、页、索引、workspace；缓存复用有恢复和容量代价。",
+  "validation": "比较实测峰值、访问计数与 cache trace；检查分片/复制与驱逐。",
+  "sources": [
+    "theory/memory/README.md",
+    "theory/foundations/cache-context-ceilings.md"
+  ],
+  "evaluator": "kv_capacity",
+  "status": "analytic_reference",
+  "evidence_type": "hypothesis_or_model"
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "AGT-PLANNING",
+  "revision": 1,
+  "layer": "04-autonomous-optimization",
+  "kind": "method",
+  "title": "预算感知决策与信息价值",
+  "formula": "score(a)=E[net gain|evidence] + value_of_information - weighted_cost (when quantities commensurate)",
+  "inputs": [
+    {
+      "id": "candidates",
+      "unit": "record",
+      "description": "收益、风险与证据"
+    },
+    {
+      "id": "budget",
+      "unit": "record",
+      "description": "GPU、Agent 与墙钟预算"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "ranked_plan",
+      "unit": "record",
+      "description": "方向、条件排序、成本和实验"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "AGT-SEARCH",
+    "OPT-BENEFIT"
+  ],
+  "tags": [
+    "planning",
+    "budget",
+    "rank",
+    "information",
+    "exploration"
+  ],
+  "applicability": "定量期望收益需要校准的分布和明确代价尺度；否则作条件排序。",
+  "limitations": "评分不是最优性证明；不能伪造成功率、成本或硬预算。",
+  "validation": "用同工具、同权限、同预算 benchmark 比较最终收益、有效候选和成本。",
+  "sources": [
+    "optimizer/planning/README.md",
+    "experiments/agent-benchmark/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

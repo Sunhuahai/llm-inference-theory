@@ -1,9 +1,9 @@
 {
   "version": "candidate-v2-example",
-  "parent": "seed-1b4c5a377634",
+  "parent": "seed-1b4c5a377634-v2",
   "scope": "TEMPLATE ONLY; replace with actual hardware, architecture, workload and context",
-  "category": "calibration",
-  "rationale": "TEMPLATE ONLY; explain why measured data support change and what is not identified",
+  "category": "correction",
+  "rationale": "TEMPLATE ONLY; replace with evidence-backed explanation of revised numerical model and identify confounders",
   "training": [
     "example-project/train-001",
     "example-project/train-002"
@@ -20,5 +20,91 @@
   },
   "changes": {
     "models/calibration/local-v2-example.md": "# TEMPLATE ONLY\nReplace with actual formula, units, scope, evidence, assumptions, constraints, and prospective validation. Do not use example as measured knowledge.\n"
-  }
+  },
+  "structured_changes": {
+    "02-performance-models/serving/model.json": {
+      "schema_version": 2,
+      "id": "PERF-SERVING",
+      "revision": 2,
+      "layer": "02-performance-models",
+      "kind": "performance_model",
+      "title": "服务级性能与 Goodput",
+      "formula": "Y=Simulate(arrivals, scheduler, execution, state, generation); goodput=valid_SLO_completions/window",
+      "inputs": [
+        {
+          "id": "workload",
+          "unit": "record",
+          "description": "到达、长度与 SLO 联合分布"
+        },
+        {
+          "id": "scheduler",
+          "unit": "record",
+          "description": "批处理、路由和资源分配"
+        },
+        {
+          "id": "execution",
+          "unit": "record",
+          "description": "step 时间、容量及有效生成"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "ttft",
+          "unit": "ms",
+          "description": "请求 TTFT（统计量另定）"
+        },
+        {
+          "id": "tpot",
+          "unit": "ms/token",
+          "description": "请求 TPOT（统计量另定）"
+        },
+        {
+          "id": "throughput",
+          "unit": "tokens/s",
+          "description": "提交输出吞吐"
+        },
+        {
+          "id": "goodput",
+          "unit": "requests/s",
+          "description": "满足定义的有效请求率"
+        },
+        {
+          "id": "p99",
+          "unit": "ms",
+          "description": "已明确时延指标的尾分位"
+        }
+      ],
+      "parameters": [],
+      "depends_on": [
+        "PERF-EXECUTION",
+        "PERF-GENERATION",
+        "PERF-STATE",
+        "FND-QUEUEING",
+        "FND-FEASIBILITY"
+      ],
+      "tags": [
+        "serving",
+        "ttft",
+        "tpot",
+        "throughput",
+        "goodput",
+        "batch",
+        "p99",
+        "queue"
+      ],
+      "applicability": "固定 trace、资源、质量、计时和指标定义；动态状态需模拟或实测。",
+      "limitations": "没有通用服务模拟器；低负载或饱和数字不代表混合到达下 p99。 TEMPLATE ONLY: replace with a justified, scoped correction; do not submit this placeholder as a validated model.",
+      "validation": "不同到达和长度联合分布的未见 trace 对比；校验丢弃/完成及 SLO。",
+      "sources": [
+        "theory/serving/README.md",
+        "models/serving/README.md",
+        "models/simulation/README.md"
+      ],
+      "evaluator": null,
+      "status": "documented_model",
+      "evidence_type": "hypothesis_or_model"
+    },
+    "02-performance-models/serving/theory.md": "# TEMPLATE ONLY — PERF-SERVING r2\nReplace with real derivation, limits, units, evidence, validation plan and source references. Do not promote template.\n"
+  },
+  "parameter_sets": {}
 }

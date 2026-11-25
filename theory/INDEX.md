@@ -1,5 +1,8 @@
 # 理论体系索引
 
+
+**结构化理论库 v2**：[六层模型索引](../skills/llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](../skills/llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](../skills/llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](../skills/llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
 先读[图解导读](README.md)与[统一理论总纲](foundations/unified-theory.md)，再按问题进入下面的独立专题。章节中的公式均受明示假设约束；内容完成不等于已有实测验证。
 
 [基础篇入口](foundations/README.md)统一资源、状态与生成的描述；[优化篇入口](optimization/README.md)连接机制、条件收益和组合验证。

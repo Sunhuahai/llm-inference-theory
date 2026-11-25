@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "id": "OPT-SENSITIVITY",
+  "revision": 1,
+  "layer": "03-optimization-theory",
+  "kind": "derived",
+  "title": "资源敏感性与局部边际价值",
+  "formula": "E_r = d log T / d log r; finite difference only within declared regime",
+  "inputs": [
+    {
+      "id": "baseline_time",
+      "unit": "s",
+      "description": "当前时间"
+    },
+    {
+      "id": "perturbed_time",
+      "unit": "s",
+      "description": "单因素干预时间"
+    },
+    {
+      "id": "resource_ratio",
+      "unit": "ratio",
+      "description": "干预/基线资源比"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "elasticity",
+      "unit": "ratio",
+      "description": "条件对数弹性估计"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "FND-ROOFLINE",
+    "PERF-EXECUTION"
+  ],
+  "tags": [
+    "sensitivity",
+    "marginal",
+    "bottleneck",
+    "elasticity"
+  ],
+  "applicability": "固定其它工作点或明确混杂；局部可微或使用有限差分。",
+  "limitations": "max 切换点导数可能不存在；共变因素使因果解释失效。",
+  "validation": "多幅度独立干预，比较单因素响应及非线性；检查瓶颈切换。",
+  "sources": [
+    "theory/performance/README.md",
+    "theory/diagnosis/README.md",
+    "theory/optimization/benefit-prediction.md"
+  ],
+  "evaluator": "elasticity",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

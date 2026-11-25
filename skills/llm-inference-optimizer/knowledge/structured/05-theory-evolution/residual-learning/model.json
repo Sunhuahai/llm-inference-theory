@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "LRN-RESIDUAL",
+  "revision": 1,
+  "layer": "05-theory-evolution",
+  "kind": "hypothesis",
+  "title": "物理结构与残差学习",
+  "formula": "T_hat(x)=T_physics(x;theta)+r_phi(x); enforce applicable lower bound",
+  "inputs": [
+    {
+      "id": "physics_model",
+      "unit": "record",
+      "description": "基模型和适用边界"
+    },
+    {
+      "id": "residual_data",
+      "unit": "record",
+      "description": "事前误差与训练特征"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "residual_candidate",
+      "unit": "record",
+      "description": "待验证结构或残差模型"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "LRN-CALIBRATION",
+    "FND-ROOFLINE",
+    "PERF-EXECUTION"
+  ],
+  "tags": [
+    "residual",
+    "learning",
+    "correction",
+    "model",
+    "残差"
+  ],
+  "applicability": "明确遗漏机制与特征，保持量纲、必要物理界和任务约束。",
+  "limitations": "当前无通用残差训练器；残差相关性不证明因果，不得用留出结果拟合。",
+  "validation": "预登记特征与模型族，独立比较原模型和候选，检查边界和外推。",
+  "sources": [
+    "models/calibration/README.md",
+    "experiments/model-validation/README.md",
+    "docs/methodology.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "hypothesis"
+}

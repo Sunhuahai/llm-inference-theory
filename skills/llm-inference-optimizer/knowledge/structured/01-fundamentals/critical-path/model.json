@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "FND-CRITICAL-PATH",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "physical_bound",
+  "title": "关键路径与串行依赖",
+  "formula": "T >= max_{path} sum(t_i_lower)",
+  "inputs": [
+    {
+      "id": "dag",
+      "unit": "record",
+      "description": "节点下界时长及必要依赖 DAG"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "最长必要路径下界"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-RESOURCE"
+  ],
+  "tags": [
+    "dag",
+    "critical-path",
+    "overlap",
+    "launch",
+    "关键路径"
+  ],
+  "applicability": "无环必要依赖；节点时长为独立必要下界且计量边界一致。",
+  "limitations": "忽略资源冲突；仅凭 trace 的重叠不能证明可删依赖。",
+  "validation": "用执行时间线验证边和节点归属；改变局部成本后重新求最长路径。",
+  "sources": [
+    "theory/execution/README.md",
+    "theory/performance/README.md"
+  ],
+  "evaluator": "critical_path",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

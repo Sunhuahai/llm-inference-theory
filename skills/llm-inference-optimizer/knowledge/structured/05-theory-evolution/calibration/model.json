@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "LRN-CALIBRATION",
+  "revision": 1,
+  "layer": "05-theory-evolution",
+  "kind": "learning",
+  "title": "参数校准与条件拟合",
+  "formula": "theta*=argmin sum loss(y_i,f(x_i;theta)); example factor=median(y_i/yhat_i)",
+  "inputs": [
+    {
+      "id": "paired_training",
+      "unit": "record",
+      "description": "同模型 revision、context、指标定义的可比测量"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "factor",
+      "unit": "ratio",
+      "description": "候选乘性校准系数"
+    },
+    {
+      "id": "parameter_candidate",
+      "unit": "record",
+      "description": "待验证参数集"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "PERF-HARDWARE",
+    "PERF-OPERATOR",
+    "AGT-EXPERIMENT"
+  ],
+  "tags": [
+    "calibration",
+    "parameter",
+    "fit",
+    "training",
+    "校准"
+  ],
+  "applicability": "固定同定义/单位/工作点；分割训练和留出，物理参数检查约束。",
+  "limitations": "拟合训练集不是泛化；不能用拟合参数改变数学下界。",
+  "validation": "用未见同域或预登记跨域实验做 paired 比较，报告样本数、误差和不确定性。",
+  "sources": [
+    "models/calibration/README.md",
+    "experiments/model-validation/README.md"
+  ],
+  "evaluator": "median_factor",
+  "status": "analytic_reference",
+  "evidence_type": "method_or_model"
+}

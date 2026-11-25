@@ -1,5 +1,8 @@
 # Agent Skills
 
+
+**结构化理论库 v2**：[六层模型索引](llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
 本目录是理论仓库面向具体项目的应用接口。
 
 - [LLM Inference Optimizer](llm-inference-optimizer/README.md)：复盘、诊断、候选决策、逐轮理论预测与实际对比、跨项目知识演化。

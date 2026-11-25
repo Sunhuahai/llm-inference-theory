@@ -1,5 +1,8 @@
 # 理论驱动的 Agent 自主优化
 
+
+**结构化理论库 v2**：[六层模型索引](../skills/llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](../skills/llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](../skills/llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](../skills/llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
 [![Agent 自主优化：假设、规划、独立评价与证据反馈](../visualizations/diagrams/research-atlas/04-agent.svg)](../visualizations/diagrams/research-atlas/04-agent.svg)
 
 [全局总图与分层子图](../visualizations/diagrams/research-atlas/README.md) · [七页可编辑 draw.io](../visualizations/diagrams/research-atlas/llm-inference-research-atlas.drawio)

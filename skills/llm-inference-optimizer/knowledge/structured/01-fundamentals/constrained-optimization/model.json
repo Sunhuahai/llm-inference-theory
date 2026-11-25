@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "FND-FEASIBILITY",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "derived",
+  "title": "可行域与 Pareto",
+  "formula": "max J(x) subject to quality, memory, SLO and budget; Pareto dominance",
+  "inputs": [
+    {
+      "id": "candidate_set",
+      "unit": "record",
+      "description": "候选目标及约束"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "feasible_set",
+      "unit": "record",
+      "description": "满足约束的候选"
+    },
+    {
+      "id": "pareto_set",
+      "unit": "record",
+      "description": "非支配候选"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-TASK",
+    "DEF-METRIC"
+  ],
+  "tags": [
+    "pareto",
+    "quality",
+    "capacity",
+    "budget",
+    "constraints"
+  ],
+  "applicability": "目标方向、约束和可比资源明确；未知约束不能默认通过。",
+  "limitations": "Pareto 不给唯一偏好；不可行或未知不能作为已验证最优。",
+  "validation": "独立质量和性能检验后再判可行；明确 SLO 与预算。",
+  "sources": [
+    "theory/optimization/coupling.md",
+    "optimizer/foundations/autonomous-optimization.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "derived"
+}

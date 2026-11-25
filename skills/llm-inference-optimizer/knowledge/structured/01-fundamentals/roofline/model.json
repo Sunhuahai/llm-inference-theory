@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "id": "FND-ROOFLINE",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "physical_bound",
+  "title": "多资源 Roofline 下界",
+  "formula": "T >= max(F/P_max, D/B_max)",
+  "inputs": [
+    {
+      "id": "flops",
+      "unit": "FLOP",
+      "description": "必要计算量"
+    },
+    {
+      "id": "bytes",
+      "unit": "byte",
+      "description": "必要流量"
+    },
+    {
+      "id": "peak_flops",
+      "unit": "FLOP/s",
+      "description": "计算速率上界"
+    },
+    {
+      "id": "peak_bandwidth",
+      "unit": "byte/s",
+      "description": "带宽上界"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "时间下界"
+    },
+    {
+      "id": "intensity",
+      "unit": "FLOP/byte",
+      "description": "算术强度（D>0）"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "FND-COMPUTE",
+    "FND-IO"
+  ],
+  "tags": [
+    "roofline",
+    "bottleneck",
+    "memory",
+    "compute",
+    "性能边界"
+  ],
+  "applicability": "针对同一区间的必要工作量、真实速率上界；max 是必要条件而非可达调度。",
+  "limitations": "未建模启动、通信、依赖、资源争用；使用有效速率时仅是情景估计。",
+  "validation": "用微基准核查输入上界与工作量；实际时间低于声称下界说明前提/数据有误。",
+  "sources": [
+    "theory/performance/README.md",
+    "theory/foundations/unified-theory.md"
+  ],
+  "evaluator": "roofline",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

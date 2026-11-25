@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "id": "PERF-OPERATOR",
+  "revision": 1,
+  "layer": "02-performance-models",
+  "kind": "performance_model",
+  "title": "算子时间预测",
+  "formula": "T_hat=max(F/P_eff,D/B_eff)+t_exposed",
+  "inputs": [
+    {
+      "id": "flops",
+      "unit": "FLOP",
+      "description": "工作量"
+    },
+    {
+      "id": "bytes",
+      "unit": "byte",
+      "description": "实际预计流量"
+    },
+    {
+      "id": "effective_compute",
+      "unit": "FLOP/s",
+      "description": "工作点有效算力"
+    },
+    {
+      "id": "effective_bandwidth",
+      "unit": "byte/s",
+      "description": "工作点有效带宽"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "time",
+      "unit": "s",
+      "description": "算子时间估计"
+    },
+    {
+      "id": "time_ms",
+      "unit": "ms",
+      "description": "算子时间估计"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "exposed_overhead",
+      "unit": "s",
+      "description": "未重复计入且暴露的额外时间",
+      "learnable": true,
+      "bounds": {
+        "min": 0
+      }
+    }
+  ],
+  "depends_on": [
+    "PERF-RESOURCE",
+    "PERF-HARDWARE",
+    "FND-ROOFLINE"
+  ],
+  "tags": [
+    "kernel",
+    "gemm",
+    "attention",
+    "fusion",
+    "operator",
+    "occupancy",
+    "算子"
+  ],
+  "applicability": "同 shape、dtype、实现、缓存与并发；有效速率可来自匹配微基准。",
+  "limitations": "max 为重叠近似，不是实测或严格下界；spill、争用与 epilogue 需显式建模。",
+  "validation": "留出形状对比实际 kernel 时间和资源量；避免同时拟合不可辨识参数。",
+  "sources": [
+    "models/operator/README.md",
+    "theory/optimization/benefit-prediction.md",
+    "models/calibration/README.md"
+  ],
+  "evaluator": "operator_time",
+  "status": "analytic_reference",
+  "evidence_type": "hypothesis_or_model"
+}

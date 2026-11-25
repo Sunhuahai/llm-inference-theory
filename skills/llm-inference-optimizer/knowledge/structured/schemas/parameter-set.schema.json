@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Version-scoped parameter set v2",
+  "type": "object",
+  "required": [
+    "model_id",
+    "revision",
+    "context_id",
+    "scope",
+    "method",
+    "values",
+    "evidence"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "context_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "values": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "value",
+          "unit"
+        ],
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "record",
+              "scalar",
+              "ratio",
+              "count",
+              "s",
+              "ms",
+              "byte",
+              "FLOP",
+              "FLOP/s",
+              "byte/s",
+              "FLOP/byte",
+              "1/s",
+              "s/token",
+              "ms/token",
+              "tokens/s",
+              "requests/s"
+            ]
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}/[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

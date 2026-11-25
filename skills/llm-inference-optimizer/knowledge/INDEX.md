@@ -1,4 +1,6 @@
-# 初始理论模型（只读离线快照）
+# 理论库入口：结构化模型与原始文档
+
+**优先阅读 [六层结构化理论索引](structured/INDEX.md)** · [理论图谱](structured/ATLAS.md) · [注册表](structured/registry.json) · [依赖关系](structured/dependencies.json) · [数据契约](structured/schemas/README.md)。33 个初始模块以稳定 ID 组织，以下 37 篇原始文档保留详细推导与出处。
 
 来源：[1b4c5a3](https://github.com/Sunhuahai/llm-inference-theory/commit/1b4c5a37763475eb39b31dd083fcad256fc2578e)；37 篇文档，保留原目录关系。未打包的扩展资料链接至固定提交。manifest 记录原始 blob 身份；初始化时对快照本身计算 SHA-256。
 

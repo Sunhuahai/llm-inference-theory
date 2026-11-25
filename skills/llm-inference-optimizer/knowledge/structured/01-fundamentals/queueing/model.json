@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "id": "FND-QUEUEING",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "derived",
+  "title": "稳定队列与 Little 定律",
+  "formula": "L=lambda*W (stable system); M/M/1 W=1/(mu-lambda) under assumptions",
+  "inputs": [
+    {
+      "id": "arrival_rate",
+      "unit": "1/s",
+      "description": "长期到达率"
+    },
+    {
+      "id": "service_rate",
+      "unit": "1/s",
+      "description": "M/M/1 服务率"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mean_time",
+      "unit": "s",
+      "description": "M/M/1 稳态平均系统时间"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-METRIC"
+  ],
+  "tags": [
+    "queue",
+    "arrival",
+    "tail",
+    "slo",
+    "排队"
+  ],
+  "applicability": "Little 定律需稳定系统与一致的边界；M/M/1 另需泊松到达、指数服务、单服务台、lambda<mu。",
+  "limitations": "不适用于直接预测动态 batching 的尾延迟；非稳态或过载需另模型。",
+  "validation": "用 trace 检查稳定性、到达和服务分布，核对在途数、吞吐、等待。",
+  "sources": [
+    "theory/serving/README.md",
+    "models/serving/README.md"
+  ],
+  "evaluator": "mm1",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "AGT-DIAGNOSIS",
+  "revision": 1,
+  "layer": "04-autonomous-optimization",
+  "kind": "method",
+  "title": "反事实瓶颈诊断",
+  "formula": "H={h_i}; choose observation where predictions p(y|h_i,a) differ",
+  "inputs": [
+    {
+      "id": "observations",
+      "unit": "record",
+      "description": "真实计数器、trace、历史干预"
+    },
+    {
+      "id": "candidate_hypotheses",
+      "unit": "record",
+      "description": "竞争机制及条件"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "diagnosis",
+      "unit": "record",
+      "description": "支持、反对、未辨识"
+    },
+    {
+      "id": "probe",
+      "unit": "record",
+      "description": "最小区分性实验"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "OPT-TRANSITION",
+    "PERF-SERVING",
+    "DEF-METRIC"
+  ],
+  "tags": [
+    "diagnosis",
+    "profiling",
+    "identifiability",
+    "counterfactual",
+    "瓶颈"
+  ],
+  "applicability": "不能只凭相关性判因果；对每个假设写可反驳观测。",
+  "limitations": "多种原因给相同总时延时重复总时延不能提升结构可辨识性。",
+  "validation": "改变单因素或比较可区分 trace；保留替代解释、控制测量扰动。",
+  "sources": [
+    "theory/diagnosis/README.md",
+    "optimizer/diagnosis/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

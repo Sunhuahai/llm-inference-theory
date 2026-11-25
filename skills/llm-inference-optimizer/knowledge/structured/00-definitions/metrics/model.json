@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "id": "DEF-METRIC",
+  "revision": 1,
+  "layer": "00-definitions",
+  "kind": "definition",
+  "title": "性能指标与比较契约",
+  "formula": "g_lower=(b-y)/b; g_higher=(y-b)/b (b>0)",
+  "inputs": [
+    {
+      "id": "baseline",
+      "unit": "scalar",
+      "description": "同口径基线"
+    },
+    {
+      "id": "actual",
+      "unit": "scalar",
+      "description": "候选测量"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "gain",
+      "unit": "ratio",
+      "description": "有方向的相对改善"
+    },
+    {
+      "id": "metric_spec",
+      "unit": "record",
+      "description": "scope/unit/statistic/direction/窗口"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-TASK",
+    "DEF-RESOURCE"
+  ],
+  "tags": [
+    "ttft",
+    "tpot",
+    "throughput",
+    "goodput",
+    "p99",
+    "metric"
+  ],
+  "applicability": "低负载请求延迟、饱和吞吐、SLO goodput 分别评价；方向和统计量固定。",
+  "limitations": "零基线不定义相对收益；closed-loop 与 open-loop 不自动可比。",
+  "validation": "复查原始计时窗口、完整生成长度、质量、缓存与并发。",
+  "sources": [
+    "docs/benchmark-protocol.md",
+    "theory/serving/README.md",
+    "models/contracts.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "definition"
+}

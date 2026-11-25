@@ -1,0 +1,21 @@
+{
+  "inputs": {
+    "flops": {
+      "value": 100,
+      "unit": "FLOP"
+    },
+    "bytes": {
+      "value": 200,
+      "unit": "byte"
+    },
+    "peak_flops": {
+      "value": 100,
+      "unit": "FLOP/s"
+    },
+    "peak_bandwidth": {
+      "value": 100,
+      "unit": "byte/s"
+    }
+  },
+  "parameters": {}
+}

@@ -1,5 +1,8 @@
 # 性能建模与预测
 
+
+**结构化理论库 v2**：[六层模型索引](../skills/llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](../skills/llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](../skills/llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](../skills/llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
 > 2026-11-25｜理论驱动自主优化的第二支柱。专题模型和数据契约已建立；两个可运行的 CPU 参考用于校验条件性关系。尚无跨模型/硬件校准库或新的 GPU 实测结果。
 
 模型的任务是把“这个优化减少了什么成本”转化为可复核的数值判断。一个合格的输出同时包含**值、量纲、适用域、证据类型、假设和未知项**；无法支持的尾延迟、吞吐或质量指标不填猜测值。

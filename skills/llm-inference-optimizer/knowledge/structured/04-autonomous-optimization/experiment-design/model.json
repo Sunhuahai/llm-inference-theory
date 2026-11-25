@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "id": "AGT-EXPERIMENT",
+  "revision": 1,
+  "layer": "04-autonomous-optimization",
+  "kind": "method",
+  "title": "独立验证与实验设计",
+  "formula": "compare pre-frozen prediction with independent measurement under same task/context",
+  "inputs": [
+    {
+      "id": "hypothesis",
+      "unit": "record",
+      "description": "竞争假设及预测"
+    },
+    {
+      "id": "candidate",
+      "unit": "record",
+      "description": "干预与基线"
+    },
+    {
+      "id": "protocol",
+      "unit": "record",
+      "description": "独立 oracle、指标、重复、留出"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "evidence",
+      "unit": "record",
+      "description": "正负结果、可比性和不确定性"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "AGT-DIAGNOSIS",
+    "AGT-PLANNING",
+    "DEF-METRIC"
+  ],
+  "tags": [
+    "evaluation",
+    "experiment",
+    "benchmark",
+    "holdout",
+    "correctness"
+  ],
+  "applicability": "冻结任务、质量、资源和统计口径；实验授权明确。",
+  "limitations": "模拟不是测量；重复同一次试验不是独立留出；候选 Agent 不得改 oracle。",
+  "validation": "正确性→微基准→端到端，检查真实后端、失败、原始日志和基线漂移。",
+  "sources": [
+    "optimizer/evaluation/README.md",
+    "docs/benchmark-protocol.md",
+    "experiments/model-validation/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

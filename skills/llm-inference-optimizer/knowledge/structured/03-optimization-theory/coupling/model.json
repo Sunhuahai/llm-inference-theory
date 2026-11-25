@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "id": "OPT-COUPLING",
+  "revision": 1,
+  "layer": "03-optimization-theory",
+  "kind": "derived",
+  "title": "优化耦合与条件收益",
+  "formula": "I_AB=J_AB-J_A-J_B+J_0; Delta(B|A)=J_AB-J_A",
+  "inputs": [
+    {
+      "id": "j0",
+      "unit": "scalar",
+      "description": "固定目标基线"
+    },
+    {
+      "id": "ja",
+      "unit": "scalar",
+      "description": "单项 A"
+    },
+    {
+      "id": "jb",
+      "unit": "scalar",
+      "description": "单项 B"
+    },
+    {
+      "id": "jab",
+      "unit": "scalar",
+      "description": "组合 AB"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "interaction",
+      "unit": "scalar",
+      "description": "同方向目标的二阶交互"
+    },
+    {
+      "id": "conditional_b",
+      "unit": "scalar",
+      "description": "A 后 B 的增量"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "OPT-BENEFIT",
+    "OPT-TRANSITION",
+    "FND-FEASIBILITY"
+  ],
+  "tags": [
+    "coupling",
+    "interaction",
+    "composition",
+    "pareto",
+    "组合"
+  ],
+  "applicability": "四组同目标、同工作负载和约束；目标方向事先约定，顺序可能影响结果。",
+  "limitations": "交互不是普适常数；未测组合只能作为预测，不能假定加速比相乘。",
+  "validation": "完整四组对照及必要的 A→B/B→A 顺序对照；比较重复不确定性。",
+  "sources": [
+    "theory/optimization/coupling.md",
+    "optimizer/evolution/README.md"
+  ],
+  "evaluator": "coupling",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

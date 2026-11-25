@@ -1,0 +1,474 @@
+{
+  "schema_version": 2,
+  "edges": [
+    {
+      "from": "AGT-DIAGNOSIS",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-DIAGNOSIS",
+      "to": "OPT-TRANSITION",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-DIAGNOSIS",
+      "to": "PERF-SERVING",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-EXPERIMENT",
+      "to": "AGT-DIAGNOSIS",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-EXPERIMENT",
+      "to": "AGT-PLANNING",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-EXPERIMENT",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-PLANNING",
+      "to": "AGT-SEARCH",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-PLANNING",
+      "to": "OPT-BENEFIT",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-SEARCH",
+      "to": "AGT-DIAGNOSIS",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-SEARCH",
+      "to": "OPT-COUPLING",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-SEARCH",
+      "to": "OPT-TRANSFORM",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-STOPPING",
+      "to": "AGT-EXPERIMENT",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-STOPPING",
+      "to": "AGT-PLANNING",
+      "type": "depends_on"
+    },
+    {
+      "from": "AGT-STOPPING",
+      "to": "FND-FEASIBILITY",
+      "type": "depends_on"
+    },
+    {
+      "from": "DEF-METRIC",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "DEF-METRIC",
+      "to": "DEF-TASK",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-AMDAHL",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-COMPUTE",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-CRITICAL-PATH",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-FEASIBILITY",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-FEASIBILITY",
+      "to": "DEF-TASK",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-IO",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-QUEUEING",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-ROOFLINE",
+      "to": "FND-COMPUTE",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-ROOFLINE",
+      "to": "FND-IO",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-CALIBRATION",
+      "to": "AGT-EXPERIMENT",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-CALIBRATION",
+      "to": "PERF-HARDWARE",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-CALIBRATION",
+      "to": "PERF-OPERATOR",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-RESIDUAL",
+      "to": "FND-ROOFLINE",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-RESIDUAL",
+      "to": "LRN-CALIBRATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-RESIDUAL",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-SELECTION",
+      "to": "AGT-EXPERIMENT",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-SELECTION",
+      "to": "LRN-CALIBRATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-TRANSFER",
+      "to": "AGT-STOPPING",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-TRANSFER",
+      "to": "LRN-CALIBRATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-TRANSFER",
+      "to": "LRN-SELECTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-UNCERTAINTY",
+      "to": "AGT-EXPERIMENT",
+      "type": "depends_on"
+    },
+    {
+      "from": "LRN-UNCERTAINTY",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "DEF-METRIC",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "FND-AMDAHL",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "OPT-TRANSFORM",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "PERF-SERVING",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-COUPLING",
+      "to": "FND-FEASIBILITY",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-COUPLING",
+      "to": "OPT-BENEFIT",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-COUPLING",
+      "to": "OPT-TRANSITION",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-SENSITIVITY",
+      "to": "FND-ROOFLINE",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-SENSITIVITY",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSFORM",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSFORM",
+      "to": "PERF-GENERATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSFORM",
+      "to": "PERF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSFORM",
+      "to": "PERF-STATE",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSITION",
+      "to": "FND-ROOFLINE",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSITION",
+      "to": "OPT-SENSITIVITY",
+      "type": "depends_on"
+    },
+    {
+      "from": "OPT-TRANSITION",
+      "to": "OPT-TRANSFORM",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-COMMUNICATION",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-COMMUNICATION",
+      "to": "FND-IO",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-COMMUNICATION",
+      "to": "PERF-HARDWARE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-EXECUTION",
+      "to": "FND-CRITICAL-PATH",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-EXECUTION",
+      "to": "PERF-COMMUNICATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-EXECUTION",
+      "to": "PERF-OPERATOR",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-GENERATION",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-GENERATION",
+      "to": "PERF-STATE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-HARDWARE",
+      "to": "DEF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-OPERATOR",
+      "to": "FND-ROOFLINE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-OPERATOR",
+      "to": "PERF-HARDWARE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-OPERATOR",
+      "to": "PERF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-RESOURCE",
+      "to": "DEF-TASK",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-RESOURCE",
+      "to": "FND-COMPUTE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-RESOURCE",
+      "to": "FND-IO",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "FND-FEASIBILITY",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "FND-QUEUEING",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "PERF-EXECUTION",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "PERF-GENERATION",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "PERF-STATE",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-STATE",
+      "to": "FND-IO",
+      "type": "depends_on"
+    },
+    {
+      "from": "PERF-STATE",
+      "to": "PERF-RESOURCE",
+      "type": "depends_on"
+    },
+    {
+      "from": "FND-ROOFLINE",
+      "to": "PERF-OPERATOR",
+      "type": "constrains",
+      "note": "适用条件成立时，算子预测不得违反必要时间界"
+    },
+    {
+      "from": "FND-CRITICAL-PATH",
+      "to": "PERF-EXECUTION",
+      "type": "constrains",
+      "note": "必要依赖不能仅凭性能预测删去"
+    },
+    {
+      "from": "FND-FEASIBILITY",
+      "to": "AGT-SEARCH",
+      "type": "constrains",
+      "note": "质量、容量、SLO 和预算定义可行域"
+    },
+    {
+      "from": "PERF-RESOURCE",
+      "to": "PERF-OPERATOR",
+      "type": "feeds",
+      "note": "分算子工作量与流量"
+    },
+    {
+      "from": "PERF-HARDWARE",
+      "to": "PERF-OPERATOR",
+      "type": "feeds",
+      "note": "有效算力与带宽"
+    },
+    {
+      "from": "PERF-OPERATOR",
+      "to": "PERF-EXECUTION",
+      "type": "feeds",
+      "note": "条件节点时间"
+    },
+    {
+      "from": "PERF-COMMUNICATION",
+      "to": "PERF-EXECUTION",
+      "type": "feeds",
+      "note": "通信与等待的条件时间"
+    },
+    {
+      "from": "PERF-STATE",
+      "to": "PERF-SERVING",
+      "type": "feeds",
+      "note": "容量、状态驻留和复用条件"
+    },
+    {
+      "from": "PERF-EXECUTION",
+      "to": "PERF-GENERATION",
+      "type": "feeds",
+      "note": "完整轮次成本"
+    },
+    {
+      "from": "PERF-GENERATION",
+      "to": "PERF-SERVING",
+      "type": "feeds",
+      "note": "有效提交数与单位 token 成本"
+    },
+    {
+      "from": "PERF-SERVING",
+      "to": "OPT-BENEFIT",
+      "type": "feeds",
+      "note": "端到端指标"
+    },
+    {
+      "from": "OPT-BENEFIT",
+      "to": "AGT-PLANNING",
+      "type": "feeds",
+      "note": "条件收益、限制与不确定性"
+    },
+    {
+      "from": "AGT-EXPERIMENT",
+      "to": "LRN-CALIBRATION",
+      "type": "feeds",
+      "note": "合格的配对测量"
+    },
+    {
+      "from": "LRN-RESIDUAL",
+      "to": "PERF-OPERATOR",
+      "type": "extends",
+      "note": "候选残差修正是研究方向，不表示已实现或验证"
+    }
+  ]
+}

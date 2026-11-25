@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "OPT-TRANSITION",
+  "revision": 1,
+  "layer": "03-optimization-theory",
+  "kind": "method",
+  "title": "瓶颈迁移与相图",
+  "formula": "r*=argmax_i T_i under an explicit max-cost model; recompute after a(x)",
+  "inputs": [
+    {
+      "id": "resource_times",
+      "unit": "record",
+      "description": "各资源必要时间或条件估计"
+    },
+    {
+      "id": "intervention",
+      "unit": "record",
+      "description": "对资源和执行图的变化"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "regime",
+      "unit": "record",
+      "description": "当前/候选限制、并列及未识别因素"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "FND-ROOFLINE",
+    "OPT-SENSITIVITY",
+    "OPT-TRANSFORM"
+  ],
+  "tags": [
+    "bottleneck",
+    "phase",
+    "transition",
+    "regime",
+    "迁移"
+  ],
+  "applicability": "只在明确的资源竞争或执行图模型内判定限制；必要时识别并列约束。",
+  "limitations": "低 GPU 利用率不等于某个瓶颈；单一资源最大值可能漏掉暴露依赖。",
+  "validation": "干预后重测并重新诊断；从不同工作点构建切换区域，复查旧失败。",
+  "sources": [
+    "theory/performance/README.md",
+    "theory/diagnosis/README.md",
+    "theory/optimization/coupling.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "method_or_model"
+}

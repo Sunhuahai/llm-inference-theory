@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "id": "FND-AMDAHL",
+  "revision": 1,
+  "layer": "01-fundamentals",
+  "kind": "derived",
+  "title": "局部收益的 Amdahl 边界",
+  "formula": "S=1/((1-f)+f/s)",
+  "inputs": [
+    {
+      "id": "fraction",
+      "unit": "ratio",
+      "description": "原串行可分解总时间中被加速的份额"
+    },
+    {
+      "id": "speedup",
+      "unit": "ratio",
+      "description": "该部分加速倍数"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "speedup",
+      "unit": "ratio",
+      "description": "条件整体加速比"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-METRIC"
+  ],
+  "tags": [
+    "amdahl",
+    "kernel",
+    "local",
+    "end-to-end",
+    "收益"
+  ],
+  "applicability": "固定其余时间，串行可加成本分解且 f 可识别。",
+  "limitations": "若重叠、排程、资源迁移改变其他成本，不能直接套用；f 不是 GPU 累计活动时间占比。",
+  "validation": "固定任务与工作点，比较局部干预前后暴露时间；检查未受影响项。",
+  "sources": [
+    "theory/optimization/benefit-prediction.md",
+    "theory/execution/README.md"
+  ],
+  "evaluator": "amdahl",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}

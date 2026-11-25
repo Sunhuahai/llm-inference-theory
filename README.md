@@ -22,7 +22,10 @@
 
 ## 用于具体项目
 
-**推荐安装 [LLM Inference Optimizer Skill](skills/llm-inference-optimizer/README.md)**：可在任意推理项目中调用 `$llm-inference-optimizer`。内置 37 篇版本化理论快照、项目审计与决策、每轮事前预测/实测比较，以及私有跨项目理论库。通过预先登记的留出实验和独立审阅验证理论修订，保留全部历史版本和正负证据。
+
+**结构化理论库 v2**：[六层模型索引](skills/llm-inference-optimizer/knowledge/structured/INDEX.md) · [理论图谱](skills/llm-inference-optimizer/knowledge/structured/ATLAS.md) · [Skill 图解介绍](skills/llm-inference-optimizer/INTRODUCTION.md) · [使用与演化](skills/llm-inference-optimizer/references/structured-theory.md)。在保留 37 篇来源文档的基础上，提供 33 个结构化理论单元、16 个窄解析函数、模型依赖及 context 参数契约；数值计算不代表实测。
+
+**推荐安装 [LLM Inference Optimizer Skill](skills/llm-inference-optimizer/README.md)**：可在任意推理项目中调用 `$llm-inference-optimizer`。内置 33 个结构化理论单元和 37 篇版本化理论快照、项目审计与决策、每轮事前预测/实测比较，以及私有跨项目理论库。通过预先登记的留出实验和独立审阅验证理论修订，保留全部历史版本和正负证据。
 
 [图解介绍与完整工作流程](skills/llm-inference-optimizer/INTRODUCTION.md) · [Skill 入口](skills/llm-inference-optimizer/SKILL.md) · [初始知识](skills/llm-inference-optimizer/knowledge/INDEX.md) · [理论演化](skills/llm-inference-optimizer/references/theory-evolution.md)
 

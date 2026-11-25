@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "id": "DEF-RESOURCE",
+  "revision": 1,
+  "layer": "00-definitions",
+  "kind": "definition",
+  "title": "资源与量纲",
+  "formula": "work / rate = time; peak capacity != effective rate",
+  "inputs": [],
+  "outputs": [
+    {
+      "id": "resource_spec",
+      "unit": "record",
+      "description": "设备、工作量、速率与容量的统一账本"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [],
+  "tags": [
+    "flops",
+    "bytes",
+    "bandwidth",
+    "hardware",
+    "单位"
+  ],
+  "applicability": "FLOP、byte、s 为核心 SI 量；容量和流量不同，明确每卡/全局。",
+  "limitations": "有效速率是依工作点变化的估计，不能替代严格上界。",
+  "validation": "检查单位换算、重复记账、rank/链路身份与规格来源。",
+  "sources": [
+    "models/contracts.md",
+    "models/resource/README.md"
+  ],
+  "evaluator": null,
+  "status": "documented_model",
+  "evidence_type": "definition"
+}

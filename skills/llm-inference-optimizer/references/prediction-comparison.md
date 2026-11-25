@@ -6,6 +6,8 @@
 
 参考 [prediction.json](../assets/prediction.json)。schema_version=1；project/round/theory_version/metric IDs 用 ASCII 字母数字开头，可含点、下划线和连字符，长度最多 80。parent_ref 是基线提交与配置身份；candidate_ref 是预先指定的候选身份（不必是尚未产生的提交）；context_id 是冻结的环境/工作负载/指标身份。mechanism、assumptions、validation_plan、theory_refs 必填。validation_role=search 或 holdout，后者必须含 shadow.version 和 shadow.points（与 active 点预测的相同指标）。
 
+结构化 v2 的每个 metric 另须填写 model_ref={id, revision, output, parameter_sets?} 或非空 model_gap（如无法识别直接预测输出）。不得伪造匹配。CLI 验证主模型输出单位、revision、参数集 context 与先修关系；bound 和点预测分开。holdout 的 shadow.model_refs 按 target metric 记录候选模型引用，必须与 shadow.points 对齐。旧版本冻结文件不回填。详见 [结构化理论合同](structured-theory.md)。
+
 每个 metric 固定 level=resource/execution/service，unit、direction=lower/higher，statistic（如 mean、p99、total_tokens_per_sec），baseline 非负，baseline_tolerance_rel 非负小数。预测类型：
 
 | kind | 必填参数 | 评价 |
@@ -33,7 +35,7 @@ python3 "$SKILL_DIR/scripts/skill.py" freeze optimization/rounds/round-001 /path
 python3 "$SKILL_DIR/scripts/skill.py" compare optimization/rounds/round-001 /path/to/measurement-input.json
 ```
 
-CLI 输出 result/measurement.json、comparison.json、comparison.md、receipt.json；目录不可覆盖。只有 completed、passed、comparable、有原始证据引用且基线漂移在冻结容忍度内的 metric 才可比较。simulated/user_report 可在本次报告作演示/报告比较，但不计实测累计统计或校准；simulated 禁止入用户库。
+CLI 输出 result/measurement.json、comparison.json、comparison.md、receipt.json；结构化预测还会生成 result/module-review-template.json。复制为轮次根目录 theory-update.json，填各主模型/指标组合的 decision 和 rationale，补充必要先修模块与缺口。record 时校验并保留 JSON、Markdown 与哈希收据；目录不可覆盖。只有 completed、passed、comparable、有原始证据引用且基线漂移在冻结容忍度内的 metric 才可比较。simulated/user_report 可在本次报告作演示/报告比较，但不计实测累计统计或校准；simulated 禁止入用户库。
 
 定义 lower 指标收益 g=(baseline-candidate)/baseline；higher 则 g=(candidate-baseline)/baseline。预测收益使用冻结 baseline，实测收益使用本次实测 baseline，记录相对基线漂移。误差 e=g_actual-g_pred，Markdown 以百分点报告；JSON 为小数比例。另记录实际值减预测值、区间命中、界满足。负误差是收益被高估；界未饱和不等于界错误。零 baseline 不计收益误差。
 

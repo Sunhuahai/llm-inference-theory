@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "synthetic-demo",
   "round": "round-001",
-  "theory_version": "seed-1b4c5a377634",
+  "theory_version": "seed-1b4c5a377634-v2",
   "parent_ref": "SYNTHETIC-BASE",
   "candidate_ref": "SYNTHETIC-FUSION",
   "context_id": "SYNTHETIC-CTX",
@@ -24,7 +24,12 @@
       "baseline": 1000000,
       "baseline_tolerance_rel": 0.02,
       "kind": "point",
-      "value": 700000
+      "value": 700000,
+      "model_ref": {
+        "id": "PERF-RESOURCE",
+        "revision": 1,
+        "output": "traffic"
+      }
     },
     "kernel_ms": {
       "level": "execution",
@@ -36,7 +41,12 @@
       "kind": "interval",
       "low": 2.8,
       "high": 3.2,
-      "value": 3
+      "value": 3,
+      "model_ref": {
+        "id": "PERF-OPERATOR",
+        "revision": 1,
+        "output": "time_ms"
+      }
     },
     "tpot": {
       "level": "service",
@@ -46,7 +56,12 @@
       "baseline": 10,
       "baseline_tolerance_rel": 0.02,
       "kind": "point",
-      "value": 8
+      "value": 8,
+      "model_ref": {
+        "id": "PERF-SERVING",
+        "revision": 1,
+        "output": "tpot"
+      }
     },
     "throughput": {
       "level": "service",
@@ -56,7 +71,8 @@
       "baseline": 100,
       "baseline_tolerance_rel": 0.02,
       "kind": "unknown",
-      "reason": "没有服务调度模型，不能据局部时间推算"
+      "reason": "没有服务调度模型，不能据局部时间推算",
+      "model_gap": "尚未构建服务级预测；不能从局部时间推断吞吐"
     }
   }
 }

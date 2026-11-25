@@ -1,5 +1,11 @@
 # 知识路由与版本选择
 
+## 结构化路由（v2）
+
+先用 catalog 搜索项目现象/ID/tag；lookup 获取输入输出、适用域、先修闭包与 context 参数。按 [六层总索引](../knowledge/structured/INDEX.md) 和 [机器图谱](../knowledge/structured/dependencies.json) 选择模型，而非加载全部长文。例：Roofline → FND-ROOFLINE；算子 → PERF-OPERATOR；状态 → PERF-STATE；端到端 → PERF-SERVING；优化耦合 → OPT-COUPLING；Agent 诊断 → AGT-DIAGNOSIS；校准 → LRN-CALIBRATION。先用 active 版本，不可用 seed 冒充 active。详见 [结构化理论说明](structured-theory.md)。
+
+下面的原始文档路由用于补充详细推导。
+
 每次先用 resolve 获得 active documents 目录与版本；下表的路径相对该目录，未初始化时对应 [初始理论快照](../knowledge/INDEX.md)。不要机械读取所有材料。阅读当前版本中涉及这些路径的本地修订、经验律与适用范围，必要时再读原仓库的固定版本。active 版本的 INDEX.md 由程序生成，包含后来加入的全部文档。
 
 | 项目疑问 | 首选理论与模型（链接是 seed） | 要作出的判断 |

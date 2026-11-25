@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "LRN-UNCERTAINTY",
+  "revision": 1,
+  "layer": "05-theory-evolution",
+  "kind": "derived",
+  "title": "预测误差与不确定性",
+  "formula": "MAE=mean(|g_actual-g_pred|); coverage=mean(1{lo<=actual<=hi})",
+  "inputs": [
+    {
+      "id": "gain_errors",
+      "unit": "record",
+      "description": "可比实测的有符号收益误差"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "mae",
+      "unit": "ratio",
+      "description": "平均绝对收益误差"
+    },
+    {
+      "id": "bias",
+      "unit": "ratio",
+      "description": "平均有符号收益误差"
+    }
+  ],
+  "parameters": [],
+  "depends_on": [
+    "DEF-METRIC",
+    "AGT-EXPERIMENT"
+  ],
+  "tags": [
+    "uncertainty",
+    "mae",
+    "bias",
+    "coverage",
+    "error",
+    "误差"
+  ],
+  "applicability": "只在相同指标、context、理论版本和预测类型下聚合；严格界另计。",
+  "limitations": "无校准情景区间不冒充置信区间；失败/缺失不计零；选择偏差需披露。",
+  "validation": "冻结预测，按组报告样本数、点误差、区间覆盖及界违背，独立留出。",
+  "sources": [
+    "models/calibration/README.md",
+    "experiments/model-validation/README.md"
+  ],
+  "evaluator": "error_summary",
+  "status": "analytic_reference",
+  "evidence_type": "derived"
+}
