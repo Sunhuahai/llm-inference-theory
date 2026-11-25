@@ -2,6 +2,8 @@
 
 按研究问题组织外部证据：来源解决什么问题、采用什么模型与评价、在哪些条件下得到结论，以及对本仓库能提供什么启发。
 
+文献判断如何连接理论假设、模型与独立验证，见[全局关系图](../visualizations/diagrams/research-atlas/README.md)；用于具体项目时，按[项目指南](../docs/project-optimization-guide.md)核对外部方法的适用条件与当前已有证据。
+
 | 入口 | 重点 |
 | --- | --- |
 | [一手阅读地图](papers/README.md) | 资源边界、服务建模、程序搜索与 Agent 评价的基础论文 |

@@ -2,6 +2,8 @@
 
 这里的 JSON 是可复用的记录模板，不是已完成的实验，也不是解析模型或搜索回放的 CLI 输入。未知值用 `null`，不填 0；具体运行前必须补齐必要字段。实现级输入契约见 [Models contracts](../../models/contracts.md) 与 [Optimizer search space](../../optimizer/search-space/README.md)。
 
+需要把多轮记录转成后续优化方向时，按[项目指导](../../docs/project-optimization-guide.md)组织可比性、机制解释与竞争假设，并使用[项目 Agent 提示词](../../docs/prompts/review-project.md)生成可交接分析。
+
 | 文件 | 作用 | 哪些字段运行前必须确定 |
 | --- | --- | --- |
 | [environment.json](environment.json) | 版本、精度、设备与拓扑 | checkpoint/revision、引擎 SHA、资源及实际 dtype |

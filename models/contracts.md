@@ -15,6 +15,8 @@
 
 工作量用 FLOP、byte、operation；速率用对应单位每秒；报告时延可用 ms，但转换只有一次。MB/GB 与 MiB/GiB 需在边界显式转换，不能在 JSON 中靠读者猜。
 
+实际项目可从[环境、负载与试验模板](../experiments/templates/README.md)准备输入；候选的父版本、机制、前提与冲突按[候选表示](../optimizer/search-space/README.md)登记。
+
 ## 2. 输出：区分五种语义
 
 | `value_kind` | 可以表达什么 | 不能推断什么 |

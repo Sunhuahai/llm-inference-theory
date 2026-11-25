@@ -53,4 +53,6 @@ $$
 
 [算子模型](../operator/README.md) · [统一契约](../contracts.md) · [状态理论](../../theory/memory/README.md)
 
+若多个机制都能解释当前耗时，先按[瓶颈诊断](../../theory/diagnosis/README.md)选择区分性实验，再把结果交给[候选诊断接口](../../optimizer/diagnosis/README.md)。资源账本中的工作量大小本身不足以确定当前瓶颈。
+
 [roofline]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-134.html "Williams et al., Roofline, 2008 technical report; 核对于 2026-11-25"

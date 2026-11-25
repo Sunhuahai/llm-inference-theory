@@ -1,6 +1,6 @@
 # 推理理论图谱与历史技术图
 
-**当前研究总入口：** [三条核心主线与 Agent 自主优化闭环](research-framework/README.md)，包含 GitHub 可预览的 SVG、可编辑 draw.io 及标准库生成脚本。
+**当前研究总入口：** [全局关系总图与六张子图](research-atlas/README.md)，包含七页可编辑 draw.io、GitHub 可预览的 SVG、节点文档链接及标准库生成脚本。[三主线简图](research-framework/README.md)保留为简明说明。
 
 > 本目录同时包含通用理论图与历史 Qwen/H800 专项图；后者不代表当前研究范围。
 

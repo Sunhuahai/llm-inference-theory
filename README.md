@@ -6,9 +6,9 @@
 
 ## 三条核心研究主线
 
-[![理论、性能建模、Agent 自主优化与共享实验平台](visualizations/diagrams/research-framework/research-map.svg)](visualizations/diagrams/research-framework/research-map.svg)
+[![推理优化全局关系：理论、模型、Agent、证据与项目实践](visualizations/diagrams/research-atlas/00-overview.svg)](visualizations/diagrams/research-atlas/00-overview.svg)
 
-[高清研究架构](visualizations/diagrams/research-framework/research-map.svg) · [可编辑 draw.io](visualizations/diagrams/research-framework/research-map.drawio) · [自主优化闭环图](visualizations/diagrams/research-framework/optimization-loop.svg) · [内容地图与完成状态](docs/content-map.md)
+[全局总图与六张子图](visualizations/diagrams/research-atlas/README.md) · [七页可编辑 draw.io](visualizations/diagrams/research-atlas/llm-inference-research-atlas.drawio) · [内容地图与完成状态](docs/content-map.md)
 
 | 主线 | 核心问题 | 从这里开始 |
 | --- | --- | --- |
@@ -19,6 +19,12 @@
 [实验与评估](experiments/README.md)为三条主线提供共同证据；[文献研究](research/README.md)提供外部方法与对照；[图谱](visualizations/README.md)解释它们之间的关系。
 
 理论给出条件和可证伪判断，模型给出带来源的估计，优化器选择下一次干预。实验可以支持或否定三者，负结果同样用于更新知识。Agent 自主优化与理论、建模并行推进，不等待全部理论完成。
+
+## 用于具体项目
+
+已有推理项目和优化记录时，从 **[项目优化指导](docs/project-optimization-guide.md)** 进入：整理历史结果的可比性，把尝试转成机制证据，再按问题选读理论、模型与验证章节，形成下一轮优先方向、最小区分实验和停止条件。
+
+**[直接交给项目 Agent 的完整提示词](docs/prompts/review-project.md)** · [项目使用关系图](visualizations/diagrams/research-atlas/06-project.svg)。指导分析可以直接使用当前项目的源码、日志与历史结果；已有 CPU 原型是辅助参考。
 
 ## 首次阅读
 
@@ -68,6 +74,7 @@ python3 models/predictor/cache_context.py models/predictor/examples/synthetic-ca
 
 ```bash
 python3 scripts/check_docs.py
+python3 visualizations/diagrams/research-atlas/build_atlas.py
 python3 -m unittest discover -s models/predictor/tests -v
 python3 -m unittest discover -s models/analytic/tests -v
 python3 -m unittest discover -s optimizer/systems/tests -v

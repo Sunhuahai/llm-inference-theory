@@ -1,5 +1,7 @@
 # LLM 推理优化理论框架：从性能极限到优化实践
 
+[全局关系图与逐块子图](../visualizations/diagrams/research-atlas/README.md)展示本页理论与模型、Agent、实验之间的联系；已有优化结果需要复盘时，按[项目指导](../docs/project-optimization-guide.md)选择相关推导与验证章节。
+
 **新增专题入口：** [瓶颈诊断](diagnosis/README.md) · [性能边界](performance/README.md) · [执行与并行](execution/README.md) · [状态内存](memory/README.md) · [生成效率](generation/README.md) · [服务理论](serving/README.md) · [优化机制](optimization/mechanisms.md) · [耦合与全局目标](optimization/coupling.md)。[完整索引](INDEX.md)将这些关系连接到 [性能模型](../models/README.md)和 [Agent 自主优化](../optimizer/README.md)。
 
 > 2026-11-24 · 图解导读 · 模型与硬件无关  

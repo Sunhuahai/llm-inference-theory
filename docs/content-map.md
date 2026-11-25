@@ -2,6 +2,8 @@
 
 > 2026-11-25。这里对应仓库结构审计提出的缺项，区分已补充的研究内容、可执行参考以及仍需外部实验的能力。
 
+需要先建立整体认识时，打开[全局关系总图与六张子图](../visualizations/diagrams/research-atlas/README.md)。已有具体项目和历史结果时，从[项目优化指导](project-optimization-guide.md)及[可复制提示词](prompts/review-project.md)进入，再按问题回到本页相应章节。
+
 ## 1. 三条核心主线
 
 | 领域 | 已补充的内容 | 主入口 | 当前实现与证据 |
@@ -29,7 +31,8 @@
 | 微基准 | [形状、计时、采集扰动与参数来源](../experiments/microbenchmarks/README.md) | 采集设计 |
 | 跨环境案例 | [模型/硬件/负载轴与三种迁移强度](../experiments/case-studies/README.md) | 案例设计；历史证据独立保留 |
 | 统一记录 | [环境、工作负载、trial JSON 模板](../experiments/templates/README.md) | 可复用模板，未知字段不伪填 |
-| 总体架构 | [研究架构与自主优化闭环图](../visualizations/diagrams/research-framework/README.md) | SVG、可编辑 draw.io 与生成脚本 |
+| 全局关系图谱 | [全局总图与理论、机制、模型、Agent、证据、项目六张子图](../visualizations/diagrams/research-atlas/README.md) | 七页 draw.io、七张 SVG、节点文档链接与统一生成脚本 |
+| 项目使用指导 | [历史证据复盘、问题驱动选读、下一轮方向与验证](project-optimization-guide.md) · [Agent 提示词](prompts/review-project.md) | 可直接用于已有项目分析；具体建议需由项目证据支持 |
 | 研究路线 | [共同里程碑与验收要求](roadmap.md) | 三条主线并行推进 |
 | 文献入口 | [问题导向的一手阅读地图](../research/papers/README.md) | 基础与评价资料；保留现有业界专题 |
 

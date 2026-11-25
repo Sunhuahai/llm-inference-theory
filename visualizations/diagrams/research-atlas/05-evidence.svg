@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="2250" viewBox="0 0 3000 2250" role="img">
+  <title>实验与证据：并行回答三类不同问题</title>
+  <desc>验证实现自洽、检验模型预测、比较自主搜索分别设计对照；共同保存证据，结论只在适用范围内成立。。节点链接对应文档；导航链接对应子图。</desc>
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b748d" />
+    </marker>
+    <marker id="arrow-feedback" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b87527" />
+    </marker>
+    <marker id="arrow-constraint" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b6baf" />
+    </marker>
+  </defs>
+  <g id="background">
+    <rect x="0" y="0" width="3000" height="2250" rx="0" fill="#f8fafc" stroke="none" stroke-width="2" />
+    <rect x="0" y="0" width="3000" height="165" rx="0" fill="#112b43" stroke="none" stroke-width="2" />
+    <rect x="70" y="300" width="880" height="1110" rx="16" fill="#edf4ff" stroke="#8caee0" stroke-width="2" />
+    <rect x="1060" y="300" width="880" height="1110" rx="16" fill="#eaf8f5" stroke="#80beb5" stroke-width="2" />
+    <rect x="2050" y="300" width="880" height="1110" rx="16" fill="#f4effb" stroke="#b39ace" stroke-width="2" />
+    <rect x="70" y="1710" width="2860" height="390" rx="16" fill="#fff6e7" stroke="#dfbb7c" stroke-width="2" />
+  </g>
+  <g id="edges">
+    <path d="M 510 615 L 510 780" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 510 975 L 510 1140" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 1500 615 L 1500 780" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 1500 975 L 1500 1140" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 2490 615 L 2490 780" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 2490 975 L 2490 1140" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 510 1335 L 510 1830" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 1500 1335 L 1500 1470 L 700 1470 L 700 1830" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 2490 1335 L 2490 1530 L 870 1530 L 870 1830" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 910 1930 L 1100 1930" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 1900 1930 L 2090 1930" fill="none" stroke="#5b748d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+    <path d="M 1500 1830 L 1500 1630 L 1970 1630 L 1970 875 L 1900 875" fill="none" stroke="#b87527" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-feedback)" stroke-dasharray="10 8" />
+    <path d="M 1900 520 L 2090 520" fill="none" stroke="#8b6baf" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-constraint)" stroke-dasharray="10 8" />
+  </g>
+  <g id="cards">
+    <a id="synthetic" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/synthetic/README.md" target="_blank">
+      <title>可手算的合成场景 — experiments/synthetic/README.md</title>
+      <rect x="110" y="420" width="800" height="195" rx="14" fill="#ffffff" stroke="#8caee0" stroke-width="2" />
+      <rect x="112" y="434" width="5" height="167" rx="2" fill="#2459a6" />
+      <text x="135" y="465" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#2459a6">可手算的合成场景</text>
+      <text x="878" y="463" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#8caee0">↗</text>
+      <text x="135" y="506" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">显式给定工作量、图与候选结果</text>
+      <text x="135" y="540" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">设置边界条件、反例与错误输入</text>
+      <text x="888" y="598" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#2459a6">synthetic 输入</text>
+    </a>
+    <a id="checks" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/synthetic/README.md" target="_blank">
+      <title>公式、单位与控制检查 — experiments/synthetic/README.md</title>
+      <rect x="110" y="780" width="800" height="195" rx="14" fill="#ffffff" stroke="#8caee0" stroke-width="2" />
+      <rect x="112" y="794" width="5" height="167" rx="2" fill="#2459a6" />
+      <text x="135" y="825" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#2459a6">公式、单位与控制检查</text>
+      <text x="878" y="823" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#8caee0">↗</text>
+      <text x="135" y="866" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">资源约束、依赖、容量与异常</text>
+      <text x="135" y="900" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">预算、失败扣费、最佳候选更新</text>
+      <text x="888" y="958" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#2459a6">已有 CPU 参考与测试</text>
+    </a>
+    <a id="self_consistency" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/docs/methodology.md" target="_blank">
+      <title>结论：实现覆盖的自洽性质 — docs/methodology.md</title>
+      <rect x="110" y="1140" width="800" height="195" rx="14" fill="#ffffff" stroke="#8caee0" stroke-width="2" />
+      <rect x="112" y="1154" width="5" height="167" rx="2" fill="#2459a6" />
+      <text x="135" y="1185" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#2459a6">结论：实现覆盖的自洽性质</text>
+      <text x="878" y="1183" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#8caee0">↗</text>
+      <text x="135" y="1226" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">明确哪些计算规则已被检查</text>
+      <text x="135" y="1260" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">真实性能与跨环境精度另需证据</text>
+      <text x="888" y="1318" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#2459a6">不推断 GPU 加速或 Agent 优势</text>
+    </a>
+    <a id="microbench" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/microbenchmarks/README.md" target="_blank">
+      <title>形状采样与独立测量 — experiments/microbenchmarks/README.md</title>
+      <rect x="1100" y="420" width="800" height="195" rx="14" fill="#ffffff" stroke="#80beb5" stroke-width="2" />
+      <rect x="1102" y="434" width="5" height="167" rx="2" fill="#087a78" />
+      <text x="1125" y="465" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#087a78">形状采样与独立测量</text>
+      <text x="1868" y="463" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#80beb5">↗</text>
+      <text x="1125" y="506" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">记录环境、工作量、正式耗时</text>
+      <text x="1125" y="540" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">Profiler 用于诊断，正式性能单独测</text>
+      <text x="1878" y="598" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#087a78">采集方案 · 待新 GPU 数据</text>
+    </a>
+    <a id="fit" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/models/calibration/README.md" target="_blank">
+      <title>校准、开发与最终留出分开 — models/calibration/README.md</title>
+      <rect x="1100" y="780" width="800" height="195" rx="14" fill="#ffffff" stroke="#80beb5" stroke-width="2" />
+      <rect x="1102" y="794" width="5" height="167" rx="2" fill="#087a78" />
+      <text x="1125" y="825" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#087a78">校准、开发与最终留出分开</text>
+      <text x="1868" y="823" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#80beb5">↗</text>
+      <text x="1125" y="866" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">拟合参数、选择模型分别记录</text>
+      <text x="1125" y="900" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">保存事前预测、版本和适用域</text>
+      <text x="1878" y="958" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#087a78">保留未参与选择的最终集合</text>
+    </a>
+    <a id="predict_validate" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/model-validation/README.md" target="_blank">
+      <title>检验干预变化与失效边界 — experiments/model-validation/README.md</title>
+      <rect x="1100" y="1140" width="800" height="195" rx="14" fill="#ffffff" stroke="#80beb5" stroke-width="2" />
+      <rect x="1102" y="1154" width="5" height="167" rx="2" fill="#087a78" />
+      <text x="1125" y="1185" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#087a78">检验干预变化与失效边界</text>
+      <text x="1868" y="1183" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#80beb5">↗</text>
+      <text x="1125" y="1226" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">绝对误差、收益方向、候选排序</text>
+      <text x="1125" y="1260" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">瓶颈迁移与分布外表现分别报告</text>
+      <text x="1878" y="1318" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#087a78">真实预测有效性待独立验证</text>
+    </a>
+    <a id="fair" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/agent-benchmark/README.md" target="_blank">
+      <title>同任务、动作范围与工具权限 — experiments/agent-benchmark/README.md</title>
+      <rect x="2090" y="420" width="800" height="195" rx="14" fill="#ffffff" stroke="#b39ace" stroke-width="2" />
+      <rect x="2092" y="434" width="5" height="167" rx="2" fill="#7042a6" />
+      <text x="2115" y="465" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#7042a6">同任务、动作范围与工具权限</text>
+      <text x="2858" y="463" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#b39ace">↗</text>
+      <text x="2115" y="506" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">普通 Agent → 加理论 / 搜索 / 记忆</text>
+      <text x="2115" y="540" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">分别控制信息、预算和允许修改范围</text>
+      <text x="2868" y="598" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#7042a6">对照与消融设计</text>
+    </a>
+    <a id="cost" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/agent-benchmark/README.md" target="_blank">
+      <title>完整搜索成本与重复运行 — experiments/agent-benchmark/README.md</title>
+      <rect x="2090" y="780" width="800" height="195" rx="14" fill="#ffffff" stroke="#b39ace" stroke-width="2" />
+      <rect x="2092" y="794" width="5" height="167" rx="2" fill="#7042a6" />
+      <text x="2115" y="825" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#7042a6">完整搜索成本与重复运行</text>
+      <text x="2858" y="823" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#b39ace">↗</text>
+      <text x="2115" y="866" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">GPU、CPU、LLM、墙钟分别计费</text>
+      <text x="2115" y="900" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">准备、失败、超时、复测均纳入</text>
+      <text x="2868" y="958" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#7042a6">多个任务与独立随机种子</text>
+    </a>
+    <a id="search_validate" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/agent-benchmark/README.md" target="_blank">
+      <title>独立接受与最终冻结评价 — experiments/agent-benchmark/README.md</title>
+      <rect x="2090" y="1140" width="800" height="195" rx="14" fill="#ffffff" stroke="#b39ace" stroke-width="2" />
+      <rect x="2092" y="1154" width="5" height="167" rx="2" fill="#7042a6" />
+      <text x="2115" y="1185" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#7042a6">独立接受与最终冻结评价</text>
+      <text x="2858" y="1183" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#b39ace">↗</text>
+      <text x="2115" y="1226" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">收益预算曲线、达标成本、有效率</text>
+      <text x="2115" y="1260" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">干净工作区与最终留出复测</text>
+      <text x="2868" y="1318" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#7042a6">真实 Agent 对照尚待执行</text>
+    </a>
+    <a id="bundle" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/templates/README.md" target="_blank">
+      <title>可追溯的最小证据包 — experiments/templates/README.md</title>
+      <rect x="110" y="1830" width="800" height="220" rx="14" fill="#ffffff" stroke="#dfbb7c" stroke-width="2" />
+      <rect x="112" y="1844" width="5" height="192" rx="2" fill="#a96612" />
+      <text x="135" y="1875" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#a96612">可追溯的最小证据包</text>
+      <text x="878" y="1873" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#dfbb7c">↗</text>
+      <text x="135" y="1916" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">环境 / 负载 / 基线与候选 SHA</text>
+      <text x="135" y="1950" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">事前假设、oracle、原始日志</text>
+      <text x="135" y="1984" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">全部失败、成本账本与统计程序</text>
+      <text x="888" y="2033" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#a96612">一次结论可以追溯到原始记录</text>
+    </a>
+    <a id="scope" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/experiments/case-studies/README.md" target="_blank">
+      <title>结论、决策与适用域 — experiments/case-studies/README.md</title>
+      <rect x="1100" y="1830" width="800" height="220" rx="14" fill="#ffffff" stroke="#dfbb7c" stroke-width="2" />
+      <rect x="1102" y="1844" width="5" height="192" rx="2" fill="#a96612" />
+      <text x="1125" y="1875" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#a96612">结论、决策与适用域</text>
+      <text x="1868" y="1873" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#dfbb7c">↗</text>
+      <text x="1125" y="1916" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">来源状态 ≠ accepted / rejected</text>
+      <text x="1125" y="1950" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">记录模型、硬件、负载与质量条件</text>
+      <text x="1125" y="1984" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">跨环境复用先检查边界</text>
+      <text x="1878" y="2033" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#a96612">失败测量仍是证据</text>
+    </a>
+    <a id="next" href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/06-project.svg" target="_blank">
+      <title>把已有尝试转成后续方向</title>
+      <rect x="2090" y="1830" width="800" height="220" rx="14" fill="#ffffff" stroke="#dfbb7c" stroke-width="2" />
+      <rect x="2092" y="1844" width="5" height="192" rx="2" fill="#a96612" />
+      <text x="2115" y="1875" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="29" font-weight="700" fill="#a96612">把已有尝试转成后续方向</text>
+      <text x="2858" y="1873" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" fill="#dfbb7c">↗</text>
+      <text x="2115" y="1916" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">更新理论假设、模型与经验记忆</text>
+      <text x="2115" y="1950" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">未知项驱动补测，负结果限制条件</text>
+      <text x="2115" y="1984" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="24" fill="#3d5264">进入具体项目复盘与行动队列</text>
+      <text x="2868" y="2033" text-anchor="end" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="700" fill="#a96612">连接项目使用指南</text>
+    </a>
+  </g>
+  <g id="labels">
+    <text x="65" y="66" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="46" font-weight="700" fill="#ffffff">实验与证据：并行回答三类不同问题</text>
+    <text x="67" y="119" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="25" font-weight="400" fill="#c9d8e5">验证实现自洽、检验模型预测、比较自主搜索分别设计对照；共同保存证据，结论只在适用范围内成立。</text>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/00-overview.svg" target="_blank">
+      <rect x="65" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="263.143" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">00 全局关系</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/01-theory.svg" target="_blank">
+      <rect x="477.286" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="675.429" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">01 性能与诊断</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/02-mechanisms.svg" target="_blank">
+      <rect x="889.571" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="1087.71" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">02 机制与耦合</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/03-models.svg" target="_blank">
+      <rect x="1301.86" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="1500" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">03 性能模型</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/04-agent.svg" target="_blank">
+      <rect x="1714.14" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="1912.29" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">04 自主优化</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/05-evidence.svg" target="_blank">
+      <rect x="2126.43" y="194" width="396.286" height="53" rx="12" fill="#dfeaf4" stroke="#c9d6e1" />
+      <text x="2324.57" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="700" fill="#173f64">05 实验与证据</text>
+    </a>
+    <a href="https://github.com/Sunhuahai/llm-inference-theory/blob/main/visualizations/diagrams/research-atlas/06-project.svg" target="_blank">
+      <rect x="2538.71" y="194" width="396.286" height="53" rx="12" fill="#ffffff" stroke="#c9d6e1" />
+      <text x="2736.86" y="229" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="23" font-weight="400" fill="#536b80">06 项目使用</text>
+    </a>
+    <text x="65" y="2175" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" font-weight="700" fill="#5b748d">实线：构成 / 推导 / 数据流</text>
+    <text x="525" y="2175" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" font-weight="700" fill="#b87527">虚线：反馈 / 约束 / 条件</text>
+    <text x="1000" y="2175" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="22" font-weight="400" fill="#52697c">证据状态与候选决定分别记录；最终留出结果不回流同一轮搜索。</text>
+    <text x="65" y="2222" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="19" font-weight="400" fill="#718497">LLM Inference Theory  ·  2026-11-25  ·  带 ↗ 的节点可打开对应文档；draw.io 顶部导航可切换页面</text>
+    <text x="94" y="343" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="30" font-weight="700" fill="#2459a6">A  合成与控制自洽</text>
+    <text x="94" y="377" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" font-weight="400" fill="#536b80">公式和代码在给定条件下是否一致？</text>
+    <text x="1084" y="343" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="30" font-weight="700" fill="#087a78">B  模型校准与预测验证</text>
+    <text x="1084" y="377" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" font-weight="400" fill="#536b80">能否预测未参与拟合的工作点与干预？</text>
+    <text x="2074" y="343" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="30" font-weight="700" fill="#7042a6">C  同预算 Agent 对照</text>
+    <text x="2074" y="377" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" font-weight="400" fill="#536b80">理论工具是否提高寻找可靠优化的效率？</text>
+    <text x="94" y="1753" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="30" font-weight="700" fill="#a96612">共同证据包与下一轮研究</text>
+    <text x="94" y="1787" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" font-weight="400" fill="#536b80">记录原始证据；不是证据升级链。</text>
+    <rect x="425.5" y="680" width="169" height="32" rx="6" fill="#f8fafc" />
+    <text x="510" y="703" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">给出可复核预期</text>
+    <rect x="415" y="1040" width="190" height="32" rx="6" fill="#f8fafc" />
+    <text x="510" y="1063" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">只确认覆盖的性质</text>
+    <rect x="1394.5" y="680" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="1500" y="703" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">以校准子集估计参数</text>
+    <rect x="1394.5" y="1040" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="1500" y="1063" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">提交冻结的事前预测</text>
+    <rect x="2384.5" y="680" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="2490" y="703" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">统一预算与动作空间</text>
+    <rect x="2384.5" y="1040" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="2490" y="1063" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">评价结果及寻找成本</text>
+    <rect x="404.5" y="1570" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="510" y="1593" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">保存输入与测试记录</text>
+    <rect x="1004.5" y="1450" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="1110" y="1473" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">保存预测与配对观测</text>
+    <rect x="1954.5" y="1510" width="211" height="32" rx="6" fill="#f8fafc" />
+    <text x="2060" y="1533" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">保存所有尝试与成本</text>
+    <rect x="941.5" y="1910" width="127" height="32" rx="6" fill="#f8fafc" />
+    <text x="1005" y="1933" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">结论可追溯</text>
+    <rect x="1921" y="1910" width="148" height="32" rx="6" fill="#f8fafc" />
+    <text x="1995" y="1933" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#5b748d">转成后续问题</text>
+    <rect x="1906" y="1040" width="148" height="32" rx="6" fill="#f8fafc" />
+    <text x="1980" y="1063" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#b87527">仅开发集修订</text>
+    <rect x="1921" y="500" width="148" height="32" rx="6" fill="#f8fafc" />
+    <text x="1995" y="523" text-anchor="middle" font-family="Noto Sans CJK SC, Microsoft YaHei, PingFang SC, sans-serif" font-size="21" fill="#8b6baf">对齐测量口径</text>
+  </g>
+</svg>

@@ -48,3 +48,5 @@
 输入是当前 context、瓶颈假设和候选机制；输出是相似证据、适用差异和建议的验证，而非自动接受/拒绝。每条建议附原始记录 ID。搜索控制器仍按当前预算与评价契约决策。
 
 最低可检验目标是：使用记忆后，同预算下重复无效实验是否减少，独立确认收益是否改善，错误迁移是否增加。实验设计见 [Agent Benchmark](../../experiments/agent-benchmark/README.md)。这些属于本仓库研究假设，需要真实任务证据。
+
+具体项目可用[复盘指南](../../docs/project-optimization-guide.md)和[项目 Agent 提示词](../../docs/prompts/review-project.md)把这类记录转成下一轮方向；[项目使用子图](../../visualizations/diagrams/research-atlas/06-project.svg)展示结果回写后怎样更新假设与优先级。

@@ -1,0 +1,557 @@
+{
+  "id": "evidence",
+  "file": "05-evidence",
+  "tab": "05 实验与证据",
+  "title": "实验与证据：并行回答三类不同问题",
+  "subtitle": "验证实现自洽、检验模型预测、比较自主搜索分别设计对照；共同保存证据，结论只在适用范围内成立。",
+  "size": [
+    3000,
+    2250
+  ],
+  "footer": "证据状态与候选决定分别记录；最终留出结果不回流同一轮搜索。",
+  "panels": [
+    {
+      "rect": [
+        70,
+        300,
+        880,
+        1110
+      ],
+      "title": "A  合成与控制自洽",
+      "subtitle": "公式和代码在给定条件下是否一致？",
+      "kind": "theory"
+    },
+    {
+      "rect": [
+        1060,
+        300,
+        880,
+        1110
+      ],
+      "title": "B  模型校准与预测验证",
+      "subtitle": "能否预测未参与拟合的工作点与干预？",
+      "kind": "models"
+    },
+    {
+      "rect": [
+        2050,
+        300,
+        880,
+        1110
+      ],
+      "title": "C  同预算 Agent 对照",
+      "subtitle": "理论工具是否提高寻找可靠优化的效率？",
+      "kind": "agent"
+    },
+    {
+      "rect": [
+        70,
+        1710,
+        2860,
+        390
+      ],
+      "title": "共同证据包与下一轮研究",
+      "subtitle": "记录原始证据；不是证据升级链。",
+      "kind": "evidence"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "synthetic",
+      "rect": [
+        110,
+        420,
+        800,
+        195
+      ],
+      "title": "可手算的合成场景",
+      "lines": [
+        "显式给定工作量、图与候选结果",
+        "设置边界条件、反例与错误输入"
+      ],
+      "kind": "theory",
+      "doc": "experiments/synthetic/README.md",
+      "tag": "synthetic 输入"
+    },
+    {
+      "id": "checks",
+      "rect": [
+        110,
+        780,
+        800,
+        195
+      ],
+      "title": "公式、单位与控制检查",
+      "lines": [
+        "资源约束、依赖、容量与异常",
+        "预算、失败扣费、最佳候选更新"
+      ],
+      "kind": "theory",
+      "doc": "experiments/synthetic/README.md",
+      "tag": "已有 CPU 参考与测试"
+    },
+    {
+      "id": "self_consistency",
+      "rect": [
+        110,
+        1140,
+        800,
+        195
+      ],
+      "title": "结论：实现覆盖的自洽性质",
+      "lines": [
+        "明确哪些计算规则已被检查",
+        "真实性能与跨环境精度另需证据"
+      ],
+      "kind": "theory",
+      "doc": "docs/methodology.md",
+      "tag": "不推断 GPU 加速或 Agent 优势"
+    },
+    {
+      "id": "microbench",
+      "rect": [
+        1100,
+        420,
+        800,
+        195
+      ],
+      "title": "形状采样与独立测量",
+      "lines": [
+        "记录环境、工作量、正式耗时",
+        "Profiler 用于诊断，正式性能单独测"
+      ],
+      "kind": "models",
+      "doc": "experiments/microbenchmarks/README.md",
+      "tag": "采集方案 · 待新 GPU 数据"
+    },
+    {
+      "id": "fit",
+      "rect": [
+        1100,
+        780,
+        800,
+        195
+      ],
+      "title": "校准、开发与最终留出分开",
+      "lines": [
+        "拟合参数、选择模型分别记录",
+        "保存事前预测、版本和适用域"
+      ],
+      "kind": "models",
+      "doc": "models/calibration/README.md",
+      "tag": "保留未参与选择的最终集合"
+    },
+    {
+      "id": "predict_validate",
+      "rect": [
+        1100,
+        1140,
+        800,
+        195
+      ],
+      "title": "检验干预变化与失效边界",
+      "lines": [
+        "绝对误差、收益方向、候选排序",
+        "瓶颈迁移与分布外表现分别报告"
+      ],
+      "kind": "models",
+      "doc": "experiments/model-validation/README.md",
+      "tag": "真实预测有效性待独立验证"
+    },
+    {
+      "id": "fair",
+      "rect": [
+        2090,
+        420,
+        800,
+        195
+      ],
+      "title": "同任务、动作范围与工具权限",
+      "lines": [
+        "普通 Agent → 加理论 / 搜索 / 记忆",
+        "分别控制信息、预算和允许修改范围"
+      ],
+      "kind": "agent",
+      "doc": "experiments/agent-benchmark/README.md",
+      "tag": "对照与消融设计"
+    },
+    {
+      "id": "cost",
+      "rect": [
+        2090,
+        780,
+        800,
+        195
+      ],
+      "title": "完整搜索成本与重复运行",
+      "lines": [
+        "GPU、CPU、LLM、墙钟分别计费",
+        "准备、失败、超时、复测均纳入"
+      ],
+      "kind": "agent",
+      "doc": "experiments/agent-benchmark/README.md",
+      "tag": "多个任务与独立随机种子"
+    },
+    {
+      "id": "search_validate",
+      "rect": [
+        2090,
+        1140,
+        800,
+        195
+      ],
+      "title": "独立接受与最终冻结评价",
+      "lines": [
+        "收益预算曲线、达标成本、有效率",
+        "干净工作区与最终留出复测"
+      ],
+      "kind": "agent",
+      "doc": "experiments/agent-benchmark/README.md",
+      "tag": "真实 Agent 对照尚待执行"
+    },
+    {
+      "id": "bundle",
+      "rect": [
+        110,
+        1830,
+        800,
+        220
+      ],
+      "title": "可追溯的最小证据包",
+      "lines": [
+        "环境 / 负载 / 基线与候选 SHA",
+        "事前假设、oracle、原始日志",
+        "全部失败、成本账本与统计程序"
+      ],
+      "kind": "evidence",
+      "doc": "experiments/templates/README.md",
+      "tag": "一次结论可以追溯到原始记录"
+    },
+    {
+      "id": "scope",
+      "rect": [
+        1100,
+        1830,
+        800,
+        220
+      ],
+      "title": "结论、决策与适用域",
+      "lines": [
+        "来源状态 ≠ accepted / rejected",
+        "记录模型、硬件、负载与质量条件",
+        "跨环境复用先检查边界"
+      ],
+      "kind": "evidence",
+      "doc": "experiments/case-studies/README.md",
+      "tag": "失败测量仍是证据"
+    },
+    {
+      "id": "next",
+      "rect": [
+        2090,
+        1830,
+        800,
+        220
+      ],
+      "title": "把已有尝试转成后续方向",
+      "lines": [
+        "更新理论假设、模型与经验记忆",
+        "未知项驱动补测，负结果限制条件",
+        "进入具体项目复盘与行动队列"
+      ],
+      "kind": "evidence",
+      "page": "project",
+      "tag": "连接项目使用指南"
+    }
+  ],
+  "edges": [
+    {
+      "source": "synthetic",
+      "target": "checks",
+      "points": [
+        [
+          510,
+          615
+        ],
+        [
+          510,
+          780
+        ]
+      ],
+      "label": "给出可复核预期",
+      "label_at": [
+        510,
+        700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "checks",
+      "target": "self_consistency",
+      "points": [
+        [
+          510,
+          975
+        ],
+        [
+          510,
+          1140
+        ]
+      ],
+      "label": "只确认覆盖的性质",
+      "label_at": [
+        510,
+        1060
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "microbench",
+      "target": "fit",
+      "points": [
+        [
+          1500,
+          615
+        ],
+        [
+          1500,
+          780
+        ]
+      ],
+      "label": "以校准子集估计参数",
+      "label_at": [
+        1500,
+        700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "fit",
+      "target": "predict_validate",
+      "points": [
+        [
+          1500,
+          975
+        ],
+        [
+          1500,
+          1140
+        ]
+      ],
+      "label": "提交冻结的事前预测",
+      "label_at": [
+        1500,
+        1060
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "fair",
+      "target": "cost",
+      "points": [
+        [
+          2490,
+          615
+        ],
+        [
+          2490,
+          780
+        ]
+      ],
+      "label": "统一预算与动作空间",
+      "label_at": [
+        2490,
+        700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "cost",
+      "target": "search_validate",
+      "points": [
+        [
+          2490,
+          975
+        ],
+        [
+          2490,
+          1140
+        ]
+      ],
+      "label": "评价结果及寻找成本",
+      "label_at": [
+        2490,
+        1060
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "self_consistency",
+      "target": "bundle",
+      "points": [
+        [
+          510,
+          1335
+        ],
+        [
+          510,
+          1830
+        ]
+      ],
+      "label": "保存输入与测试记录",
+      "label_at": [
+        510,
+        1590
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "predict_validate",
+      "target": "bundle",
+      "points": [
+        [
+          1500,
+          1335
+        ],
+        [
+          1500,
+          1470
+        ],
+        [
+          700,
+          1470
+        ],
+        [
+          700,
+          1830
+        ]
+      ],
+      "label": "保存预测与配对观测",
+      "label_at": [
+        1110,
+        1470
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "search_validate",
+      "target": "bundle",
+      "points": [
+        [
+          2490,
+          1335
+        ],
+        [
+          2490,
+          1530
+        ],
+        [
+          870,
+          1530
+        ],
+        [
+          870,
+          1830
+        ]
+      ],
+      "label": "保存所有尝试与成本",
+      "label_at": [
+        2060,
+        1530
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "bundle",
+      "target": "scope",
+      "points": [
+        [
+          910,
+          1930
+        ],
+        [
+          1100,
+          1930
+        ]
+      ],
+      "label": "结论可追溯",
+      "label_at": [
+        1005,
+        1930
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "scope",
+      "target": "next",
+      "points": [
+        [
+          1900,
+          1930
+        ],
+        [
+          2090,
+          1930
+        ]
+      ],
+      "label": "转成后续问题",
+      "label_at": [
+        1995,
+        1930
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "scope",
+      "target": "fit",
+      "points": [
+        [
+          1500,
+          1830
+        ],
+        [
+          1500,
+          1630
+        ],
+        [
+          1970,
+          1630
+        ],
+        [
+          1970,
+          875
+        ],
+        [
+          1900,
+          875
+        ]
+      ],
+      "label": "仅开发集修订",
+      "label_at": [
+        1980,
+        1060
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "microbench",
+      "target": "fair",
+      "points": [
+        [
+          1900,
+          520
+        ],
+        [
+          2090,
+          520
+        ]
+      ],
+      "label": "对齐测量口径",
+      "label_at": [
+        1995,
+        520
+      ],
+      "kind": "constraint"
+    }
+  ]
+}

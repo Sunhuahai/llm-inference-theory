@@ -50,4 +50,6 @@ Attention 的资源下界为 8 ms。完成后 Projection 需要 3 ms，独立链
 
 [执行理论](../../theory/execution/README.md) · [统一契约](../contracts.md) · [模型验证](../../experiments/model-validation/README.md)
 
+单次执行图通过检查后，将阶段耗时传给[服务模型](../serving/README.md)；涉及动态 batch、队列与缓存生命周期时，按[事件仿真设计](../simulation/README.md)重建状态过程。
+
 [profile]: https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html "NVIDIA Nsight Compute Profiling Guide; 核对于 2026-11-25"

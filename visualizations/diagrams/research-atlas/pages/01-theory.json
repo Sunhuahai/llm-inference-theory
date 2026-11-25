@@ -1,0 +1,799 @@
+{
+  "id": "theory",
+  "file": "01-theory",
+  "tab": "01 性能与诊断",
+  "title": "01｜性能从何而来：资源、执行、服务与诊断",
+  "subtitle": "从工作量推到用户指标，再用观测与区分性实验反向寻找优化机会；箭头标明因果条件与信息流。",
+  "size": [
+    3000,
+    2200
+  ],
+  "footer": "条件推导：下界不等于预测；容量不等于流量；局部耗时不等于服务收益。",
+  "panels": [
+    {
+      "rect": [
+        65,
+        285,
+        2870,
+        365
+      ],
+      "title": "I 任务、工作量与资源边界",
+      "subtitle": "先固定比较对象，再区分需求、能力和条件下界。",
+      "kind": "theory"
+    },
+    {
+      "rect": [
+        65,
+        725,
+        2870,
+        675
+      ],
+      "title": "II 执行与服务：把局部成本转成用户指标",
+      "subtitle": "容量限定 batch，执行路径与服务调度共同决定收益。",
+      "kind": "models"
+    },
+    {
+      "rect": [
+        65,
+        1520,
+        2870,
+        500
+      ],
+      "title": "III 诊断反馈：从相同现象区分不同慢因",
+      "subtitle": "沿右向左阅读：观测 → 竞争假设 → 区分实验 → 可检验干预；新证据返回观测层。",
+      "kind": "evidence"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "task",
+      "rect": [
+        95,
+        395,
+        650,
+        185
+      ],
+      "title": "任务与不变量",
+      "lines": [
+        "模型、精度、采样语义",
+        "输出口径、质量与资源预算"
+      ],
+      "kind": "theory",
+      "doc": "theory/foundations/unified-theory.md"
+    },
+    {
+      "id": "work",
+      "rect": [
+        815,
+        395,
+        650,
+        185
+      ],
+      "title": "计算工作量 F",
+      "lines": [
+        "Prefill 与 Decode 成本",
+        "稠密、MoE 与混合结构",
+        "工作量随真实执行形状变化"
+      ],
+      "kind": "theory",
+      "doc": "theory/foundations/unified-theory.md"
+    },
+    {
+      "id": "rate",
+      "rect": [
+        1535,
+        395,
+        650,
+        185
+      ],
+      "title": "资源能力与计量口径",
+      "lines": [
+        "算力、分层带宽、通信链路",
+        "能力上界用于条件下界",
+        "有效速率用于校准预测"
+      ],
+      "kind": "theory",
+      "doc": "theory/performance/README.md"
+    },
+    {
+      "id": "bound",
+      "rect": [
+        2255,
+        395,
+        650,
+        185
+      ],
+      "title": "条件性能下界",
+      "lines": [
+        "T ≥ max(计算、访存、通信、依赖)",
+        "全局资源聚合可能给出松界",
+        "约束成立仍不保证边界可达"
+      ],
+      "kind": "theory",
+      "doc": "theory/performance/README.md"
+    },
+    {
+      "id": "load",
+      "rect": [
+        95,
+        830,
+        650,
+        190
+      ],
+      "title": "工作负载",
+      "lines": [
+        "到达、输入与实际输出长度",
+        "前缀复用及变量间的关联",
+        "平均值不能代替联合分布"
+      ],
+      "kind": "theory",
+      "doc": "theory/serving/README.md"
+    },
+    {
+      "id": "memory",
+      "rect": [
+        815,
+        830,
+        650,
+        190
+      ],
+      "title": "流量与状态 D、M",
+      "lines": [
+        "权重、状态与中间数据",
+        "跨层搬运量 ≠ 驻留容量",
+        "复用与恢复也有机会成本"
+      ],
+      "kind": "theory",
+      "doc": "theory/memory/README.md"
+    },
+    {
+      "id": "parallel",
+      "rect": [
+        1535,
+        830,
+        650,
+        190
+      ],
+      "title": "并行与通信",
+      "lines": [
+        "TP／EP／PP／CP／DP",
+        "拓扑、慢 rank 与通信重叠",
+        "固定总卡数时也重算副本数"
+      ],
+      "kind": "theory",
+      "doc": "theory/execution/README.md"
+    },
+    {
+      "id": "graph",
+      "rect": [
+        2255,
+        830,
+        650,
+        190
+      ],
+      "title": "执行图与关键路径",
+      "lines": [
+        "数据依赖＋资源执行次序",
+        "完成时间取决于暴露路径",
+        "并发可能争用同一资源"
+      ],
+      "kind": "theory",
+      "doc": "theory/execution/README.md"
+    },
+    {
+      "id": "batch",
+      "rect": [
+        95,
+        1160,
+        650,
+        190
+      ],
+      "title": "Batch 与上下文",
+      "lines": [
+        "容量限定可行 batch",
+        "形状改变复用和算术强度",
+        "扩 batch 的边际收益会减小"
+      ],
+      "kind": "theory",
+      "doc": "theory/performance/README.md"
+    },
+    {
+      "id": "generation",
+      "rect": [
+        815,
+        1160,
+        650,
+        190
+      ],
+      "title": "有效生成产出 K",
+      "lines": [
+        "只计最终提交的 token",
+        "完整计入草稿、验证与回滚",
+        "总产出／总时间决定平均效率"
+      ],
+      "kind": "theory",
+      "doc": "theory/generation/README.md"
+    },
+    {
+      "id": "serving",
+      "rect": [
+        1535,
+        1160,
+        650,
+        190
+      ],
+      "title": "动态服务过程",
+      "lines": [
+        "到达、调度、缓存与排队",
+        "Prefill–Decode 和状态驻留",
+        "同一局部优化依赖负载条件"
+      ],
+      "kind": "theory",
+      "doc": "theory/serving/README.md"
+    },
+    {
+      "id": "metrics",
+      "rect": [
+        2255,
+        1160,
+        650,
+        190
+      ],
+      "title": "用户可见指标",
+      "lines": [
+        "TTFT、TPOT 与尾延迟",
+        "完成吞吐 ≠ 饱和处理容量",
+        "Goodput 要求质量与 SLO 联合达标"
+      ],
+      "kind": "evidence",
+      "doc": "docs/benchmark-protocol.md"
+    },
+    {
+      "id": "opportunity",
+      "rect": [
+        95,
+        1640,
+        650,
+        210
+      ],
+      "title": "可检验的优化机会",
+      "lines": [
+        "目标、机制、适用域与反例",
+        "严格约束排除不可能候选",
+        "近似预测用于排序与补测"
+      ],
+      "kind": "agent",
+      "page": "mechanisms",
+      "tag": "继续：02 机制与耦合"
+    },
+    {
+      "id": "experiment",
+      "rect": [
+        815,
+        1640,
+        650,
+        210
+      ],
+      "title": "区分性实验",
+      "lines": [
+        "受控干预、计数器与形状扫描",
+        "优先区分竞争解释",
+        "记录新增开销与测量边界"
+      ],
+      "kind": "evidence",
+      "doc": "theory/diagnosis/README.md"
+    },
+    {
+      "id": "hypotheses",
+      "rect": [
+        1535,
+        1640,
+        650,
+        210
+      ],
+      "title": "竞争瓶颈假设",
+      "lines": [
+        "计算／访存／依赖／供给",
+        "检查可辨识性与相反证据",
+        "一次总耗时通常不能定因"
+      ],
+      "kind": "theory",
+      "doc": "theory/diagnosis/README.md"
+    },
+    {
+      "id": "observe",
+      "rect": [
+        2255,
+        1640,
+        650,
+        210
+      ],
+      "title": "性能观测",
+      "lines": [
+        "计数器、时间线与实际流量",
+        "逐请求／逐 token 记录",
+        "保存来源、噪声与采集扰动"
+      ],
+      "kind": "evidence",
+      "doc": "theory/diagnosis/README.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "task",
+      "target": "work",
+      "points": [
+        [
+          745,
+          487
+        ],
+        [
+          815,
+          487
+        ]
+      ],
+      "label": "定义",
+      "label_at": [
+        780,
+        487
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "task",
+      "target": "load",
+      "points": [
+        [
+          95,
+          487
+        ],
+        [
+          35,
+          487
+        ],
+        [
+          35,
+          925
+        ],
+        [
+          95,
+          925
+        ]
+      ],
+      "label": "固定语义",
+      "label_at": [
+        80,
+        700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "load",
+      "target": "work",
+      "points": [
+        [
+          745,
+          880
+        ],
+        [
+          780,
+          880
+        ],
+        [
+          780,
+          615
+        ],
+        [
+          1140,
+          615
+        ],
+        [
+          1140,
+          580
+        ]
+      ],
+      "label": "决定真实形状",
+      "label_at": [
+        965,
+        615
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "load",
+      "target": "memory",
+      "points": [
+        [
+          745,
+          925
+        ],
+        [
+          815,
+          925
+        ]
+      ],
+      "label": "状态",
+      "label_at": [
+        780,
+        925
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "work",
+      "target": "bound",
+      "points": [
+        [
+          1300,
+          580
+        ],
+        [
+          1300,
+          665
+        ],
+        [
+          2470,
+          665
+        ],
+        [
+          2470,
+          580
+        ]
+      ],
+      "label": "工作量约束",
+      "label_at": [
+        1850,
+        665
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "rate",
+      "target": "bound",
+      "points": [
+        [
+          2185,
+          487
+        ],
+        [
+          2255,
+          487
+        ]
+      ],
+      "label": "上界",
+      "label_at": [
+        2220,
+        487
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "memory",
+      "target": "bound",
+      "points": [
+        [
+          1465,
+          925
+        ],
+        [
+          1500,
+          925
+        ],
+        [
+          1500,
+          700
+        ],
+        [
+          2780,
+          700
+        ],
+        [
+          2780,
+          580
+        ]
+      ],
+      "label": "分层流量约束",
+      "label_at": [
+        2060,
+        700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "parallel",
+      "target": "graph",
+      "points": [
+        [
+          2185,
+          925
+        ],
+        [
+          2255,
+          925
+        ]
+      ],
+      "label": "次序",
+      "label_at": [
+        2220,
+        925
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "graph",
+      "target": "bound",
+      "points": [
+        [
+          2600,
+          830
+        ],
+        [
+          2600,
+          580
+        ]
+      ],
+      "label": "补充依赖下界",
+      "label_at": [
+        2600,
+        750
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "memory",
+      "target": "batch",
+      "points": [
+        [
+          1000,
+          1020
+        ],
+        [
+          1000,
+          1080
+        ],
+        [
+          420,
+          1080
+        ],
+        [
+          420,
+          1160
+        ]
+      ],
+      "label": "容量限制",
+      "label_at": [
+        700,
+        1080
+      ],
+      "kind": "constraint"
+    },
+    {
+      "source": "batch",
+      "target": "generation",
+      "points": [
+        [
+          745,
+          1255
+        ],
+        [
+          815,
+          1255
+        ]
+      ],
+      "label": "形状",
+      "label_at": [
+        780,
+        1255
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "graph",
+      "target": "generation",
+      "points": [
+        [
+          2410,
+          1020
+        ],
+        [
+          2410,
+          1115
+        ],
+        [
+          1140,
+          1115
+        ],
+        [
+          1140,
+          1160
+        ]
+      ],
+      "label": "决定完整周期成本",
+      "label_at": [
+        1830,
+        1115
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "generation",
+      "target": "serving",
+      "points": [
+        [
+          1465,
+          1255
+        ],
+        [
+          1535,
+          1255
+        ]
+      ],
+      "label": "产出",
+      "label_at": [
+        1500,
+        1255
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "serving",
+      "target": "metrics",
+      "points": [
+        [
+          2185,
+          1255
+        ],
+        [
+          2255,
+          1255
+        ]
+      ],
+      "label": "转化",
+      "label_at": [
+        2220,
+        1255
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "metrics",
+      "target": "observe",
+      "points": [
+        [
+          2580,
+          1350
+        ],
+        [
+          2580,
+          1640
+        ]
+      ],
+      "label": "按固定边界测量",
+      "label_at": [
+        2580,
+        1450
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "observe",
+      "target": "hypotheses",
+      "points": [
+        [
+          2255,
+          1745
+        ],
+        [
+          2185,
+          1745
+        ]
+      ],
+      "label": "解释",
+      "label_at": [
+        2220,
+        1745
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "hypotheses",
+      "target": "experiment",
+      "points": [
+        [
+          1535,
+          1745
+        ],
+        [
+          1465,
+          1745
+        ]
+      ],
+      "label": "区分",
+      "label_at": [
+        1500,
+        1745
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "experiment",
+      "target": "opportunity",
+      "points": [
+        [
+          815,
+          1745
+        ],
+        [
+          745,
+          1745
+        ]
+      ],
+      "label": "收敛",
+      "label_at": [
+        780,
+        1745
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "experiment",
+      "target": "observe",
+      "points": [
+        [
+          1140,
+          1850
+        ],
+        [
+          1140,
+          1940
+        ],
+        [
+          2580,
+          1940
+        ],
+        [
+          2580,
+          1850
+        ]
+      ],
+      "label": "新证据支持或反驳假设",
+      "label_at": [
+        1880,
+        1940
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "opportunity",
+      "target": "batch",
+      "points": [
+        [
+          95,
+          1745
+        ],
+        [
+          55,
+          1745
+        ],
+        [
+          55,
+          1450
+        ],
+        [
+          420,
+          1450
+        ],
+        [
+          420,
+          1350
+        ]
+      ],
+      "label": "重设工作点",
+      "label_at": [
+        250,
+        1450
+      ],
+      "kind": "feedback"
+    }
+  ]
+}

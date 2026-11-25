@@ -6,6 +6,8 @@
 
 ## 1. 五层体系与横向校准
 
+[查看性能模型关系子图](../visualizations/diagrams/research-atlas/03-models.svg) · [返回全局图集](../visualizations/diagrams/research-atlas/README.md)。子图同时展示资源下界与有效预测、执行和服务的反馈，以及现有 CPU 参考的覆盖范围。
+
 | 层 | 输入与问题 | 输出与章节 |
 | --- | --- | --- |
 | 资源 | 算法、形状、状态、硬件上限；必须完成多少工作？ | FLOPs、各级访存、通信与容量：[资源账本](resource/README.md) |
@@ -43,3 +45,5 @@ python3 -m unittest discover -s models/predictor/tests -v
 Agent 提供候选改变的成本与假设，模型返回资源可行性、条件收益、预计瓶颈和适用域。独立评估器随后返回实际观测，校准层分析误差。候选局部加速不能仅由 Agent 主观填写后再被模型“证实”；关键参数必须来自推导、校准或明确的情景范围。预测不确定时，下一步可以是补测，而不是立即改代码。
 
 [理论总纲](../theory/foundations/unified-theory.md) · [模型验证](../experiments/model-validation/README.md) · [业界建模工具](../research/industry/infersim-aiconfigurator.md)
+
+已有具体项目与历史尝试时，先按[项目复盘指南](../docs/project-optimization-guide.md)整理证据与未决问题，再选择本页对应模型层。模型输入应来自项目证据，输出应能帮助决定实现、补测或停止。

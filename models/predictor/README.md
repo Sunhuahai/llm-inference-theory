@@ -20,6 +20,8 @@
 
 **组合原则**：以真实冷/热 trace 为起点逐项应用干预。缓存与上下文压缩会重写实际 Prefill 负载、键分布与资源需求，**不能将两个模块的 speedup 直接相乘**。
 
+多个已尝试改动应按[优化耦合](../../theory/optimization/coupling.md)整理基线、A、B、AB 及父版本，再按[模型验证](../../experiments/model-validation/README.md)检查收益方向和候选排序；实际项目的整理与选读方法见[项目指导](../../docs/project-optimization-guide.md)。
+
 ## 30 秒运行
 
 从仓库根目录执行，不需要安装第三方 Python 包：

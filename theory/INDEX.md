@@ -2,6 +2,8 @@
 
 先读[图解导读](README.md)与[统一理论总纲](foundations/unified-theory.md)，再按问题进入下面的独立专题。章节中的公式均受明示假设约束；内容完成不等于已有实测验证。
 
+[基础篇入口](foundations/README.md)统一资源、状态与生成的描述；[优化篇入口](optimization/README.md)连接机制、条件收益和组合验证。
+
 | 章节 | 核心问题 | 主入口 | 与自主优化的关系 |
 | --- | --- | --- | --- |
 | 01 推理资源成本 | 实际工作量、流量、状态与通信是什么？ | [总纲](foundations/unified-theory.md) | 建立候选的资源作用机制 |
@@ -20,6 +22,8 @@
 
 [资源模型](../models/resource/README.md) → [算子模型](../models/operator/README.md) → [执行图](../models/execution/README.md) → [服务模型](../models/serving/README.md)。各层通过 [统一契约](../models/contracts.md)交换量，并用 [校准与留出](../models/calibration/README.md)约束预测范围。
 
-## 两类地图
+## 内容关系与项目使用
 
-[六大理论的知识树](../visualizations/diagrams/llm-inference-theory-mindmap.md)展示底层内容；[三条研究主线图](../visualizations/diagrams/research-framework/README.md)展示理论、模型、Agent 与实验的关系。[符号与单位](../docs/notation.md)和[内容地图](../docs/content-map.md)用于检查约定与当前能力。
+[全局图与六张子图](../visualizations/diagrams/research-atlas/README.md)连接理论、模型、Agent、实验与项目实践；其中 [01 性能与诊断](../visualizations/diagrams/research-atlas/01-theory.svg)解释性能形成，[02 机制与耦合](../visualizations/diagrams/research-atlas/02-mechanisms.svg)解释干预怎样传播。[六大理论知识树](../visualizations/diagrams/llm-inference-theory-mindmap.md)继续提供更细的概念索引。
+
+带着已有优化尝试阅读时，先用[项目指导](../docs/project-optimization-guide.md)选择需要回答的理论问题。[符号与单位](../docs/notation.md)和[内容地图](../docs/content-map.md)用于检查约定与当前能力。

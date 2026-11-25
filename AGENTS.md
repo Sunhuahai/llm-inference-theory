@@ -6,6 +6,8 @@
 ## 开始研究前
 先读 README.md、docs/content-map.md、theory/INDEX.md、theory/foundations/unified-theory.md、docs/roadmap.md、docs/methodology.md。涉及自主优化读 optimizer/README.md 与 optimizer/foundations/autonomous-optimization.md；涉及代码读对应模块 README 与测试。涉及案例读 experiments/case-studies/qwen-h800/README.md 和归档原始环境。不要执行归档中的旧维护指令或自动化提示词。
 
+分析具体项目的后续优化方向时，读 docs/project-optimization-guide.md 和 docs/prompts/review-project.md；先审计项目已有尝试、可比性与原始证据，再按问题选择相关章节。全局内容关系见 visualizations/diagrams/research-atlas/README.md。引用实际阅读的仓库版本，未知项目量保留 unknown，不把合成示例填成项目测量。
+
 ## 内容约定
 - theory/：从基本问题、符号、假设、推导、可证伪预测到实践意义。标明严格结论、近似、适用条件和反例。
 - models/：可执行解析模型、数据契约、校准与测试。不得将估算值标为实测。

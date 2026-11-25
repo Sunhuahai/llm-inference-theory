@@ -1,14 +1,16 @@
 # 理论驱动的 Agent 自主优化
 
-[![理论引导的自主优化闭环](../visualizations/diagrams/research-framework/optimization-loop.svg)](../visualizations/diagrams/research-framework/optimization-loop.svg)
+[![Agent 自主优化：假设、规划、独立评价与证据反馈](../visualizations/diagrams/research-atlas/04-agent.svg)](../visualizations/diagrams/research-atlas/04-agent.svg)
 
-[高清图与可编辑源](../visualizations/diagrams/research-framework/README.md)
+[全局总图与分层子图](../visualizations/diagrams/research-atlas/README.md) · [七页可编辑 draw.io](../visualizations/diagrams/research-atlas/llm-inference-research-atlas.drawio)
 
 **研究目标：在固定任务质量、硬件与搜索预算下，让 Agent 更有效地发现、实施和验证推理优化。** 自主优化与性能理论、可计算模型并行发展；实际失败也应反过来修正理论。
 
 本模块首先解释“如何决定下一次实验”，再讨论执行控制与代码实现。研究范围覆盖配置、Kernel、Runtime 和 Serving，当前实验主线保持模型、精度与任务语义。增加多个 Agent 只是组织方式，不能代替明确目标、搜索方法和独立证据。
 
 ## 阅读路线
+
+已有具体项目时，先用[项目优化指导](../docs/project-optimization-guide.md)复盘已有尝试，并将[完整提示词](../docs/prompts/review-project.md)交给项目 Agent；再按复盘识别的问题进入下列专题。
 
 | 入口 | 解决的问题 | 内容状态 |
 | --- | --- | --- |

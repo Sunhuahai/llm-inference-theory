@@ -2,6 +2,8 @@
 
 实验分别检验三个问题：理论关系是否成立，预测是否准确，以及理论能否帮助 Agent 更高效地寻找优化。每个问题需要自己的对照与评价单位。
 
+[实验与证据关系子图](../visualizations/diagrams/research-atlas/05-evidence.svg)展示三条并行验证路径与共同证据包；[项目优化指导](../docs/project-optimization-guide.md)说明如何用已有结果形成下一轮问题和最小验证。
+
 | 实验层次 | 回答的问题 | 入口 | 当前状态 |
 | --- | --- | --- | --- |
 | 合成验证 | 公式、单位、预算和控制逻辑是否自洽？ | [Synthetic](synthetic/README.md) | 有可执行 CPU 示例与测试 |

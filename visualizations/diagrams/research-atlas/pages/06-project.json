@@ -1,0 +1,529 @@
+{
+  "id": "project",
+  "file": "06-project",
+  "tab": "06 项目使用",
+  "size": [
+    3000,
+    2200
+  ],
+  "title": "06  项目使用：从已有优化结果决定下一步",
+  "subtitle": "把项目事实、机制解释与理论依据连接起来，形成可验证的方向判断。",
+  "footer": "默认先只读分析；具体实现与 GPU 实验遵循用户已有授权。",
+  "panels": [
+    {
+      "rect": [
+        65,
+        300,
+        2870,
+        380
+      ],
+      "title": "一、项目证据：哪些尝试已经成立，哪些仍无法比较？",
+      "kind": "project"
+    },
+    {
+      "rect": [
+        65,
+        750,
+        2870,
+        380
+      ],
+      "title": "二、机制与理论：已有结果排除了什么，还缺哪种解释？",
+      "kind": "theory"
+    },
+    {
+      "rect": [
+        65,
+        1200,
+        2870,
+        380
+      ],
+      "title": "三、下一步选择：补充信息、实施候选，还是暂缓？",
+      "kind": "agent"
+    },
+    {
+      "rect": [
+        65,
+        1650,
+        2870,
+        380
+      ],
+      "title": "四、可交接结论：给出依据、验证方式和停止条件",
+      "kind": "evidence"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "context",
+      "title": "具体项目的目标与现状",
+      "lines": [
+        "当前最优、模型与任务语义",
+        "硬件、负载、质量与资源预算",
+        "未知项按决策影响登记"
+      ],
+      "rect": [
+        100,
+        440,
+        800,
+        200
+      ],
+      "doc": "docs/project-optimization-guide.md",
+      "kind": "project",
+      "tag": "从已有项目出发"
+    },
+    {
+      "id": "ledger",
+      "title": "历史优化证据台账",
+      "lines": [
+        "parent、变更、原始结果与成本",
+        "保留编译失败、回归与未决",
+        "区分事实、解释与测量范围"
+      ],
+      "rect": [
+        1100,
+        440,
+        800,
+        200
+      ],
+      "doc": "experiments/templates/README.md",
+      "kind": "project"
+    },
+    {
+      "id": "compare",
+      "title": "哪些结果可以比较？",
+      "lines": [
+        "环境、负载、计时与输出口径",
+        "检查实际生效路径与质量",
+        "直接可比 / 条件可比 / 不可比"
+      ],
+      "rect": [
+        2100,
+        440,
+        800,
+        200
+      ],
+      "doc": "docs/benchmark-protocol.md",
+      "kind": "project"
+    },
+    {
+      "id": "mechanism",
+      "title": "从技术名称回到作用机制",
+      "lines": [
+        "改变计算、流量、依赖或产出",
+        "核对新增成本与前置条件",
+        "判断已消除成本和瓶颈迁移"
+      ],
+      "rect": [
+        2100,
+        890,
+        800,
+        210
+      ],
+      "doc": "theory/optimization/mechanisms.md",
+      "kind": "theory"
+    },
+    {
+      "id": "reading",
+      "title": "按项目疑问选择阅读",
+      "lines": [
+        "关键路径 / 状态 / 生成 / 服务",
+        "找到条件、模型及对应验证",
+        "每项引用说明如何改变判断"
+      ],
+      "rect": [
+        1100,
+        890,
+        800,
+        210
+      ],
+      "doc": "docs/project-optimization-guide.md",
+      "kind": "theory",
+      "tag": "连接理论、模型与实验子图"
+    },
+    {
+      "id": "hypotheses",
+      "title": "仍未辨识的竞争假设",
+      "lines": [
+        "支持证据、反证与未知量",
+        "同一现象可以有多个解释",
+        "指出何种观察会推翻解释"
+      ],
+      "rect": [
+        100,
+        890,
+        800,
+        210
+      ],
+      "doc": "theory/diagnosis/README.md",
+      "kind": "theory"
+    },
+    {
+      "id": "probe",
+      "title": "最小区分办法",
+      "lines": [
+        "先复用现有 trace、日志与源码",
+        "固定什么、改变什么、观测什么",
+        "让不同假设给出不同预测"
+      ],
+      "rect": [
+        100,
+        1340,
+        800,
+        210
+      ],
+      "doc": "optimizer/diagnosis/README.md",
+      "kind": "agent"
+    },
+    {
+      "id": "candidate",
+      "title": "下一步的条件净收益",
+      "lines": [
+        "绑定当前 parent 与目标指标",
+        "重算资源、依赖和新增代价",
+        "未知交互与新瓶颈明确保留"
+      ],
+      "rect": [
+        1100,
+        1340,
+        800,
+        210
+      ],
+      "doc": "optimizer/search-space/README.md",
+      "kind": "models"
+    },
+    {
+      "id": "priority",
+      "title": "为何优先做这一项？",
+      "lines": [
+        "质量与硬约束先于收益排序",
+        "权衡净收益、信息价值和成本",
+        "证据不足时给条件建议"
+      ],
+      "rect": [
+        2100,
+        1340,
+        800,
+        210
+      ],
+      "doc": "optimizer/planning/README.md",
+      "kind": "agent"
+    },
+    {
+      "id": "report",
+      "title": "可交接的下一轮方向报告",
+      "lines": [
+        "现状 → 机制 → 假设 → 优先项",
+        "每项关联证据、理论与未知量",
+        "附最小验证、成本和停止条件"
+      ],
+      "rect": [
+        2100,
+        1790,
+        800,
+        210
+      ],
+      "doc": "docs/prompts/review-project.md",
+      "kind": "project",
+      "tag": "打开可复制的项目 Agent 提示词"
+    },
+    {
+      "id": "validation",
+      "title": "验证、停止与重启条件",
+      "lines": [
+        "固定对照、oracle 与完整成本",
+        "接受 / 拒绝 / 未决各有判据",
+        "达到目标或信息价值不足时停"
+      ],
+      "rect": [
+        1100,
+        1790,
+        800,
+        210
+      ],
+      "doc": "optimizer/evaluation/README.md",
+      "kind": "evidence"
+    },
+    {
+      "id": "feedback",
+      "title": "实际结果接回原有证据",
+      "lines": [
+        "后续授权实验后追加记录",
+        "保留失败及适用域，不覆盖历史",
+        "重新诊断、重算和排序"
+      ],
+      "rect": [
+        100,
+        1790,
+        800,
+        210
+      ],
+      "doc": "optimizer/memory/README.md",
+      "kind": "evidence"
+    }
+  ],
+  "edges": [
+    {
+      "source": "context",
+      "target": "ledger",
+      "points": [
+        [
+          900,
+          540
+        ],
+        [
+          1100,
+          540
+        ]
+      ],
+      "label": "追溯身份与来源",
+      "kind": "flow"
+    },
+    {
+      "source": "ledger",
+      "target": "compare",
+      "points": [
+        [
+          1900,
+          540
+        ],
+        [
+          2100,
+          540
+        ]
+      ],
+      "label": "审查比较口径",
+      "kind": "flow"
+    },
+    {
+      "source": "compare",
+      "target": "mechanism",
+      "points": [
+        [
+          2500,
+          640
+        ],
+        [
+          2500,
+          890
+        ]
+      ],
+      "label": "限定可解释的结果",
+      "kind": "flow",
+      "label_at": [
+        2500,
+        735
+      ]
+    },
+    {
+      "source": "mechanism",
+      "target": "reading",
+      "points": [
+        [
+          2100,
+          995
+        ],
+        [
+          1900,
+          995
+        ]
+      ],
+      "label": "定位理论问题",
+      "kind": "flow"
+    },
+    {
+      "source": "reading",
+      "target": "hypotheses",
+      "points": [
+        [
+          1100,
+          995
+        ],
+        [
+          900,
+          995
+        ]
+      ],
+      "label": "形成竞争解释",
+      "kind": "flow"
+    },
+    {
+      "source": "hypotheses",
+      "target": "probe",
+      "points": [
+        [
+          900,
+          1050
+        ],
+        [
+          1000,
+          1050
+        ],
+        [
+          1000,
+          1290
+        ],
+        [
+          500,
+          1290
+        ],
+        [
+          500,
+          1340
+        ]
+      ],
+      "label": "选择区分性观测",
+      "kind": "flow",
+      "label_at": [
+        1000,
+        1170
+      ]
+    },
+    {
+      "source": "probe",
+      "target": "candidate",
+      "points": [
+        [
+          900,
+          1445
+        ],
+        [
+          1100,
+          1445
+        ]
+      ],
+      "label": "明确验证对象",
+      "kind": "flow"
+    },
+    {
+      "source": "candidate",
+      "target": "priority",
+      "points": [
+        [
+          1900,
+          1445
+        ],
+        [
+          2100,
+          1445
+        ]
+      ],
+      "label": "比较收益与成本",
+      "kind": "flow"
+    },
+    {
+      "source": "priority",
+      "target": "report",
+      "points": [
+        [
+          2500,
+          1550
+        ],
+        [
+          2500,
+          1790
+        ]
+      ],
+      "label": "输出有条件的建议",
+      "kind": "flow",
+      "label_at": [
+        2500,
+        1650
+      ]
+    },
+    {
+      "source": "report",
+      "target": "validation",
+      "points": [
+        [
+          2100,
+          1895
+        ],
+        [
+          1900,
+          1895
+        ]
+      ],
+      "label": "固定评价与判据",
+      "kind": "flow"
+    },
+    {
+      "source": "validation",
+      "target": "feedback",
+      "points": [
+        [
+          1100,
+          1895
+        ],
+        [
+          900,
+          1895
+        ]
+      ],
+      "label": "后续执行后回写",
+      "kind": "feedback"
+    },
+    {
+      "source": "mechanism",
+      "target": "candidate",
+      "points": [
+        [
+          2500,
+          1100
+        ],
+        [
+          2500,
+          1160
+        ],
+        [
+          1500,
+          1160
+        ],
+        [
+          1500,
+          1340
+        ]
+      ],
+      "label": "约束资源变化和新增成本",
+      "kind": "constraint",
+      "label_at": [
+        2080,
+        1160
+      ]
+    },
+    {
+      "source": "feedback",
+      "target": "ledger",
+      "points": [
+        [
+          500,
+          2000
+        ],
+        [
+          500,
+          2070
+        ],
+        [
+          40,
+          2070
+        ],
+        [
+          40,
+          690
+        ],
+        [
+          1500,
+          690
+        ],
+        [
+          1500,
+          640
+        ]
+      ],
+      "label": "新增证据改变下一轮方向",
+      "kind": "feedback",
+      "label_at": [
+        1080,
+        690
+      ]
+    }
+  ]
+}

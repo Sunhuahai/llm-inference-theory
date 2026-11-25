@@ -1,0 +1,809 @@
+{
+  "id": "mechanisms",
+  "file": "02-mechanisms",
+  "tab": "02 机制与耦合",
+  "title": "02｜如何改变系统：优化机制、代价与耦合",
+  "subtitle": "每项技术都应还原为资源变化与新增代价；收益绑定当前基线，组合之后重新建模和独立验证。",
+  "size": [
+    3000,
+    2500
+  ],
+  "footer": "机制分类与条件推导；独立加速倍数不能直接相乘，组合效果需要新证据。",
+  "panels": [
+    {
+      "rect": [
+        65,
+        285,
+        1420,
+        1535
+      ],
+      "title": "I 可选机制与新增代价",
+      "subtitle": "机制是可选动作，不是执行顺序；均需更新资源账本。",
+      "kind": "theory"
+    },
+    {
+      "rect": [
+        1515,
+        285,
+        1420,
+        1535
+      ],
+      "title": "II 从资源变化到可信收益",
+      "subtitle": "先检查可行性，再重算当前工作点与联合效果。",
+      "kind": "models"
+    },
+    {
+      "rect": [
+        65,
+        1970,
+        2870,
+        360
+      ],
+      "title": "III 跨机制联系与搜索反馈",
+      "subtitle": "节省某项成本可能增加另一项成本；负结果同样改变后续决策。",
+      "kind": "agent"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "task",
+      "rect": [
+        95,
+        410,
+        650,
+        190
+      ],
+      "title": "诊断与任务契约",
+      "lines": [
+        "目标、瓶颈假设与 baseline",
+        "固定精度、质量和资源预算",
+        "提出可被推翻的机制解释"
+      ],
+      "kind": "theory",
+      "doc": "theory/diagnosis/README.md"
+    },
+    {
+      "id": "reuse",
+      "rect": [
+        815,
+        410,
+        650,
+        190
+      ],
+      "title": "复用已有计算",
+      "lines": [
+        "前缀、状态与公共计算复用",
+        "直接减少部分 F、D",
+        "代价：键一致性、存储与恢复"
+      ],
+      "kind": "theory",
+      "doc": "theory/memory/README.md"
+    },
+    {
+      "id": "ledger",
+      "rect": [
+        1535,
+        410,
+        650,
+        190
+      ],
+      "title": "资源变换账本",
+      "lines": [
+        "F、D、C、M、执行图、K",
+        "同时记录节省和新增成本",
+        "多种物理单位不能直接相加"
+      ],
+      "kind": "models",
+      "doc": "theory/optimization/mechanisms.md"
+    },
+    {
+      "id": "candidate",
+      "rect": [
+        2255,
+        410,
+        650,
+        190
+      ],
+      "title": "候选身份与条件",
+      "lines": [
+        "parent、适用域与前置条件",
+        "依赖、冲突和允许修改范围",
+        "未知项保留 unknown"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/search-space/README.md"
+    },
+    {
+      "id": "fusion",
+      "rect": [
+        95,
+        800,
+        650,
+        190
+      ],
+      "title": "减少中间搬运",
+      "lines": [
+        "融合、分块、在线归一化",
+        "改变流量 D 和执行边",
+        "代价：寄存器、spill 与并发"
+      ],
+      "kind": "theory",
+      "doc": "theory/optimization/mechanisms.md"
+    },
+    {
+      "id": "mapping",
+      "rect": [
+        815,
+        800,
+        650,
+        190
+      ],
+      "title": "改善资源映射",
+      "lines": [
+        "Tile、布局、后端与形状特化",
+        "改善有效计算或带宽速率",
+        "代价：编译成本与适用域"
+      ],
+      "kind": "theory",
+      "doc": "models/operator/README.md"
+    },
+    {
+      "id": "rebuild",
+      "rect": [
+        1535,
+        800,
+        650,
+        190
+      ],
+      "title": "候选后重新建模",
+      "lines": [
+        "更新资源、形状与执行图",
+        "重算容量及服务工作点",
+        "新增开销不能漏计或重复计"
+      ],
+      "kind": "models",
+      "doc": "models/README.md"
+    },
+    {
+      "id": "filter",
+      "rect": [
+        2255,
+        800,
+        650,
+        190
+      ],
+      "title": "可行性筛选",
+      "lines": [
+        "语义、功能、容量与预算",
+        "严格约束可排除不可能",
+        "近似低收益预测保留探索"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/search-space/README.md"
+    },
+    {
+      "id": "communication",
+      "rect": [
+        95,
+        1190,
+        650,
+        190
+      ],
+      "title": "通信与执行重叠",
+      "lines": [
+        "聚合、放置、预取与流水",
+        "改变 C、依赖和暴露路径",
+        "代价：缓冲区、竞争与排空"
+      ],
+      "kind": "theory",
+      "doc": "theory/execution/README.md"
+    },
+    {
+      "id": "residency",
+      "rect": [
+        815,
+        1190,
+        650,
+        190
+      ],
+      "title": "改善状态驻留",
+      "lines": [
+        "分页、共享、释放与恢复",
+        "改变 M、可行 batch 与恢复",
+        "代价：管理、搬运或重算"
+      ],
+      "kind": "theory",
+      "doc": "theory/memory/README.md"
+    },
+    {
+      "id": "benefit",
+      "rect": [
+        1535,
+        1190,
+        650,
+        190
+      ],
+      "title": "条件收益与瓶颈迁移",
+      "lines": [
+        "收益绑定当前 parent",
+        "解除一类约束后另一类显露",
+        "S总 = SA × S(B｜A)"
+      ],
+      "kind": "models",
+      "doc": "theory/optimization/coupling.md"
+    },
+    {
+      "id": "lineage",
+      "rect": [
+        2255,
+        1190,
+        650,
+        190
+      ],
+      "title": "顺序与代码谱系",
+      "lines": [
+        "A→B 与 B→A 可能不同",
+        "父版本、依赖和补丁路径",
+        "组合后的完整实现必须复测"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/evolution/README.md"
+    },
+    {
+      "id": "scheduling",
+      "rect": [
+        95,
+        1580,
+        650,
+        190
+      ],
+      "title": "调度与资源配置",
+      "lines": [
+        "Batch、Graph、路由与 P/D",
+        "改变供给、形状和资源分配",
+        "代价：padding、传输与尾部"
+      ],
+      "kind": "theory",
+      "doc": "theory/serving/README.md"
+    },
+    {
+      "id": "speculation",
+      "rect": [
+        815,
+        1580,
+        650,
+        190
+      ],
+      "title": "增加周期有效产出",
+      "lines": [
+        "投机生成与可用原生 MTP",
+        "同时改变 K、F、D、M",
+        "代价：草稿、验证与回滚"
+      ],
+      "kind": "theory",
+      "doc": "theory/generation/README.md"
+    },
+    {
+      "id": "interaction",
+      "rect": [
+        1535,
+        1580,
+        650,
+        190
+      ],
+      "title": "四组交互实验",
+      "lines": [
+        "基线、A、B、A＋B",
+        "ΔAB = TA + TB − T0 − TAB",
+        "保留重复块与测量相关性"
+      ],
+      "kind": "evidence",
+      "doc": "theory/optimization/coupling.md"
+    },
+    {
+      "id": "pareto",
+      "rect": [
+        2255,
+        1580,
+        650,
+        190
+      ],
+      "title": "多目标选择与独立验证",
+      "lines": [
+        "TTFT／TPOT／goodput／成本",
+        "可行候选的 Pareto 前沿",
+        "冻结评价规则并留出复测"
+      ],
+      "kind": "evidence",
+      "doc": "optimizer/evaluation/README.md"
+    },
+    {
+      "id": "couplings",
+      "rect": [
+        95,
+        2070,
+        1370,
+        230
+      ],
+      "title": "典型耦合：为什么必须重算",
+      "lines": [
+        "缓存 × batch：少重算，也可能挤占活跃状态空间",
+        "融合 × 映射：少搬运，也可能 spill 或降低并发",
+        "并行 × 副本：单副本更快，也可能减少服务副本"
+      ],
+      "kind": "theory",
+      "doc": "theory/optimization/coupling.md"
+    },
+    {
+      "id": "search",
+      "rect": [
+        1535,
+        2070,
+        1370,
+        230
+      ],
+      "title": "搜索与经验更新",
+      "lines": [
+        "结合收益、成本和不确定性选择实现、补测或停止",
+        "保存失败、负结果、机制反例与可迁移的适用域",
+        "为新瓶颈生成下一批候选；完整代码进化仍属研究设计"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/planning/README.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "task",
+      "target": "candidate",
+      "points": [
+        [
+          420,
+          600
+        ],
+        [
+          420,
+          680
+        ],
+        [
+          2410,
+          680
+        ],
+        [
+          2410,
+          600
+        ]
+      ],
+      "label": "形成任务与候选契约",
+      "label_at": [
+        1110,
+        680
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "reuse",
+      "target": "ledger",
+      "points": [
+        [
+          1465,
+          505
+        ],
+        [
+          1535,
+          505
+        ]
+      ],
+      "label": "少算",
+      "label_at": [
+        1500,
+        505
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "fusion",
+      "target": "rebuild",
+      "points": [
+        [
+          745,
+          895
+        ],
+        [
+          780,
+          895
+        ],
+        [
+          780,
+          740
+        ],
+        [
+          1860,
+          740
+        ],
+        [
+          1860,
+          800
+        ]
+      ],
+      "label": "流量与执行边变化",
+      "label_at": [
+        1140,
+        740
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "mapping",
+      "target": "rebuild",
+      "points": [
+        [
+          1465,
+          895
+        ],
+        [
+          1535,
+          895
+        ]
+      ],
+      "label": "速率",
+      "label_at": [
+        1500,
+        895
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "communication",
+      "target": "rebuild",
+      "points": [
+        [
+          745,
+          1285
+        ],
+        [
+          780,
+          1285
+        ],
+        [
+          780,
+          1050
+        ],
+        [
+          1750,
+          1050
+        ],
+        [
+          1750,
+          990
+        ]
+      ],
+      "label": "重算暴露成本",
+      "label_at": [
+        1110,
+        1050
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "residency",
+      "target": "benefit",
+      "points": [
+        [
+          1465,
+          1285
+        ],
+        [
+          1535,
+          1285
+        ]
+      ],
+      "label": "容量",
+      "label_at": [
+        1500,
+        1285
+      ],
+      "kind": "constraint"
+    },
+    {
+      "source": "scheduling",
+      "target": "couplings",
+      "points": [
+        [
+          95,
+          1675
+        ],
+        [
+          55,
+          1675
+        ],
+        [
+          55,
+          2185
+        ],
+        [
+          95,
+          2185
+        ]
+      ],
+      "label": "联动",
+      "label_at": [
+        80,
+        1890
+      ],
+      "kind": "constraint"
+    },
+    {
+      "source": "speculation",
+      "target": "benefit",
+      "points": [
+        [
+          1465,
+          1675
+        ],
+        [
+          1500,
+          1675
+        ],
+        [
+          1500,
+          1450
+        ],
+        [
+          1860,
+          1450
+        ],
+        [
+          1860,
+          1380
+        ]
+      ],
+      "label": "产出与成本同变",
+      "label_at": [
+        1690,
+        1450
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "ledger",
+      "target": "rebuild",
+      "points": [
+        [
+          2010,
+          600
+        ],
+        [
+          2010,
+          800
+        ]
+      ],
+      "label": "更新资源与执行图",
+      "label_at": [
+        2010,
+        740
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "candidate",
+      "target": "filter",
+      "points": [
+        [
+          2580,
+          600
+        ],
+        [
+          2580,
+          800
+        ]
+      ],
+      "label": "检查前置条件",
+      "label_at": [
+        2580,
+        740
+      ],
+      "kind": "constraint"
+    },
+    {
+      "source": "filter",
+      "target": "rebuild",
+      "points": [
+        [
+          2255,
+          895
+        ],
+        [
+          2185,
+          895
+        ]
+      ],
+      "label": "筛选",
+      "label_at": [
+        2220,
+        895
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "rebuild",
+      "target": "benefit",
+      "points": [
+        [
+          1860,
+          990
+        ],
+        [
+          1860,
+          1190
+        ]
+      ],
+      "label": "当前工作点",
+      "label_at": [
+        1860,
+        1090
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "candidate",
+      "target": "lineage",
+      "points": [
+        [
+          2905,
+          505
+        ],
+        [
+          2940,
+          505
+        ],
+        [
+          2940,
+          1285
+        ],
+        [
+          2905,
+          1285
+        ]
+      ],
+      "label": "父版本",
+      "label_at": [
+        2940,
+        1090
+      ],
+      "kind": "constraint"
+    },
+    {
+      "source": "lineage",
+      "target": "benefit",
+      "points": [
+        [
+          2255,
+          1285
+        ],
+        [
+          2185,
+          1285
+        ]
+      ],
+      "label": "条件",
+      "label_at": [
+        2220,
+        1285
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "benefit",
+      "target": "interaction",
+      "points": [
+        [
+          2020,
+          1380
+        ],
+        [
+          2020,
+          1580
+        ]
+      ],
+      "label": "比较组合",
+      "label_at": [
+        2020,
+        1500
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "interaction",
+      "target": "pareto",
+      "points": [
+        [
+          2185,
+          1675
+        ],
+        [
+          2255,
+          1675
+        ]
+      ],
+      "label": "证据",
+      "label_at": [
+        2220,
+        1675
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "lineage",
+      "target": "pareto",
+      "points": [
+        [
+          2580,
+          1380
+        ],
+        [
+          2580,
+          1580
+        ]
+      ],
+      "label": "保留版本",
+      "label_at": [
+        2580,
+        1500
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "pareto",
+      "target": "search",
+      "points": [
+        [
+          2580,
+          1770
+        ],
+        [
+          2580,
+          2070
+        ]
+      ],
+      "label": "独立验证与完整成本",
+      "label_at": [
+        2580,
+        1890
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "search",
+      "target": "task",
+      "points": [
+        [
+          2200,
+          2300
+        ],
+        [
+          2200,
+          2350
+        ],
+        [
+          40,
+          2350
+        ],
+        [
+          40,
+          505
+        ],
+        [
+          95,
+          505
+        ]
+      ],
+      "label": "失败、经验与新瓶颈反馈",
+      "label_at": [
+        1360,
+        2350
+      ],
+      "kind": "feedback"
+    }
+  ]
+}

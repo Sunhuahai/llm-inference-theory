@@ -1,0 +1,791 @@
+{
+  "id": "agent",
+  "file": "04-agent",
+  "tab": "04 自主优化",
+  "size": [
+    3000,
+    2390
+  ],
+  "title": "Agent 自主优化：从机制假设到已确认改进",
+  "subtitle": "测量也是可选择的动作；接受、拒绝和未决都进入历史，并改变下一轮判断。",
+  "footer": "完整闭环是研究设计；CPU 回放仅覆盖有限候选、预算核算、失败处理与最优维护。",
+  "panels": [
+    {
+      "rect": [
+        70,
+        560,
+        2260,
+        1330
+      ],
+      "title": "研究主闭环：观测 → 假设 → 候选 → 决策 → 实现 → 证据",
+      "subtitle": "阅读顺序按箭头折返；候选均有父版本、机制与可证伪预测",
+      "kind": "agent"
+    },
+    {
+      "rect": [
+        2420,
+        560,
+        510,
+        1330
+      ],
+      "title": "确定性控制轨道",
+      "subtitle": "贯穿规划、执行、评价和晋升",
+      "kind": "neutral"
+    },
+    {
+      "rect": [
+        70,
+        1960,
+        2860,
+        305
+      ],
+      "title": "当前实现与接入边界",
+      "subtitle": "区分可运行控制逻辑与真实研究系统，完整验收见路线图",
+      "kind": "neutral"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "task",
+      "rect": [
+        70,
+        310,
+        1550,
+        160
+      ],
+      "title": "任务、目标与不变量",
+      "lines": [
+        "固定模型、精度、任务语义、质量门槛与服务资源",
+        "同一候选同时考虑目标指标、回归限制与搜索成本"
+      ],
+      "kind": "neutral",
+      "doc": "optimizer/foundations/autonomous-optimization.md"
+    },
+    {
+      "id": "objective",
+      "rect": [
+        1740,
+        310,
+        1190,
+        160
+      ],
+      "title": "核心研究问题",
+      "lines": [
+        "同质量、同预算下，能否更早找到更好的实现？",
+        "比较最终性能，也比较达到它所消耗的资源"
+      ],
+      "kind": "agent",
+      "doc": "experiments/agent-benchmark/README.md"
+    },
+    {
+      "id": "observe",
+      "rect": [
+        100,
+        665,
+        600,
+        180
+      ],
+      "title": "项目观测与历史",
+      "lines": [
+        "当前基线、负载和环境",
+        "时间线、资源账本与已完成尝试"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/diagnosis/README.md"
+    },
+    {
+      "id": "diagnose",
+      "rect": [
+        900,
+        665,
+        600,
+        180
+      ],
+      "title": "竞争瓶颈假设",
+      "lines": [
+        "记录支持证据和反证",
+        "识别哪项测量能区分解释"
+      ],
+      "kind": "theory",
+      "doc": "theory/diagnosis/README.md"
+    },
+    {
+      "id": "candidate",
+      "rect": [
+        1700,
+        665,
+        600,
+        180
+      ],
+      "title": "候选及作用机制",
+      "lines": [
+        "改变资源、依赖或调度",
+        "前置条件、冲突、新增成本"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/search-space/README.md"
+    },
+    {
+      "id": "prediction",
+      "rect": [
+        1700,
+        980,
+        600,
+        180
+      ],
+      "title": "条件收益与未知项",
+      "lines": [
+        "重算当前父版本下的收益",
+        "保留不确定性与新瓶颈"
+      ],
+      "kind": "models",
+      "doc": "models/contracts.md"
+    },
+    {
+      "id": "planner",
+      "rect": [
+        900,
+        980,
+        600,
+        180
+      ],
+      "title": "选择下一项动作",
+      "lines": [
+        "实现、诊断、复测、组合、停止",
+        "收益与信息价值结合剩余预算"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/planning/README.md"
+    },
+    {
+      "id": "build",
+      "rect": [
+        100,
+        980,
+        600,
+        180
+      ],
+      "title": "独立实现与构建",
+      "lines": [
+        "固定父版本和允许编辑范围",
+        "补丁、构建产物与失败日志"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/evolution/README.md"
+    },
+    {
+      "id": "correctness",
+      "rect": [
+        100,
+        1295,
+        600,
+        180
+      ],
+      "title": "冻结的正确性门禁",
+      "lines": [
+        "数值、状态与任务语义",
+        "边界形状和失败路径"
+      ],
+      "kind": "evidence",
+      "doc": "optimizer/evaluation/README.md"
+    },
+    {
+      "id": "performance",
+      "rect": [
+        900,
+        1295,
+        600,
+        180
+      ],
+      "title": "独立性能评价",
+      "lines": [
+        "重复测量与服务回归检查",
+        "延迟、goodput、内存和成本"
+      ],
+      "kind": "evidence",
+      "doc": "optimizer/evaluation/README.md"
+    },
+    {
+      "id": "decision",
+      "rect": [
+        1700,
+        1295,
+        600,
+        180
+      ],
+      "title": "接受、拒绝或未决",
+      "lines": [
+        "约束通过且收益足够才接受",
+        "证据不足保留未决与补测需求"
+      ],
+      "kind": "evidence",
+      "doc": "optimizer/evaluation/README.md"
+    },
+    {
+      "id": "incumbent",
+      "rect": [
+        100,
+        1610,
+        600,
+        180
+      ],
+      "title": "已确认最优与谱系",
+      "lines": [
+        "评价完成后才晋升",
+        "保留基线，组合后重新评价"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/evolution/README.md"
+    },
+    {
+      "id": "memory",
+      "rect": [
+        900,
+        1610,
+        600,
+        180
+      ],
+      "title": "正负结果与经验",
+      "lines": [
+        "事实与解释、失败类型分开",
+        "按适用域复用，环境变化复核"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/memory/README.md"
+    },
+    {
+      "id": "revision",
+      "rect": [
+        1700,
+        1610,
+        600,
+        180
+      ],
+      "title": "修订理论和模型",
+      "lines": [
+        "比较事前预测与实际结果",
+        "定位实现错误、模型遗漏或噪声"
+      ],
+      "kind": "models",
+      "doc": "models/calibration/README.md"
+    },
+    {
+      "id": "control1",
+      "rect": [
+        2450,
+        665,
+        450,
+        210
+      ],
+      "title": "契约与评价独立",
+      "lines": [
+        "锁定 baseline 与 oracle",
+        "固定环境和输出口径",
+        "记录权限与版本"
+      ],
+      "kind": "neutral",
+      "font": 22,
+      "title_font": 26,
+      "doc": "optimizer/systems/README.md"
+    },
+    {
+      "id": "control2",
+      "rect": [
+        2450,
+        935,
+        450,
+        210
+      ],
+      "title": "预算准入与结算",
+      "lines": [
+        "按硬上限预留",
+        "按实际成本结算",
+        "准备、失败与复测计费"
+      ],
+      "kind": "neutral",
+      "font": 22,
+      "title_font": 26,
+      "doc": "optimizer/systems/README.md"
+    },
+    {
+      "id": "control3",
+      "rect": [
+        2450,
+        1205,
+        450,
+        210
+      ],
+      "title": "状态与恢复",
+      "lines": [
+        "唯一候选与任务 ID",
+        "记录运行和取消状态",
+        "未完成结果不晋升"
+      ],
+      "kind": "neutral",
+      "font": 22,
+      "title_font": 26,
+      "doc": "optimizer/systems/README.md"
+    },
+    {
+      "id": "control4",
+      "rect": [
+        2450,
+        1475,
+        450,
+        210
+      ],
+      "title": "停止与最终留出",
+      "lines": [
+        "预算、收益或信息不足",
+        "停止后冻结最终方案",
+        "留出不进入日常调参"
+      ],
+      "kind": "neutral",
+      "font": 22,
+      "title_font": 26,
+      "doc": "optimizer/evaluation/README.md"
+    },
+    {
+      "id": "cpu",
+      "rect": [
+        100,
+        2060,
+        840,
+        175
+      ],
+      "title": "已实现：CPU 搜索回放",
+      "lines": [
+        "random / predicted / cost-aware",
+        "独立有限候选、预算、失败与最优维护"
+      ],
+      "kind": "agent",
+      "doc": "optimizer/systems/README.md"
+    },
+    {
+      "id": "adapters",
+      "rect": [
+        1080,
+        2060,
+        840,
+        175
+      ],
+      "title": "待接入：真实系统适配",
+      "lines": [
+        "LLM、构建器、Profiler、GPU 和独立 oracle",
+        "噪声统计、组合候选与跨任务记忆"
+      ],
+      "kind": "neutral",
+      "doc": "docs/roadmap.md"
+    },
+    {
+      "id": "project",
+      "rect": [
+        2060,
+        2060,
+        840,
+        175
+      ],
+      "title": "在自己的项目中使用",
+      "lines": [
+        "先整理已有尝试，再按问题选择相关阅读",
+        "输出有依据的下一轮方向和最小实验"
+      ],
+      "kind": "project",
+      "page": "project"
+    }
+  ],
+  "edges": [
+    {
+      "source": "task",
+      "target": "objective",
+      "points": [
+        [
+          1620,
+          390
+        ],
+        [
+          1740,
+          390
+        ]
+      ],
+      "label": "定义目标",
+      "label_at": [
+        1680,
+        390
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "observe",
+      "target": "diagnose",
+      "points": [
+        [
+          700,
+          755
+        ],
+        [
+          900,
+          755
+        ]
+      ],
+      "label": "支持或反驳",
+      "label_at": [
+        800,
+        755
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "diagnose",
+      "target": "candidate",
+      "points": [
+        [
+          1500,
+          755
+        ],
+        [
+          1700,
+          755
+        ]
+      ],
+      "label": "机制干预",
+      "label_at": [
+        1600,
+        755
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "candidate",
+      "target": "prediction",
+      "points": [
+        [
+          2000,
+          845
+        ],
+        [
+          2000,
+          980
+        ]
+      ],
+      "label": "交给模型重算",
+      "label_at": [
+        2000,
+        910
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "prediction",
+      "target": "planner",
+      "points": [
+        [
+          1700,
+          1070
+        ],
+        [
+          1500,
+          1070
+        ]
+      ],
+      "label": "收益与风险",
+      "label_at": [
+        1600,
+        1070
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "planner",
+      "target": "build",
+      "points": [
+        [
+          900,
+          1070
+        ],
+        [
+          700,
+          1070
+        ]
+      ],
+      "label": "选择实现",
+      "label_at": [
+        800,
+        1070
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "build",
+      "target": "correctness",
+      "points": [
+        [
+          400,
+          1160
+        ],
+        [
+          400,
+          1295
+        ]
+      ],
+      "label": "固定版本产物",
+      "label_at": [
+        400,
+        1225
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "correctness",
+      "target": "performance",
+      "points": [
+        [
+          700,
+          1385
+        ],
+        [
+          900,
+          1385
+        ]
+      ],
+      "label": "正确性通过",
+      "label_at": [
+        800,
+        1385
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "performance",
+      "target": "decision",
+      "points": [
+        [
+          1500,
+          1385
+        ],
+        [
+          1700,
+          1385
+        ]
+      ],
+      "label": "独立测量",
+      "label_at": [
+        1600,
+        1385
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "decision",
+      "target": "incumbent",
+      "points": [
+        [
+          2000,
+          1475
+        ],
+        [
+          2000,
+          1535
+        ],
+        [
+          400,
+          1535
+        ],
+        [
+          400,
+          1610
+        ]
+      ],
+      "label": "仅接受后晋升",
+      "label_at": [
+        650,
+        1535
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "decision",
+      "target": "memory",
+      "points": [
+        [
+          2150,
+          1475
+        ],
+        [
+          2150,
+          1570
+        ],
+        [
+          1200,
+          1570
+        ],
+        [
+          1200,
+          1610
+        ]
+      ],
+      "label": "全部结果与成本",
+      "label_at": [
+        1670,
+        1570
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "memory",
+      "target": "revision",
+      "points": [
+        [
+          1500,
+          1700
+        ],
+        [
+          1700,
+          1700
+        ]
+      ],
+      "label": "残差与反例",
+      "label_at": [
+        1600,
+        1700
+      ],
+      "kind": "flow"
+    },
+    {
+      "source": "incumbent",
+      "target": "observe",
+      "points": [
+        [
+          100,
+          1700
+        ],
+        [
+          35,
+          1700
+        ],
+        [
+          35,
+          755
+        ],
+        [
+          100,
+          755
+        ]
+      ],
+      "label": "新基线",
+      "label_at": [
+        135,
+        920
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "memory",
+      "target": "planner",
+      "points": [
+        [
+          900,
+          1700
+        ],
+        [
+          800,
+          1700
+        ],
+        [
+          800,
+          1115
+        ],
+        [
+          900,
+          1115
+        ]
+      ],
+      "label": "条件化复用",
+      "label_at": [
+        800,
+        1230
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "revision",
+      "target": "diagnose",
+      "points": [
+        [
+          2300,
+          1700
+        ],
+        [
+          2370,
+          1700
+        ],
+        [
+          2370,
+          905
+        ],
+        [
+          1200,
+          905
+        ],
+        [
+          1200,
+          845
+        ]
+      ],
+      "label": "修订解释与预测",
+      "label_at": [
+        1540,
+        905
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "planner",
+      "target": "diagnose",
+      "points": [
+        [
+          900,
+          1020
+        ],
+        [
+          765,
+          1020
+        ],
+        [
+          765,
+          800
+        ],
+        [
+          900,
+          800
+        ]
+      ],
+      "label": "追加诊断",
+      "label_at": [
+        760,
+        925
+      ],
+      "kind": "feedback"
+    },
+    {
+      "source": "planner",
+      "target": "performance",
+      "points": [
+        [
+          1200,
+          1160
+        ],
+        [
+          1200,
+          1295
+        ]
+      ],
+      "label": "选择复测",
+      "label_at": [
+        1200,
+        1225
+      ],
+      "kind": "feedback"
+    }
+  ]
+}
