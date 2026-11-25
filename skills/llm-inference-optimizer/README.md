@@ -2,6 +2,8 @@
 
 **Self-evolving theory-guided inference optimization.** 面向已有具体项目、源码、优化记录和可比较实验的 Agent。通用理论、用户自己的演化理论库、项目轮次记录相互连接，而不是一个只产生优化 Tricks 的 prompt。
 
+[图解介绍与完整工作流程](INTRODUCTION.md) · [三页可编辑流程图](diagrams/skill-workflow.drawio)
+
 ## 安装
 
 可独立复制本目录，也可保留 Git 工作区并创建符号链接。包含 [SKILL.md](SKILL.md)、[37 篇初始理论](knowledge/INDEX.md)、参考文档、模板、Python 3.10+ 标准库工具及测试。Codex 用户级安装示例（先在本机已授权的目录 clone 仓库，确认目标路径不存在；不覆盖其他安装）：

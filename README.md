@@ -24,7 +24,7 @@
 
 **推荐安装 [LLM Inference Optimizer Skill](skills/llm-inference-optimizer/README.md)**：可在任意推理项目中调用 `$llm-inference-optimizer`。内置 37 篇版本化理论快照、项目审计与决策、每轮事前预测/实测比较，以及私有跨项目理论库。通过预先登记的留出实验和独立审阅验证理论修订，保留全部历史版本和正负证据。
 
-[Skill 入口](skills/llm-inference-optimizer/SKILL.md) · [初始知识](skills/llm-inference-optimizer/knowledge/INDEX.md) · [理论演化](skills/llm-inference-optimizer/references/theory-evolution.md)
+[图解介绍与完整工作流程](skills/llm-inference-optimizer/INTRODUCTION.md) · [Skill 入口](skills/llm-inference-optimizer/SKILL.md) · [初始知识](skills/llm-inference-optimizer/knowledge/INDEX.md) · [理论演化](skills/llm-inference-optimizer/references/theory-evolution.md)
 
 已有推理项目和优化记录时，从 **[项目优化指导](docs/project-optimization-guide.md)** 进入：整理历史结果的可比性，把尝试转成机制证据，再按问题选读理论、模型与验证章节，形成下一轮优先方向、最小区分实验和停止条件。
 

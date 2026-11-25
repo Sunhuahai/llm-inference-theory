@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-label="02 · 理论如何通过实验持续演化">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#77869B"/></marker></defs>
+<rect width="1200" height="850" rx="16" fill="#FFFFFF"/><g font-family="system-ui, -apple-system, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">
+<text x="600" y="38" font-size="25" font-weight="700" text-anchor="middle" fill="#17263A">02 · 理论如何通过实验持续演化</text>
+<text x="600" y="66" font-size="17" text-anchor="middle" fill="#596B82">冻结旧理论；训练证据与留出证据分离；验证失败不覆盖原理论</text>
+<polyline points="600,170 600,205" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="600,275 600,310" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="600,380 600,415" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="600,485 600,520" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="600,590 600,620 320,620 320,650" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="600,590 600,620 880,620 880,650" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="80,687 35,687 35,135 360,135" fill="none" stroke="#8392A5" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1120,687 1165,687 1165,135 840,135" fill="none" stroke="#7950C6" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="360" y="100" width="480" height="70" rx="9" fill="#F1EBFF" stroke="#7950C6" stroke-width="1.7"/><text x="600" y="129" font-size="20" text-anchor="middle" font-weight="700" fill="#50328E">当前理论 Mₖ</text><text x="600" y="154" font-size="15" text-anchor="middle" fill="#344258">active.json 指向完整版本</text>
+<rect x="360" y="205" width="480" height="70" rx="9" fill="#E7F7F2" stroke="#16846B" stroke-width="1.7"/><text x="600" y="234" font-size="20" text-anchor="middle" font-weight="700" fill="#125844">历史可比实测与事前误差</text><text x="600" y="259" font-size="15" text-anchor="middle" fill="#344258">区分点预测、区间覆盖和严格界</text>
+<rect x="360" y="310" width="480" height="70" rx="9" fill="#F1EBFF" stroke="#7950C6" stroke-width="1.7"/><text x="600" y="339" font-size="20" text-anchor="middle" font-weight="700" fill="#50328E">提出候选 M′ₖ</text><text x="600" y="364" font-size="15" text-anchor="middle" fill="#344258">拟合 / 修正 / 扩展 / 经验律 / 修订</text>
+<rect x="360" y="415" width="480" height="70" rx="9" fill="#FFF3DD" stroke="#B87316" stroke-width="1.7"/><text x="600" y="444" font-size="20" text-anchor="middle" font-weight="700" fill="#784A0D">预登记留出实验，冻结双版本预测</text><text x="600" y="469" font-size="15" text-anchor="middle" fill="#344258">同 parent、context、指标和真实观测</text>
+<rect x="360" y="520" width="480" height="70" rx="9" fill="#FFF3DD" stroke="#B87316" stroke-width="1.7"/><text x="600" y="549" font-size="20" text-anchor="middle" font-weight="700" fill="#784A0D">比较成对误差 + 独立审核</text><text x="600" y="574" font-size="15" text-anchor="middle" fill="#344258">全部登记轮次；目标不退步且至少一项改善</text>
+<rect x="80" y="650" width="480" height="75" rx="9" fill="#F0F3F7" stroke="#8392A5" stroke-width="1.7"/><text x="320" y="681.5" font-size="20" text-anchor="middle" font-weight="700" fill="#344258">验证不通过 / 证据不足</text><text x="320" y="706.5" font-size="15" text-anchor="middle" fill="#344258">保留 Mₖ、候选、失败证据；不放宽标准</text>
+<rect x="640" y="650" width="480" height="75" rx="9" fill="#F1EBFF" stroke="#7950C6" stroke-width="1.7"/><text x="880" y="681.5" font-size="20" text-anchor="middle" font-weight="700" fill="#50328E">通过并获真实审核授权</text><text x="880" y="706.5" font-size="15" text-anchor="middle" fill="#344258">晋升 Mₖ₊₁；旧版本与证据可追溯</text>
+<text x="715" y="296" text-anchor="middle" font-size="15" font-weight="600" fill="#77869B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">有充分修订依据</text>
+<text x="445" y="610" text-anchor="middle" font-size="15" font-weight="600" fill="#77869B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">否</text>
+<text x="755" y="610" text-anchor="middle" font-size="15" font-weight="600" fill="#77869B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">是</text>
+<text x="174" y="123" text-anchor="middle" font-size="15" font-weight="600" fill="#8392A5" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">保留现有版本</text>
+<text x="1010" y="123" text-anchor="middle" font-size="15" font-weight="600" fill="#7950C6" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">新 active；可回滚</text>
+<text x="600" y="828" text-anchor="middle" font-size="14" fill="#64748B">LLM Inference Optimizer · 工作流图示，非真实 GPU 性能结果</text></g></svg>

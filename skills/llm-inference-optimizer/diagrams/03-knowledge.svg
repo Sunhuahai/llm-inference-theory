@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-label="03 · 跨项目知识积累：三层理论体系">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#77869B"/></marker></defs>
+<rect width="1200" height="650" rx="16" fill="#FFFFFF"/><g font-family="system-ui, -apple-system, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">
+<text x="600" y="38" font-size="25" font-weight="700" text-anchor="middle" fill="#17263A">03 · 跨项目知识积累：三层理论体系</text>
+<text x="600" y="66" font-size="17" text-anchor="middle" fill="#596B82">公开初始知识与私有演化知识分离；跨环境迁移机制而非未经校准的数值</text>
+<polyline points="600,176 600,240" fill="none" stroke="#77869B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="335,340 335,375 175,375 175,445" fill="none" stroke="#7950C6" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="270,445 270,402 395,402 395,340" fill="none" stroke="#16846B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="560,340 560,445" fill="none" stroke="#7950C6" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="640,445 640,340" fill="none" stroke="#16846B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="805,340 805,375 930,375 930,445" fill="none" stroke="#7950C6" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1030,445 1030,402 865,402 865,340" fill="none" stroke="#16846B" stroke-width="2.3" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="310" y="100" width="580" height="76" rx="9" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.7"/><text x="600" y="132" font-size="20" text-anchor="middle" font-weight="700" fill="#183D78">L1 · Skill 自带初始理论</text><text x="600" y="157" font-size="15" text-anchor="middle" fill="#344258">37 篇固定版本快照；只读来源和相互链接</text>
+<rect x="255" y="240" width="690" height="100" rx="9" fill="#F1EBFF" stroke="#7950C6" stroke-width="1.7"/><text x="600" y="284" font-size="20" text-anchor="middle" font-weight="700" fill="#50328E">L2 · 使用者级演化理论库</text><text x="600" y="309" font-size="15" text-anchor="middle" fill="#344258">版本文档 · 校准参数 · 经验规律 · 正负证据 · 适用域</text>
+<rect x="65" y="445" width="315" height="80" rx="9" fill="#E7F7F2" stroke="#16846B" stroke-width="1.7"/><text x="222.5" y="479" font-size="20" text-anchor="middle" font-weight="700" fill="#125844">L3 · 项目 A</text><text x="222.5" y="504" font-size="15" text-anchor="middle" fill="#344258">模型 / 硬件 / context A</text>
+<rect x="442.5" y="445" width="315" height="80" rx="9" fill="#E7F7F2" stroke="#16846B" stroke-width="1.7"/><text x="600" y="479" font-size="20" text-anchor="middle" font-weight="700" fill="#125844">L3 · 项目 B</text><text x="600" y="504" font-size="15" text-anchor="middle" fill="#344258">模型 / 硬件 / context B</text>
+<rect x="820" y="445" width="315" height="80" rx="9" fill="#E7F7F2" stroke="#16846B" stroke-width="1.7"/><text x="977.5" y="479" font-size="20" text-anchor="middle" font-weight="700" fill="#125844">L3 · 新项目 C</text><text x="977.5" y="504" font-size="15" text-anchor="middle" fill="#344258">继承机制与先验；重新校准</text>
+<text x="755" y="209" text-anchor="middle" font-size="15" font-weight="600" fill="#77869B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">首次初始化；升级不覆盖</text>
+<text x="208" y="366" text-anchor="middle" font-size="15" font-weight="600" fill="#7950C6" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">理论指导</text>
+<text x="335" y="425" text-anchor="middle" font-size="15" font-weight="600" fill="#16846B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">证据反馈</text>
+<text x="516" y="392" text-anchor="middle" font-size="15" font-weight="600" fill="#7950C6" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">指导</text>
+<text x="680" y="392" text-anchor="middle" font-size="15" font-weight="600" fill="#16846B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">反馈</text>
+<text x="873" y="366" text-anchor="middle" font-size="15" font-weight="600" fill="#7950C6" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">理论迁移</text>
+<text x="947" y="425" text-anchor="middle" font-size="15" font-weight="600" fill="#16846B" stroke="#FFFFFF" stroke-width="5" paint-order="stroke">新证据</text>
+<text x="600" y="628" text-anchor="middle" font-size="14" fill="#64748B">LLM Inference Optimizer · 工作流图示，非真实 GPU 性能结果</text></g></svg>
