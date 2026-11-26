@@ -71,6 +71,10 @@ python3 -m unittest discover -s tests -v
 
 [项目概况](assets/project-profile.json) · [历史证据台账](assets/evidence-ledger.json) · [实验计划](assets/experiment-plan.json) · [复盘报告](assets/optimization-report.md) · [预测输入](assets/prediction.json) · [测量输入](assets/measurement.json) · [理论更新](assets/theory-update.md) · [下一轮计划](assets/next-plan.md) · [候选理论](assets/proposal.json)
 
+## 外部工具参考
+
+[推理优化 Skills 与开源工具](../../research/industry/inference-optimization-skills.md) 比较 Sybil、BBuf、NVIDIA、KDA 等项目，讨论如何与本 Skill 的理论预测、独立评价和版本化知识库互补。该文档仅为外部研究和使用指南，不是本 Skill 的运行依赖，不改变安装、权限及理论快照。
+
 ## 边界和维护
 
 完整的是 Skill 工作流、知识快照、可追溯记录、确定性计算、版本治理与最小参数拟合；尚没有真实 GPU adapter、自动 profiler 或通用模型训练器。理论修订由 Agent 提出、使用者授权的独立实验检验。程序的最小数值门槛不是科学充分条件。程序只在本地工作；私有实验数据、路径、密钥不得上传公共仓库。默认用户路径不在 Git 仓库内；不要把用户库或项目私有日志纳入公开提交。

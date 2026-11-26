@@ -29,7 +29,7 @@
 | [系统与离线原型](systems/README.md) | 哪些交给程序，哪些交给 Agent？ | CPU 搜索回放已实现；真实适配器待接入 |
 | [统一 Agent Benchmark](../experiments/agent-benchmark/README.md) | 怎样证明理论提高了优化效率？ | 对照实验设计 |
 
-初次学习可先读[自主优化图解导读](../research/industry/agentic-inference-optimization-guide.md)。外部项目继续保留在 [Research](../research/README.md)；本目录负责本仓库的问题定义、方法与实现。
+初次学习可先读[自主优化图解导读](../research/industry/agentic-inference-optimization-guide.md)。需要借鉴或接入现成工程工具时，参见[推理优化 Skills 与开源工具](../research/industry/inference-optimization-skills.md)。外部项目继续保留在 [Research](../research/README.md)；本目录负责本仓库的问题定义、方法与实现。
 
 ## 三个关键连接
 
