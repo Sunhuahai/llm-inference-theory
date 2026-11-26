@@ -38,6 +38,7 @@
 | 项目使用指导 | [历史证据复盘、问题驱动选读、下一轮方向与验证](project-optimization-guide.md) · [Agent 提示词](prompts/review-project.md) | 可直接用于已有项目分析；具体建议需由项目证据支持 |
 | 自演化 Agent Skill | [安装与调用](../skills/llm-inference-optimizer/README.md) · [逐轮预测](../skills/llm-inference-optimizer/references/prediction-comparison.md) · [理论演化](../skills/llm-inference-optimizer/references/theory-evolution.md) | 37 篇初始理论、CPU 比较/证据/拟合/版本治理；真实实验由使用者授权并验证 |
 | 研究路线 | [共同里程碑与验收要求](roadmap.md) | 三条主线并行推进 |
+| 低部署成本机制 | [原生功能与实验指南](../research/industry/low-deployment-cost-inference-optimization.md) | 官方文档核对与条件式实验建议；未进行本地兼容性或 GPU 验证 |
 | 外部自主优化 Skills | [资源地图与使用指南](../research/industry/inference-optimization-skills.md) | 公开工具调研与集成建议；未执行 GPU 或安装验证 |
 | 文献入口 | [问题导向的一手阅读地图](../research/papers/README.md) | 基础与评价资料；保留现有业界专题 |
 

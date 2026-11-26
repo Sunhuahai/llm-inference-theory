@@ -8,6 +8,7 @@
 | --- | --- |
 | [一手阅读地图](papers/README.md) | 资源边界、服务建模、程序搜索与 Agent 评价的基础论文 |
 | [AI 如何自动优化 AI 推理](industry/agentic-inference-optimization-guide.md) | 从直觉出发理解 KernelEvolve、KernelAgent、GEAK 与 SEIS |
+| [低部署成本推理优化](industry/low-deployment-cost-inference-optimization.md) | 原生缓存、状态池、自适应调度与低成本对照实验 |
 | [推理优化 Skills 与开源工具](industry/inference-optimization-skills.md) | Sybil、BBuf、NVIDIA、KDA 等工具的选择、使用与集成边界 |
 | [自主优化深度调研](industry/ai-driven-inference-optimization.md) | 项目机制、公开证据、版本与适用边界 |
 | [InferSim 与 AIConfigurator](industry/infersim-aiconfigurator.md) | 性能估计、部署搜索与工具使用 |

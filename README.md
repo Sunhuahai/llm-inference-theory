@@ -36,7 +36,7 @@
 ## 首次阅读
 
 1. 先读 [推理性能图解](theory/README.md)，理解成本、Roofline、关键路径与服务指标。
-2. 再读 [AI 如何自动优化 AI 推理](research/industry/agentic-inference-optimization-guide.md)，了解已有工作的思想；实践工具见 [推理优化 Skills 与开源工具](research/industry/inference-optimization-skills.md)。
+2. 再读 [AI 如何自动优化 AI 推理](research/industry/agentic-inference-optimization-guide.md)，了解已有工作的思想；实践工具见 [推理优化 Skills 与开源工具](research/industry/inference-optimization-skills.md)，现成原生能力见 [低部署成本推理优化](research/industry/low-deployment-cost-inference-optimization.md)。
 3. 进入本仓库的 [自主优化理论总纲](optimizer/foundations/autonomous-optimization.md)，从问题、约束与反馈建立完整认识。
 4. 沿 [瓶颈诊断](theory/diagnosis/README.md) → [优化机制](theory/optimization/mechanisms.md) → [收益与耦合](theory/optimization/coupling.md) → [搜索评价](experiments/agent-benchmark/README.md)阅读。
 
